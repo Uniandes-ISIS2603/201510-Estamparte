@@ -7,17 +7,19 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule']);
+	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule']);
 
 	mainApp.config(['$routeProvider', function ($routeProvider) {
 			$routeProvider.when('/factura', {
 				templateUrl: 'src/modules/factura/factura.tpl.html'
                         }).when('/comprador', {
 				templateUrl: 'src/modules/comprador/comprador.tpl.html'
-			}).otherwise('/');
+			}).when('/artista',{
+                                templateUrl: 'src/modules/artista/artista.tpl.html'
+                        }).otherwise('/');
 		}]);
 
-	//Configuración módulo sport
+	//Configuración módulo factura
 	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule']);
 
 	facturaModule.constant('factura.context', 'factura');
@@ -26,14 +28,24 @@
 			urlsProvider.registerUrl(context);
 		}]);
             
-            //Configuración módulo sport
+            //Configuración módulo comprador
 	var compradorModule = angular.module('compradorModule', ['CrudModule', 'MockModule']);
 
-	comprador.constant('comprador.context', 'comprador');
+	compradorModule.constant('comprador.context', 'comprador');
 
-	comprador.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
+	compradorModule.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
 			urlsProvider.registerUrl(context);
 		}]);
+            
+            //Configuracion de modulo de artista
+            var artistaModule = angular.module('artistaModule',['CrudModule','MockModule']);
+            
+            artistaModule.constant('artista.context', 'artista');
+
+            artistaModule.config(['artista.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
+			urlsProvider.registerUrl(context);
+		}]);
+            
             
            
 })();
