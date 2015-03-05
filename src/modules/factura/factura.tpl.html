@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div ng-controller="facturaCtrl as facturaCtrl">
+	<div id="header">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#country-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#/factura">Factura</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="country-navbar">
+					<button class="btn btn-default navbar-btn" ng-hide="facturaCtrl.editMode" ng-click="facturaCtrl.crearDato()"><span class="glyphicon glyphicon-plus"></span> Create</button>
+					<button class="btn btn-default navbar-btn" ng-hide="facturaCtrl.editMode" ng-click="facturaCtrl.consultarDatos()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+					<button class="btn btn-default navbar-btn" ng-show="facturaCtrl.editMode" ng-click="facturaCtrl.guardarDato()"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+					<button class="btn btn-default navbar-btn" ng-show="facturaCtrl.editMode" ng-click="facturaCtrl.consultarDatos()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div ng-hide="facturaCtrl.editMode">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Fecha</th>
+                                        <th>ID_Comprador</th>
+                                        <th>ID_Factura</th>
+                                        <th>FormaDePago</th>
+					<th>Articulos</th>
+                                        <th>MontoTotal</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="dato in datoActual">
+					<td>{{dato.name}}</td>
+					<td>{{dato.fecha}}</td>
+                                        <td>{{dato.id_comprador}}</td>
+                                        <td>{{dato.id_factura}}</td>
+					<td>{{dato.formadepago}}</td>
+                                        <td>{{dato.montototal}}</td>
+					<td>
+						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.editarDato(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.eliminarDato(record)"><span class="glyphicon glyphicon-minus"></span> Delete</button>
+
+                                        </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="facturaCtrl.editMode">
+		<form name="countryForm" role="form">
+			<input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input id="name" class="form-control" type="text" ng-model="datoActual.name"/>
+			</div>
+			<div class="form-group">
+				<label for="fecha">Fecha</label>
+				<input id="fecha" class="form-control" type="date" ng-model="datoActual.fecha"/>
+			</div>		
+                        <div class="form-group">
+				<label for="idcomprador">IDComprador</label>
+				<input id="idcomprador" class="form-control" type="number" ng-model="datoActual.idcomprador"/>
+			</div>
+                        <div class="form-group">
+				<label for="idfactura">IDFactura</label>
+				<input id="idfactura" class="form-control" type="number" ng-model="datoActual.idfactura"/>
+			</div>
+                        <div class="form-group">
+				<label for="formadepago">FormaDePago</label>
+				<input id="formadepago" class="form-control" type="text" ng-model="datoActual.formadepago"/>
+			</div>
+                        <div class="form-group">
+				<label for="montototal">MontoTotal</label>
+				<input id="montototal" class="form-control" type="number" ng-model="datoActual.montototal"/>
+			</div>
+		</form>
+	</div>
+</div>
+
