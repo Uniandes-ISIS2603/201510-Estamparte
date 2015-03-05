@@ -7,7 +7,8 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule']);
+	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule', 'estampa',
+	'barra']);
 
 	mainApp.config(['$routeProvider', function ($routeProvider) {
 			$routeProvider.when('/factura', {

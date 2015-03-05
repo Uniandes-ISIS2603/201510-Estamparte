@@ -1,0 +1,68 @@
+body {
+	padding-top: 70px;
+}
+
+#busqueda {
+	margin-top: 22px;
+}
+
+.filaEstampas {
+	margin-bottom: 25px;
+}
+
+.estampa {
+	border: 1px solid #DDD;
+	border-radius: 3px;
+}
+
+.nombre {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.nombre h4 {
+	margin-top: 14px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.nombre a {
+	margin-top: 7px;
+	text-align: right;
+	float: right;
+}
+
+.nombre h4, .nombre a {
+	display: inline-block;
+}
+
+.imagen {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-height: 160px;
+	overflow: hidden;
+}
+
+.imagen img {
+	text-align: center;
+	margin: auto auto;
+	width: 100%;
+	height: 250px;
+	margin: -40px 0 0 0;
+}
+
+.calificacion {
+	padding-left: 20px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+
+.calificacion button {
+	width: 47%;
+	text-align: center;
+}
+
+#copyright {
+	margin: 40px auto 60px auto;
+	text-align: center;
+}
