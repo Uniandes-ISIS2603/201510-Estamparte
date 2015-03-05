@@ -43,7 +43,7 @@
                     
             };
             this.editarDato = function (dato) {
-                    $scope.datoActual = RestAngular.copy(dato);
+                    $scope.datoActual = Restangular.copy(dato);
                     
             };
                 

@@ -7,20 +7,10 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule']);
-
-	mainApp.config(['$routeProvider', function ($routeProvider) {
-			$routeProvider.when('/factura', {
-				templateUrl: 'src/modules/factura/factura.tpl.html'
-                        }).when('/comprador', {
-				templateUrl: 'src/modules/comprador/comprador.tpl.html'
-			}).when('/artista',{
-                                templateUrl: 'src/modules/artista/artista.tpl.html'
-                        }).otherwise('/');
-		}]);
+	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule','barraModule']);
 
 	//Configuración módulo factura
-	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule','barraModule']);
+	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule']);
 
 	facturaModule.constant('factura.context', 'factura');
 
