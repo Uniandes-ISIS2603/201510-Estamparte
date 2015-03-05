@@ -11,7 +11,6 @@
                 $scope.datos=[];
                 
             this.consultarDatos = function () {
-                    
                     this.api.getList().then(function (data) {
                             $scope.datos = data;
                             $scope.datoActual = {};

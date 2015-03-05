@@ -7,7 +7,7 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule']);
+	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule']);
 
 	mainApp.config(['$routeProvider', function ($routeProvider) {
 			$routeProvider.when('/factura', {
@@ -43,6 +43,15 @@
             artistaModule.constant('artista.context', 'artista');
 
             artistaModule.config(['artista.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
+			urlsProvider.registerUrl(context);
+		}]);
+            
+            //Configuracion del modulo de estampa
+            var estampaModule = angular.module('estampaModule',['CrudModule','MockModule']);
+            
+            estampaModule.constant('estampa.context','estampa');
+            
+            estampaModule.config(['estampa.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
 			urlsProvider.registerUrl(context);
 		}]);
             

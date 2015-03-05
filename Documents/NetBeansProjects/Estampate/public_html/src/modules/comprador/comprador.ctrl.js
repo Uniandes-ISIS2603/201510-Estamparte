@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-(function(){
-    
-   var app = angular.module('artistaModule');
 
-	app.controller('artistaCtrl', ['$scope', 'CRUDUtils', 'artista.context', function ($scope, CRUDUtils, context) {
+(function () {
+	var app = angular.module('compradorModule');
+
+	app.controller('compradorCtrl', ['$scope', 'CRUDUtils', 'comprador.context', function ($scope, CRUDUtils, context) {
 			this.url = context;
 			CRUDUtils.extendCtrl(this, $scope);
-                        
 		}]);
-    
+                    
+            
 })();
-
-
