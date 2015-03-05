@@ -1,0 +1,23 @@
+<div class="estampa">
+	<div class="nombre">
+		<h4>
+			{{ estampa.nombre }}
+		</h4>
+		<a class="btn btn-default">
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+		</a>
+	</div>
+	<div class="imagen">
+		<img src="src/assets/img/estampa.jpg" alt="imagenestampa">
+	</div>
+	<div class="calificacion">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-thumbs-down"></span>
+			{{ estampa.siGusta }}
+		</button>
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-thumbs-up"></span>
+			{{ estampa.noGusta }}
+		</button>
+	</div>
+</div>

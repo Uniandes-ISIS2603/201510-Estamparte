@@ -20,7 +20,7 @@
 		}]);
 
 	//Configuración módulo factura
-	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule']);
+	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule','barraModule']);
 
 	facturaModule.constant('factura.context', 'factura');
 

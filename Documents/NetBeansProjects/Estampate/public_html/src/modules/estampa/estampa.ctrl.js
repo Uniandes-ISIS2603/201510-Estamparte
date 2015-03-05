@@ -14,6 +14,37 @@
                         this.estampaDeArtista=false;
                         this.mostrarPop = false;
                         
+                        $scope.datos = [
+		{
+			id: 1,
+			nombre: "Estampa de la flor",
+			autor: "elgenio",
+			siGusta: 381,
+			noGusta: 212
+		},
+		{
+			id: 2,
+			nombre: "El super fuego",
+			autor: "elburro",
+			siGusta: 121,
+			noGusta: 1420
+		},
+		{
+			id: 3,
+			nombre: "Agua mas agua",
+			autor: "elsa pato",
+			siGusta: 3019,
+			noGusta: 1425
+		},
+		{
+			id: 4,
+			nombre: "Come tierra",
+			autor: "elsa pito",
+			siGusta: 121,
+			noGusta: 12
+		}
+	];
+                        this.alertar = function(){alert('Click');};
                         this.eliminarEstampa = function(){
                             //Pre: se tiene en $scope.datoActual la estampa a eliminar
                             //Pos: se elimina la estampa y se notifica al usuario
@@ -47,6 +78,12 @@
                         };
                         
 		}]);
+            
+        app.directive('estampa', function() {
+                return {
+                  templateUrl: 'src/modules/estampa/estampa.tpl.html'
+                }
+            });
     
 })();
 
