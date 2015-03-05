@@ -1,0 +1,56 @@
+<div ng-controller="carritoCtrl as carritoCtrl">
+	<div id="header">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#country-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Carrito</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="country-navbar">
+					<button class="btn btn-default navbar-btn" ng-hide="carritoCtrl.editMode" ng-click="carritoCtrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Agregar Camiseta</button>
+                                        <button class="btn btn-default navbar-btn" ng-hide="carritoCtrl.editMode" ng-click="carritoCtrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
+                                        <button class="btn btn-default navbar-btn" ><span class="glyphicon glyphicon-chevron-right"><a href="#/formaPago"></span> Continuar con Compra</button>
+                                        <button class="btn btn-default navbar-btn" ng-show="carritoCtrl.editMode" ng-click="carritoCtrl.saveRecord()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+					<button class="btn btn-default navbar-btn" ng-show="carritoCtrl.editMode" ng-click="carritoCtrl.fetchRecords()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div ng-hide="carritoCtrl.editMode">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+                                        <th>Nombre de camiseta</th>
+                                        <th>Talla</th>        
+                                        <th>Color</th>                                      
+                                        <th>Estilo</th>                                        
+                                        <th>Estampas usadas</th>
+                                        <th>Unidades</th>     
+                                        <th>Monto Unitario</th>
+					<th>Monto Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="record in records">
+					<td>{{record.monto}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="carritoCtrl.editMode">
+		<form name="countryForm" role="form">
+			<input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+			<div class="form-group">
+				<label for="monto">Elija las estampas que desea agregar a su diseño</label>
+			</div>
+		</form>
+	</div>
+</div>

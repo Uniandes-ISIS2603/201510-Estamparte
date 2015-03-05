@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="mainApp">
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+                <link rel="stylesheet" href="src/assets/css/index.css">
+		<script src="src/assets/libs/jquery-1.11.2.min.js"></script>
+		<script src="src/assets/libs/underscore-min.js"></script>
+		<script src="src/assets/libs/angular.min.js"></script>
+		<script src="src/assets/libs/angular-mocks.js"></script>
+		<script src="src/assets/libs/angular-route.min.js"></script>
+		<script src="src/assets/libs/restangular.min.js"></script>
+
+                
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+                
+		<script src="src/app.js"></script>
+
+		<script src="src/shared/crud/crud.mod.js"></script>
+		<script src="src/shared/crud/crud.svc.js"></script>
+		<script src="src/shared/mocks/mock.mod.js"></script>
+		<script src="src/shared/mocks/mock.svc.js"></script>
+
+                <script src="src/modules/factura/factura.ctrl.js"></script>
+                <script src="src/modules/comprador/comprador.ctrl.js"></script>
+                <script src="src/modules/artista/artista.ctrl.js"></script>
+                <script src="src/modules/estampa/estampa.ctrl.js"></script>
+                <script src="src/modules/barra/barra.ctrl.js"></script>
+
+    </head>
+    <body>
+
+	<barra></barra>
+
+	<div class="container">
+
+		<div class="row" id="titulo">
+			<div class="col-md-5">
+				<h2>Estampas</h2>
+			</div>
+
+			<div class="col-md-7">
+				<div class="input-group" id="busqueda">
+	  				<input type="text" class="form-control" placeholder="Ingresa que quieres buscar...">
+	  				<div class="input-group-btn">
+	    				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Busqueda avanzada <span class="caret"></span></button>
+	    				<ul class="dropdown-menu" role="menu">
+	      					<li><a href="#">Action</a></li>
+	      					<li><a href="#">Another action</a></li>
+	      					<li><a href="#">Something else here</a></li>
+	      					<li class="divider"></li>
+	      					<li><a href="#">Separated link</a></li>
+	    				</ul>
+	  				</div>
+    			</div>
+	    	</div>
+		</div>
+
+		<div class="row"><hr></div>
+
+		<div class="row" id="estampas" ng-controller="estampaCtrl as estampaCtrl">
+			<div class="row filaEstampas">
+				<div class="col-md-3" ng-repeat="estampa in datos">
+					<estampa></estampa>
+				</div>
+			</div>
+
+			<div class="row filaEstampas">
+				<div class="col-md-3" ng-repeat="estampa in datos">
+					<estampa></estampa>
+				</div>
+			</div>
+
+			<div class="row filaEstampas">
+				<div class="col-md-3" ng-repeat="estampa in datos">
+					<estampa></estampa>
+				</div>
+			</div>
+		</div>
+
+		<div class="row"><hr></div>
+
+		<div class="row" id="copyright">
+			<h5>
+				<span class="glyphicon glyphicon-copyright-mark"></span>
+				Copyright 2015, todos los derechos reservados.
+			</h5>
+		</div>
+
+	</div>
+        
+	</body>
+</html>
