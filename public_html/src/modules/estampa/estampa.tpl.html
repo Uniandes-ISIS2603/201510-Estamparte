@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="estampa">
+	<div class="nombre">
+		<h4>
+			{{ estampa.nombre }}
+		</h4>
+		<a class="btn btn-default">
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+		</a>
+	</div>
+	<div class="imagen">
+		<img src="src/assets/img/estampa.jpg" alt="imagenestampa">
+	</div>
+	<div class="calificacion">
+		<button class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(1)">
+			<span class="glyphicon glyphicon-thumbs-down">{{ estampa.siGusta }}</span>
+			
+		</button>
+		<button class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(0)">
+                    <span class="glyphicon glyphicon-thumbs-up" >{{ estampa.noGusta }}</span>
+                    
+		</button>
+            <button ng-click="estampaCtrl.eliminarDato(estampa); estampaCtrl.consultarDatos()">Eliminar</button>
+	</div>
+</div>
