@@ -1,15 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+(function(){
+    
+   var app = angular.module('formaPagoModule');
 
-(function () {
-	var app = angular.module('formaPagoModule');
-
-	app.controller('formaPagoCtrl', ['$scope', 'CRUDUtils', 'formaPago.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-			CRUDUtils.extendCtrl(this, $scope);
-			
+	app.controller('formaPagoCtrl', ['$scope', 'servicioFormaPago', function ($scope, servicioFormaPago) {
+			servicioFormaPago.extendCtrl(this,$scope);    
 		}]);
+    
 })();

@@ -1,16 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-(function () {
-	var app = angular.module('carritoModule');
+(function(){
+    
+   var app = angular.module('carritoModule');
 
-	app.controller('carritoCtrl', ['$scope', 'CRUDUtils', 'carrito.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-			CRUDUtils.extendCtrl(this, $scope);
-			
+	app.controller('carritoCtrl', ['$scope', 'serviciocarrito', function ($scope, serviciocarrito) {
+			serviciocarrito.extendCtrl(this,$scope);    
 		}]);
-
+    
 })();
-
