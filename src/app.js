@@ -38,27 +38,6 @@
 
 	compradorModule.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
 			urlsProvider.registerUrl(context);
-		}]);
-            
-                       
-            //Modulo de carrito
-            var carritoModule = angular.module('carritoModule',['CrudModule','MockModule']);
-            
-            carritoModule.constant('carrito.context','carrito');
-            
-            carritoModule.config(['carrito.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]);
-            
-            //Modulo de forma de pago
-            var formaPagoModule = angular.module('formaPagoModule',['CrudModule','MockModule']);
-            
-            formaPagoModule.constant('formaPago.context','carrito');
-            
-            formaPagoModule.config(['formaPago.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]);
-
-            
+		}]);           
            
 })();

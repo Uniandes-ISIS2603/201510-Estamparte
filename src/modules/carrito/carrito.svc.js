@@ -5,7 +5,7 @@
  */
 (function(){
     var carritoModule = angular.module('carritoModule');
-    carritoModule.service('servicioArtista',['CRUDUtils','carrito.context',function(CRUDUtils,context){
+    carritoModule.service('servicioCarrito',['CRUDUtils','carrito.context',function(CRUDUtils,context){
             this.url = context;
             CRUDUtils.extendService(this);
     }]);
