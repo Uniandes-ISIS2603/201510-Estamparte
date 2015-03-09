@@ -38,24 +38,7 @@
 			urlsProvider.registerUrl(context);
 		}]);
             
-            //Configuracion de modulo de artista
-            var artistaModule = angular.module('artistaModule',['CrudModule','MockModule']);
-            
-            artistaModule.constant('artista.context', 'artista');
-
-            artistaModule.config(['artista.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]);
-            
-            //Configuracion del modulo de estampa
-            var estampaModule = angular.module('estampaModule',['CrudModule','MockModule']);
-            
-            estampaModule.constant('estampa.context','estampa');
-            
-            estampaModule.config(['estampa.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]);
-            
+                       
             //Modulo de carrito
             var carritoModule = angular.module('carritoModule',['CrudModule','MockModule']);
             

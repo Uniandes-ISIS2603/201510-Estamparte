@@ -7,10 +7,8 @@
     
    var app = angular.module('artistaModule');
 
-	app.controller('artistaCtrl', ['$scope', 'CRUDUtils', 'artista.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-			CRUDUtils.extendCtrl(this, $scope);
-                        
+	app.controller('artistaCtrl', ['$scope', 'servicioArtista', function ($scope, servicioArtista) {
+			servicioArtista.extendCtrl(this,$scope);    
 		}]);
     
 })();

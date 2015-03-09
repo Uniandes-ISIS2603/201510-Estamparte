@@ -7,9 +7,9 @@
     
     var app = angular.module('estampaModule');
 
-	app.controller('estampaCtrl', ['$scope', 'CRUDUtils', 'estampa.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-			CRUDUtils.extendCtrl(this, $scope);
+	app.controller('estampaCtrl', ['$scope', 'servicioEstampa', function ($scope, servicioEstampa) {
+			
+			servicioEstampa.extendCtrl(this, $scope);
                         this.estampasSeleccionadas = [];
                         this.estampaDeArtista=true;
                         this.mostrarPop = false;
@@ -52,6 +52,7 @@
                         $scope.datoActual=datos[i];
                         this.guardarDato();
                     }
+                    
                         this.consultarDatos();
                         
                         this.eliminarEstampa = function(){
@@ -97,7 +98,7 @@
         app.directive('estampa', function() {
                 return {
                   templateUrl: 'src/modules/estampa/estampa.tpl.html'
-                }
+                };
             });
     
 })();
