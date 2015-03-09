@@ -8,7 +8,7 @@
     
     artistaModule.constant('artista.context','artista');
     
-    artisaModule.config(['artista.context','MockModule.urlsProvider'],function(context,urlsProvider){
+    artistaModule.config(['artista.context','MockModule.urlsProvider'],function(context,urlsProvider){
         urlsProvider.registerUrl(context);
     });
 })();

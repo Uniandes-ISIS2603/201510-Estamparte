@@ -17,6 +17,8 @@
                 templateUrl: 'src/modules/formaPago/formaPago.tpl.html'
             }).when('/camiseta', {
                 templateUrl: 'src/modules/camiseta/camiseta.tpl.html'
+            }).when('/artista', {
+                templateUrl: 'src/modules/artista/artista.tpl.html'
             }).otherwise('/');
         }]);
         
@@ -56,6 +58,7 @@
             formaPagoModule.config(['formaPago.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
 			urlsProvider.registerUrl(context);
 		}]);
+
             
            
 })();
