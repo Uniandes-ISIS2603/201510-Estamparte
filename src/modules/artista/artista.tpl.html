@@ -22,7 +22,7 @@ Template de Artista
 			</div>
 		</nav>
         </div>
-        <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit="artistaCtrl.crearEstampa()">
+        <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && artistaCtrl.crearEstampa()">
             <div class="form-group">
                 <label for="nombre">Nombre: </label>
                 <input id="nombre" name="nombre" class="form-control" type="text" ng-model="datoActual.nombre" required />
@@ -30,8 +30,7 @@ Template de Artista
             </div>
             <div class="form-group">
                 <label for="tema">Tema: </label>
-                <select id="tema" name="tema" class="form-control" ng-model="datoActual.tema" required="">
-                    <option ng-repeat="tema in artistaCtrl.temas">{{tema}}</option>
+                <select id="tema" name="tema" class="form-control" ng-model="datoActual.tema" ng-options="tem for tem in temas" required="">
                 </select>
                 <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.tema.$error.required"><p>Selecciona un tema</p></div>
             </div>
@@ -61,7 +60,7 @@ Template de Artista
     
     <!--Edicion de una estampa-->
     <div ng-show="artistaCtrl.editarEstampa">
-        
+        <p>Edicion</p>
     </div>
 </div>
 

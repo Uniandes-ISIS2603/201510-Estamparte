@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 (function(){
-    var artistaModule = angular.module('artistaModule',['CrudModule','MockModule']);
+    var artistaModule = angular.module('artistaModule',['CrudModule','MockModule','estampaModule']);
     
     artistaModule.constant('artista.context','artista');
     
-    artistaModule.config(['artista.context','MockModule.urlsProvider'],function(context,urlsProvider){
+    artistaModule.config(['artista.context','MockModule.urlsProvider',function(context,urlsProvider){
         urlsProvider.registerUrl(context);
-    });
+    }]);
 })();
 
