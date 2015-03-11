@@ -11,5 +11,6 @@
     artistaModule.config(['artista.context','MockModule.urlsProvider',function(context,urlsProvider){
         urlsProvider.registerUrl(context);
     }]);
+
 })();
 

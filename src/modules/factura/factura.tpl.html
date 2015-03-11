@@ -43,7 +43,7 @@ and open the template in the editor.
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="dato in datoActual">
+				<tr ng-repeat="dato in datos">
 					<td>{{dato.name}}</td>
 					<td>{{dato.fecha}}</td>
                                         <td>{{dato.id_comprador}}</td>
@@ -64,7 +64,7 @@ and open the template in the editor.
 			<input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input id="name" class="form-control" type="text" ng-model="datoActual.name"/>
+				<input id="name" class="form-control" type="text" ng-model="datoActual.nombre"/>
 			</div>
 			<div class="form-group">
 				<label for="fecha">Fecha</label>

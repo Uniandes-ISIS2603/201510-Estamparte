@@ -7,7 +7,7 @@
     
    var app = angular.module('artistaModule');
 
-	app.controller('artistaCtrl', ['$scope', 'servicioArtista','servicioEstampa', function ($scope, servicioArtista,servicioEstampa) {
+	app.controller('artistaCtrl', ['$scope', 'servicioArtista','servicioEstampa','$rootScope', function ($scope, servicioArtista,servicioEstampa,$rootScope) {
 			servicioArtista.extendCtrl(this,$scope);
                         this.crearEstampaTpl = false;
                         this.editarEstampa=false;
@@ -18,6 +18,7 @@
                         this.popCrearEstampa= function(){
                             this.crearDato();
                             this.crearEstampaTpl=true;
+                            this.editarEstampa=false;
                         };
                         
                         
@@ -32,7 +33,8 @@
                             estampa.noGusta=0;
                             servicioEstampa.guardarDato(estampa);
                             servicioEstampa.consultarDatos();
-                            $scope.datoActual=estampa;
+                            $rootScope.datoActual=estampa;
+                            servicioEstampa.consultarDatos();
                             this.popEditarEstampa();
                         };
                         
@@ -45,8 +47,8 @@
                             this.editarEstampa=true;
                         };
                         
-
                         
+
 		}]);
     
 })();

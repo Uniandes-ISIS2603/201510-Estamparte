@@ -31,6 +31,7 @@
 
 	compradorModule.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
 			urlsProvider.registerUrl(context);
-		}]);           
+		}]); 
+            
            
 })();
