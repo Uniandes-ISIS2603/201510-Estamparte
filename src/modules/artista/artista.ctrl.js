@@ -26,8 +26,12 @@
                             var estampa = $scope.datoActual;
                             //El usuario debe ser configurado en $scope!!!!
                             estampa.idAutor = $scope.idUsuario;
-                            estampa.usuarioAutor = $scope.usuario;
+                            estampa.autor = $scope.usuario;
+                            estampa.imagenes=[];
+                            estampa.siGusta=0;
+                            estampa.noGusta=0;
                             servicioEstampa.guardarDato(estampa);
+                            servicioEstampa.consultarDatos();
                             $scope.datoActual=estampa;
                             this.popEditarEstampa();
                         };

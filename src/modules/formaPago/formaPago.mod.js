@@ -8,8 +8,8 @@
     
     formaPagoModule.constant('formaPago.context','formaPago');
     
-    formaPagoModule.config(['formaPago.context','MockModule.urlsProvider'],function(context,urlsProvider){
+    formaPagoModule.config(['formaPago.context','MockModule.urlsProvider',function(context,urlsProvider){
         urlsProvider.registerUrl(context);
-    });
+    }]);
 })();
 

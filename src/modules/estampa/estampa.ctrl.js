@@ -13,7 +13,7 @@
                         this.estampasSeleccionadas = [];
                         this.estampaDeArtista=true;
                         this.mostrarPop = false;
-                        
+                        this.alertar=function(){alert('Edita');};
                         datos = [
                         {
                                 
@@ -98,6 +98,13 @@
         app.directive('estampa', function() {
                 return {
                   templateUrl: 'src/modules/estampa/estampa.tpl.html'
+                };
+            });
+            
+        app.directive('estampa-detalle', function() {
+                return {
+                  restrict: 'E',
+                  templateUrl: 'src/modules/estampa/estampaDetalle.tpl.html'
                 };
             });
     
