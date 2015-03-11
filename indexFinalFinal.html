@@ -1,50 +1,93 @@
 <!doctype html>
 <html ng-app="mainApp">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Estamparte</title>
-    
-	<link href="src/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="src/assets/css/index.css" rel="stylesheet">
 
-	<script src="src/assets/libs/jquery-1.11.2.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="src/assets/libs/underscore-min.js"></script>
-	<script src="src/assets/libs/angular.min.js"></script>
-	<script src="src/assets/libs/angular-mocks.js"></script>
-	<script src="src/assets/libs/angular-route.min.js"></script>
-	<script src="src/assets/libs/restangular.min.js"></script>
+	<head>
 
-	<script src="src/app.js"></script>
+		<!-- Titulo de la pagina -->
+		<title>Estamparte tests</title>
 
-	<script src="src/shared/crud/crud.mod.js"></script>
-	<script src="src/shared/crud/crud.svc.js"></script>
-	<script src="src/shared/mocks/mock.mod.js"></script>
-	<script src="src/shared/mocks/mock.svc.js"></script>
+		<!-- Definicion de meta tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <script src="src/modules/factura/factura.ctrl.js"></script>
-    <!--<script src="src/Modules/comprador/comprador.ctrl.js"></script> -->
-    <script src="src/modules/artista/artista.ctrl.js"></script>
-    <!-- <script src="src/modules/estampas/estampas.ctrl.js"></script> -->
-	<script src="src/modules/estampa/estampa.ctrl.js"></script>
-	<script src="src/modules/barra/barra.ctrl.js"></script>
-</head>
+		<!-- Importa los archivos de CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="src/assets/css/index.css">
 
-<body>
+		<!-- Importa los archivos de JS -->
+		<script src="src/assets/libs/jquery-1.11.2.min.js"></script>
+		<script src="src/assets/libs/underscore-min.js"></script>
+		<script src="src/assets/libs/angular.min.js"></script>
+		<script src="src/assets/libs/angular-mocks.js"></script>
+		<script src="src/assets/libs/angular-route.min.js"></script>
+		<script src="src/assets/libs/restangular.min.js"></script>
+		<script src="src/assets/libs/ui-bootstrap-tpls-0.12.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+				
+		<!-- Importa los archivos escritos sobre AngularJS -->
+		<script src="src/app.js"></script>
 
-	<div barra></div>
+		<!-- Importa los archivos de CRUD -->
+		<script src="src/shared/crud/crud.mod.js"></script>
+		<script src="src/shared/crud/crud.svc.js"></script>
 
-	<div class="container">
+		<!-- Importa los archivos de Mock -->
+		<script src="src/shared/mocks/mock.mod.js"></script>
+		<script src="src/shared/mocks/mock.svc.js"></script>
 
-		<!-- <div estampas></div> -->
+		<!-- Importa los archivos del modulo factura -->
+		<script src="src/modules/factura/factura.mod.js"></script>
+		<script src="src/modules/factura/factura.svc.js"></script>
+		<script src="src/modules/factura/factura.ctrl.js"></script>
+		
+		<!-- Importa los archivos del modulo comprador -->
+		<script src="src/modules/comprador/comprador.ctrl.js"></script>
 
-		<div class"row" id="copyright">
-			<h5>
-				<span class="glyphicon glyphicon-copyright-mark"></span>
-				Copyright 2015, todos los derechos reservados.
-			</h5>
+		<!-- Importa los archivos del modulo de artista -->
+		<script src="src/modules/artista/artista.mod.js"></script>
+		<script src="src/modules/artista/artista.svc.js"></script>
+		<script src="src/modules/artista/artista.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo estampa -->
+		<script src="src/modules/estampa/estampa.mod.js"></script>
+		<script src="src/modules/estampa/estampa.svc.js"></script>
+		<script src="src/modules/estampa/estampa.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo carrito -->
+		<script src="src/modules/carrito/carrito.mod.js"></script>
+		<script src="src/modules/carrito/carrito.svc.js"></script>
+		<script src="src/modules/carrito/carrito.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo forma pago -->
+		<script src="src/modules/formaPago/formaPago.mod.js"></script>
+		<script src="src/modules/formaPago/formaPago.svc.js"></script>
+		<script src="src/modules/formaPago/formaPago.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo camiseta -->
+		<script src="src/modules/camiseta/camiseta.mod.js"></script>
+		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo barra -->
+		<script src="src/modules/barra/barra.ctrl.js"></script>
+
+	</head>
+
+	<body>
+
+		<div barra></div>
+
+		<div class="container">
+
+			<!-- <div estampas></div> -->
+
+			<div class"row" id="copyright">
+				<h5>
+					<span class="glyphicon glyphicon-copyright-mark"></span>
+					Copyright 2015, todos los derechos reservados.
+				</h5>
+			</div>
+
 		</div>
 
-	</div>
-</body>
+	</body>
+
 </html>
