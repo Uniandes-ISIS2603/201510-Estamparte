@@ -1,60 +1,124 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<div class="navbar navbar-default navbar-fixed-top" ng-controller="barraCtrl as barraCtrl">
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="navbarCtrl">
+
 	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
+
+		<!-- 
+		Header de la barra con informacion de titulo siendo un
+		enlace con su respectivo logo, y una declaracion de un
+		boton para una mejor navegacion en movil (responsive).
+		-->
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Brand</a>
+
+			<a class="navbar-brand" href="javascript: void(0)">
+				<span class="glyphicon glyphicon-leaf"></span>
+				Estamparte
+			</a>
+
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="barra">
+		<!--
+		Aca se declaran el resto de botones que iran en la barra
+		para acceder a las distintas opciones, se realizaran dos
+		perfiles, comprador y artista por lo que los botones que
+		tendra seran distintos, habra un modo para cambiarse de
+		perfil pero este debe ser eliminado en la version final.
+		-->
+		<div class="collapse navbar-collapse" id="navbar">
+
+			<!--
+			Esta parte hace referencia a los botones que le
+			pertenecen a la parte izquierda de la barra.
+			Aca se incluyen opciones de navegacion basica
+			sobre la pagina como ir al inicio, a la busqueda
+			de estampas, entre otros.
+			-->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#/factura">Factura <span class="sr-only">(current)</span></a></li>
-				<li><a href="#/carrito">Carrito</a></li>
-                                <li><a href="#/camiseta">Camiseta</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-						<li class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li>
+
+				<li class="active"><a href="javascript: void(0)">Inicio</a></li>
+
+				<li><a href="javascript: void(0)">Estampas</a></li>
+
+				<li><a href="#/factura">Factura</a></li>
+
+                <li><a href="#/camiseta">Camiseta</a></li>
+
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+
+			<!--
+			Esta parte hace referencia a los botones que le
+			pertenecen a la parte derecha de la barra.
+			Aca incluimos opciones como el manejo de la
+			cuenta de usuario y temporalmente el cambio de
+			usuario entre artista y comrpador para acceder
+			a las distintas opciones.
+			-->
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#/artista">Artista</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
+
+				<!-- Opciones para el artista -->
+				<li ng-show="usuario.tipo === 'artista'"><a href="#/artista">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</a></li>
+
+				<!-- Opciones para el comprador -->
+				<li ng-show="usuario.tipo === 'comprador'"><a href="#/carrito">
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+				</a></li>
+
+				<!--
+				Manejo de la cuenta actual.
+				Temporalmente cambio entre tipos de usuario.
+				-->
+				<li class="dropdown usuario">
+
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="glyphicon glyphicon-user"></span>
+						{{ usuario.nombre }}
+						<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu menu-usuario">
+
+						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('artista')">
+							Cambiar a artista
+							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'artista'"></span>
+						</a></li>
+
+						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('comprador')">
+							Cambiar a comprador
+							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'comprador'"></span>
+						</a></li>
+
 						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
+
+						<!-- Opctiones para el comprador -->
+						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)">
+							Administrar compras
+						</a></li>
+
+						<!-- Opciones para el artista -->
+						<li ng-show="usuario.tipo === 'artista'"><a href="javascript: void(0)">
+							Administrar estampas
+						</a></li>
+
+						<li class="divider"></li>
+
+						<li><a href="javascript: void(0)" ng-click="cerrarSesion()">Cerrar sesion</a></li>
+
 					</ul>
+
 				</li>
+
 			</ul>
+
 		</div>
+
 	</div>
+
 </div>
