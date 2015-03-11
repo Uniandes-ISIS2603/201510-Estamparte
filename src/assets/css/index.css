@@ -3,31 +3,25 @@ body {
 }
 
 .navbar-default{
-	background:rgba(255, 255, 255, 0.81);
+	background: rgba(255, 255, 255, 0.81);
+	border-color: #EEE;
 }
 
-#navbar {
- 	background-color: rgba(0,0,0,0);
-	position: relative;
-	z-index: 202020;
+.usuario {
+	min-width: 200px;
 }
 
-.navbar {
-	background-color: rgba(0,0,0,0);
-	position: fixed;
-	border-color: #E7E7E7;
-	z-index: 202020;
-	width: 100%;
+.usuario .caret {
+	margin-top: 9px;
+	float: right;
 }
 
-.transparencia {
-	position: fixed;
-	top:0;
-	width: 100%;
-	min-height: 50px;
-	margin-bottom: 20px;
-	background: rgba(0,0,0,.4);
-	z-index:1010;
+.ok {
+	float: right;
+}
+
+.menu-usuario {
+	min-width: 200px;
 }
 
 #busqueda {
