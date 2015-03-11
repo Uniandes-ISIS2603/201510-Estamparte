@@ -2,6 +2,34 @@ body {
 	padding-top: 70px;
 }
 
+.navbar-default{
+	background:rgba(255, 255, 255, 0.81);
+}
+
+#navbar {
+ 	background-color: rgba(0,0,0,0);
+	position: relative;
+	z-index: 202020;
+}
+
+.navbar {
+	background-color: rgba(0,0,0,0);
+	position: fixed;
+	border-color: #E7E7E7;
+	z-index: 202020;
+	width: 100%;
+}
+
+.transparencia {
+	position: fixed;
+	top:0;
+	width: 100%;
+	min-height: 50px;
+	margin-bottom: 20px;
+	background: rgba(0,0,0,.4);
+	z-index:1010;
+}
+
 #busqueda {
 	margin-top: 22px;
 }
