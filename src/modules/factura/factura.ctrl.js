@@ -8,18 +8,26 @@
     
    var app = angular.module('facturaModule');
 
-	app.controller('facturaCtrl', ['$scope', 'CRUDUtils', 'factura.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-                        this.editMode = false;
-			CRUDUtils.extendCtrl(this, $scope);
-                        
+	app.controller('facturaCtrl', ['$scope', 'servicioFactura', function ($scope, servicioFactura) {
+			servicioFactura.extendCtrl(this,$scope);
+	                this.editMode = false;
                         this.eliminarFactura = function(){
                             //Pre: se tiene en $scope.datoActual la factura a eliminar
                             //Pos: se elimina la factura
                             this.eliminarDato($scope.datoActual);
                             return 'Factura Eliminiada';
                         };
+                        
+                        this.guardar = function(){
+                            this.editMode = false;
+                            this.guardarDato();
+                            this.consultarDatos();
+                            
+                        };
                        
+                       this.crear = function(){
+                           this.editMode = true;
+                       }
 		}]);
     
 })();

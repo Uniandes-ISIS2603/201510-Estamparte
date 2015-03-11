@@ -22,14 +22,7 @@
             }).otherwise('/');
         }]);
         
-	//Configuración módulo factura
-	var facturaModule = angular.module('facturaModule', ['CrudModule', 'MockModule']);
-
-	facturaModule.constant('factura.context', 'factura');
-
-	facturaModule.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]);
+	
             
             //Configuración módulo comprador
 	var compradorModule = angular.module('compradorModule', ['CrudModule', 'MockModule']);
