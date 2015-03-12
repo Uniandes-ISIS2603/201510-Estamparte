@@ -10,7 +10,7 @@
 	app.controller('estampaCtrl', ['$scope', 'servicioEstampa','$rootScope', function ($scope, servicioEstampa,$rootScope) {
 			
 			servicioEstampa.extendCtrl(this, $scope);
-                        this.estampasSeleccionadas = [];
+                        $rootScope.estampasSeleccionadas = [];
                         this.mostrarPop = false;
                         this.editarEstampa=false;
                         this.informacion=true;
@@ -91,10 +91,11 @@
                             this.consultarDatos();
                         };
                         
-                        this.agregarEstampaACamiseta = function(){
+                        this.agregarEstampaACamiseta = function(estampa){
                             //Pre: Se tiene la estampa en datoActual
                             //Pos: al arreglo de datos se adiciona la estampa
-                            this.estampasSeleccionadas.push($scope.datoActual);
+                            alert('Agregada');
+                            $rootScope.estampasSeleccionadas.push(estampa);
                         };
                         
                         this.cambiarPop = function(){
