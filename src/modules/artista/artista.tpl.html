@@ -8,6 +8,16 @@ Template de Artista
     <button class="btn"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
     <button class="btn" ng-click="artistaCtrl.buscarEstampasPropias()">Busca tus Estampas</button>
     </div>
+    
+    <!--Visualizacion de estampas propias-->
+    <div ng-controller="artistaCtrl as artistaCtrl">
+        <div class="row filaEstampas">
+            <div class="col-md-3" ng-repeat="estampa in datos">
+                <p>{{estampa.nombre}}</p>
+            </div>
+        </div>
+    </div>
+    
     <!--Creacion de una nueva estampa-->
     <div ng-show = "artistaCtrl.crearEstampaTpl">
         <div id="header">

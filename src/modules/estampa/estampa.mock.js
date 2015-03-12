@@ -12,8 +12,8 @@
                 var collection = mockRecords[context];
                 var respuesta = [];
                 for (var i in collection) {
-                    if(i.idAutor===id){
-                        respuesta.push(i);
+                    if(collection[i].idAutor===id){
+                        respuesta.push(collection[i]);
                     }
                 }
                 if(respuesta.length!==0){
