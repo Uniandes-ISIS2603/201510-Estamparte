@@ -51,6 +51,14 @@
                             this.editarEstampa=true;
                         };
                         
+                        this.buscarEstampasPropias=function(){
+                            servicioEstampa.estampasDeArtista().then(function(data){
+                                for(var i in data){
+                                    alert(i.nombre);
+                                }
+                            });
+                        };
+                        
                         
 
 		}]);

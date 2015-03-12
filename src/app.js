@@ -21,17 +21,5 @@
                 templateUrl: 'src/modules/artista/artista.tpl.html'
             }).otherwise('src/principal.html');
         }]);
-        
-	
-            
-            //Configuración módulo comprador
-	var compradorModule = angular.module('compradorModule', ['CrudModule', 'MockModule']);
-
-	compradorModule.constant('comprador.context', 'comprador');
-
-	compradorModule.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-			urlsProvider.registerUrl(context);
-		}]); 
-            
-           
+ 
 })();

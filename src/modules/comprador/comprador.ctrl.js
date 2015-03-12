@@ -7,9 +7,8 @@
 (function () {
 	var app = angular.module('compradorModule');
 
-	app.controller('compradorCtrl', ['$scope', 'CRUDUtils', 'comprador.context', function ($scope, CRUDUtils, context) {
-			this.url = context;
-			CRUDUtils.extendCtrl(this, $scope);
+	app.controller('compradorCtrl', ['$scope', 'servicioComprador', function ($scope,servicioComprador) {
+			servicioComprador.extendCtrl(this, $scope);
 		}]);
                     
             

@@ -47,9 +47,10 @@
 
                     ctrl.consultarDatos = function () {
                         return service.consultarDatos(scope.paginaActual, scope.itemsPorPagina).then(function (data) {
+                            scope.datos=[];
                             scope.datos = data;
                             scope.totalItems = data.totalRecords;
-                            scope.datoActual = {};
+                            //scope.datoActual = {};
                             return data;
                         });
                     };

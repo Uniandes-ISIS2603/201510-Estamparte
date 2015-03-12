@@ -117,10 +117,7 @@
                         this.subirImg=function(){
                             $scope.datoActual.imagenes.push($scope.datoActual.url);
                             delete $scope.datoActual.url;
-                            this.guardarDato().then(function(dato){
-                                $scope.datoActual=dato;
-                            });
-                          
+                            this.guardarDato();
                             this.informacion=true;
                         };
                         

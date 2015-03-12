@@ -9,6 +9,9 @@
     estampaModule.service('servicioEstampa',['CRUDUtils','estampa.context',function(CRUDUtils,context){
             this.url=context;
             CRUDUtils.extendService(this);
+            this.estampasDeArtista=function(){
+                return this.api.customGET('estampasDe');
+            };
     }]);
 })();
 

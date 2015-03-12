@@ -6,9 +6,8 @@
 (function () {
     var app = angular.module('moduloCamiseta');
 
-    app.controller('camisetaCtrl', ['$scope', 'CRUDUtils', 'camiseta.context', function ($scope, CRUDUtils, context) {
-            this.url = context;
-            CRUDUtils.extendCtrl(this, $scope);
+    app.controller('camisetaCtrl', ['$scope', 'servicioCamiseta', function ($scope, servicioCamiseta) {
+            servicioCamiseta.extendCtrl(this, $scope);
             $scope.datoActual.estampasUsadas = [];
 
             this.contiene = function (id)
