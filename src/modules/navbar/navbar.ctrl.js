@@ -1,5 +1,8 @@
 angular.module('navbarModule', [])
 .controller('navbarCtrl', ['$scope', function($scope) {
+
+	// Configuracion usada para el usuario actual.
+
 	$scope.artista = {
 		nombre: 'Juan el artista',
 		tipo: 'artista'
@@ -21,6 +24,23 @@ angular.module('navbarModule', [])
 
 	$scope.cerrarSesion = function () {
 		alert("Hasta lueguito dijo panchito y se fue en su carrito");
+	}
+
+	// Configuracion usada para el boton seleccionado actual.
+
+	$scope.selActual = 'inicio';
+
+	$scope.darSelActual = function () {
+		return $scope.selActual;
+	}
+
+	$scope.cambiarSelActual = function (actual) {
+		$scope.selActual = actual;
+
+		$('html, body').animate({
+			scrollTop: $("#" + actual).offset().top
+		}, 700);
+		
 	}
 }])
 .directive('navbar', function() {

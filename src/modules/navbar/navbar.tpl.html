@@ -41,13 +41,21 @@
 			-->
 			<ul class="nav navbar-nav">
 
-				<li class="active"><a href="#">Inicio</a></li>
+				<li ng-class="(darSelActual() === 'inicio') ? 'active' : ''">
+					<a href="#" ng-click="cambiarSelActual('inicio')">Inicio</a>
+				</li>
 
-				<li><a href="javascript: void(0)">Estampas</a></li>
+				<li ng-class="(darSelActual() === 'estampas') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('estampas')">Estampas</a>
+				</li>
 
-				<li><a href="#/factura">Factura</a></li>
+				<li ng-class="(darSelActual() === 'factura') ? 'active' : ''">
+					<a href="#/factura" ng-click="cambiarSelActual('factura')">Factura</a>
+				</li>
 
-                <li><a href="#/camiseta">Camiseta</a></li>
+                <li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
+                	<a href="#/camiseta" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
+                </li>
 
 			</ul>
 
