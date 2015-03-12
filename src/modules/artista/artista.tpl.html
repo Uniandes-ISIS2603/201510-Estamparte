@@ -24,6 +24,7 @@ Template de Artista
 		</nav>
         </div>
         <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && artistaCtrl.crearEstampa()">
+            <input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
             <div class="form-group">
                 <label for="nombre">Nombre: </label>
                 <input id="nombre" name="nombre" class="form-control" type="text" ng-model="datoActual.nombre" required />
@@ -61,7 +62,7 @@ Template de Artista
     
     <!--Edicion de una estampa-->
     <div ng-show="artistaCtrl.editarEstampa">
-        <div estampa-detalle></div>
+        <estampad></estampad>
     </div>
 </div>
 

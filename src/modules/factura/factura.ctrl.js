@@ -11,6 +11,7 @@
 	app.controller('facturaCtrl', ['$scope', 'servicioFactura', function ($scope, servicioFactura) {
 			servicioFactura.extendCtrl(this,$scope);
 	                this.editMode = false;
+                        
                         this.eliminarFactura = function(){
                             //Pre: se tiene en $scope.datoActual la factura a eliminar
                             //Pos: se elimina la factura
@@ -20,14 +21,15 @@
                         
                         this.guardar = function(){
                             this.editMode = false;
-                            this.guardarDato();
-                            this.consultarDatos();
                             
+                            this.guardarDato();
                         };
                        
                        this.crear = function(){
                            this.editMode = true;
-                       }
+                           this.crearDato();
+                           
+                       };
 		}]);
     
 })();
