@@ -38,7 +38,7 @@ angular.module('navbarModule', [])
 		$scope.selActual = actual;
 
 		$('html, body').animate({
-			scrollTop: $("#" + actual).offset().top
+			scrollTop: $("#" + actual).offset()
 		}, 700);
 		
 	}
