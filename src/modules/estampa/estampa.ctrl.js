@@ -7,7 +7,7 @@
     
     var app = angular.module('estampaModule');
 
-	app.controller('estampaCtrl', ['$scope', 'servicioEstampa','$rootScope', function ($scope, servicioEstampa,$rootScope) {
+	app.controller('estampaCtrl', ['$scope', 'servicioEstampa', '$rootScope', function ($scope, servicioEstampa, $rootScope) {
 			
 			servicioEstampa.extendCtrl(this, $scope);
                         $rootScope.estampasSeleccionadas = [];
@@ -122,9 +122,59 @@
                             this.informacion=true;
                         };
                         
-		}]);
-            
+
+        this.actualizarInformacion = function(){
+            //Pre: el modelo de la informacion responde al dato actual
+            //Pos: se guarda el dato actual que representa la estampa actualizada
+
+            this.guardarDato();
+        };
         
-    
+        this.registrarCalificacion = function(cal){
+            //Pre: se tiene la estampa en datoActual
+            //Pos: se califica la estampa
+           
+            if(cal===1)
+                $scope.datoActual.siGusta = $scope.datoActual.siGusta+1;
+            else
+                $scope.datoActual.noGusta = $scope.datoActual.noGusta+1;
+           
+            this.guardarDato();
+            this.consultarDatos();
+        };
+        
+        this.agregarEstampaACamiseta = function(){
+            //Pre: Se tiene la estampa en datoActual
+            //Pos: al arreglo de datos se adiciona la estampa
+            alert('Agregada');
+            $rootScope.estampasSeleccionadas.push($scope.datoActual);
+        };
+        
+        this.cambiarPop = function(){
+            this.mostrarPop=!this.mostrarPop;
+        };
+        
+        this.editarEstampaSeleccionara=function(){
+            this.editarEstampa=true;
+            $scope.datoActual=$rootScope.datoActual;
+        };
+        
+        this.subirImagen=function(){
+            this.informacion=false;
+        };
+        
+        this.esDeArtista=function(){
+            //TODO
+        };
+        
+        this.subirImg=function(){
+            $scope.datoActual.imagenes.push($scope.datoActual.url);
+            delete $scope.datoActual.url;
+            this.guardarDato();
+            this.informacion=true;
+        };
+                        
+	}]);
+
 })();
 
