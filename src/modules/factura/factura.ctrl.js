@@ -12,11 +12,14 @@
 			servicioFactura.extendCtrl(this,$scope);
 	                this.editMode = false;
                         
-                        this.eliminarFactura = function(){
-                            //Pre: se tiene en $scope.datoActual la factura a eliminar
-                            //Pos: se elimina la factura
-                            this.eliminarDato($scope.datoActual);
-                            return 'Factura Eliminiada';
+                        this.editar = function(dato){
+                            this.editMode = true;
+                            this.editarDato(dato);
+                        }
+                        
+                        this.cancelar = function(){
+                            this.editMode = false;
+                            this.consultarDatos();
                         };
                         
                         this.guardar = function(){
