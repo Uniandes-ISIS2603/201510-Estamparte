@@ -2,19 +2,20 @@
     
    var app = angular.module('carritoModule');
 
-	app.controller('carritoCtrl', ['$scope', 'servicioCarrito', function ($scope, serviciocarrito) {
-			serviciocarrito.extendCtrl(this,$scope);
-                       
-                        this.popCrearCamiseta= function(){
-                            this.crearDato();
-                            this.crearCamisetaTpl=true;
-                            this.editarCamiseta=false;
-                        };
+	app.controller('carritoCtrl', ['$scope', 'servicioCarrito', 'servicioCamiseta', '$rootscope', function ($scope, servicioCarrito, servicioCamiseta, $rootscope) {
+			serviciocarrito.extendCtrl(this,$scope);                        
                         
-                        
-                        this.crearCamiseta = function(camiseta){
-                            //El usuario debe ser configurado en $rootScope!!!!
+                        this.crearCamiseta = function(){
+                            var camiseta = { estilo: $scope.datoActual.selected.estilo,
+                            talla:  $scope.datoActual.selected.talla,
+                            color: $scope.datoActual.selected.color,
+                            estampas: $scope.datoActual.estampasUsadas,
+                            id: "C"+randomString(10),
+                            nombre: $scope.datoActual.nombreCamiseta
+                };
+                            
                             alert("Camiseta: " + camiseta.id + camiseta.nombre + camiseta.talla + camiseta.estilo + camiseta.color );
+                            
                         };
                         
                         this.cancelarCrearCamiseta = function(){
