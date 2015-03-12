@@ -30,6 +30,10 @@ body {
 	min-width: 200px;
 }
 
+.tooltip {
+	min-width: 120px;
+}
+
 #inicio {
 	background: #F7F7F7;
 	color: #333333;
