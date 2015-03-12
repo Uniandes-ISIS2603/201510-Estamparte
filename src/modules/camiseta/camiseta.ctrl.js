@@ -52,9 +52,19 @@
                 }
                 return str;
             }
+            this.darCamiseta = function(){
+                var camiseta = { estilo: $scope.datoActual.selected.estilo,
+                                  talla:  $scope.datoActual.selected.talla,
+                                  color: $scope.datoActual.selected.color,
+                                  estampas: $scope.datoActual.estampasUsadas,
+                                  id: "C"+randomString(10),
+                                  nombre: $scope.datoActual.nombreCamiseta
+                };
+                return camiseta;
+            };
+            
             this.continuar = function () {
                 $scope.datoActual.idCamiseta = "C"+ randomString(10);
-                //TODO reiniciar dato actual y proceder con el flujo de la aplicaion
                 var msj = "";
                 for (var i = 0; i < $scope.datoActual.estampasUsadas.length; i++)
                     if ($scope.datoActual.estampasUsadas[i])

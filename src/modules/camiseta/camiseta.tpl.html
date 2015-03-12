@@ -20,8 +20,6 @@ and open the template in the editor.
                         <tr>
                             <td>
                                 <div>
-                                    <h3>Nombra tu camiseta</h3>
-                                    <input ng-model ="datoActual.nombreCamiseta"> 
                                     <h3 class="">Selecciona como te gustaria tu camiseta ...</h3>
                                     <table class="table table-bordered">
                                         <tbody>
@@ -63,9 +61,12 @@ and open the template in the editor.
                             </td>
                             <td class="">
                                 <div class="form-group">
+                                    <h3>Nombra tu camiseta</h3>
+                                    <input ng-model ="datoActual.nombreCamiseta"> 
                                     <h3 class="">Total: $ {{datoActual.total}} </h3>
-
-                                    <button class="btn btn-default navbar-btn" ng-click="camisetaCtrl.continuar()"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
+                                    <div ng-controller="carritoCtrl as carrito">
+                                        <button class="btn btn-default navbar-btn" ng-click="carrito.crearCamiseta(camisetaCtrl.darCamiseta)"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
+                                    </div>
                                 </div>                            
                             </td>
                         </tr>
