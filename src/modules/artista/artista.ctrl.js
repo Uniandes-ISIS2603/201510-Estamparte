@@ -54,9 +54,11 @@
                         this.buscarEstampasPropias=function(){
                             servicioEstampa.estampasDeArtista().then(function(data){
                                 $scope.datos=[];
+                                var r=''
                                 for(var i=0;i<data.length;i++){
-                                   $scope.datos.push(data[i]);
+                                   r=r+'Nombre de estampa: '+data[i].nombre+'\n ';
                                 }
+                                alert(r);
                             });
                         };
                         
