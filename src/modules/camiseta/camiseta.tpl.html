@@ -64,9 +64,9 @@ and open the template in the editor.
                                     <h3>Nombra tu camiseta</h3>
                                     <input ng-model ="datoActual.nombreCamiseta"> 
                                     <h3 class="">Total: $ {{datoActual.total}} </h3>
-                                    <div ng-controller="carritoCtrl as carrito">
-                                        <button class="btn btn-default navbar-btn" ng-click="carrito.crearCamiseta"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
-                                    </div>
+                                    
+                                        <button class="btn btn-default navbar-btn" ng-click="camisetaCtrl.continuar()"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
+                                   
                                 </div>                            
                             </td>
                         </tr>
