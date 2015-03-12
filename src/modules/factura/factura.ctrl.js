@@ -8,9 +8,10 @@
     
    var app = angular.module('facturaModule');
 
-	app.controller('facturaCtrl', ['$scope', 'servicioFactura', function ($scope, servicioFactura) {
+	app.controller('facturaCtrl', ['$scope', '$rootScope' ,'servicioFactura', function ($scope, servicioFactura, $rootScope) {
 			servicioFactura.extendCtrl(this,$scope);
 	                this.editMode = false;
+                        $rootScope
                         
                         this.editar = function(dato){
                             this.editMode = true;
