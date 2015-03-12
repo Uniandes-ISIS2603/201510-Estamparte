@@ -52,16 +52,6 @@
                 }
                 return str;
             }
-            this.darCamiseta = function(){
-                var camiseta = { estilo: $scope.datoActual.selected.estilo,
-                                  talla:  $scope.datoActual.selected.talla,
-                                  color: $scope.datoActual.selected.color,
-                                  estampas: $scope.datoActual.estampasUsadas,
-                                  id: "C"+randomString(10),
-                                  nombre: $scope.datoActual.nombreCamiseta
-                };
-                return camiseta;
-            };
             
             this.continuar = function () {
                 $scope.datoActual.idCamiseta = "C"+ randomString(10);
