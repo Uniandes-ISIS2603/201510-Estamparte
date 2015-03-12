@@ -10,8 +10,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 		<!-- Importa los archivos de CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="src/assets/css/index.css">
+
+		<!-- Importa fonts desde internet -->
+		<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato:100,300'>
 
 		<!-- Importa los archivos de JS -->
 		<script src="src/assets/libs/jquery-1.11.2.min.js"></script>
@@ -38,8 +41,10 @@
 		<script src="src/modules/factura/factura.mod.js"></script>
 		<script src="src/modules/factura/factura.svc.js"></script>
 		<script src="src/modules/factura/factura.ctrl.js"></script>
-		
+
 		<!-- Importa los archivos del modulo comprador -->
+		<script src="src/modules/comprador/comprador.mod.js"></script>
+		<script src="src/modules/comprador/comprador.svc.js"></script>
 		<script src="src/modules/comprador/comprador.ctrl.js"></script>
 
 		<!-- Importa los archivos del modulo de artista -->
@@ -51,6 +56,7 @@
 		<script src="src/modules/estampa/estampa.mod.js"></script>
 		<script src="src/modules/estampa/estampa.svc.js"></script>
 		<script src="src/modules/estampa/estampa.ctrl.js"></script>
+		<script src="src/modules/estampa/estampa.mock.js"></script>
 
 		<!-- Importa los archivos del modulo carrito -->
 		<script src="src/modules/carrito/carrito.mod.js"></script>
@@ -64,10 +70,17 @@
 
 		<!-- Importa los archivos del modulo camiseta -->
 		<script src="src/modules/camiseta/camiseta.mod.js"></script>
+		<script src="src/modules/camiseta/camiseta.svc.js"></script>
 		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
 
 		<!-- Importa los archivos del modulo navbar -->
 		<script src="src/modules/navbar/navbar.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo inicio -->
+		<script src="src/modules/inicio/inicio.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo estampas -->
+		<script src="src/modules/estampas/estampas.ctrl.js"></script>
 
 		<!-- Importa los archivos del modulo footer -->
 		<script src="src/modules/footer/footer.ctrl.js"></script>
@@ -77,6 +90,10 @@
 	<body>
 
 		<div navbar></div>
+
+		<div inicio></div>
+
+		<div estampas></div>
 
 		<div footer></div>
 
