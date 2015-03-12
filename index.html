@@ -38,31 +38,6 @@ and open the template in the editor.
 		<!-- Importa los archivos de Mock -->
 		<script src="src/shared/mocks/mock.mod.js"></script>
 		<script src="src/shared/mocks/mock.svc.js"></script>
-                <script src="src/modules/factura/factura.mod.js"></script>
-                <script src="src/modules/factura/factura.svc.js"></script>
-                <script src="src/modules/factura/factura.ctrl.js"></script>
-
-                <script src="src/modules/comprador/comprador.ctrl.js"></script>
-                <!-- Modulo de artista -->
-                <script src="src/modules/artista/artista.mod.js"></script>
-                <script src="src/modules/artista/artista.svc.js"></script>
-                <script src="src/modules/artista/artista.ctrl.js"></script>
-                <!--Modulo de estampa-->
-                <script src="src/modules/estampa/estampa.mod.js"></script>
-                <script src="src/modules/estampa/estampa.svc.js"></script>
-                <script src="src/modules/estampa/estampa.ctrl.js"></script>
-                
-                <script src="src/modules/barra/barra.ctrl.js"></script>
-                <!--Modulo de carrito-->
-                <script src="src/modules/carrito/carrito.mod.js"></script>
-                <script src="src/modules/carrito/carrito.svc.js"></script>
-                <script src="src/modules/carrito/carrito.ctrl.js"></script>
-                <!--Modulo de forma de pago-->
-                <script src="src/modules/formaPago/formaPago.mod.js"></script>
-                <script src="src/modules/formaPago/formaPago.svc.js"></script>
-                <script src="src/modules/formaPago/formaPago.ctrl.js"></script>
-                <script src="src/modules/camiseta/camiseta.mod.js"></script>
-                <script src="src/modules/camiseta/camiseta.ctrl.js"></script>
 
 		<!-- Importa los archivos del modulo factura -->
 		<script src="src/modules/factura/factura.mod.js"></script>
@@ -167,29 +142,6 @@ and open the template in the editor.
 			<div ng-view></div>
 
 		</div>
-
-		<div class="row"><hr></div>
-
-                <div class="row" id="estampas" ng-controller="estampaCtrl as estampaCtrl">
-			<div class="row filaEstampas">
-				<div class="col-md-3" ng-repeat="estampa in datos">
-					<estampa></estampa>
-				</div>
-			</div>   
-		</div>
-
-		<div class="row"><hr></div>
-
-		<div class="row" id="copyright">
-			<h5>
-				<span class="glyphicon glyphicon-copyright-mark"></span>
-				Copyright 2015, todos los derechos reservados.
-			</h5>
-		</div>
-                
-                <div ng-view></div>
-
-	</div>
         
 	</body>
 
