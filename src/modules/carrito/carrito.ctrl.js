@@ -14,7 +14,6 @@
                         
                         this.crearCamiseta = function(camiseta){
                             //El usuario debe ser configurado en $rootScope!!!!
-                            $rootScope.datoActual=camiseta;
                             alert("Camiseta: " + camiseta.id + camiseta.nombre + camiseta.talla + camiseta.estilo + camiseta.color );
                         };
                         
