@@ -1,5 +1,11 @@
 body {
-	padding-top: 70px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+#navbar {
+	font-weight: 300;
+	font-size: 1.12em;
 }
 
 .navbar-default{
@@ -24,13 +30,29 @@ body {
 	min-width: 200px;
 }
 
+#inicio {
+	background: #F7F7F7;
+	color: #333333;
+	padding-top: 70px;
+	text-align: center;
+}
+
+#inicio h1 {
+	margin-top: 20%;
+}
+
+#estampas {
+	color: #353535;
+	padding-top: 70px;
+}
+
 #busqueda {
 	margin-top: 22px;
 }
 
 .filaEstampas {
 	margin-bottom: 25px;
-        overflow: scroll;
+    overflow: scroll;
 }
 
 .estampa {
@@ -85,9 +107,13 @@ body {
 	text-align: center;
 }
 
-#copyright {
-	margin: 40px auto 60px auto;
+#footer {
+	margin-top: 10%;
 	text-align: center;
+	background: #F7F7F7;
+	color: #333333;
+	padding-top: 120px;
+	padding-bottom: 120px;
 }
 
 td {
