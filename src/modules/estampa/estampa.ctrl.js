@@ -11,40 +11,49 @@
 			
 			servicioEstampa.extendCtrl(this, $scope);
                         this.estampasSeleccionadas = [];
-                        this.estampaDeArtista=true;
                         this.mostrarPop = false;
+                        this.editarEstampa=false;
+                        this.informacion=true;
                         datos = [
                         {
                                 
                                 nombre: "Estampa de la flor",
+                                idAutor: 1,
                                 autor: "elgenio",
                                 siGusta: 381,
                                 noGusta: 212,
-                                precio: 100
+                                precio: 100,
+                                imagenes: []
                         },
                         {
                                
                                 nombre: "El super fuego",
-                                autor: "elburro",
+                                idAutor: 1,
+                                autor: "elgenio",
                                 siGusta: 121,
                                 noGusta: 1420,
-                                precio: 100
+                                precio: 100,
+                                imagenes: []
                         },
                         {
                                 
                                 nombre: "Agua mas agua",
+                                idAutor: 2,
                                 autor: "elsa pato",
                                 siGusta: 3019,
                                 noGusta: 1425,
-                                precio: 100
+                                precio: 100,
+                                imagenes: []
                         },
                         {
                                
                                 nombre: "Come tierra",
+                                idAutor: 3,
                                 autor: "elsa pito",
                                 siGusta: 121,
                                 noGusta: 12,
-                                precio: 100
+                                precio: 100,
+                                imagenes: []
                         }
                 ];
                         for(var i=0;i<datos.length;i++){
@@ -90,6 +99,29 @@
                         
                         this.cambiarPop = function(){
                             this.mostrarPop=!this.mostrarPop;
+                        };
+                        
+                        this.editarEstampaSeleccionara=function(){
+                            this.editarEstampa=true;
+                            $scope.datoActual=$rootScope.datoActual;
+                        };
+                        
+                        this.subirImagen=function(){
+                            this.informacion=false;
+                        };
+                        
+                        this.esDeArtista=function(){
+                            //TODO
+                        };
+                        
+                        this.subirImg=function(){
+                            $scope.datoActual.imagenes.push($scope.datoActual.url);
+                            delete $scope.datoActual.url;
+                            this.guardarDato().then(function(dato){
+                                $scope.datoActual=dato;
+                            });
+                          
+                            this.informacion=true;
                         };
                         
 		}]);

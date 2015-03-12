@@ -12,6 +12,10 @@
                         this.crearEstampaTpl = false;
                         this.editarEstampa=false;
                         
+                        //Sesion temporal de usuario!!
+                        $rootScope.idUsuario=1;
+                        $rootScope.usuario="elgenio";
+                        
                         //Temas para la creacion de una estampa
                         $scope.temas=['TemaA','TemaB','TemaC'];
                         
@@ -25,9 +29,9 @@
                         this.crearEstampa = function(){
                             //Se obtiene la estampa a crear
                             var estampa = $scope.datoActual;
-                            //El usuario debe ser configurado en $scope!!!!
-                            estampa.idAutor = $scope.idUsuario;
-                            estampa.autor = $scope.usuario;
+                            //El usuario debe ser configurado en $rootScope!!!!
+                            estampa.idAutor = $rootScope.idUsuario;
+                            estampa.autor = $rootScope.usuario;
                             estampa.imagenes=[];
                             estampa.siGusta=0;
                             estampa.noGusta=0;

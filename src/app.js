@@ -19,7 +19,7 @@
                 templateUrl: 'src/modules/camiseta/camiseta.tpl.html'
             }).when('/artista', {
                 templateUrl: 'src/modules/artista/artista.tpl.html'
-            }).otherwise('/');
+            }).otherwise('src/principal.html');
         }]);
         
 	

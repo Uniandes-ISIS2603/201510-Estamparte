@@ -14,7 +14,7 @@ and open the template in the editor.
 		</a>
 	</div>
 	<div class="imagen">
-		<img src="src/assets/img/estampa.jpg" alt="imagenestampa">
+		<img ng-src="{{estampa.imagenes[0] ? estampa.imagenes[0]: 'src/assets/img/estampa.jpg'}}" alt="imagenestampa">
 	</div>
 	<div class="calificacion">
 		<button class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(1)">

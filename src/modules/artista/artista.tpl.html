@@ -4,7 +4,10 @@ Template de Artista
 -->
 
 <div ng-controller="artistaCtrl as artistaCtrl">
-    <button class="btn" ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
+    <div class="container-fluid" ng-hide="artistaCtrl.editarEstampa">
+    <button class="btn"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
+    <button class="btn">Busca tus Estampas</button>
+    </div>
     <!--Creacion de una nueva estampa-->
     <div ng-show = "artistaCtrl.crearEstampaTpl">
         <div id="header">
