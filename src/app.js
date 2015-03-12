@@ -7,19 +7,33 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule','navbarModule','carritoModule','formaPagoModule','moduloCamiseta', 'footerModule']);
-        mainApp.config(['$routeProvider', function ($routeProvider) {
-            $routeProvider.when('/factura', {
-                templateUrl: 'src/modules/factura/factura.tpl.html'
-            }).when('/carrito', {
-                templateUrl: 'src/modules/carrito/carrito.tpl.html'
-            }).when('/formaPago', {
-                templateUrl: 'src/modules/formaPago/formaPago.tpl.html'
-            }).when('/camiseta', {
-                templateUrl: 'src/modules/camiseta/camiseta.tpl.html'
-            }).when('/artista', {
-                templateUrl: 'src/modules/artista/artista.tpl.html'
-            }).otherwise('src/principal.html');
-        }]);
+	var mainApp = angular.module('mainApp', [
+        'ngRoute',
+        'facturaModule',
+        'compradorModule',
+        'artistaModule',
+        'estampaModule',
+        'navbarModule',
+        'carritoModule',
+        'formaPagoModule',
+        'moduloCamiseta',
+        'footerModule',
+        'inicioModule',
+        'estampasModule'
+    ]);
+    
+    mainApp.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/factura', {
+            templateUrl: 'src/modules/factura/factura.tpl.html'
+        }).when('/carrito', {
+            templateUrl: 'src/modules/carrito/carrito.tpl.html'
+        }).when('/formaPago', {
+            templateUrl: 'src/modules/formaPago/formaPago.tpl.html'
+        }).when('/camiseta', {
+            templateUrl: 'src/modules/camiseta/camiseta.tpl.html'
+        }).when('/artista', {
+            templateUrl: 'src/modules/artista/artista.tpl.html'
+        }).otherwise('src/modules/inicio/inicio.tpl.html');
+    }]);
  
 })();
