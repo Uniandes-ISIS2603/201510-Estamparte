@@ -2,6 +2,28 @@ body {
 	padding-top: 70px;
 }
 
+.navbar-default{
+	background: rgba(255, 255, 255, 0.81);
+	border-color: #EEE;
+}
+
+.usuario {
+	min-width: 200px;
+}
+
+.usuario .caret {
+	margin-top: 9px;
+	float: right;
+}
+
+.ok {
+	float: right;
+}
+
+.menu-usuario {
+	min-width: 200px;
+}
+
 #busqueda {
 	margin-top: 22px;
 }

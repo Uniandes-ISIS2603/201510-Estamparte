@@ -4,7 +4,7 @@
 	<head>
 
 		<!-- Titulo de la pagina -->
-		<title>Estamparte tests</title>
+		<title>Estamparte</title>
 
 		<!-- Definicion de meta tags -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,7 +21,7 @@
 		<script src="src/assets/libs/angular-route.min.js"></script>
 		<script src="src/assets/libs/restangular.min.js"></script>
 		<script src="src/assets/libs/ui-bootstrap-tpls-0.12.1.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 				
 		<!-- Importa los archivos escritos sobre AngularJS -->
 		<script src="src/app.js"></script>
@@ -66,27 +66,19 @@
 		<script src="src/modules/camiseta/camiseta.mod.js"></script>
 		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
 
-		<!-- Importa los archivos del modulo barra -->
-		<script src="src/modules/barra/barra.ctrl.js"></script>
+		<!-- Importa los archivos del modulo navbar -->
+		<script src="src/modules/navbar/navbar.ctrl.js"></script>
+
+		<!-- Importa los archivos del modulo footer -->
+		<script src="src/modules/footer/footer.ctrl.js"></script>
 
 	</head>
 
 	<body>
 
-		<div barra></div>
+		<div navbar></div>
 
-		<div class="container">
-
-			<!-- <div estampas></div> -->
-
-			<div class"row" id="copyright">
-				<h5>
-					<span class="glyphicon glyphicon-copyright-mark"></span>
-					Copyright 2015, todos los derechos reservados.
-				</h5>
-			</div>
-
-		</div>
+		<div footer></div>
 
 	</body>
 

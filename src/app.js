@@ -7,7 +7,7 @@
 
 (function () {
 
-	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule','barraModule','carritoModule','formaPagoModule','moduloCamiseta']);
+	var mainApp = angular.module('mainApp', ['ngRoute', 'facturaModule', 'compradorModule','artistaModule','estampaModule','navbarModule','carritoModule','formaPagoModule','moduloCamiseta', 'footerModule']);
         mainApp.config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/factura', {
                 templateUrl: 'src/modules/factura/factura.tpl.html'
