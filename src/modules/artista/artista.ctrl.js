@@ -27,33 +27,25 @@
                         
                         
                         this.crearEstampa = function(){
-                            //Se obtiene la estampa a crear
-                            var estampa = $scope.datoActual;
+
                             //El usuario debe ser configurado en $rootScope!!!!
-                            estampa.idAutor = $rootScope.idUsuario;
-                            estampa.autor = $rootScope.usuario;
-                            estampa.imagenes=[];
-                            estampa.siGusta=0;
-                            estampa.noGusta=0;
-                            servicioEstampa.guardarDato(estampa);
-                            servicioEstampa.consultarDatos();
-                            $rootScope.datoActual=estampa;
-                            servicioEstampa.consultarDatos();
-                            this.popEditarEstampa();
+                            $scope.datoActual.idAutor = $rootScope.idUsuario;
+                            $scope.datoActual.autor = $rootScope.usuario;
+                            $scope.datoActual.imagenes=[];
+                            $scope.datoActual.siGusta=0;
+                            $scope.datoActual.noGusta=0;
+                            servicioEstampa.setEstampaCreada($scope.datoActual);
+                            this.crearEstampaTpl=false;
+                            this.editarEstampa=true;
                         };
                         
                         this.cancelarCrearEstampa = function(){
                             this.crearEstampaTpl=false;
                         };
                         
-                        this.popEditarEstampa = function(){
-                            this.crearEstampaTpl=false;
-                            this.editarEstampa=true;
-                        };
-                        
                         this.buscarEstampasPropias=function(){
                             servicioEstampa.estampasDeArtista().then(function(data){
-                                $scope.datos=[];
+                                $scope.datos=data;
                                 var r=''
                                 for(var i=0;i<data.length;i++){
                                    r=r+'Nombre de estampa: '+data[i].nombre+'\n ';
