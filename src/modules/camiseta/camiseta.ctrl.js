@@ -10,6 +10,7 @@
             servicioCamiseta.extendCtrl(this, $scope);
             $scope.datoActual.estampasUsadas = [];
             $scope.datoActual.idCamiseta;
+            $scope.datoActual.nombreCamiseta;
 
             this.contiene = function (id)
             {
@@ -58,7 +59,7 @@
                 for (var i = 0; i < $scope.datoActual.estampasUsadas.length; i++)
                     if ($scope.datoActual.estampasUsadas[i])
                         msj += (i + 1) + ")" + $scope.datoActual.estampasUsadas[i].valueOf() + "\n\t";
-                alert("\tDETALLES:\n\tID:\t"+$scope.datoActual.idCamiseta+"\n\tEstilo:\t" + $scope.datoActual.selected.estilo + "\n\tTalla:\t" + $scope.datoActual.selected.talla + "\n\tColor:\t" + $scope.datoActual.selected.color
+                alert("\tDETALLES:\n\tNombre:\t"+$scope.datoActual.nombreCamiseta+"\n\tID:\t"+$scope.datoActual.idCamiseta+"\n\tEstilo:\t" + $scope.datoActual.selected.estilo + "\n\tTalla:\t" + $scope.datoActual.selected.talla + "\n\tColor:\t" + $scope.datoActual.selected.color
                         + "\n\tESTAMPAS USADAS:\n\t" + msj);
             };
         }]);
