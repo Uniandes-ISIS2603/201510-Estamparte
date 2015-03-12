@@ -24,7 +24,7 @@ and open the template in the editor.
 					<button class="btn btn-default navbar-btn" ng-hide="facturaCtrl.editMode" ng-click="facturaCtrl.crear()"><span class="glyphicon glyphicon-plus"></span> Create</button>
 					<button class="btn btn-default navbar-btn" ng-hide="facturaCtrl.editMode" ng-click="facturaCtrl.consultarDatos()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
 					<button class="btn btn-default navbar-btn" ng-show="facturaCtrl.editMode" ng-click="facturaCtrl.guardar()"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
-					<button class="btn btn-default navbar-btn" ng-show="facturaCtrl.editMode" ng-click="facturaCtrl.consultarDatos()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+					<button class="btn btn-default navbar-btn" ng-show="facturaCtrl.editMode" ng-click="facturaCtrl.cancelar()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 				</div>
 			</div>
 		</nav>
@@ -44,15 +44,15 @@ and open the template in the editor.
 			</thead>
 			<tbody>
 				<tr ng-repeat="dato in datos">
-					<td>{{dato.name}}</td>
+					<td>{{dato.nombre}}</td>
 					<td>{{dato.fecha}}</td>
-                                        <td>{{dato.id_comprador}}</td>
-                                        <td>{{dato.id_factura}}</td>
+                                        <td>{{dato.idcomprador}}</td>
+                                        <td>{{dato.idfactura}}</td>
 					<td>{{dato.formadepago}}</td>
                                         <td>{{dato.montototal}}</td>
 					<td>
-						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.editarDato(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.eliminarDato(record)"><span class="glyphicon glyphicon-minus"></span> Delete</button>
+						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.editar(dato)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+						<button class="btn btn-default btn-sm" ng-click="facturaCtrl.eliminarDato(dato)"><span class="glyphicon glyphicon-minus"></span> Delete</button>
 
                                         </td>
 				</tr>
@@ -63,7 +63,7 @@ and open the template in the editor.
 		<form name="countryForm" role="form">
 			<input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
 			<div class="form-group">
-				<label for="name">Name</label>
+				<label for="nombre">Name</label>
 				<input id="name" class="form-control" type="text" ng-model="datoActual.nombre"/>
 			</div>
 			<div class="form-group">
@@ -72,11 +72,11 @@ and open the template in the editor.
 			</div>		
                         <div class="form-group">
 				<label for="idcomprador">IDComprador</label>
-				<input id="idcomprador" class="form-control" type="number" ng-model="datoActual.idcomprador"/>
+				<input id="idcomprador" class="form-control" type="text" ng-model="datoActual.idcomprador"/>
 			</div>
                         <div class="form-group">
 				<label for="idfactura">IDFactura</label>
-				<input id="idfactura" class="form-control" type="number" ng-model="datoActual.idfactura"/>
+				<input id="idfactura" class="form-control" type="text" ng-model="datoActual.idfactura"/>
 			</div>
                         <div class="form-group">
 				<label for="formadepago">FormaDePago</label>
