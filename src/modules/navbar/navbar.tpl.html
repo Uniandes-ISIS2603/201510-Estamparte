@@ -70,14 +70,18 @@
 			<ul class="nav navbar-nav navbar-right">
 
 				<!-- Opciones para el artista -->
-				<li ng-show="usuario.tipo === 'artista'"><a href="#/artista">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</a></li>
+				<li ng-show="usuario.tipo === 'artista'">
+					<a href="#/artista" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</li>
 
 				<!-- Opciones para el comprador -->
-				<li ng-show="usuario.tipo === 'comprador'"><a href="#/carrito">
-					<span class="glyphicon glyphicon-shopping-cart"></span>
-				</a></li>
+				<li ng-show="usuario.tipo === 'comprador'">
+					<a href="#/carrito" data-toggle="tooltip" data-placement="bottom" title="Carrito de compras">
+						<span class="glyphicon glyphicon-shopping-cart"></span>
+					</a>
+				</li>
 
 				<!--
 				Manejo de la cuenta actual.
@@ -130,3 +134,9 @@
 	</div>
 
 </div>
+
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	})
+</script>
