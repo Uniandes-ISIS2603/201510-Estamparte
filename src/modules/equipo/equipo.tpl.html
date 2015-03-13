@@ -1,0 +1,23 @@
+<div id="equipo" ng-controller="equipoCtrl">
+
+	<div class="container">
+
+		<div id="tituloEquipo" class="row">
+
+			<h2>Equipo</h2>
+
+		</div>
+
+		<div class="miembro-equipo" ng-repeat="miembro in miembros">
+
+			<div class="miembro-foto" ng-init="agregarFoto($index, miembro.foto)"></div>
+
+			<h4>{{ miembro.nombre }}</h4>
+
+			<h5>{{ miembro.rol }}</h5>
+
+		</div>
+
+	</div>
+
+</div>
