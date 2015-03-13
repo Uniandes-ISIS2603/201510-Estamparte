@@ -27,11 +27,24 @@ angular.module('equipoModule', [])
 			rol: 'Lider de planeacion',
 			foto: 'src/assets/img/equipo/meili.jpg'
 		}
-	]
+	];
 
 	$scope.agregarFoto = function (index, foto) {
-		$('.miembro-foto').css('background-image', 'url("%s")'.replace("%s", foto));
-	}
+		var id = '#miembro%d'.replace('%d', index);
+		$(id).css('background-image', 'url("%s")'.replace("%s", foto));
+		console.log($(id));
+	};
+
+	$scope.darAncho = function (length) {
+		var ans = ''
+		if ($scope.miembros.length - length >= 3)
+			ans = 'col-md-4';
+		else if ($scope.miembros.length - length == 2)
+			ans = 'col-md-6';
+		else
+			ans = 'col-md-12';
+		return ans;
+	};
 
 }])
 .directive('equipo', function() {
