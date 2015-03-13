@@ -6,6 +6,7 @@ body {
 .navbar {
 	font-weight: 300;
 	font-size: 1.12em;
+	border: none;
 }
 
 .navbar-default{
@@ -28,6 +29,7 @@ body {
 
 .menu-usuario {
 	min-width: 200px;
+	border-radius: 0;
 }
 
 .tooltip {
@@ -45,37 +47,70 @@ body {
 	margin-top: 20%;
 }
 
+#carrito {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 50px;
+	padding-top: 20px;
+	background: rgba(255, 255, 255, 0.86);
+	height: 100%;
+	width: 320px;
+	z-index: 2000;
+	font-weight: 300;
+	border-left: 1px solid #EEE;
+}
+
 #estampas {
 	color: #353535;
 	padding-top: 70px;
+	margin-bottom: 20px;
 }
 
 #busqueda {
 	margin-top: 22px;
 }
 
-#tituloEstampas {
-	margin-bottom: 50px;
+#busqueda input, #busqueda button, #busqueda-avanzada {
+	border-radius: 0;
 }
 
-#busqueda-avanzada {
-	position: absolute;
-	left: -1000px;
+#tituloEstampas {
+	margin-bottom: 90px;
 }
 
 .filaEstampas {
-	margin-bottom: 25px;
+	margin-bottom: 90px;
     overflow: scroll;
 }
 
-.estampa {
-	border: 1px solid #DDD;
-	border-radius: 3px;
+.contenido {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 225px;
+	margin: 0 auto;
+	width: 220px;
+	height: 220px;
+	border-radius: 170px;
 }
 
 .nombre {
-	padding-left: 20px;
-	padding-right: 20px;
+	width: 260px;
+	margin-left: 60px;
+	padding: 10px 20px;
+	color: #888;
+	margin-bottom: 5px;
+}
+
+.nombre a {
+	border: none;
+	color: #AAA;
+	border-radius: 0;
+	background-color: #EEE;
+}
+
+.nombre a:hover {
+	color: #777;
 }
 
 .nombre h4 {
@@ -94,21 +129,6 @@ body {
 	display: inline-block;
 }
 
-.imagen {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	max-height: 160px;
-	overflow: hidden;
-}
-
-.imagen img {
-	text-align: center;
-	margin: auto auto;
-	width: 100%;
-	height: 250px;
-	margin: -40px 0 0 0;
-}
-
 .calificacion {
 	padding-left: 20px;
 	padding-right: 10px;
@@ -120,10 +140,39 @@ body {
 	text-align: center;
 }
 
+#equipo {
+	padding-top: 70px;
+	background: #F7F7F7;
+	padding-bottom: 200px;
+}
+
+#tituloEquipo {
+	margin-bottom: 70px;
+}
+
+.miembro-equipo {
+	border-radius: 200px;
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 190px;
+	height: 190px;
+	text-align: center;
+	color: #888;
+	margin-left: 40px;
+}
+
+.miembro-foto {
+	margin-left: 23px;
+	width: 80%;
+	height: 80%;
+	border-radius: 100px;
+}
+
 #footer {
 	text-align: center;
-	background: #F7F7F7;
-	color: #333333;
+	background: #FFF;
+	color: #353535;
 	margin-top: 70px;
 	padding-top: 130px;
 	padding-bottom: 130px;
