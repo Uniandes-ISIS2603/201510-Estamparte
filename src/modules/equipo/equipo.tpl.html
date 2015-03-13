@@ -8,13 +8,21 @@
 
 		</div>
 
-		<div class="miembro-equipo" ng-repeat="miembro in miembros">
+		<div ng-repeat="miembro in miembros">
 
-			<div class="miembro-foto" ng-init="agregarFoto($index, miembro.foto)"></div>
+			<div class="fila-equipo" ng-if="($index % 3) == 2">
 
-			<h4>{{ miembro.nombre }}</h4>
+				<div class="miembro-equipo" ng-repeat="miembro in miembros">
 
-			<h5>{{ miembro.rol }}</h5>
+					<div class="miembro-foto" ng-init="agregarFoto($index, miembro.foto)"></div>
+
+					<h4>{{ miembro.nombre }}</h4>
+
+					<h5>{{ miembro.rol }}</h5>
+
+				</div>
+
+			</div>
 
 		</div>
 

@@ -23,7 +23,7 @@ angular.module('navbarModule', [])
 	}
 
 	$scope.cerrarSesion = function () {
-		alert("Hasta lueguito dijo panchito y se fue en su carrito");
+		alert('Hasta lueguito dijo panchito y se fue en su carrito');
 	}
 
 	// Configuracion usada para el boton seleccionado actual.
@@ -38,7 +38,7 @@ angular.module('navbarModule', [])
 		$scope.selActual = actual;
 
 		$('html, body').animate({
-			scrollTop: $("#" + actual).offset()
+			scrollTop: $('#' + actual).offset().top
 		}, 700);
 	}
 

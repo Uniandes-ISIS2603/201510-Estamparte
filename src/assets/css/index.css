@@ -80,8 +80,7 @@ body {
 }
 
 .filaEstampas {
-    overflow: scroll;
-	margin-bottom: 25px;
+	margin-bottom: 100px;
 }
 
 .contenido {
@@ -130,14 +129,26 @@ body {
 }
 
 .calificacion {
-	padding-left: 20px;
-	padding-right: 10px;
-	margin-bottom: 10px;
+	padding-top: 210px;
 }
 
 .calificacion button {
-	width: 47%;
-	text-align: center;
+	border: none;
+	background: #EEE;
+	color: #999;
+	border-radius: 0;
+}
+
+.calificacion button:hover {
+	color: #777;
+}
+
+#siGusta {
+	float: left;
+}
+
+#noGusta {
+	float: right;
 }
 
 #equipo {
@@ -184,4 +195,8 @@ body {
 
 td {
     padding-left: 20px;
+}
+
+#temp {
+	padding-top: 70px;
 }
