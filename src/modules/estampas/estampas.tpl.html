@@ -29,19 +29,19 @@
 		<div class="row" ng-controller="estampaCtrl">
 
 			<div class="row filaEstampas">
-				<div class="col-md-3" ng-repeat="estampa in datos">
+				<div class="col-md-4" ng-repeat="estampa in datos">
 					<div estampa></div>
 				</div>
 			</div>
 
 			<div class="row filaEstampas">
-				<div class="col-md-3" ng-repeat="estampa in datos">
+				<div class="col-md-4" ng-repeat="estampa in datos">
 					<div estampa></div>
 				</div>
 			</div>
 
 			<div class="row filaEstampas">
-				<div class="col-md-3" ng-repeat="estampa in datos">
+				<div class="col-md-4" ng-repeat="estampa in datos">
 					<div estampa></div>
 				</div>
 			</div>
@@ -53,15 +53,14 @@
 </div>
 
 <script>
-	function setWidth() {
-		var ref = document.getElementById('busqueda');
-		var width = ref.offsetWidth + 'px';
-		var left = ref.offsetLeft + 'px';
-		var div = document.getElementById('busqueda-avanzada');
-		console.log(left);
-		div.style.width = width;
-		div.style.left = left;
-	}
+	// function setWidth() {
+	// 	var ref = document.getElementById('busqueda');
+	// 	var width = ref.offsetWidth + 'px';
+	// 	var left = ref.offsetLeft + 'px';
+	// 	var div = document.getElementById('busqueda-avanzada');
+	// 	div.style.width = width;
+	// 	div.style.left = left;
+	// }
 
-	setWidth();
+	// setWidth();
 </script>
