@@ -17,7 +17,7 @@
                         datos = [
                         {
                                 
-                                nombre: "Estampa de la flor",
+                                nombre: "Estampa de flor",
                                 idAutor: 1,
                                 autor: "elgenio",
                                 siGusta: 381,
@@ -42,16 +42,6 @@
                                 autor: "elsa pato",
                                 siGusta: 3019,
                                 noGusta: 1425,
-                                precio: 100,
-                                imagenes: []
-                        },
-                        {
-                               
-                                nombre: "Come tierra",
-                                idAutor: 3,
-                                autor: "elsa pito",
-                                siGusta: 121,
-                                noGusta: 12,
                                 precio: 100,
                                 imagenes: []
                         }
@@ -173,6 +163,11 @@
             this.guardarDato();
             this.informacion=true;
         };
+
+        $scope.darImagen = function(estampa) {
+            var imagen = estampa.imagenes[0] || 'src/assets/img/estampa.jpg';
+            $('.contenido').css('background-image', 'url("%s")'.replace('%s', imagen));
+        }
                         
 	}]);
 
