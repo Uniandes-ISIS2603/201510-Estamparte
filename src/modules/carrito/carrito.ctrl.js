@@ -3,7 +3,7 @@
    var app = angular.module('carritoModule');
 
 	app.controller('carritoCtrl', ['$scope', 'servicioCarrito', 'servicioCamiseta', '$rootscope', function ($scope, servicioCarrito, servicioCamiseta, $rootscope) {
-			serviciocarrito.extendCtrl(this,$scope);                        
+			servicioCarrito.extendCtrl(this,$scope);                        
                         
                         this.crearCamiseta = function(){
                             var camiseta = { estilo: $scope.datoActual.selected.estilo,
@@ -13,6 +13,9 @@
                             id: "C"+randomString(10),
                             nombre: $scope.datoActual.nombreCamiseta
                 };
+                servicioEstampa.guardarDato(camiseta);
+                servicioEstampa.consultarDatos();
+                $rootscope.datoActual = camiseta;
                             
                             alert("Camiseta: " + camiseta.id + camiseta.nombre + camiseta.talla + camiseta.estilo + camiseta.color );
                             
