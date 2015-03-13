@@ -19,7 +19,8 @@
         'moduloCamiseta',
         'footerModule',
         'inicioModule',
-        'estampasModule'
+        'estampasModule',
+        'equipoModule'
     ]);
     
     mainApp.config(['$routeProvider', function ($routeProvider) {
