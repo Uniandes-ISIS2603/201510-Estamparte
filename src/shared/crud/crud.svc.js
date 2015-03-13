@@ -50,7 +50,7 @@
                             scope.datos=[];
                             scope.datos = data;
                             scope.totalItems = data.totalRecords;
-                            //scope.datoActual = {};
+                            scope.datoActual = {};
                             return data;
                         });
                     };

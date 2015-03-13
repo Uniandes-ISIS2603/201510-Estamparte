@@ -5,8 +5,8 @@ Template de Artista
 
 <div ng-controller="artistaCtrl as artistaCtrl">
     <div class="container-fluid" ng-hide="artistaCtrl.editarEstampa">
-    <button class="btn"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
-    <button class="btn" ng-click="artistaCtrl.buscarEstampasPropias()">Busca tus Estampas</button>
+    <button class="btn btn-default"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
+    <button class="btn btn-default"  ng-click="artistaCtrl.buscarEstampasPropias()">Busca tus Estampas</button>
     </div>
     
     <!--Visualizacion de estampas propias-->
@@ -51,7 +51,7 @@ Template de Artista
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripci&oacute;n:</label>
-                <textarea id="descripcion" name="descripcion" class="form-control" rows="3" cols="100" ng-model="datoActual.descripcion" required=""></textarea>
+                <textarea id="descripcion" name="descripcion" class="form-control" rows="3" cols="100" ng-model="datoActual.descripcion"></textarea>
             </div>
             <div class="form-group">
                 <label for="alto">Altura (cm):</label>

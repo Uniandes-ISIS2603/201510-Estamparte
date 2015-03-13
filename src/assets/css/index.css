@@ -80,8 +80,8 @@ body {
 }
 
 .filaEstampas {
-	margin-bottom: 90px;
     overflow: scroll;
+	margin-bottom: 25px;
 }
 
 .contenido {
