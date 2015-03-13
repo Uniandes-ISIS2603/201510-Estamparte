@@ -30,7 +30,7 @@ angular.module('equipoModule', [])
 	]
 
 	$scope.agregarFoto = function (index, foto) {
-		$('.miembro-foto')[index].css('background-image', 'url("%s")'.replace("%s", foto))
+		$('.miembro-foto').css('background-image', 'url("%s")'.replace("%s", foto));
 	}
 
 }])
