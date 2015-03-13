@@ -40,7 +40,12 @@ angular.module('navbarModule', [])
 		$('html, body').animate({
 			scrollTop: $("#" + actual).offset().top
 		}, 700);
-		
+	}
+
+	// Configuracion usada para el carrito.
+
+	$scope.verCarrito = function () {
+		$('#carrito').animate({width: 'toggle'});
 	}
 }])
 .directive('navbar', function() {
