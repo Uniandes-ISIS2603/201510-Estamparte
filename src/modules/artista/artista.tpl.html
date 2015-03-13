@@ -19,6 +19,7 @@ Template de Artista
 
     
     <!--Creacion de una nueva estampa-->
+    
     <div ng-show = "artistaCtrl.crearEstampaTpl">
         <div id="header">
             <nav class="navbar navbar-default" role="navigation">
@@ -36,46 +37,13 @@ Template de Artista
 			</div>
 		</nav>
         </div>
-        <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && artistaCtrl.crearEstampa()">
-            <input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
-            <div class="form-group">
-                <label for="nombre">Nombre: </label>
-                <input id="nombre" name="nombre" class="form-control" type="text" ng-model="datoActual.nombre" required />
-                <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.nombre.$error.required"><p>Digita un nombre para la estampa</p></div>
-            </div>
-            <div class="form-group">
-                <label for="tema">Tema: </label>
-                <select id="tema" name="tema" class="form-control" ng-model="datoActual.tema" ng-options="tem for tem in temas" required="">
-                </select>
-                <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.tema.$error.required"><p>Selecciona un tema</p></div>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripci&oacute;n:</label>
-                <textarea id="descripcion" name="descripcion" class="form-control" rows="3" cols="100" ng-model="datoActual.descripcion"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="alto">Altura (cm):</label>
-                <input type="text" id="alto" name="alto" class="form-control" ng-model="datoActual.altura" required=""/>
-                <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.alto.$error.required"><p>Introduce una altura en (cm)</p></div>            
-            </div>
-            <div class="form-group">
-                <label for="ancho">Longitud (cm):</label>
-                <input type="text" id="ancho" name="ancho" class="inputMediano" ng-model="datoActual.ancho" required="" />
-                <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.ancho.$error.required"><p>Introduce una longitud en (cm) </p></div>
-            </div>
-            <div class="form-group">
-                <label for="precio">Precio ($COP):</label>
-                <input type="text" id="precio" name="precio" class="form-control" ng-model="datoActual.precio" required=""/>
-                <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.precio.$error.required"><p>Introduce un precio para la estampa</p></div>
-            </div>
-            <button type="submit" class="btn btn-default">Crear</button>
-            <button class="btn btn-default" ng-click="artistaCtrl.cancelarCrearEstampa()">Cancelar</button>
-        </form>
+        <div nuevaestampa></div>
+
     </div>
     
     <!--Edicion de una estampa-->
     <div ng-show="artistaCtrl.editarEstampa">
-        <estampad></estampad>
+        <div estampad></div>
     </div>
 </div>
 

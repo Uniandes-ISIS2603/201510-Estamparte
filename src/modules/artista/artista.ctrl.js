@@ -49,6 +49,7 @@
                         this.cancelarCrearEstampa = function(){
                             this.crearEstampaTpl=false;
                             this.estampasPropias=false;
+                            this.editarEstampa=false;
                         };
                         
                         //Busca las estampas del artista en sesion

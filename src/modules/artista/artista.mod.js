@@ -12,5 +12,12 @@
         urlsProvider.registerUrl(context);
     }]);
 
+    //Directiva para crear una nueva estampa
+    artistaModule.directive('nuevaestampa',function(){
+        return {
+            templateUrl: 'src/modules/artista/nuevaEstampa.tpl.html'
+        };
+    });
+
 })();
 

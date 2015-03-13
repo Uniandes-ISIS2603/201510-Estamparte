@@ -190,10 +190,42 @@ body {
 	margin-top: 3%;
 }
 
-td {
-    padding-left: 20px;
-}
-
 #temp {
 	padding-top: 70px;
 }
+
+
+.tabla{
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+td {
+    border: 1px solid gray;
+    width: 50%;
+}
+
+.imagen{
+    padding: 2% 2% 2% 2%;
+    width: 94%;
+    height: 94%;
+}
+
+.inputPequeño{
+    width: 50%;
+}
+
+.inline{
+    float: left;
+    margin-left: 10%;
+}
+
+.inputMediano{
+    width:70%;
+}
+.datos{
+   padding-left: 5%;
+   width: 30%; 
+}
+
