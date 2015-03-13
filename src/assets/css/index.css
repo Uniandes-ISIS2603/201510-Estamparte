@@ -80,8 +80,7 @@ body {
 }
 
 .filaEstampas {
-    overflow: scroll;
-	margin-bottom: 70px;
+	margin-bottom: 100px;
 }
 
 .contenido {
@@ -196,4 +195,8 @@ body {
 
 td {
     padding-left: 20px;
+}
+
+#temp {
+	padding-top: 70px;
 }
