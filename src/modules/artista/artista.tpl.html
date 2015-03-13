@@ -1,22 +1,22 @@
-<!DOCTYPE html>
 <!--
 Template de Artista
 -->
 
 <div ng-controller="artistaCtrl as artistaCtrl">
-    <div class="container-fluid" ng-hide="artistaCtrl.editarEstampa">
+    <div class="container-fluid"     ng-hide="artistaCtrl.editarEstampa">
     <button class="btn btn-default"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
-    <button class="btn btn-default"  ng-click="artistaCtrl.buscarEstampasPropias()">Busca tus Estampas</button>
+    <button class="btn btn-default"  ng-click="artistaCtrl.buscarEstampasPropias()">Mis Estampas</button>
     </div>
     
     <!--Visualizacion de estampas propias-->
-    <div ng-controller="artistaCtrl as artistaCtrl">
-        <div class="row filaEstampas">
+    <div ng-show="artistaCtrl.estampasPropias">
+        <div class="row filaEstampas" ng-controller="estampaCtrl as estampaCtrl">
             <div class="col-md-3" ng-repeat="estampa in datos">
-                <p>{{estampa.nombre}}</p>
+                <div estampa></div>
             </div>
         </div>
     </div>
+
     
     <!--Creacion de una nueva estampa-->
     <div ng-show = "artistaCtrl.crearEstampaTpl">
@@ -60,7 +60,7 @@ Template de Artista
             </div>
             <div class="form-group">
                 <label for="ancho">Longitud (cm):</label>
-                <input type="text" id="ancho" name="ancho" class="form-control" ng-model="datoActual.ancho" required="" />
+                <input type="text" id="ancho" name="ancho" class="inputMediano" ng-model="datoActual.ancho" required="" />
                 <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.ancho.$error.required"><p>Introduce una longitud en (cm) </p></div>
             </div>
             <div class="form-group">
