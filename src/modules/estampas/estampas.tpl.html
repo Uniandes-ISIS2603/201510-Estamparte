@@ -26,24 +26,28 @@
 
 		</div>
 		        
-		<div class="row" ng-controller="estampaCtrl">
+		<div>
 
-			<div class="row filaEstampas">
-				<div class="col-md-4" ng-repeat="estampa in datos">
-					<div estampa></div>
-				</div>
-			</div>
+			<div ng-repeat="dato in datos" ng-switch="$index % 3">
 
-			<div class="row filaEstampas">
-				<div class="col-md-4" ng-repeat="estampa in datos">
-					<div estampa></div>
-				</div>
-			</div>
+				<span ng-switch on="$index % 3">
 
-			<div class="row filaEstampas">
-				<div class="col-md-4" ng-repeat="estampa in datos">
-					<div estampa></div>
-				</div>
+					<span ng-switch-when="0">
+
+						<div class="filaEstampas row">
+
+							<div estampa="datos[$index+0]" ng-class="darAncho($index)"></div>
+
+							<div estampa="datos[$index+1]" ng-class="darAncho($index)"></div>
+
+							<div estampa="datos[$index+2]" ng-class="darAncho($index)"></div>
+
+						</div>
+
+					</span>
+
+				</span>
+
 			</div>
 
 		</div>
