@@ -1,22 +1,21 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Modulo de una estampa
  */
 (function(){
-    //Configuracion del modulo de estampa
+
     var estampaModule = angular.module('estampaModule',['CrudModule','MockModule','artistaModule']);
 
-        estampaModule.constant('estampa.context','estampa');
+    //Configuracion de variable de contexto para le Mock
+    estampaModule.constant('estampa.context','estampa');
 
-        estampaModule.config(['estampa.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-                    urlsProvider.registerUrl(context);
-            }]);
-    
-            
-        estampaModule.directive('estampad', function() {
-                return {
-                  templateUrl: 'src/modules/estampa/estampaDetalle.tpl.html'
-                };
-            });
+    estampaModule.config(['estampa.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
+        urlsProvider.registerUrl(context);
+    }]);
+        
+    //Directiva para ver los detalles de una estampa    
+    estampaModule.directive('estampad', function() {
+        return {
+            templateUrl: 'src/modules/estampa/estampaDetalle.tpl.html'
+        };
+    });
 })();

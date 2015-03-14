@@ -1,6 +1,6 @@
 (function () {
     var carritoModule = angular.module('carritoModule');
-    app.controller('carritoModule', ['$scope', 'servicioCarrito', 'servicioCamiseta', '$rootscope', function ($scope, servicioCarrito, servicioCamiseta, $rootscope) {
+    carritoModule.controller('carritoModule', ['$scope', 'servicioCarrito', 'servicioCamiseta', '$rootscope', function ($scope, servicioCarrito, servicioCamiseta, $rootscope) {
             servicioCarrito.extendCtrl(this, $scope);
             this.url = context;
             CRUDUtils.extendService(this);

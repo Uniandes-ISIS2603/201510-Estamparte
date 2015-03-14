@@ -1,7 +1,5 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controlador de una estampa
  */
 (function(){
     
@@ -25,7 +23,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             },
             {  
                 nombre: "El super fuego",
@@ -36,7 +35,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             },
             {
                 nombre: "Agua mas agua",
@@ -80,7 +80,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             }
         ];
 
@@ -141,12 +142,6 @@
             delete $scope.datoActual.url;
             this.informacion=true;
         };
-
-        $scope.darImagen = function(estampa) {
-            var foto = estampa.imagenes[0] || 'src/assets/img/estampa.jpg';
-            console.log(foto);
-            return foto;
-        }
 
         this.actualizarInformacion = function(){
             //Pre: el modelo de la informacion responde al dato actual
