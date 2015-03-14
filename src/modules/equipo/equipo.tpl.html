@@ -16,35 +16,11 @@
 
 					<div class="fila-equipo row">
 
-						<div class="miembro-equipo" ng-class="darAncho($index-0)" ng-show="miembros[$index+0]">
+						<div miembro="miembros[$index+0]" ng-class="darAncho($index)"></div>
 
-							<div class="miembro-foto" ng-style="{ background: 'url({{ miembros[$index+0].foto }})' }"></div>
+						<div miembro="miembros[$index+1]" ng-class="darAncho($index)"></div>
 
-							<h4>{{ miembros[$index+0].nombre }}</h4>
-
-							<h5>{{ miembros[$index+0].rol }}</h5>
-
-						</div>
-
-						<div class="miembro-equipo" ng-class="darAncho($index-1)" ng-show="miembros[$index+1]">
-
-							<div class="miembro-foto" ng-style="{ background: 'url({{ miembros[$index+1].foto }})' }"></div>
-
-							<h4>{{ miembros[$index+1].nombre }}</h4>
-
-							<h5>{{ miembros[$index+1].rol }}</h5>
-
-						</div>
-
-						<div class="miembro-equipo" ng-class="darAncho($index-2)" ng-show="miembros[$index+2]">
-
-							<div class="miembro-foto" ng-style="{ background: 'url({{ miembros[$index+2].foto }})' }"></div>
-
-							<h4>{{ miembros[$index+2].nombre }}</h4>
-
-							<h5>{{ miembros[$index+2].rol }}</h5>
-
-						</div>
+						<div miembro="miembros[$index+2]" ng-class="darAncho($index)"></div>
 
 					</div>
 

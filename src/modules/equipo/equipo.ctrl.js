@@ -1,4 +1,4 @@
-angular.module('equipoModule', [])
+angular.module('equipoModule', ['miembroModule'])
 .controller('equipoCtrl', ['$scope', function($scope) {
 
 	$scope.miembros = [
