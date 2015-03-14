@@ -1,4 +1,3 @@
-
 <!--
 Template para crear una nueva estampa
 -->
@@ -8,7 +7,8 @@ Template para crear una nueva estampa
                 <td>
                     <img class="imagen" src="src/assets/img/estampa.jpg" alt="imagenestampa"/>
                 </td>
-                <td class="datos">
+
+                <td class="datos" ng-hide="artistaCtrl.subirImagenesNuevaEstampa">
                 <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && artistaCtrl.crearEstampa()">
                     <input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
                     <div class="form-group inputMediano">
@@ -41,12 +41,33 @@ Template para crear una nueva estampa
                         <input type="text" id="precio" name="precio" class="form-control" ng-model="datoActual.precio" required=""/>
                         <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.precio.$error.required"><p>Introduce un precio para la estampa</p></div>
                     </div>
+                    <div class="form-group inputPequeño">
+                        <label for="imagenes">Imagenes:</label>
+                        <input type="text" id="imagenes" name="imagenes" class="form-control" ng-model="datoActual.imagenes.length" required="" readonly=""/>
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.imagenes.$error.required"><p>Sube imagenes a tu estampa</p></div>
+                    </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-default">Crear</button>
-                    <button class="btn btn-default">Subir Imagenes</button>
+                    <button class="btn btn-default" ng-click="artistaCtrl.subirImagenesAEstampa()">Subir Imagenes</button>
                     <button class="btn btn-default" ng-click="artistaCtrl.cancelarCrearEstampa()">Cancelar</button>
                     </div>
                 </form>
                 </td>
+                
+                <td class="datos" ng-show="artistaCtrl.subirImagenesNuevaEstampa">
+                    <ul>
+                        <li ng-repeat="imagen in datoActual.imagenes">{{imagen}}</li>
+                    </ul>
+                    <div class="form-group inputMediano">
+                        <label for="url">URL</label>
+                        <input type="text" id="url" name="url" class="form-control" ng-model="datoActual.url" required=""/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" ng-click="artistaCtrl.subirImg()">Subir</button>
+                        <button class="btn btn-default" ng-click="artistaCtrl.finSubirImg()">Listo</button>
+                    </div>
+                </td>
+
             </tr>
-        </table>
+                
+</table>

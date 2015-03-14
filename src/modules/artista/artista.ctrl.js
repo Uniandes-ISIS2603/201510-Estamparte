@@ -13,6 +13,7 @@
                         this.crearEstampaTpl = false;
                         this.editarEstampa=false;
                         this.estampasPropias=false;
+                        this.subirImagenesNuevaEstampa=false;
                         //Datos a usar en $scope
                         $scope.datos=[];
                         //Sesion temporal de usuario (debera ser configurada en el login)
@@ -28,6 +29,8 @@
                             this.crearEstampaTpl=true;
                             this.editarEstampa=false;
                             this.estampasPropias=false;
+                            this.subirImagenesNuevaEstampa=false;
+                            $scope.datoActual.imagenes=[];
                         };
                         
                         //Crea una nueva estampa y almacena en memoria
@@ -36,13 +39,13 @@
                             //El usuario debe ser configurado en $rootScope!!!!
                             $scope.datoActual.idAutor = $rootScope.idUsuario;
                             $scope.datoActual.autor = $rootScope.usuario;
-                            $scope.datoActual.imagenes=[];
                             $scope.datoActual.siGusta=0;
                             $scope.datoActual.noGusta=0;
                             servicioEstampa.setEstampaCreada($scope.datoActual);
                             this.crearEstampaTpl=false;
                             this.editarEstampa=true;
                             this.estampasPropias=false;
+                            this.subirImagenesNuevaEstampa=false;
                         };
                         
                         //Cancela la operacion de creacion de estampa
@@ -50,6 +53,7 @@
                             this.crearEstampaTpl=false;
                             this.estampasPropias=false;
                             this.editarEstampa=false;
+                            this.subirImagenesNuevaEstampa=false;
                         };
                         
                         //Busca las estampas del artista en sesion
@@ -57,12 +61,27 @@
                             this.estampasPropias=true;
                             this.editarEstampa=false;
                             this.crearEstampaTpl=false;
+                            this.subirImagenesNuevaEstampa=false;
                             servicioEstampa.estampasDeArtista().then(function(data){
                                $scope.datos=data;
                             });
                         };
                         
+                        //Sube imagenes a una nueva estampa
+                        this.subirImagenesAEstampa=function(){
+                            this.subirImagenesNuevaEstampa=true;
+                            
+                        };
                         
+                        this.subirImg = function(){
+                            
+                            $scope.datoActual.imagenes.push($scope.datoActual.url);
+                            delete $scope.datoActual.url;
+                        };
+                        
+                        this.finSubirImg = function(){
+                            this.subirImagenesNuevaEstampa=false;
+                        };
 
 		}]);
     
