@@ -79,7 +79,7 @@ body {
 	margin-bottom: 90px;
 }
 
-.filaEstampas {
+.estampa {
 	margin-bottom: 100px;
 }
 
@@ -88,17 +88,15 @@ body {
 	background-position: center;
 	background-size: 225px;
 	margin: 0 auto;
-	width: 220px;
-	height: 220px;
-	border-radius: 170px;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
 }
 
 .nombre {
-	width: 260px;
-	margin-left: 60px;
-	padding: 10px 20px;
+	margin: 0 auto 10px auto;
+	width: 200px;
 	color: #888;
-	margin-bottom: 5px;
 }
 
 .nombre a {
@@ -113,14 +111,11 @@ body {
 }
 
 .nombre h4 {
-	margin-top: 14px;
-	margin-bottom: 5px;
 	text-align: left;
 }
 
 .nombre a {
-	margin-top: 7px;
-	text-align: right;
+	margin-top: 4px;
 	float: right;
 }
 
@@ -129,7 +124,7 @@ body {
 }
 
 .calificacion {
-	padding-top: 210px;
+	padding-top: 190px;
 }
 
 .calificacion button {
