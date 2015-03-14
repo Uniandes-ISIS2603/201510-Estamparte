@@ -11,7 +11,6 @@
                         
                         //Variables de visualizacion
                         this.crearEstampaTpl = false;
-                        this.editarEstampa=false;
                         this.estampasPropias=false;
                         this.subirImagenesNuevaEstampa=false;
                         //Datos a usar en $scope
@@ -27,7 +26,6 @@
                         this.popCrearEstampa= function(){
                             this.crearDato();
                             this.crearEstampaTpl=true;
-                            this.editarEstampa=false;
                             this.estampasPropias=false;
                             this.subirImagenesNuevaEstampa=false;
                             $scope.datoActual.imagenes=[];
@@ -35,31 +33,30 @@
                         
                         //Crea una nueva estampa y almacena en memoria
                         this.crearEstampa = function(){
-
-                            //El usuario debe ser configurado en $rootScope!!!!
-                            $scope.datoActual.idAutor = $rootScope.idUsuario;
-                            $scope.datoActual.autor = $rootScope.usuario;
-                            $scope.datoActual.siGusta=0;
-                            $scope.datoActual.noGusta=0;
-                            servicioEstampa.setEstampaCreada($scope.datoActual);
-                            this.crearEstampaTpl=false;
-                            this.editarEstampa=true;
-                            this.estampasPropias=false;
-                            this.subirImagenesNuevaEstampa=false;
+                                if($scope.datoActual.imagenes.length!==0){
+                                //El usuario debe ser configurado en $rootScope!!!!
+                                $scope.datoActual.idAutor = $rootScope.idUsuario;
+                                $scope.datoActual.autor = $rootScope.usuario;
+                                $scope.datoActual.siGusta=0;
+                                $scope.datoActual.noGusta=0;
+                                servicioEstampa.guardarDato($scope.datoActual);
+                                this.crearEstampaTpl=false;
+                                this.estampasPropias=false;
+                                this.subirImagenesNuevaEstampa=false;
+                                alert('Estampa '+$scope.datoActual.nombre+' guardada!');
+                            }
                         };
                         
                         //Cancela la operacion de creacion de estampa
                         this.cancelarCrearEstampa = function(){
                             this.crearEstampaTpl=false;
                             this.estampasPropias=false;
-                            this.editarEstampa=false;
                             this.subirImagenesNuevaEstampa=false;
                         };
                         
                         //Busca las estampas del artista en sesion
                         this.buscarEstampasPropias=function(){
                             this.estampasPropias=true;
-                            this.editarEstampa=false;
                             this.crearEstampaTpl=false;
                             this.subirImagenesNuevaEstampa=false;
                             servicioEstampa.estampasDeArtista().then(function(data){
