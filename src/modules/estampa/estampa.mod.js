@@ -13,11 +13,6 @@
                     urlsProvider.registerUrl(context);
             }]);
     
-        estampaModule.directive('estampa', function() {
-                return {
-                  templateUrl: 'src/modules/estampa/estampa.tpl.html'
-                };
-            });
             
         estampaModule.directive('estampad', function() {
                 return {

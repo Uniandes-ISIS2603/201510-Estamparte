@@ -23,7 +23,9 @@
                 siGusta: 381,
                 noGusta: 212,
                 precio: 100,
-                imagenes: []
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
             },
             {  
                 nombre: "El super fuego",
@@ -32,7 +34,9 @@
                 siGusta: 121,
                 noGusta: 1420,
                 precio: 100,
-                imagenes: []
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
             },
             {
                 nombre: "Agua mas agua",
@@ -41,8 +45,43 @@
                 siGusta: 3019,
                 noGusta: 1425,
                 precio: 100,
-                imagenes: []
-            }                    
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
+            },
+            {  
+                nombre: "Estampa de amor",
+                idAutor: 1,
+                autor: "crash",
+                siGusta: 1381,
+                noGusta: 712,
+                precio: 100,
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
+            },
+            {
+                nombre: "Agua mas amarillo",
+                idAutor: 2,
+                autor: "pedro mar",
+                siGusta: 656,
+                noGusta: 978,
+                precio: 100,
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
+            },
+            {  
+                nombre: "El super bombero",
+                idAutor: 1,
+                autor: "elma sato",
+                siGusta: 912,
+                noGusta: 1029,
+                precio: 100,
+                imagenes: [
+                    'src/assets/img/estampa.jpg'
+                ]
+            }
         ];
 
         for(var i=0;i<datos.length;i++){
@@ -104,8 +143,9 @@
         };
 
         $scope.darImagen = function(estampa) {
-            var imagen = estampa.imagenes[0] || 'src/assets/img/estampa.jpg';
-            $('.contenido').css('background-image', 'url("%s")'.replace('%s', imagen));
+            var foto = estampa.imagenes[0] || 'src/assets/img/estampa.jpg';
+            console.log(foto);
+            return foto;
         }
 
         this.actualizarInformacion = function(){
@@ -117,7 +157,15 @@
             this.consultarDatos();
         };
                         
-	}]);
+	}])
+    .directive('estampa', function () {
+        return {
+            scope: {
+                estampa: '=estampa'
+            },
+            templateUrl: 'src/modules/estampa/estampa.tpl.html'
+        }
+    });
 
 })();
 
