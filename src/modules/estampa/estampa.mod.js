@@ -18,4 +18,10 @@
             templateUrl: 'src/modules/estampa/estampaDetalle.tpl.html'
         };
     });
+    
+    estampaModule.directive('estampa', function () {
+        return {
+            templateUrl: 'src/modules/estampa/estampa.tpl.html'
+        };
+    });
 })();

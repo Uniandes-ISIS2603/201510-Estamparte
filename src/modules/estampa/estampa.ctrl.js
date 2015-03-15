@@ -152,15 +152,8 @@
             this.consultarDatos();
         };
                         
-	}])
-    .directive('estampa', function () {
-        return {
-            scope: {
-                estampa: '=estampa'
-            },
-            templateUrl: 'src/modules/estampa/estampa.tpl.html'
-        }
-    });
+	}]);
+    
 
 })();
 
