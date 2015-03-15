@@ -1,4 +1,5 @@
-angular.module('miembroModule', [])
+(function(){
+    angular.module('miembroModule', [])
 .controller('miembroCtrl', ['$scope', function($scope) {}])
 .directive('miembro', function () {
 	return {
@@ -8,3 +9,4 @@ angular.module('miembroModule', [])
 		templateUrl: 'src/modules/equipo/miembro/miembro.tpl.html',
 	};
 });
+})();

@@ -2,7 +2,7 @@
  * Modulo de artista
  */
 (function(){
-    var artistaModule = angular.module('artistaModule',['CrudModule','MockModule','estampaModule']);
+    var artistaModule = angular.module('artistaModule',['CrudModule','MockModule','estampaModule','angularFileUpload']);
     
     //Configura una constante de contexto para el funcionamiento del Mock
     

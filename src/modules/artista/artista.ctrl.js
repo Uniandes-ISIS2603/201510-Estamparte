@@ -5,7 +5,7 @@
     
    var app = angular.module('artistaModule');
 
-	app.controller('artistaCtrl', ['$scope', 'servicioArtista','servicioEstampa','$rootScope', function ($scope, servicioArtista,servicioEstampa,$rootScope) {
+	app.controller('artistaCtrl', ['$scope', '$upload','servicioEstampa','$rootScope','servicioArtista', function ($scope, $upload,servicioEstampa,$rootScope,servicioArtista) {
                         //Estension de servicios CRUD
 			servicioArtista.extendCtrl(this,$scope);
                         
@@ -78,6 +78,32 @@
                         
                         this.finSubirImg = function(){
                             this.subirImagenesNuevaEstampa=false;
+                        };
+                        
+                        /*`primera forma de subir imagenes
+                        $scope.$watch('files',function(){
+                            $scope.upload($scope.files);
+                        });
+                        
+                        $scope.upload=function(files){
+                            if(files && files.length){
+                                for(var i=0; i<files.length; i++){
+                                    var file = files[i];
+                                }
+                            }
+                        };
+                        */
+                       //Seguna forma
+                        $scope.imageUpload = function(element){
+                            var reader = new FileReader();
+                            reader.onload = $scope.imageIsLoaded;
+                            reader.readAsDataURL(element.files[0]);
+                        };
+
+                        $scope.imageIsLoaded = function(e){
+                            $scope.$apply(function() {
+                                $scope.datoActual.imagenes.push(e.target.result);
+                            });
                         };
 
 		}]);

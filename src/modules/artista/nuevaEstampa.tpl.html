@@ -5,7 +5,7 @@ Template para crear una nueva estampa
             <tr>
                 <!--Imagen de la estampa-->
                 <td>
-                    <img class="imagen" src="src/assets/img/estampa.jpg" alt="imagenestampa"/>
+                    <img class="imagen" ng-src="{{ datoActual.imagenes[0] ? datoActual.imagenes[0] : 'src/assets/img/estampa.jpg'}}" alt="imagenestampa"/>
                 </td>
 
                 <td class="datos" ng-hide="artistaCtrl.subirImagenesNuevaEstampa">
@@ -56,11 +56,12 @@ Template para crear una nueva estampa
                 
                 <td class="datos" ng-show="artistaCtrl.subirImagenesNuevaEstampa">
                     <ul>
-                        <li ng-repeat="imagen in datoActual.imagenes">{{imagen}}</li>
+                        <li ng-repeat="imagen in datoActual.imagenes">{{datoActual.imagenes.length}}</li>
                     </ul>
                     <div class="form-group inputMediano">
-                        <label for="url">URL</label>
-                        <input type="text" id="url" name="url" class="form-control" ng-model="datoActual.url" required=""/>
+                        <label for="img">Nueva Imagen</label>
+                        <!--<input type="text" id="url" name="url" class="form-control" ng-model="datoActual.url" required=""/>-->
+                        <input type='file' ng-model-instant   onchange="angular.element(this).scope().imageUpload(this)" />
                     </div>
                     <div class="form-group">
                         <button class="btn btn-default" ng-click="artistaCtrl.subirImg()">Subir</button>

@@ -1,4 +1,5 @@
-angular.module('equipoModule', ['miembroModule'])
+(function(){
+    angular.module('equipoModule', ['miembroModule'])
 .controller('equipoCtrl', ['$scope', function($scope) {
 
 	$scope.miembros = [
@@ -52,3 +53,4 @@ angular.module('equipoModule', ['miembroModule'])
 		templateUrl: 'src/modules/equipo/equipo.tpl.html'
 	};
 });
+})();

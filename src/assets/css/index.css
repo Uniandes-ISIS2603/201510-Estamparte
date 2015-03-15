@@ -203,8 +203,8 @@ td {
 
 .imagen{
     padding: 2% 2% 2% 2%;
-    width: 94%;
-    height: 94%;
+    max-width: 94%;
+    max-height: 94%;
 }
 
 .inputPequeño{
