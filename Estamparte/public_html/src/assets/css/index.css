@@ -1,0 +1,226 @@
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+.navbar {
+	font-weight: 300;
+	font-size: 1.12em;
+	border: none;
+}
+
+.navbar-default{
+	background: rgba(255, 255, 255, 0.86);
+	border-color: #EEE;
+}
+
+.usuario {
+	min-width: 200px;
+}
+
+.usuario .caret {
+	margin-top: 9px;
+	float: right;
+}
+
+.ok {
+	float: right;
+}
+
+.menu-usuario {
+	min-width: 200px;
+	border-radius: 0;
+}
+
+.tooltip {
+	min-width: 120px;
+}
+
+#inicio {
+	background: #F7F7F7;
+	color: #333333;
+	padding-top: 70px;
+	text-align: center;
+}
+
+#inicio h1 {
+	margin-top: 20%;
+}
+
+#carrito {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 50px;
+	padding-top: 20px;
+	background: rgba(255, 255, 255, 0.86);
+	height: 100%;
+	width: 320px;
+	z-index: 2000;
+	font-weight: 300;
+	border-left: 1px solid #EEE;
+}
+
+#estampas {
+	color: #353535;
+	padding-top: 70px;
+	padding-bottom: 30px;
+}
+
+#busqueda {
+	margin-top: 22px;
+}
+
+#busqueda input, #busqueda button, #busqueda-avanzada {
+	border-radius: 0;
+}
+
+#tituloEstampas {
+	margin-bottom: 90px;
+}
+
+.estampa {
+	margin-bottom: 150px;
+}
+
+.contenido {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 225px;
+	margin: 0 auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+}
+
+.nombre {
+	margin: 0 auto 10px auto;
+	width: 200px;
+	color: #888;
+}
+
+.nombre a {
+	border: none;
+	color: #AAA;
+	border-radius: 0;
+	background-color: #EEE;
+}
+
+.nombre a:hover {
+	color: #777;
+}
+
+.nombre h4 {
+	text-align: left;
+}
+
+.nombre a {
+	margin-top: 4px;
+	float: right;
+}
+
+.nombre h4, .nombre a {
+	display: inline-block;
+}
+
+.calificacion {
+	padding-top: 190px;
+}
+
+.calificacion button {
+	border: none;
+	background: #EEE;
+	color: #999;
+	border-radius: 0;
+}
+
+.calificacion button:hover {
+	color: #777;
+}
+
+#siGusta {
+	float: left;
+}
+
+#noGusta {
+	float: right;
+}
+
+#equipo {
+	padding-top: 110px;
+	background: #F7F7F7;
+	padding-bottom: 80px;
+}
+
+#tituloEquipo {
+	margin-bottom: 90px;
+}
+
+.miembro-equipo {
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: #888;
+	margin-bottom: 120px;
+	text-align: center;
+}
+
+.miembro-foto {
+	margin: 0 auto;
+	border-radius: 100px;
+	height: 150px;
+	width: 150px;
+}
+
+#footer {
+	text-align: center;
+	background: #FFF;
+	color: #353535;
+	margin-top: 70px;
+	padding-top: 130px;
+	padding-bottom: 130px;
+}
+
+#footer h4 {
+	margin-top: 3%;
+}
+
+#temp {
+	padding-top: 70px;
+}
+
+
+.tabla{
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+td {
+    border: 1px solid gray;
+    width: 50%;
+}
+
+.imagen{
+    padding: 2% 2% 2% 2%;
+    width: 94%;
+    height: 94%;
+}
+
+.inputPequeño{
+    width: 50%;
+}
+
+.inline{
+    float: left;
+    margin-left: 10%;
+}
+
+.inputMediano{
+    width:70%;
+}
+.datos{
+   padding-left: 5%;
+   width: 30%; 
+}
+

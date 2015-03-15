@@ -1,0 +1,146 @@
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="navbarCtrl">
+
+	<div class="container-fluid">
+
+		<!-- 
+		Header de la barra con informacion de titulo siendo un
+		enlace con su respectivo logo, y una declaracion de un
+		boton para una mejor navegacion en movil (responsive).
+		-->
+		<div class="navbar-header">
+
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<a class="navbar-brand" href="javascript: void(0)">
+				<span class="glyphicon glyphicon-leaf"></span>
+				Estamparte
+			</a>
+
+		</div>
+
+		<!--
+		Aca se declaran el resto de botones que iran en la barra
+		para acceder a las distintas opciones, se realizaran dos
+		perfiles, comprador y artista por lo que los botones que
+		tendra seran distintos, habra un modo para cambiarse de
+		perfil pero este debe ser eliminado en la version final.
+		-->
+		<div class="collapse navbar-collapse" id="navbar">
+
+			<!--
+			Esta parte hace referencia a los botones que le
+			pertenecen a la parte izquierda de la barra.
+			Aca se incluyen opciones de navegacion basica
+			sobre la pagina como ir al inicio, a la busqueda
+			de estampas, entre otros.
+			-->
+			<ul id="navegacion" class="nav navbar-nav">
+
+				<li ng-class="(darSelActual() === 'inicio') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('inicio')">Inicio</a>
+				</li>
+
+				<li ng-class="(darSelActual() === 'estampas') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('estampas')">Estampas</a>
+				</li>
+
+				<li ng-class="(darSelActual() === 'factura') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('factura')">Factura</a>
+				</li>
+
+                <li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
+                	<a href="javascript: void(0)" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
+                </li>
+
+                <li ng-class="(darSelActual() === 'equipo') ? 'active' : ''">
+                	<a href="javascript: void(0)" ng-click="cambiarSelActual('equipo')">Equipo</a>
+                </li>
+
+			</ul>
+
+			<!--
+			Esta parte hace referencia a los botones que le
+			pertenecen a la parte derecha de la barra.
+			Aca incluimos opciones como el manejo de la
+			cuenta de usuario y temporalmente el cambio de
+			usuario entre artista y comrpador para acceder
+			a las distintas opciones.
+			-->
+			<ul class="nav navbar-nav navbar-right">
+
+				<!-- Opciones para el artista -->
+				<li ng-show="usuario.tipo === 'artista'">
+					<a href="#/artista" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</li>
+
+				<!-- Opciones para el comprador -->
+				<li ng-show="usuario.tipo === 'comprador'">
+					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Carrito de compras" ng-click="verCarrito()">
+						<span class="glyphicon glyphicon-shopping-cart"></span>
+					</a>
+				</li>
+
+				<!--
+				Manejo de la cuenta actual.
+				Temporalmente cambio entre tipos de usuario.
+				-->
+				<li class="dropdown usuario">
+
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="glyphicon glyphicon-user"></span>
+						{{ usuario.nombre }}
+						<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu menu-usuario">
+
+						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('artista')">
+							Cambiar a artista
+							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'artista'"></span>
+						</a></li>
+
+						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('comprador')">
+							Cambiar a comprador
+							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'comprador'"></span>
+						</a></li>
+
+						<li class="divider"></li>
+
+						<!-- Opctiones para el comprador -->
+						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)">
+							Administrar compras
+						</a></li>
+
+						<!-- Opciones para el artista -->
+						<li ng-show="usuario.tipo === 'artista'"><a href="javascript: void(0)">
+							Administrar estampas
+						</a></li>
+
+						<li class="divider"></li>
+
+						<li><a href="javascript: void(0)" ng-click="cerrarSesion()">Cerrar sesion</a></li>
+
+					</ul>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+</div>
+
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
