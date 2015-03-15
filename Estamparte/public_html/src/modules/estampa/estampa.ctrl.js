@@ -47,7 +47,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             },
             {  
                 nombre: "Estampa de amor",
@@ -58,7 +59,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             },
             {
                 nombre: "Agua mas amarillo",
@@ -69,7 +71,8 @@
                 precio: 100,
                 imagenes: [
                     'src/assets/img/estampa.jpg'
-                ]
+                ],
+                tema: 'TemaA'
             },
             {  
                 nombre: "El super bombero",
