@@ -34,7 +34,7 @@
 <!--
 Template de detalle de una estampa
 -->
-<div ng-hide="estampa && !estampaCtrl.detalle">
+<div class="estampaDetalle" ng-hide="estampa && !estampaCtrl.detalle">
     <table class="tabla">
             <tr>
                 <!--Imagen de la estampa-->
@@ -43,7 +43,7 @@ Template de detalle de una estampa
                 </td>
 
                 <td class="datos" ng-hide="estampaCtrl.informacion">
-                <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && artistaCtrl.crearEstampa()">
+                <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && estampaCtrl.actualizarInformacion()">
                     <input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
                     <div class="form-group inputMediano">
                         <label for="nombre">Nombre: </label>
@@ -82,8 +82,8 @@ Template de detalle de una estampa
                     </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-default">Crear</button>
-                    <button class="btn btn-default" ng-click="artistaCtrl.subirImagenesAEstampa()">Subir Imagenes</button>
-                    <button class="btn btn-default" ng-click="artistaCtrl.cancelarCrearEstampa()">Cancelar</button>
+                    <button type="button" class="btn btn-default" ng-click="estampaCtrl.subirImagenesAEstampa()">Subir Imagenes</button>
+                    <button type="button" class="btn btn-default" ng-click="estampaCtrl.cancelarCrearEstampa()">Cancelar</button>
                     </div>
                 </form>
                 </td>
