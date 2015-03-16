@@ -8,9 +8,9 @@
 	app.controller('estampaCtrl', ['$scope', 'servicioEstampa', '$location','$rootScope', function ($scope, servicioEstampa, $location,$rootScope) {
 			
     	servicioEstampa.extendCtrl(this, $scope);
-        $rootScope.estampasSeleccionadas = [];
-        this.mostrarPop = false;
-        this.editarEstampa=false;
+
+        //Variables de visualizacion
+        this.detalle=false;
         this.informacion=true;
         
         datos = [
@@ -93,12 +93,17 @@
             this.guardarDato();
         }
     
+        this.mostrarDetalle=function(estampaSeleccionada){
+            this.detalle=!this.detalle;
+            this.editarEstampa=false;
+            this.informacion=true;
+            $scope.datoActual=estampaSeleccionada;
+        };
      
         this.eliminarEstampa = function(){
             //Pre: se tiene en $scope.datoActual la estampa a eliminar
             //Pos: se elimina la estampa y se notifica al usuario                          
             this.eliminarDato($scope.datoActual);
-            this.mostrarPop=true;
           
         };
         
@@ -118,17 +123,14 @@
         this.agregarEstampaACamiseta = function(estampa){
             //Pre: Se tiene la estampa en datoActual
             //Pos: al arreglo de datos se adiciona la estampa
-            estampa.seleccionada=true;
+
             servicioEstampa.addEstampaSeleccionada(estampa);
             
         };
         
-        this.cambiarPop = function(){
-            this.mostrarPop=!this.mostrarPop;
-        };
         
         this.editarEstampaSeleccionada=function(){
-            this.editarEstampa=true;
+            this.informacion=false;
             $scope.datoActual=servicioEstampa.estampaSeleccionada;
         };
         
@@ -137,7 +139,7 @@
         };
         
         this.esDeArtista=function(){
-            //TODO
+            return $scope.datoActual.idAutor === $rootScope.idUsuario;
         };
         
         this.subirImg=function(){
