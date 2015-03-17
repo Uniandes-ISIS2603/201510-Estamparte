@@ -8,7 +8,7 @@
             datos = [
             {  
                 tipo: "Visa",
-                numeroTarjeta: 123456789
+                numeroTarjeta: 123456789,
                 fechaVencimiento: ("October 13, 2014 11:13:00"),
                 siGusta: 381,
                 noGusta: 212,
@@ -17,7 +17,7 @@
                     'src/assets/img/estampa.jpg'
                 ],
                 tema: 'TemaA'
-            }
+            }];
             
         }]);
     
