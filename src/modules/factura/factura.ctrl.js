@@ -11,8 +11,8 @@
 	app.controller('facturaCtrl', ['$scope','servicioFactura', 'servicioFormaPago', 'servicioCarrito'
             , function ($scope, servicioFactura, servicioFormaPago, servicioCarrito) {	servicioFactura.extendCtrl(this,$scope);
 	                this.editMode = false;
-                        //this.camisetas = servicioCarrito.darCamisetas;
-                        //this.formaPago = servicioFormaPago.darFormaPago();
+                        this.camisetas = servicioCarrito.darCarritoActual();
+                        this.formaPago = servicioFormaPago.darFormaPagoActual();
                         
                         this.editar = function(dato){
                             this.editMode = true;

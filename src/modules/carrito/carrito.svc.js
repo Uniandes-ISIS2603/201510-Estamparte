@@ -8,7 +8,7 @@
     this.darCarritoActual = function () {
 
         var respuesta = '';
-        var dat = $scope.datos;
+        var data = $scope.datos;
         for (var i = 0; i < data.length; i++) {
             respuesta = respuesta +  'Camiseta ' + i+1 + data[i].nombre + '\n ';
         }
