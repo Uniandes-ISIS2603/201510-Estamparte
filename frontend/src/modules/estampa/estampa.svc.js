@@ -27,6 +27,11 @@
             this.estampasDeArtista=function(){
                 return this.api.customGET('estampasDe');
             };
+            
+            //Retorna las estampas seleccionadas
+            this.darEstampasSeleccionadas = function(){
+                return this.estampasSeleccionadas;
+            };
 
     }]);
 })();
