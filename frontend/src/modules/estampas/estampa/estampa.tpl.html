@@ -1,0 +1,29 @@
+<div class="estampa" ng-show="estampa">
+
+	<div class="nombre">
+
+		<h4>{{ estampa.nombre }}</h4>
+
+		<a class="btn btn-default" title="Agregar a camiseta" ng-click="estampaCtrl.agregarEstampaACamiseta(estampa)">
+			<span class="glyphicon glyphicon-plus"></span>
+		</a>
+
+	</div>
+
+	<div class="contenido" ng-style="{ background: 'url({{ estampa.imagenes[0] }})' }" ng-click="estampaCtrl.mostrarDetalle(estampa)">
+
+		<div class="calificacion">
+
+			<button id="siGusta" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="megusta">
+				<span class="glyphicon glyphicon-thumbs-down"></span>
+			</button>
+
+			<button id="noGusta" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="nomegusta">
+				<span class="glyphicon glyphicon-thumbs-up"></span>      
+			</button>
+
+		</div>
+
+	</div>
+
+</div>

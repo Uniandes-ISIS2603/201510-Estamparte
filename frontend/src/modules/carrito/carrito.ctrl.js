@@ -1,5 +1,7 @@
 angular.module('carritoModule')
-.controller('carritoCtrl', ['$scope', 'servicioCarrito', 'servicioCamiseta', '$rootscope', function ($scope, servicioCarrito, servicioCamiseta, $rootscope) {
+.controller('carritoCtrl', ['$scope', 'servicioCarrito', 'servicioCamiseta', function ($scope, servicioCarrito, servicioCamiseta) {
+	
+	// Extension de los servicion del CRUD
 	servicioCarrito.extendCtrl(this,$scope);                        
 				
 	this.crearCamiseta = function () {

@@ -1,5 +1,5 @@
 angular.module('camisetaModule')
-.service('servicioCamiseta', ['CRUDUtils', 'camiseta.context', function (CRUDUtils,context) {
+.service('servicioCamiseta', ['CRUDUtils', 'camiseta.context', function (CRUDUtils, context) {
 
 	// Extension de los servicios del CRUD.
 

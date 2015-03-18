@@ -1,6 +1,7 @@
-angular.module('estampasModule', [])
-.controller('estampasCtrl', ['$scope', function($scope) {
-	$scope.datos = [
+angular.module('estampasModule')
+.controller('estampasCtrl', ['$scope', function ($scope) {
+
+	$scope.estampas = [
         {  
             nombre: "Estampa de flor",
             idAutor: 1,
@@ -91,19 +92,18 @@ angular.module('estampasModule', [])
         }
     ];
 
-    $scope.darAncho = function (length) {
-            var ans = ''
-            if ($scope.datos.length - length >= 3)
-                ans = 'col-md-4';
-            else if ($scope.datos.length - length == 2)
-                ans = 'col-md-6';
-            else
-                ans = 'col-md-12';
-            return ans;
-        };
-}])
-.directive('estampas', function() {
-	return {
-		templateUrl: 'src/modules/estampas/estampas.tpl.html'
-	};
-});
+    $scope.darAnchoEstampa = function (index) {
+        var ans = '';
+
+        if ($scope.estampas.length - index >= 3) {
+            ans = 'col-md-4';
+        } else if ($scope.estampas.length - index == 2) {
+            ans = 'col-md-6';
+        } else {
+            ans = 'col-md-12';
+        }
+
+        return ans;
+    };
+
+}]);
