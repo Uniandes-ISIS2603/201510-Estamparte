@@ -8,4 +8,11 @@ import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 
 public class CamisetaDTO {
     
+    private double costo;
+    
+    public double getCosto()
+    {
+        return costo;
+    }
+    
 }
