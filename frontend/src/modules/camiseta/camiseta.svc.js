@@ -9,6 +9,19 @@
     moduloCamiseta.service('servicioCamiseta',['CRUDUtils','camiseta.context',function(CRUDUtils,context){
             this.url = context;
             CRUDUtils.extendService(this);
+            
+            this.camisetas = [];
+            
+            this.darCamisetas = function(){
+                return camisetas;
+            };
+            
+            this.agregarCamiseta = function(camiseta)
+            {
+               camisetas.push(camiseta);
+            };
+     
+            
     }]);
 })();
 
