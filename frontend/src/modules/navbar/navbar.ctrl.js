@@ -1,5 +1,9 @@
-angular.module('navbarModule', [])
-.controller('navbarCtrl', ['$scope', function($scope) {
+angular.module('navbarModule')
+.controller('navbarCtrl', ['$scope', function ($scope) {
+
+	// Adicion de tooltip Bootstrap
+
+	angular.element('[data-toggle="tooltip"]').tooltip();
 
 	// Configuracion usada para el usuario actual.
 
@@ -47,9 +51,5 @@ angular.module('navbarModule', [])
 	$scope.verCarrito = function () {
 		$('#carrito').animate({width: 'toggle'});
 	}
-}])
-.directive('navbar', function() {
-	return {
-		templateUrl: 'src/modules/navbar/navbar.tpl.html'
-	};
-});
+
+}]);

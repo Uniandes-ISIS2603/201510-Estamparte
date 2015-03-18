@@ -1,15 +1,7 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+angular.module('compradorModule')
+.controller('compradorCtrl', ['$scope', 'servicioComprador', function ($scope, servicioComprador) {
 
-(function () {
-	var app = angular.module('compradorModule');
+	// Extension de los servicion del CRUD
+	servicioComprador.extendCtrl(this, $scope);
 
-	app.controller('compradorCtrl', ['$scope', 'servicioComprador', function ($scope,servicioComprador) {
-			servicioComprador.extendCtrl(this, $scope);
-		}]);
-                    
-            
-})();
+}]);

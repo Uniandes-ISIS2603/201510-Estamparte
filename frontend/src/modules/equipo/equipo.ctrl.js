@@ -1,6 +1,5 @@
-(function(){
-    angular.module('equipoModule', ['miembroModule'])
-.controller('equipoCtrl', ['$scope', function($scope) {
+angular.module('equipoModule')
+.controller('equipoCtrl', ['$scope', function ($scope) {
 
 	$scope.miembros = [
 		{
@@ -37,20 +36,17 @@
 	};
 
 	$scope.darAncho = function (length) {
-		var ans = ''
-		if ($scope.miembros.length - length >= 3)
+		var ans = '';
+
+		if ($scope.miembros.length - length >= 3) {
 			ans = 'col-md-4';
-		else if ($scope.miembros.length - length == 2)
+		} else if ($scope.miembros.length - length == 2) {
 			ans = 'col-md-6';
-		else
+		} else {
 			ans = 'col-md-12';
+		}
+
 		return ans;
 	};
 
-}])
-.directive('equipo', function() {
-	return {
-		templateUrl: 'src/modules/equipo/equipo.tpl.html'
-	};
-});
-})();
+}]);

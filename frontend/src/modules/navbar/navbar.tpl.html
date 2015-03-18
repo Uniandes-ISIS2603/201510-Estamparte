@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top" ng-controller="navbarCtrl">
+<div class="navbar navbar-default navbar-fixed-top">
 
 	<div class="container-fluid">
 
@@ -7,6 +7,7 @@
 		enlace con su respectivo logo, y una declaracion de un
 		boton para una mejor navegacion en movil (responsive).
 		-->
+
 		<div class="navbar-header">
 
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -30,6 +31,7 @@
 		tendra seran distintos, habra un modo para cambiarse de
 		perfil pero este debe ser eliminado en la version final.
 		-->
+
 		<div class="collapse navbar-collapse" id="navbar">
 
 			<!--
@@ -39,6 +41,7 @@
 			sobre la pagina como ir al inicio, a la busqueda
 			de estampas, entre otros.
 			-->
+
 			<ul id="navegacion" class="nav navbar-nav">
 
 				<li ng-class="(darSelActual() === 'inicio') ? 'active' : ''">
@@ -53,13 +56,13 @@
 					<a href="javascript: void(0)" ng-click="cambiarSelActual('factura')">Factura</a>
 				</li>
 
-                <li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
-                	<a href="javascript: void(0)" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
-                </li>
+				<li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
+				</li>
 
-                <li ng-class="(darSelActual() === 'equipo') ? 'active' : ''">
-                	<a href="javascript: void(0)" ng-click="cambiarSelActual('equipo')">Equipo</a>
-                </li>
+				<li ng-class="(darSelActual() === 'equipo') ? 'active' : ''">
+					<a href="javascript: void(0)" ng-click="cambiarSelActual('equipo')">Equipo</a>
+				</li>
 
 			</ul>
 
@@ -71,6 +74,7 @@
 			usuario entre artista y comrpador para acceder
 			a las distintas opciones.
 			-->
+
 			<ul class="nav navbar-nav navbar-right">
 
 				<!-- Opciones para el artista -->
@@ -91,6 +95,7 @@
 				Manejo de la cuenta actual.
 				Temporalmente cambio entre tipos de usuario.
 				-->
+				
 				<li class="dropdown usuario">
 
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -115,7 +120,7 @@
 
 						<!-- Opctiones para el comprador -->
 						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)">
-							Administrar compras
+							Administrar pagos
 						</a></li>
 
 						<!-- Opciones para el artista -->
@@ -138,9 +143,3 @@
 	</div>
 
 </div>
-
-<script>
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
-</script>

@@ -12,10 +12,6 @@
 
 	<div class="contenido" ng-style="{ background: 'url({{ estampa.imagenes[0] }})' }" ng-click="estampaCtrl.mostrarDetalle(estampa)">
 
-		<!--<a class="btn btn-default" ng-click="estampaCtrl.eliminarDato(estampa)">
-			<span class="glyphicon glyphicon-remove"></span>
-		</a>-->
-
 		<div class="calificacion">
 
 			<button id="siGusta" class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(1)" data-toggle="tooltip" data-placement="top" title="{{ estampa.siGusta }}">
@@ -34,10 +30,10 @@
 <!--
 Template de detalle de una estampa
 -->
-<div class="estampaDetalle" ng-hide="estampa && !estampaCtrl.detalle">
+<!-- <div class="estampaDetalle" ng-hide="estampa && estampaCtrl.detalle">
     <table class="tabla">
             <tr>
-                <!--Imagen de la estampa-->
+                
                 <td>
                     <img class="imagen" ng-src="{{ datoActual.imagenes ? datoActual.imagenes[datoActual.imagenes.length-1] : 'src/assets/img/estampa.jpg'}}" alt="imagenestampa" ng-click="estampaCtrl.mostrarDetalle({})"/>
                 </td>
@@ -105,10 +101,4 @@ Template de detalle de una estampa
             </tr>
                 
 </table>
-</div>
-
-<script>
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
-</script>
+</div> -->

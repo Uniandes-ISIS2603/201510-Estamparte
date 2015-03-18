@@ -1,28 +1,26 @@
-<!--
-Template de Artista
--->
+<!-- Template de Artista -->
 
 <div ng-controller="artistaCtrl as artistaCtrl">
-    <div class="container-fluid">
-    <button class="btn btn-default"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
-    <button class="btn btn-default"  ng-click="artistaCtrl.buscarEstampasPropias()">Mis Estampas</button>
-    </div>
-    
-    <!--Visualizacion de estampas propias-->
-    <div ng-show="artistaCtrl.estampasPropias">
-        <div class="row filaEstampas" ng-controller="estampaCtrl as estampaCtrl">
-            <div class="col-md-3" ng-repeat="estampa in datos">
-                <div estampa></div>
-            </div>
-        </div>
-    </div>
+	<div class="container-fluid">
+	<button class="btn btn-default"  ng-click="artistaCtrl.popCrearEstampa()">Crear Estampa</button>
+	<button class="btn btn-default"  ng-click="artistaCtrl.buscarEstampasPropias()">Mis Estampas</button>
+	</div>
+	
+	<!--Visualizacion de estampas propias-->
+	<div ng-show="artistaCtrl.estampasPropias">
+		<div class="row filaEstampas" ng-controller="estampaCtrl as estampaCtrl">
+			<div class="col-md-3" ng-repeat="estampa in datos">
+				<div estampa></div>
+			</div>
+		</div>
+	</div>
 
-    
-    <!--Creacion de una nueva estampa-->
-    
-    <div ng-show = "artistaCtrl.crearEstampaTpl">
-        <div id="header">
-            <nav class="navbar navbar-default" role="navigation">
+	
+	<!--Creacion de una nueva estampa-->
+	
+	<div ng-show = "artistaCtrl.crearEstampaTpl">
+		<div id="header">
+			<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -32,13 +30,13 @@ Template de Artista
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-                                    <h2><b>Crea una Estampa</b></h2>
+					<h2><b>Crea una Estampa</b></h2>
 				</div>
 			</div>
 		</nav>
-        </div>
-        <div nuevae></div>
-    </div>
+		</div>
+		<div nuevae></div>
+	</div>
 
 </div>
 
