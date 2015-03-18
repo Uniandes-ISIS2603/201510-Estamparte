@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 (function () {
-    var moduloCamiseta = angular.module('moduloCamiseta', ['CrudModule', 'MockModule','carritoModule']);
+    var moduloCamiseta = angular.module('moduloCamiseta', ['CrudModule', 'MockModule','carritoModule','estampaModule']);
 
     moduloCamiseta.constant('camiseta.context', 'camisetas');
 

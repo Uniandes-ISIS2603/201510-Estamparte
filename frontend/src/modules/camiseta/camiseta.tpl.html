@@ -83,28 +83,11 @@ and open the template in the editor.
                                 <th class="">Acciones</th>
                             </tr>
 
-                            <tr>
-                                <td class="">Estampa 1</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.agregarEstampa(1)" ng-hide ="camisetaCtrl.contiene(1)"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.eliminarEstampa(1)" ng-show="camisetaCtrl.contiene(1)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+                            <tr ng-repeat ="estampa in camisetaCtrl.estampasSeleccionadas">
+                                <td class="">
+                                    
+                                    <img ng-src="estampa.imagenes[0]" >
                                 </td>
-                            </tr>
-
-                            <tr>
-                                <td class="">Estampa 2</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.agregarEstampa(2)" ng-hide ="camisetaCtrl.contiene(2)"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.eliminarEstampa(2)"  ng-show ="camisetaCtrl.contiene(2)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="">Estampa 3</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.agregarEstampa(3)" ng-hide ="camisetaCtrl.contiene(3)"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
-                                    <button class="btn btn-default btn-sm" ng-click="camisetaCtrl.eliminarEstampa(3)"  ng-show ="camisetaCtrl.contiene(3)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     </th>

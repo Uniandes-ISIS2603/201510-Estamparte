@@ -6,7 +6,7 @@
 (function () {
     var app = angular.module('moduloCamiseta');
     
-    app.controller('camisetaCtrl', ['$scope', 'servicioCamiseta', function ($scope, servicioCamiseta) {
+    app.controller('camisetaCtrl', ['$scope', 'servicioCamiseta','servicioEstampa', function ($scope, servicioCamiseta, servicioEstampa) {
             servicioCamiseta.extendCtrl(this, $scope);
             $scope.datoActual.estampasUsadas = [];
             $scope.datoActual.idCamiseta;
@@ -38,7 +38,10 @@
                 }
             };
 
-
+            this.estampasSeleccionadas = function()
+             {
+                 return servicioEstampa.darEstampasSeleccionadas();
+             }
             function randomString(length) {
                 var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
 
