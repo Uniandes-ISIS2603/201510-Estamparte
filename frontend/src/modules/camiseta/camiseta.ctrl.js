@@ -8,13 +8,13 @@
     
     app.controller('camisetaCtrl', ['$scope', 'servicioCamiseta','servicioEstampa', function ($scope, servicioCamiseta, servicioEstampa) {
             servicioCamiseta.extendCtrl(this, $scope);
-            $scope.datoActual.estampasUsadas = [];
-            $scope.datoActual.idCamiseta;
-            $scope.datoActual.nombreCamiseta;
+            $scope.datoActual.camiseta.estampasUsadas = [];
+            $scope.datoActual.camiseta.idCamiseta;
+            $scope.datoActual.camiseta.nombreCamiseta;
 
             this.contiene = function (id)
             {
-                for (var i = 0; i < $scope.datoActual.estampasUsadas.length; i++)
+                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
                 {
                     if ($scope.datoActual.estampasUsadas[i] === id)
                         return true;
@@ -23,16 +23,16 @@
             };
             this.agregarEstampa = function (id)
             {
-                $scope.datoActual.estampasUsadas.push(id);
+                $scope.datoActual.camiseta.estampasUsadas.push(id);
             };
             this.eliminarEstampa = function (id)
             {
 
-                for (var i = 0; i < $scope.datoActual.estampasUsadas.length; i++)
+                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
                 {
                     if ($scope.datoActual.estampasUsadas[i] === id)
                     {
-                        $scope.datoActual.estampasUsadas.splice(i, 1);
+                        $scope.datoActual.camiseta.estampasUsadas.splice(i, 1);
                         break;
                     }
                 }
@@ -57,12 +57,15 @@
             }
             
             this.continuar = function () {
-                $scope.datoActual.idCamiseta = "C"+ randomString(10);
+                $scope.datoActual.camiseta.idCamiseta = "C"+ randomString(10);
                 var msj = "";
-                for (var i = 0; i < $scope.datoActual.estampasUsadas.length; i++)
+                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
                     if ($scope.datoActual.estampasUsadas[i])
-                        msj += (i + 1) + ")" + $scope.datoActual.estampasUsadas[i].valueOf() + "\n\t";
-                alert("\tDETALLES:\n\tNombre:\t"+$scope.datoActual.nombreCamiseta+"\n\tID:\t"+$scope.datoActual.idCamiseta+"\n\tEstilo:\t" + $scope.datoActual.selected.estilo + "\n\tTalla:\t" + $scope.datoActual.selected.talla + "\n\tColor:\t" + $scope.datoActual.selected.color
+                        msj += (i + 1) + ")" + $scope.datoActual.camiseta.estampasUsadas[i].valueOf() + "\n\t";
+                
+                
+                servicioCamiseta.agregarCamiseta($scope.datoActual.camiseta);
+                alert("\tDETALLES:\n\tNombre:\t"+$scope.datoActual.nombreCamiseta+"\n\tID:\t"+$scope.datoActual.idCamiseta+"\n\tEstilo:\t" + $scope.datoActual.camiseta.selected.estilo + "\n\tTalla:\t" + $scope.datoActual.camiseta.selected.talla + "\n\tColor:\t" + $scope.datoActual.camiseta.selected.color
                         + "\n\tESTAMPAS USADAS:\n\t" + msj);
             };
         }]);

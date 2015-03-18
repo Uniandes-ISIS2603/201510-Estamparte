@@ -27,7 +27,7 @@ and open the template in the editor.
                                                 <th class="">
                                         <div class="form-group">
                                             <label for="Estilo" class="">Estilo</label>
-                                            <select class="form-control" ng-model="datoActual.selected.estilo">
+                                            <select class="form-control" ng-model="datoActual.camiseta.estilo">
                                                 <option class="">Estilo 1</option>
                                                 <option class="">Estilo 2</option>
                                                 <option class="">Estilo 3</option>
@@ -37,7 +37,7 @@ and open the template in the editor.
                                         <th class="">
                                         <div class="form-group">
                                             <label for="Talla" class="">Talla</label>
-                                            <select class="form-control" ng-model="datoActual.selected.talla">
+                                            <select class="form-control" ng-model="datoActual.camiseta.talla">
                                                 <option class="">Talla 1</option>
                                                 <option class="">Talla 2</option>
                                                 <option class="">Talla 3</option>
@@ -47,7 +47,7 @@ and open the template in the editor.
                                         <th class="">
                                         <div class="form-group">
                                             <label for="Color" class="">Color</label>
-                                            <select class="form-control" ng-model="datoActual.selected.color">
+                                            <select class="form-control" ng-model="datoActual.camiseta.color">
                                                 <option class="">Color 1</option>
                                                 <option class="">Color 2</option>
                                                 <option class="">Color 3</option>
@@ -62,8 +62,8 @@ and open the template in the editor.
                             <td class="">
                                 <div class="form-group">
                                     <h3>Nombra tu camiseta</h3>
-                                    <input ng-model ="datoActual.nombreCamiseta"> 
-                                    <h3 class="">Total: $ {{datoActual.total}} </h3>
+                                    <input ng-model ="datoActual.camiseta.nombreCamiseta"> 
+                                    <h3 class="">Total: $ {{datoActual.camiseta.total}} </h3>
                                     
                                         <button class="btn btn-default navbar-btn" ng-click="camisetaCtrl.continuar()"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
                                    
