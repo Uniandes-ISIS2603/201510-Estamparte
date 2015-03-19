@@ -10,9 +10,9 @@ import co.edu.uniandes.estamparte.factura.logic.dto.FacturaPageDTO;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
 
-import java.util.ArrayList;
+import java.util.*;
 import javax.persistence.EntityManager;
-
+import javax.persistence.Query;
 
 public class FacturaLogic implements IFacturaLogic{
 
@@ -27,28 +27,28 @@ public class FacturaLogic implements IFacturaLogic{
     }
 
     @Override
-    public FacturaPageDTO getFacturas(Integer numPagina, Integer maxRecords) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<FacturaDTO> getFacturas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<FacturaDTO> getFacturas() {
+        
+        Query q = entityManager.createQuery("select u from FacturaEntity u");
+        return FacturaConverter.entity2PersistenceDTOList(q.getResultList());
     }
 
     @Override
     public FacturaDTO getFactura(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return FacturaConverter.entity2PersistenceDTO(entityManager.find(FacturaEntity.class, id));
     }
 
     @Override
     public FacturaDTO deleteFactura(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        FacturaEntity entity = entityManager.find(FacturaEntity.class, id);
+        entityManager.remove(entity);    
+        return FacturaConverter.entity2PersistenceDTO(entity);
     }
 
     @Override
     public void updateFactura(FacturaDTO detalles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        FacturaEntity entity = entityManager.merge(FacturaConverter.persistenceDTO2Entity(detalles));
+        FacturaConverter.entity2PersistenceDTO(entity);
     }
     
 }
