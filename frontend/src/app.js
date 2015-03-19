@@ -1,14 +1,15 @@
 angular.module('mainApp', [
-    'ngRoute',
-    'facturaModule',
-    'compradorModule',
-    'artistaModule',
+    // 'ngRoute',
+    // 'facturaModule',
+    // 'compradorModule',
+    // 'artistaModule',
+    // 'carritoModule',
+    // 'formaPagoModule',
     'navbarModule',
-    'carritoModule',
-    'formaPagoModule',
-    'camisetaModule',
-    'footerModule',
     'inicioModule',
+    'equipoModule',
+    'footerModule',
     'estampasModule',
-    'equipoModule'
+    'misestampasModule',
+    'camisetaModule'
 ]);
