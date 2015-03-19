@@ -49,7 +49,7 @@ public class FormaPagoDTO {
         return codigoSeguridad;
     }
     
-    public void setDireccioncorrespondencia(String pDireccion)
+    public void setDireccionCorrespondencia(String pDireccion)
     {
         direccionCorrespondencia = pDireccion;
     }
