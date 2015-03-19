@@ -1,21 +1,24 @@
-angular.module('carritoModule')
-.service('servicioCarrito', ['CRUDUtils', 'carrito.context', 'servicioCamiseta', function (CRUDUtils, context, servicioCamiseta) {
+(function () {	
+	var app = angular.module('carritoModule');
 
-	// Extension de los servicion del CRUD.
+	app.service('servicioCarrito', ['CRUDUtils', 'carrito.context', 'servicioCamiseta', function (CRUDUtils, context, servicioCamiseta) {
 
-	CRUDUtils.extendService(this);
+		// Extension de los servicion del CRUD.
 
-	this.url = context;
+		CRUDUtils.extendService(this);
 
-	this.darCarritoActual = function () {
-		var respuesta = '';
+		this.url = context;
 
-		var data = $scope.datos;
-		for (var i = 0; i < data.length; i++) {
-			respuesta = respuesta +  'Camiseta ' + i+1 + data[i].nombre + '\n ';
+		this.darCarritoActual = function () {
+			var respuesta = '';
+
+			var data = $scope.datos;
+			for (var i = 0; i < data.length; i++) {
+				respuesta = respuesta +  'Camiseta ' + i+1 + data[i].nombre + '\n ';
+			}
+
+			return respuesta;
 		}
 
-		return respuesta;
-	}
-
-}]);
+	}]);
+}();

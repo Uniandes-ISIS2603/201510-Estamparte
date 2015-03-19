@@ -1,1 +1,3 @@
-angular.module('footerModule', []);
+(function () {
+	var app = angular.module('footerModule', []);
+})();

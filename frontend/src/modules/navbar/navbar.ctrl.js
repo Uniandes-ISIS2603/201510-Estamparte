@@ -1,76 +1,79 @@
-angular.module('navbarModule')
-.controller('navbarCtrl', ['$scope', function ($scope) {
+(function () {
+	var app = angular.module('navbarModule');
 
-	// Adicion de tooltip Bootstrap
+	app.controller('navbarCtrl', ['$scope', function ($scope) {
 
-	angular.element('[data-toggle="tooltip"]').tooltip();
+		// Adicion de tooltip Bootstrap
 
-	// Configuracion usada para el usuario actual.
+		angular.element('[data-toggle="tooltip"]').tooltip();
 
-	$scope.artista = {
-		nombre: 'Juan el artista',
-		tipo: 'artista'
-	}
+		// Configuracion usada para el usuario actual.
 
-	$scope.comprador = {
-		nombre: 'Martin el comprador',
-		tipo: 'comprador'
-	}
+		$scope.artista = {
+			nombre: 'Juan el artista',
+			tipo: 'artista'
+		}
 
-	$scope.usuario = $scope.comprador;
+		$scope.comprador = {
+			nombre: 'Martin el comprador',
+			tipo: 'comprador'
+		}
 
-	$scope.cambiarUsuario = function (tipoUsuario) {
-		if (tipoUsuario === 'artista')
-			$scope.usuario = $scope.artista;
-		else
-			$scope.usuario = $scope.comprador;
-	}
+		$scope.usuario = $scope.comprador;
 
-	$scope.cerrarSesion = function () {
-		alert('Hasta lueguito dijo panchito y se fue en su carrito');
-	}
+		$scope.cambiarUsuario = function (tipoUsuario) {
+			if (tipoUsuario === 'artista')
+				$scope.usuario = $scope.artista;
+			else
+				$scope.usuario = $scope.comprador;
+		}
 
-	// Configuracion usada para el boton seleccionado actual.
+		$scope.cerrarSesion = function () {
+			alert('Hasta lueguito dijo panchito y se fue en su carrito');
+		}
 
-	$scope.selActual = 'inicio';
+		// Configuracion usada para el boton seleccionado actual.
 
-	$scope.darSelActual = function () {
-		return $scope.selActual;
-	}
+		$scope.selActual = 'inicio';
 
-	$scope.cambiarSelActual = function (actual) {
-		$scope.selActual = actual;
+		$scope.darSelActual = function () {
+			return $scope.selActual;
+		}
 
-		angular.element('html, body').animate({
-			scrollTop: angular.element('#' + actual).offset().top
-		}, 700);
+		$scope.cambiarSelActual = function (actual) {
+			$scope.selActual = actual;
 
-		var seOculta = angular.element('#misestampas').css('display') === 'none';
-		if (actual === 'camiseta' && seOculta)
-			$scope.verMisEstampas();
-		else if (actual !== 'camiseta' && !seOculta)
-			$scope.verMisEstampas();
-	}
+			angular.element('html, body').animate({
+				scrollTop: angular.element('#' + actual).offset().top
+			}, 700);
 
-	// Configuracion usada para el carrito.
+			var seOculta = angular.element('#misestampas').css('display') === 'none';
+			if (actual === 'camiseta' && seOculta)
+				$scope.verMisEstampas();
+			else if (actual !== 'camiseta' && !seOculta)
+				$scope.verMisEstampas();
+		}
 
-	$scope.verCarrito = function () {
-		angular.element('#carrito').animate({width: 'toggle'});
-	}
+		// Configuracion usada para el carrito.
 
-	// Configuracion usada para mis estampas.
+		$scope.verCarrito = function () {
+			angular.element('#carrito').animate({width: 'toggle'});
+		}
 
-	$scope.verMisEstampas = function () {
-		angular.element('#misestampas').animate({width: 'toggle'});
-	}
+		// Configuracion usada para mis estampas.
 
-	// Configutacion inicial.
+		$scope.verMisEstampas = function () {
+			angular.element('#misestampas').animate({width: 'toggle'});
+		}
 
-	$scope.irArriba = function () {
-		angular.element('html, body').animate({
-			scrollTop: 0
-		}, 700);
-	}
-	$scope.irArriba();
+		// Configutacion inicial.
 
-}]);
+		$scope.irArriba = function () {
+			angular.element('html, body').animate({
+				scrollTop: 0
+			}, 700);
+		}
+		$scope.irArriba();
+
+	}]);
+})();

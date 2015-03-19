@@ -1,4 +1,7 @@
-angular.module('miembroModule')
-.controller('miembroCtrl', ['$scope', function ($scope) {
-	// TODO
-}]);
+(function () {
+	var app = angular.module('miembroModule');
+
+	app.controller('miembroCtrl', ['$scope', function ($scope) {
+		// TODO
+	}]);
+})();

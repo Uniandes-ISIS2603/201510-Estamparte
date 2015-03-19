@@ -1,8 +1,11 @@
-angular.module('misestampasModule')
-.service('servicioMisestampas', ['CRUDUtils', 'misestampas.context', function (CRUDUtils, context) {
+(function () {
+	var app = angular.module('misestampasModule');
 
-	this.url = context;
+	app.service('servicioMisestampas', ['CRUDUtils', 'misestampas.context', function (CRUDUtils, context) {
 
-	CRUDUtils.extendService(this);
+		this.url = context;
 
-}]);
+		CRUDUtils.extendService(this);
+
+	}]);
+})();	

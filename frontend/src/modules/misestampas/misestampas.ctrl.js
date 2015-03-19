@@ -1,13 +1,16 @@
-angular.module('misestampasModule')
-.controller('misestampasCtrl', ['$scope', 'servicioMisestampas', function ($scope, servicioMisestampas) {
+(function () {
+	var app = angular.module('misestampasModule');
 
-	var _this = this;
-	
-	servicioMisestampas.extendCtrl(_this, $scope);
+	app.controller('misestampasCtrl', ['$scope', 'servicioMisestampas', function ($scope, servicioMisestampas) {
 
-	_this.consultarDatos();
+		var _this = this;
+		
+		servicioMisestampas.extendCtrl(_this, $scope);
 
-	// Debug line
-	console.log('Mis estampas fueron cargadas con exito. Longitud: ' + $scope.datos.length);
+		_this.consultarDatos();
 
-}]);
+		// Debug line
+		console.log('Mis estampas fueron cargadas con exito. Longitud: ' + $scope.datos.length);
+
+	}]);
+})();

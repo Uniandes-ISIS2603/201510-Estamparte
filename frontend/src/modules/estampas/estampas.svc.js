@@ -1,41 +1,44 @@
-angular.module('estampasModule')
-.service('servicioEstampa', ['CRUDUtils', 'estampas.context', function (CRUDUtils, context) {
+(function () {
+	var app = angular.module('estampasModule');
 
-	this.url = context;
+	app.service('servicioEstampa', ['CRUDUtils', 'estampas.context', function (CRUDUtils, context) {
 
-	CRUDUtils.extendService(this);
+		this.url = context;
 
-	// Estampa seleccionada en particular.
+		CRUDUtils.extendService(this);
 
-	// this.estampaSeleccionada = {};
+		// Estampa seleccionada en particular.
 
-	// Estampas selecionadas para una camiseta.
+		// this.estampaSeleccionada = {};
 
-	// this.estampasSeleccionadas = [];
+		// Estampas selecionadas para una camiseta.
 
-	// Actualiza un estampa seleccionada.
+		// this.estampasSeleccionadas = [];
 
-	// this.setEstampaCreada = function (estampa) {
-	// 	this.estampaSeleccionada = estampa;
-	// };
-	
-	// Agrega una estampa a las estampas,
-	// seleccionadas para la camiseta.
+		// Actualiza un estampa seleccionada.
 
-	// this.addEstampaSeleccionada = function (estampa) {
-	// 	this.estampasSeleccionadas.push(estampa);
-	// };
-	
-	// Obtiene las estampas de un artista.
+		// this.setEstampaCreada = function (estampa) {
+		// 	this.estampaSeleccionada = estampa;
+		// };
+		
+		// Agrega una estampa a las estampas,
+		// seleccionadas para la camiseta.
 
-	// this.estampasDeArtista = function () {
-	// 	return this.api.customGET('estampasDe');
-	// };
-	
-	// Retorna las estampas seleccionadas.
-	
-	// this.darEstampasSeleccionadas = function() {
-	// 	return this.estampasSeleccionadas;
-	// };
+		// this.addEstampaSeleccionada = function (estampa) {
+		// 	this.estampasSeleccionadas.push(estampa);
+		// };
+		
+		// Obtiene las estampas de un artista.
 
-}]);
+		// this.estampasDeArtista = function () {
+		// 	return this.api.customGET('estampasDe');
+		// };
+		
+		// Retorna las estampas seleccionadas.
+		
+		// this.darEstampasSeleccionadas = function() {
+		// 	return this.estampasSeleccionadas;
+		// };
+
+	}]);
+})();
