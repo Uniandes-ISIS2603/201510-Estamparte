@@ -9,8 +9,10 @@ import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+@XmlRootElement
 public class FacturaDTO {
     
     private CompradorDTO comprador;
@@ -61,27 +63,27 @@ public class FacturaDTO {
     
     public String getTipoFormPago()
     {
-        return formaPago.getTipo();
+        return formaPago.getNombre();
     }
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.getNumeroTarjeta();
+        return formaPago.getNumTarjeta();
     }
     
-    public String getFechaVencimiento()
+    public Date getFechaVencimiento()
     {
         return formaPago.getFechaVencimiento();
     }
     
     public int getCodigoSeguridad()
     {
-        return formaPago.getCodigoSeguridad();                
+        return formaPago.getCodSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.getDireccionCorrespondencia();
+        return formaPago.getDireccion();
     }
     
     public double getMontoTotal()
