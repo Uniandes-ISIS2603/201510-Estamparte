@@ -1,33 +1,33 @@
-(function(){
-    var formaPagoModule = angular.module('formaPagoModule');
-    formaPagoModule.service('ServicioFormaPago', ['CRUDUtils','formaPago.context',function(CRUDUtils,context){
-        this.url = context;
+angular.module('formaPagoModule')
+.service('ServicioFormaPago', ['CRUDUtils','formaPago.context',function(CRUDUtils,context){
+    this.url = context;
+
 	CRUDUtils.extendService(this);
         
-        //FormaPago seleccionada en particular
-        this.formaPagoSeleccionada={};
+    this.formaPagoSeleccionada={};
 
-        //FormaPagos disponibles para un cliente
-        this.formaPagosDisponibles=[];
+    this.formaPagosDisponibles=[];
 
-        //Actualiza una formaPago seleccionada
-        this.setFormaPagoCreada = function(formaPago){
-            this.formaPagoSeleccionada=formaPago;
-        };
+    // Actualiza una formaPago seleccionada
 
-        //Agrega una formaPago a las formaPagos disponibles para el cliente
-        this.addFormaPagoDisponible=function(formaPago){
-            this.formaPagosDisponibles.push(formaPago);
-        };
+    this.setFormaPagoCreada = function (formaPago) {
+        this.formaPagoSeleccionada = formaPago;
+    };
 
-        //Obtiene las formaPagos registradas para un cliente
-        this.formaPagosCliente=function(){
-            return this.api.customGET('formaPagosCliente');
-        };
+    // Agrega una formaPago a las formaPagos disponibles para el cliente
 
-        this.darFormaPagoActual = function(){
-            return $scope.datoActual;
-        }
+    this.addFormaPagoDisponible = function (formaPago) {
+        this.formaPagosDisponibles.push(formaPago);
+    };
 
-    }]);
-})();
+    // Obtiene las formaPagos registradas para un cliente
+
+    this.formaPagosCliente = function () {
+        return this.api.customGET('formaPagosCliente');
+    };
+
+    this.darFormaPagoActual = function(){
+        return $scope.datoActual;
+    }
+
+}]);

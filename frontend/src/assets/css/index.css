@@ -43,10 +43,6 @@ body {
 	text-align: center;
 }
 
-#inicio h1 {
-	margin-top: 20%;
-}
-
 #carrito {
 	display: none;
 	position: fixed;
@@ -176,13 +172,8 @@ body {
 	text-align: center;
 	background: #FFF;
 	color: #353535;
-	margin-top: 70px;
-	padding-top: 130px;
+	padding-top: 150px;
 	padding-bottom: 130px;
-}
-
-#footer h4 {
-	margin-top: 3%;
 }
 
 #temp {
@@ -190,7 +181,7 @@ body {
 }
 
 
-.tabla{
+.tabla {
     margin: 0 auto;
     width: 100%;
     border: 1px solid gray;
@@ -201,13 +192,13 @@ td {
     width: 50%;
 }
 
-.imagen{
+.imagen {
     padding: 2% 2% 2% 2%;
     width: 94%;
     height: 94%;
 }
 
-.inputPequeño{
+.inputPequeno {
     width: 50%;
 }
 
@@ -219,6 +210,7 @@ td {
 .inputMediano{
     width:70%;
 }
+
 .datos{
    padding-left: 5%;
    width: 30%; 

@@ -3,6 +3,9 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.converter;
 
+
+//Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
+
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CamisetaConverter {
+
     
         public static CamisetaDTO entity2PersistenceDTO(CamisetaEntity entity) {
         if (entity != null) {
@@ -28,6 +32,7 @@ public class CamisetaConverter {
         }
     }
 
+
     public static CamisetaEntity persistenceDTO2Entity(CamisetaDTO dto) {
         if (dto != null) {
             CamisetaEntity entity = new CamisetaEntity();
@@ -44,6 +49,7 @@ public class CamisetaConverter {
             return null;
         }
     }
+
 
     public static List<CamisetaDTO> entity2PersistenceDTOList(List<CamisetaEntity> entities) {
         List<CamisetaDTO> dtos = new ArrayList<CamisetaDTO>();

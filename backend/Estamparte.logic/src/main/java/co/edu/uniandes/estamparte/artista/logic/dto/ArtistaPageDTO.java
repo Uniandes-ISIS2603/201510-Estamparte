@@ -3,9 +3,10 @@
  */
 package co.edu.uniandes.estamparte.artista.logic.dto;
 
-import co.edu.uniandes.estamparte.camiseta.logic.dto.*;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
+//Tiene el registro actual y los registros de artista
+@XmlRootElement
 public class ArtistaPageDTO {
     
 }

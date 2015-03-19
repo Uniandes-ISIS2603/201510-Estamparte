@@ -16,7 +16,7 @@
         'navbarModule',
         'carritoModule',
         'formaPagoModule',
-        'moduloCamiseta',
+        'camisetaModule',
         'footerModule',
         'inicioModule',
         'estampasModule',

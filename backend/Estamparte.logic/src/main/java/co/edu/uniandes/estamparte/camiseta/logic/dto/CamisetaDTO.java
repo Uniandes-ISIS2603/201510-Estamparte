@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class CamisetaDTO {
-    
+
     public String id;
     
     public ArrayList<EstampaDTO> estampas;
@@ -79,7 +79,6 @@ public class CamisetaDTO {
         this.costo = costo;
     }
     
-    
-    
+
     
 }

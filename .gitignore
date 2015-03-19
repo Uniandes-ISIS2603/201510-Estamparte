@@ -1,2 +1,4 @@
 .DS_Store
-/frontend/nbproject/private/
+/frontend/nbproject
+/backend/Estamparte.logic/target/
+/backend/Estamparte.service/target/

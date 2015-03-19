@@ -1,73 +1,81 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-(function () {
-    var app = angular.module('moduloCamiseta');
-    
-    app.controller('camisetaCtrl', ['$scope', 'servicioCamiseta','servicioEstampa', function ($scope, servicioCamiseta, servicioEstampa) {
-            servicioCamiseta.extendCtrl(this, $scope);
-            $scope.datoActual.camiseta.estampasUsadas = [];
-            $scope.datoActual.camiseta.idCamiseta;
-            $scope.datoActual.camiseta.nombreCamiseta;
+angular.module('camisetaModule')
+.controller('camisetaCtrl', ['$scope', 'servicioCamiseta', 'servicioEstampa', function ($scope, servicioCamiseta, servicioEstampa) {
 
-            this.contiene = function (id)
-            {
-                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
-                {
-                    if ($scope.datoActual.estampasUsadas[i] === id)
-                        return true;
-                }
-                return false;
-            };
-            this.agregarEstampa = function (id)
-            {
-                $scope.datoActual.camiseta.estampasUsadas.push(id);
-            };
-            this.eliminarEstampa = function (id)
-            {
+	// Extension de servicios CRUD.
 
-                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
-                {
-                    if ($scope.datoActual.estampasUsadas[i] === id)
-                    {
-                        $scope.datoActual.camiseta.estampasUsadas.splice(i, 1);
-                        break;
-                    }
-                }
-            };
+	servicioCamiseta.extendCtrl(this, $scope);
 
-            this.estampasSeleccionadas = function()
-             {
-                 return servicioEstampa.darEstampasSeleccionadas();
-             }
-            function randomString(length) {
-                var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
+	$scope.datoActual.camiseta.estampasUsadas = [];
+	$scope.datoActual.camiseta.idCamiseta;
+	$scope.datoActual.camiseta.nombreCamiseta;
 
-                if (!length) {
-                    length = Math.floor(Math.random() * chars.length);
-                }
+	this.contiene = function (id) {
+		var respuesta = false;
+		var estampasUsadas = $scope.datoActual.camiseta.estampasUsadas;
 
-                var str = '';
-                for (var i = 0; i < length; i++) {
-                    str += chars[Math.floor(Math.random() * chars.length)];
-                }
-                return str;
-            }
-            
-            this.continuar = function () {
-                $scope.datoActual.camiseta.idCamiseta = "C"+ randomString(10);
-                var msj = "";
-                for (var i = 0; i < $scope.datoActual.camiseta.estampasUsadas.length; i++)
-                    if ($scope.datoActual.estampasUsadas[i])
-                        msj += (i + 1) + ")" + $scope.datoActual.camiseta.estampasUsadas[i].valueOf() + "\n\t";
-                
-                
-                servicioCamiseta.agregarCamiseta($scope.datoActual.camiseta);
-                alert("\tDETALLES:\n\tNombre:\t"+$scope.datoActual.nombreCamiseta+"\n\tID:\t"+$scope.datoActual.idCamiseta+"\n\tEstilo:\t" + $scope.datoActual.camiseta.selected.estilo + "\n\tTalla:\t" + $scope.datoActual.camiseta.selected.talla + "\n\tColor:\t" + $scope.datoActual.camiseta.selected.color
-                        + "\n\tESTAMPAS USADAS:\n\t" + msj);
-            };
-        }]);
-})();
+		for (var i = 0; i < estampasUsadas.length; i++) {
+			if ($scope.datoActual.estampasUsadas[i] === id) {
+				respuesta = true;
+			}
+		}
 
+		return respuesta;
+	}
+
+	this.agregarEstampa = function (id) {
+		$scope.datoActual.camiseta.estampasUsadas.push(id);
+	}
+
+	this.eliminarEstampa = function (id) {
+		var encontrado = false;
+		var estampasUsadas = $scope.datoActual.camiseta.estampasUsadas;
+
+		for (var i = 0; i < estampasUsadas.length && !encontrado; i++) {
+			if (estampasUsadas[i] === id) {
+				estampasUsadas.splice(i, 1);
+				encontrado = true
+			}
+		}
+	}
+
+	this.estampasSeleccionadas = function() {
+		return servicioEstampa.darEstampasSeleccionadas();
+	}
+
+	this.cadenaAleatoria = function (longitud) {
+		var numeros = '0123456789';
+		var mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXTZ';
+		var minusculas = 'abcdefghiklmnopqrstuvwxyz';
+		var caracteres = (numeros + mayusculas + minusculas).split('');
+
+		if (longitud === null) {
+			longitud = 0;
+		}
+
+		var respuesta = '';
+		for (var i = 0; i < longitud; i++) {
+			var index = Math.floor(Math.random() * chars.length);
+			respuesta += caracteres[index];
+		}
+
+		return respuesta;
+	}
+
+	this.continuar = function () {
+		$scope.datoActual.camiseta.idCamiseta = "C"+ this.randomString(10);
+
+		var mensaje = "";
+		var estampasUsadas = $scope.datoActual.camiseta.estampasUsadas;
+
+		for (var i = 0; i < estampasUsadas.length; i++) {
+			if (estampasUsadas[i]) {
+				mensaje += (i + 1) + ")" + estampasUsadas[i].valueOf() + "\n\t";
+			}
+		}
+
+		alert(mensaje);
+
+		servicioCamiseta.agregarCamiseta($scope.datoActual.camiseta);
+	}
+
+}]);

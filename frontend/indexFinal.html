@@ -24,7 +24,12 @@
 		<script src="src/assets/libs/angular-route.min.js"></script>
 		<script src="src/assets/libs/restangular.min.js"></script>
 		<script src="src/assets/libs/ui-bootstrap-tpls-0.12.1.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+				
+		<!--Importa los archivos para subir imagenes a la pagina-->
+		<script src="src/assets/libs/angular-file-upload-all.min.js"></script>
+		<script src="src/assets/libs/angular-file-upload-shim.min.js"></script>
+		<script src="src/assets/libs/ng-file-upload-all.min.js"></script>
 				
 		<!-- Importa los archivos escritos sobre AngularJS -->
 		<script src="src/app.js"></script>
@@ -36,21 +41,24 @@
 		<!-- Importa los archivos de Mock -->
 		<script src="src/shared/mocks/mock.mod.js"></script>
 		<script src="src/shared/mocks/mock.svc.js"></script>
-
+			   
 		<!-- Importa los archivos del modulo factura -->
 		<script src="src/modules/factura/factura.mod.js"></script>
 		<script src="src/modules/factura/factura.svc.js"></script>
 		<script src="src/modules/factura/factura.ctrl.js"></script>
-
+		<script src="src/modules/factura/factura.dir.js"></script>
+		
 		<!-- Importa los archivos del modulo comprador -->
 		<script src="src/modules/comprador/comprador.mod.js"></script>
 		<script src="src/modules/comprador/comprador.svc.js"></script>
 		<script src="src/modules/comprador/comprador.ctrl.js"></script>
+		<script src="src/modules/comprador/comprador.dir.js"></script>
 
 		<!-- Importa los archivos del modulo de artista -->
 		<script src="src/modules/artista/artista.mod.js"></script>
 		<script src="src/modules/artista/artista.svc.js"></script>
 		<script src="src/modules/artista/artista.ctrl.js"></script>
+		<script src="src/modules/artista/artista.dir.js"></script>
 
 		<!-- Importa los archivos del modulo estampa -->
 		<script src="src/modules/estampa/estampa.mod.js"></script>
@@ -62,55 +70,63 @@
 		<script src="src/modules/carrito/carrito.mod.js"></script>
 		<script src="src/modules/carrito/carrito.svc.js"></script>
 		<script src="src/modules/carrito/carrito.ctrl.js"></script>
+		<script src="src/modules/carrito/carrito.dir.js"></script>
 
 		<!-- Importa los archivos del modulo forma pago -->
 		<script src="src/modules/formaPago/formaPago.mod.js"></script>
 		<script src="src/modules/formaPago/formaPago.svc.js"></script>
 		<script src="src/modules/formaPago/formaPago.ctrl.js"></script>
+		<script src="src/modules/formaPago/formaPago.dir.js"></script>
 
 		<!-- Importa los archivos del modulo camiseta -->
 		<script src="src/modules/camiseta/camiseta.mod.js"></script>
 		<script src="src/modules/camiseta/camiseta.svc.js"></script>
 		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
+		<script src="src/modules/camiseta/camiseta.dir.js"></script>
 
-		<!-- Importa los archivos del modulo navbar -->
+		<!-- Importa los archivos del modulo barra -->
+		<script src="src/modules/navbar/navbar.mod.js"></script>
 		<script src="src/modules/navbar/navbar.ctrl.js"></script>
+		<script src="src/modules/navbar/navbar.dir.js"></script>
 
 		<!-- Importa los archivos del modulo inicio -->
+		<script src="src/modules/inicio/inicio.mod.js"></script>
 		<script src="src/modules/inicio/inicio.ctrl.js"></script>
+		<script src="src/modules/inicio/inicio.dir.js"></script>
 
 		<!-- Importa los archivos del modulo estampas -->
 		<script src="src/modules/estampas/estampas.ctrl.js"></script>
 
 		<!-- Importa los archivos del modulo footer -->
+		<script src="src/modules/footer/footer.mod.js"></script>
 		<script src="src/modules/footer/footer.ctrl.js"></script>
+		<script src="src/modules/footer/footer.dir.js"></script>
+
+		<!-- Imports los archivos del modulo miembro -->
+		<script src="src/modules/equipo/miembro/miembro.mod.js"></script>
+		<script src="src/modules/equipo/miembro/miembro.ctrl.js"></script>
+		<script src="src/modules/equipo/miembro/miembro.dir.js"></script>
 
 		<!-- Importa los archivos del modulo equipo -->
+		<script src="src/modules/equipo/equipo.mod.js"></script>
 		<script src="src/modules/equipo/equipo.ctrl.js"></script>
-
-		<!-- Importa los archivos del modulo miembro -->
-		<script src="src/modules/equipo/miembro/miembro.ctrl.js"></script>
+		<script src="src/modules/equipo/equipo.dir.js"></script>
 
 	</head>
 
 	<body>
 
-		<div navbar></div>
+		<div navbar-dir></div>
 
-		<div id="carrito">
-			<ul>
-				<li>Item1</li>
-				<li>Item2</li>
-			</ul>
-		</div>
+		<div carrito-dir></div>
 
-		<div inicio></div>
+		<div inicio-dir></div>
 
 		<div estampas></div>
 
-		<div equipo></div>
+		<div equipo-dir></div>
 
-		<div footer></div>
+		<div footer-dir></div>
 
 	</body>
 
