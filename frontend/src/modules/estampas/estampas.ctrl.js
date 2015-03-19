@@ -1,6 +1,13 @@
-angular.module('estampasModule', [])
-.controller('estampasCtrl', ['$scope', function($scope) {
-	$scope.datos = [
+angular.module('estampasModule')
+.controller('estampasCtrl', ['$scope', 'servicioEstampa', 'servicioMisestampas', function ($scope, servicioEstampa, servicioMisestampas) {
+
+    var _this = this;
+
+    servicioEstampa.extendCtrl(_this, $scope);
+
+    _this.consultarDatos();
+
+	$scope.prueba = [
         {  
             nombre: "Estampa de flor",
             idAutor: 1,
@@ -91,19 +98,57 @@ angular.module('estampasModule', [])
         }
     ];
 
-    $scope.darAncho = function (length) {
-            var ans = ''
-            if ($scope.datos.length - length >= 3)
-                ans = 'col-md-4';
-            else if ($scope.datos.length - length == 2)
-                ans = 'col-md-6';
-            else
-                ans = 'col-md-12';
-            return ans;
-        };
-}])
-.directive('estampas', function() {
-	return {
-		templateUrl: 'src/modules/estampas/estampas.tpl.html'
-	};
-});
+    this.agregarPrueba = function() {
+        for (var i = 0; i < $scope.prueba.length; i++) {
+            var estampa = $scope.prueba[i];
+            this.editarDato(estampa);
+            this.guardarDato();
+        }
+    }
+    this.agregarPrueba();
+
+    $scope.darAnchoEstampa = function (index) {
+        var ans = '';
+
+        if ($scope.datos.length - index >= 3) {
+            ans = 'col-md-4';
+        } else if ($scope.datos.length - index == 2) {
+            ans = 'col-md-6';
+        } else {
+            ans = 'col-md-12';
+        }
+
+        return ans;
+    }
+
+    _this.verMisEstampas = function () {
+        var misestampas = angular.element('#misestampas');
+        if (misestampas.css('display') === 'none')
+            misestampas.animate({width: 'toggle'});
+    }
+
+    $scope.busquedaAvanzada = function () {
+        alert('Busqueda avanzada disponible pronto, esperala!');
+    }
+
+    $scope.agregar = function (estampa) {
+        _this.editarDato(estampa);
+
+        servicioMisestampas.guardarDato($scope.datoActual);
+
+        _this.guardarDato();
+        _this.verMisEstampas();
+    }
+
+    $scope.gusta = function (estampa, seleccion) {
+        _this.editarDato(estampa);
+
+        if (seleccion === 'si')
+            $scope.datoActual.siGusta += 1;
+        else if (seleccion === 'no')
+            $scope.datoActual.noGusta += 1
+        
+        _this.guardarDato();
+    }
+
+}]);

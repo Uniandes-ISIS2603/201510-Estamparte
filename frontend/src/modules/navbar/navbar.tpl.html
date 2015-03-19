@@ -52,10 +52,6 @@
 					<a href="javascript: void(0)" ng-click="cambiarSelActual('estampas')">Estampas</a>
 				</li>
 
-				<li ng-class="(darSelActual() === 'factura') ? 'active' : ''">
-					<a href="javascript: void(0)" ng-click="cambiarSelActual('factura')">Factura</a>
-				</li>
-
 				<li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
 					<a href="javascript: void(0)" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
 				</li>
@@ -78,6 +74,7 @@
 			<ul class="nav navbar-nav navbar-right">
 
 				<!-- Opciones para el artista -->
+
 				<li ng-show="usuario.tipo === 'artista'">
 					<a href="#/artista" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa">
 						<span class="glyphicon glyphicon-pencil"></span>
@@ -85,6 +82,13 @@
 				</li>
 
 				<!-- Opciones para el comprador -->
+
+				<li ng-show="usuario.tipo === 'comprador'">
+					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Mis estampas" ng-click="verMisEstampas()">
+						<span class="glyphicon glyphicon-th-list"></span>
+					</a>
+				</li>
+
 				<li ng-show="usuario.tipo === 'comprador'">
 					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Carrito de compras" ng-click="verCarrito()">
 						<span class="glyphicon glyphicon-shopping-cart"></span>

@@ -1,4 +1,4 @@
-<div id="estampas" ng-controller="estampasCtrl">
+<div id="estampas">
 
 	<div class="container target">
 
@@ -9,26 +9,30 @@
 			</div>
 
 			<div class="col-md-7">
+
 				<div class="input-group" id="busqueda">
+
 					<input type="text" class="form-control" placeholder="Ingresa que quieres buscar...">
+
 					<div class="input-group-btn">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Busqueda avanzada</button>
-						<ul class="dropdown-menu" id="busqueda-avanzada">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
+
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-click="busquedaAvanzada()">Busqueda avanzada</button>
+
+						<!-- <ul class="dropdown-menu" id="busqueda-avanzada"> -->
+							<!-- TODO -->
+						<!-- </ul> -->
+
 					</div>
+
 				</div>
+
 			</div>
 
 		</div>
 		        
 		<div>
 
-			<div ng-repeat="dato in datos" ng-switch="$index % 3">
+			<div ng-repeat="estampa in datos" ng-switch="$index % 3">
 
 				<span ng-switch on="$index % 3">
 
@@ -36,11 +40,11 @@
 
 						<div class="filaEstampas row">
 
-							<div estampa="datos[$index+0]" ng-class="darAncho($index)"></div>
+							<div estampa-dir="datos[$index+0]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
 
-							<div estampa="datos[$index+1]" ng-class="darAncho($index)"></div>
+							<div estampa-dir="datos[$index+1]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
 
-							<div estampa="datos[$index+2]" ng-class="darAncho($index)"></div>
+							<div estampa-dir="datos[$index+2]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
 
 						</div>
 
@@ -55,6 +59,3 @@
 	</div>
 
 </div>
-
-<script>
-</script>

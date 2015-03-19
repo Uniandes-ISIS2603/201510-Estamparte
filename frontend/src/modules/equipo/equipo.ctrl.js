@@ -29,18 +29,12 @@ angular.module('equipoModule')
 		}
 	];
 
-	$scope.agregarFoto = function (index, foto) {
-		var id = '#miembro%d'.replace('%d', index);
-		$(id).css('background-image', 'url("%s")'.replace("%s", foto));
-		console.log($(id));
-	};
-
-	$scope.darAncho = function (length) {
+	$scope.darAnchoMiembro = function (index) {
 		var ans = '';
 
-		if ($scope.miembros.length - length >= 3) {
+		if ($scope.miembros.length - index >= 3) {
 			ans = 'col-md-4';
-		} else if ($scope.miembros.length - length == 2) {
+		} else if ($scope.miembros.length - index == 2) {
 			ans = 'col-md-6';
 		} else {
 			ans = 'col-md-12';

@@ -43,7 +43,7 @@ body {
 	text-align: center;
 }
 
-#carrito {
+#carrito, #misestampas {
 	display: none;
 	position: fixed;
 	right: 0;
@@ -87,6 +87,12 @@ body {
 	width: 200px;
 	height: 200px;
 	border-radius: 100px;
+	border: 1px solid #FFF;
+}
+
+.contenido:hover {
+	cursor: pointer;
+	border: 1px solid rgba(100, 100, 100, 0.4);
 }
 
 .nombre {
@@ -120,7 +126,8 @@ body {
 }
 
 .calificacion {
-	padding-top: 190px;
+	margin: 0 auto 0 auto;
+	width: 200px;
 }
 
 .calificacion button {
@@ -134,6 +141,14 @@ body {
 	color: #777;
 }
 
+.gusta {
+	max-width: 47%;
+}
+
+.gusta, .gusta p, .gusta button {
+	display: inline-block;
+}
+
 #siGusta {
 	float: left;
 }
@@ -142,9 +157,24 @@ body {
 	float: right;
 }
 
+#camiseta {
+	background: #F7F7F7;
+	padding-top: 70px;
+	padding-bottom: 120px;
+}
+
+#tituloCamiseta {
+	margin-bottom: 90px;
+}
+
+#vistaprevia {
+	padding-top: 100px;
+	background: #FFF;
+}
+
 #equipo {
 	padding-top: 110px;
-	background: #F7F7F7;
+	background: #FFF;
 	padding-bottom: 80px;
 }
 
@@ -170,7 +200,7 @@ body {
 
 #footer {
 	text-align: center;
-	background: #FFF;
+	background: #F7F7F7;
 	color: #353535;
 	padding-top: 150px;
 	padding-bottom: 130px;
