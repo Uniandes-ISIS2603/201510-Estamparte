@@ -11,10 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EstampaConverter {
-    public static EstampaDTO convertirDeEntidadADTO (EstampaEntity entity) {
-        if (entity != null) {
+    public static EstampaDTO convertirDeEntidadADTO (EstampaEntity entidad) {
+        if (entidad != null) {
             EstampaDTO dto = new EstampaDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
+            dto.cambiarId(entidad.darId());
+            dto.cambiarNombre(entidad.darNombre());
+            dto.cambiarImagen(entidad.darImagen());
+            dto.cambiarDescripcion(entidad.darDescripcion());
+            dto.cambiarSiGusta(entidad.darSiGusta());
+            dto.cambiarNoGusta(entidad.darNoGusta());
+            dto.cambiarTema(entidad.darTema());
+            dto.cambiarAltura(entidad.darAltura());
+            dto.cambiarAncho(entidad.darAncho());
+            dto.cambiarPrecio(entidad.darPrecio());
             return dto;
         } else {
             return null;
@@ -23,24 +33,34 @@ public class EstampaConverter {
 
     public static EstampaEntity convertirDeDTOAEntidad (EstampaDTO dto) {
         if (dto != null) {
-            EstampaEntity entity = new EstampaEntity();
+            EstampaEntity entidad = new EstampaEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
-            return entity;
+            entidad.cambiarId(dto.darId());
+            entidad.cambiarNombre(dto.darNombre());
+            entidad.cambiarImagen(dto.darImagen());
+            entidad.cambiarDescripcion(dto.darDescripcion());
+            entidad.cambiarSiGusta(dto.darSiGusta());
+            entidad.cambiarNoGusta(dto.darNoGusta());
+            entidad.cambiarTema(dto.darTema());
+            entidad.cambiarAltura(dto.darAltura());
+            entidad.cambiarAncho(dto.darAncho());
+            entidad.cambiarPrecio(dto.darPrecio());
+            return entidad;
         } else {
             return null;
         }
     }
 
     public static List<EstampaDTO> convertirDeListaEntidadesAListaDTO (List<EstampaEntity> listaEntities) {
-        List<EstampaDTO> listaDTO = new ArrayList<EstampaDTO>();
-        for (EstampaEntity entity : listaEntities) {
-            listaDTO.add(convertirDeEntidadADTO(entity));
+        List<EstampaDTO> listaDTO = new ArrayList<>();
+        for (EstampaEntity entidad : listaEntities) {
+            listaDTO.add(convertirDeEntidadADTO(entidad));
         }
         return listaDTO;
     }
 
     public static List<EstampaEntity> convertirDeListaDTOAListaEntidades (List<EstampaDTO> listaDTO) {
-        List<EstampaEntity> listaEntities = new ArrayList<EstampaEntity>();
+        List<EstampaEntity> listaEntities = new ArrayList<>();
         for (EstampaDTO dto : listaDTO) {
             listaEntities.add(convertirDeDTOAEntidad(dto));
         }
