@@ -13,7 +13,7 @@ import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CamisetaConverter {
+public class CamisetaConverter{
 
     
         public static CamisetaDTO entity2PersistenceDTO(CamisetaEntity entity) {
