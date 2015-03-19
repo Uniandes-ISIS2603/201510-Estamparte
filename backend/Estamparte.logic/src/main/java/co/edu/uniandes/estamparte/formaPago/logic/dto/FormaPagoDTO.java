@@ -3,58 +3,59 @@
  */
 package co.edu.uniandes.estamparte.formaPago.logic.dto;
 
-import co.edu.uniandes.estamparte.factura.logic.dto.*;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
+import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
-
+@XmlRootElement
 public class FormaPagoDTO {
-    private String tipo;
-    private long numeroTarjeta;
-    private String fechaVencimiento;
+    
+    private String nombre;
+    
+    private Long numeroTarjeta;
+    
+    private Date fechaVencimiento;
+    
     private int codigoSeguridad;
+    
     private String direccionCorrespondencia;
     
-    public void setTipo(String pTipo)
-    {
-        tipo = pTipo;
-    }
-    public String getTipo()
-    {
-        return tipo;
-    }    
-    public void setNumeroTarjeta(Long pNum)
-    {
-        numeroTarjeta = pNum;
-    }
-    public Long getNumeroTarjeta()
-    {
-        return numeroTarjeta;
-    }
-    public void setFechaVencimiento(String pFecha)
-    {
-        fechaVencimiento = pFecha;
-    }
-    public String getFechaVencimiento()
-    {
-        return fechaVencimiento;
-                
+     public String darNombre(){
+        return nombre;
     }
     
-    public void setCodigoSeguridad(int pCodigo)
-    {
-        codigoSeguridad = pCodigo;
+    public void asignarNombre(String nNombre){
+        nombre = nNombre;
     }
-    public int getCodigoSeguridad()
-    {
+    
+    public void asignarFechaVencimiento(Date fecha){
+        fechaVencimiento = fecha;
+    }
+    
+    public Date darFechaVencimiento(){
+        return fechaVencimiento;
+    }
+    
+    public long darNumTarjeta(){
+        return numeroTarjeta;
+    }
+    
+    public void asignarNumTarjeta(long nNumTarjeta){
+        numeroTarjeta = nNumTarjeta;
+    } 
+    
+    public int darCodSeguridad(){
         return codigoSeguridad;
     }
     
-    public void setDireccioncorrespondencia(String pDireccion)
-    {
-        direccionCorrespondencia = pDireccion;
+    public void asignarCodSeguridad(int nCodSeguridad){
+        codigoSeguridad = nCodSeguridad;
     }
-    public String getDireccionCorrespondencia()
-    {
+    
+    public String darDireccion(){
         return direccionCorrespondencia;
     }
+    
+    public void asignarDireccion(String nDireccion){
+        direccionCorrespondencia = nDireccion;
+    }  
 }

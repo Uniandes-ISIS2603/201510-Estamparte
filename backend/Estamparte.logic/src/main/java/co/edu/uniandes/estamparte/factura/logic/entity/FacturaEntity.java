@@ -8,6 +8,7 @@ import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class FacturaEntity {
@@ -61,27 +62,27 @@ public class FacturaEntity {
     
     public String getTipoFormPago()
     {
-        return formaPago.getTipo();
+        return formaPago.darNombre();
     }
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.getNumeroTarjeta();
+        return formaPago.darNumTarjeta();
     }
     
-    public String getFechaVencimiento()
+    public Date getFechaVencimiento()
     {
-        return formaPago.getFechaVencimiento();
+        return formaPago.darFechaVencimiento();
     }
     
     public int getCodigoSeguridad()
     {
-        return formaPago.getCodigoSeguridad();                
+        return formaPago.darCodSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.getDireccionCorrespondencia();
+        return formaPago.darDireccion();
     }
     
     public double getMontoTotal()
