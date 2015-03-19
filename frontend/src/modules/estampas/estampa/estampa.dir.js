@@ -4,6 +4,8 @@ angular.module('estampaModule')
 		controller: 'estampaCtrl',
 		replace: true,
 		scope: {
+			agregar: '=',
+			gusta: '=',
 			estampa: '=estampaDir'
 		},
 		templateUrl: 'src/modules/estampas/estampa/estampa.tpl.html'
