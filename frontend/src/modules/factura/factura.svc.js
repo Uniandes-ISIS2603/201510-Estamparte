@@ -1,7 +1,10 @@
-angular.module('facturaModule')
-.service('servicioFactura', ['CRUDUtils', 'factura.context', function (CRUDUtils, context) {
+(function () {
+	var app = angular.module('facturaModule');
 
-	this.url = context;
-	CRUDUtils.extendService(this);
+	app.service('servicioFactura', ['CRUDUtils', 'factura.context', function (CRUDUtils, context) {
 
-}]);
+		this.url = context;
+		CRUDUtils.extendService(this);
+
+	}]);
+})();

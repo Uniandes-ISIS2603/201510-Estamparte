@@ -1,1 +1,3 @@
-angular.module('navbarModule', []);
+(function () {
+	var app = angular.module('navbarModule', []);
+})();

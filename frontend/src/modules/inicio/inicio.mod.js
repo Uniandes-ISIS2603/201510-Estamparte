@@ -1,1 +1,3 @@
-angular.module('inicioModule', []);
+(function () {
+	var app = angular.module('inicioModule', []);
+})();

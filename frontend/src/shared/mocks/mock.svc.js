@@ -1,9 +1,9 @@
 (function () {
-    var mock = angular.module('MockModule');
+    var app = angular.module('MockModule');
 
-    mock.value('MockModule.mockRecords', {});
+    app.value('MockModule.mockRecords', {});
 
-    mock.provider('MockModule.urls', function () {
+    app.provider('MockModule.urls', function () {
         var context = [];
         this.registerUrl = function (value) {
             context.push(value);

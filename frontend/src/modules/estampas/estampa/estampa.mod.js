@@ -1,1 +1,3 @@
-angular.module('estampaModule', []);
+(function () {	
+	var app = angular.module('estampaModule', []);
+})();
