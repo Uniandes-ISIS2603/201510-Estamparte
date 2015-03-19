@@ -8,4 +8,6 @@ import co.edu.uniandes.estamparte.estampa.logic.ejb.*;
 
 public class CamisetaLogic {
     
+    
+    
 }

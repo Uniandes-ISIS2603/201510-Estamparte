@@ -11,6 +11,7 @@ import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
 
 import java.util.ArrayList;
+import javax.persistence.EntityManager;
 
 
 public class FacturaLogic implements IFacturaLogic{

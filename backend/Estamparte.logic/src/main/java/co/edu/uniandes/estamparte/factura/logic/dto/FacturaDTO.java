@@ -91,7 +91,7 @@ public class FacturaDTO {
         double respuesta = 0;
         for(int i=0; i<articulos.size();i++)
         {
-            respuesta += articulos.get(i).getCosto();
+            respuesta += articulos.get(i).darCosto();
         }
         return respuesta;
     }
