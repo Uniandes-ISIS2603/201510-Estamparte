@@ -1,5 +1,5 @@
 angular.module('footerModule')
-.controller('footerCtrl', ['$scope', function ($scope) {
+.controller('footerCtrl', ['$scope', '$window', function ($scope, $window) {
 	
 	var w = angular.element($window);
 	w.bind('resize', function() {
@@ -11,7 +11,7 @@ angular.module('footerModule')
 		var footer = angular.element('#footer');
 		var altura = footer.height();
 
-		var contenedor = angular.element('.container');
+		var contenedor = angular.element('#footer .container');
 		var padding = altura / 3;
 		contenedor.css('padding-top', padding);
 	}
