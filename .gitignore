@@ -1,0 +1,4 @@
+.DS_Store
+/frontend/nbproject
+/backend/Estamparte.logic/target/
+/backend/Estamparte.service/target/

@@ -1,0 +1,104 @@
+<div class="estampa" ng-show="estampa && !estampaCtrl.detalle">
+
+	<div class="nombre">
+
+		<h4>{{ estampa.nombre }}</h4>
+
+                <a class="btn btn-default" title="Agregar a camiseta" ng-click="estampaCtrl.agregarEstampaACamiseta(estampa)">
+			<span class="glyphicon glyphicon-plus"></span>
+		</a>
+
+	</div>
+
+	<div class="contenido" ng-style="{ background: 'url({{ estampa.imagenes[0] }})' }" ng-click="estampaCtrl.mostrarDetalle(estampa)">
+
+		<div class="calificacion">
+
+			<button id="siGusta" class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(1)" data-toggle="tooltip" data-placement="top" title="{{ estampa.siGusta }}">
+				<span class="glyphicon glyphicon-thumbs-down"></span>
+			</button>
+
+			<button id="noGusta" class="btn btn-default" ng-click="estampaCtrl.editarDato(estampa); estampaCtrl.registrarCalificacion(0)" data-toggle="tooltip" data-placement="top" title="{{ estampa.noGusta }}">
+				<span class="glyphicon glyphicon-thumbs-up"></span>      
+			</button>
+
+		</div>
+
+	</div>
+</div>
+
+<!--
+Template de detalle de una estampa
+-->
+<!-- <div class="estampaDetalle" ng-hide="estampa && estampaCtrl.detalle">
+    <table class="tabla">
+            <tr>
+                
+                <td>
+                    <img class="imagen" ng-src="{{ datoActual.imagenes ? datoActual.imagenes[datoActual.imagenes.length-1] : 'src/assets/img/estampa.jpg'}}" alt="imagenestampa" ng-click="estampaCtrl.mostrarDetalle({})"/>
+                </td>
+
+                <td class="datos" ng-hide="estampaCtrl.informacion">
+                <form name="nuevaEstampaForm" role="form" novalidate="" ng-submit=" nuevaEstampaForm.$valid && estampaCtrl.actualizarInformacion()">
+                    <input id="name" class="form-control" type="hidden" ng-model="datoActual.id"/>
+                    <div class="form-group inputMediano">
+                        <label for="nombre">Nombre: </label>
+                        <input id="nombre" name="nombre" class="form-control" type="text" ng-model="datoActual.nombre" required />
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.nombre.$error.required"><p>Digita un nombre para la estampa</p></div>
+                    </div>
+                    <div class="form-group inputMediano">
+                        <label for="tema">Tema: </label>
+                        <select id="tema" name="tema" class="form-control" ng-model="datoActual.tema" ng-options="tem for tem in temas" required="">
+                        </select>
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.tema.$error.required"><p>Selecciona un tema</p></div>
+                    </div>
+                    <div class="form-group inputMediano">
+                        <label for="descripcion">Descripci&oacute;n:</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control" rows="3" cols="100" ng-model="datoActual.descripcion"></textarea>
+                    </div>
+                    <div class="form-group inputPequeño">
+                        <label for="alto">Altura (cm):</label>
+                        <input type="text" id="alto" name="alto" class="form-control" ng-model="datoActual.altura" required=""/>
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.alto.$error.required"><p>Introduce una altura en (cm)</p></div>    
+                    </div>
+                    <div class="form-group inputPequeño">
+                        <label for="ancho">Longitud (cm):</label>
+                        <input type="text" id="ancho" name="ancho" class="form-control" ng-model="datoActual.ancho" required="" />
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.ancho.$error.required"><p>Introduce una longitud en (cm) </p></div>
+                    </div>
+                    <div class="form-group inputPequeño">
+                        <label for="precio">Precio ($COP):</label>
+                        <input type="text" id="precio" name="precio" class="form-control" ng-model="datoActual.precio" required=""/>
+                        <div ng-show="nuevaEstampaForm.$submitted && nuevaEstampaForm.precio.$error.required"><p>Introduce un precio para la estampa</p></div>
+                    </div>
+                    <div class="form-group inputPequeño">
+                        <label for="imagenes">Imagenes:</label>
+                        <input type="text" id="imagenes" name="imagenes" class="form-control" ng-model="datoActual.imagenes.length" required="" readonly=""/>
+                        <div ng-show="nuevaEstampaForm.$submitted && datoActual.imagenes.length===0"><p>Sube imagenes a tu estampa</p></div>
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-default">Crear</button>
+                    <button type="button" class="btn btn-default" ng-click="estampaCtrl.subirImagenesAEstampa()">Subir Imagenes</button>
+                    <button type="button" class="btn btn-default" ng-click="estampaCtrl.cancelarCrearEstampa()">Cancelar</button>
+                    </div>
+                </form>
+                </td>
+                
+                <td class="datos" ng-show="estampaCtrl.informacion">
+                    <h1>{{estampa.nombre}}</h1>
+                    <h2>{{estampa.autor}}</h2>
+                    <h3>{{estampa.tema}}</h3>
+                    <h4>$ {{estampa.precio}}</h4>
+                    <div class="inline"><span class="glyphicon glyphicon-thumbs-up">{{estampa.siGusta}}</span></div>
+                    <div class="inline"><span class="glyphicon glyphicon-thumbs-up">{{estampa.noGusta}}</span></div>
+                    <a class="btn btn-default" title="Agregar a camiseta" ng-click="estampaCtrl.agregarEstampaACamiseta(estampa)">
+			<span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <button type="button" class="btn btn-default" ng-show="estampaCtrl.esDeArtista()" ng-click="estampaCtrl.editarEstampaSeleccionada()">Editar</button>
+                    <button type="button" class="btn btn-default" ng-show="estampaCtrl.esDeArtista()" ng-click="estampaCtrl.eliminarEstampa()">Eliminar</button>
+                </td>
+
+            </tr>
+                
+</table>
+</div> -->
