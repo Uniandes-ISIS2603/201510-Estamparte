@@ -11,38 +11,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompradorConverter {
-    public static CompradorDTO convertirDeEntidadADTO (CompradorEntity entity) {
+   public static CompradorDTO entity2PersistenceDTO(CompradorEntity entity) {
         if (entity != null) {
             CompradorDTO dto = new CompradorDTO();
-            //Al objeto DTO se le asignan los atributos del objeto entity
+            dto.setNombre(entity.getNombre());
+            dto.setId(entity.getId());
+            dto.setCarrito(entity.getCarrito());
+            
             return dto;
         } else {
             return null;
         }
     }
 
-    public static CompradorEntity convertirDeDTOAEntidad (CompradorDTO dto) {
+    public static CompradorEntity persistenceDTO2Entity(CompradorDTO dto) {
         if (dto != null) {
             CompradorEntity entity = new CompradorEntity();
-            //Al objeto entity se le asignan los atributos del objeto dto
+            entity.setNombre(dto.getNombre());
+            entity.setId(dto.getId());
+            entity.setCarrito(dto.getCarrito());
+
             return entity;
         } else {
             return null;
         }
     }
 
-    public static List<CompradorDTO> convertirDeListaEntidadesAListaDTO (List<CompradorEntity> listaEntities) {
-        List<CompradorDTO> listaDTO = new ArrayList<CompradorDTO>();
+    public static ArrayList<CompradorDTO> convertirDeListaEntidadesAListaDTO (ArrayList<CompradorEntity> listaEntities) {
+        ArrayList<CompradorDTO> listaDTO = new ArrayList<CompradorDTO>();
         for (CompradorEntity entity : listaEntities) {
-            listaDTO.add(convertirDeEntidadADTO(entity));
+            listaDTO.add(entity2PersistenceDTO(entity));
         }
         return listaDTO;
     }
 
-    public static List<CompradorEntity> convertirDeListaDTOAListaEntidades (ArrayList<CompradorDTO> listaDTO) {
-        List<CompradorEntity> listaEntities = new ArrayList<CompradorEntity>();
+    public static ArrayList<CompradorEntity> convertirDeListaDTOAListaEntidades (ArrayList<CompradorDTO> listaDTO) {
+        ArrayList<CompradorEntity> listaEntities = new ArrayList<CompradorEntity>();
         for (CompradorDTO dto : listaDTO) {
-            listaEntities.add(convertirDeDTOAEntidad(dto));
+            listaEntities.add(persistenceDTO2Entity(dto));
         }
         return listaEntities;
     }

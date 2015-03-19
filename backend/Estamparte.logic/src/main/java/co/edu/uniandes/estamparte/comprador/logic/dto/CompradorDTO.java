@@ -20,14 +20,28 @@ public class CompradorDTO
         return nombre;
     }
     
+    public void setNombre(String pNom)
+    {
+        nombre = pNom;
+    }
     public String getId()
     {
         return id;
     }
     
+    public void setId(String pId)
+    {
+        id = pId;
+    }
+    
     public CarritoDTO getCarrito()
     {
         return carrito;
+    }
+    
+    public void setCarrito(CarritoDTO pCarrito)
+    {
+        carrito = pCarrito;
     }
     
 }
