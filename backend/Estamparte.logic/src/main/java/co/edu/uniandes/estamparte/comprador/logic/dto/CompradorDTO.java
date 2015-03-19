@@ -9,6 +9,39 @@ import co.edu.uniandes.estamparte.camiseta.logic.dto.*;
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 
 
-public class CompradorDTO {
+public class CompradorDTO 
+{
+    private String nombre;
+    private String id;
+    private CarritoDTO carrito;
+    
+    public String getNombre()
+    {
+        return nombre;
+    }
+    
+    public void setNombre(String pNom)
+    {
+        nombre = pNom;
+    }
+    public String getId()
+    {
+        return id;
+    }
+    
+    public void setId(String pId)
+    {
+        id = pId;
+    }
+    
+    public CarritoDTO getCarrito()
+    {
+        return carrito;
+    }
+    
+    public void setCarrito(CarritoDTO pCarrito)
+    {
+        carrito = pCarrito;
+    }
     
 }

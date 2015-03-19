@@ -3,9 +3,64 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.ejb;
 
-import co.edu.uniandes.estamparte.estampa.logic.ejb.*;
+import co.edu.uniandes.estamparte.camiseta.logic.api.*;
+import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
-public class CamisetaLogic {
+public class CamisetaLogic implements ICamisetaLogic  {
+
+        @PersistenceContext(unitName = "EstampartePU")
+    protected EntityManager entityManager;
+    
+    @Override
+    public CamisetaDTO crearCamiseta(CamisetaDTO detail) {
+     
+        CamisetaEntity entity = CamisetaConverter.persistenceDTO2Entity(detail);
+        entityManager.persist(entity);
+        return CamisetaConverter.entity2PersistenceDTO(entity);
+    }
+
+    @Override
+    public List<CamisetaDTO> darCamisetas() {
+        Query q = entityManager.createQuery("select u from CamisetaEntity u");
+        return CamisetaConverter.entity2PersistenceDTOList(q.getResultList());
+    }
+
+    @Override
+    public CamisetaPageDTO darCamisetas(Integer page, Integer maxRecords) {
+         Query count = entityManager.createQuery("select count(u) from CamisetaEntity u");
+        Long regCount = 0L;
+        regCount = Long.parseLong(count.getSingleResult().toString());
+        Query q = entityManager.createQuery("select u from CamisetaEntity u");
+        if (page != null && maxRecords != null) {
+            q.setFirstResult((page - 1) * maxRecords);
+            q.setMaxResults(maxRecords);
+        }
+        CamisetaPageDTO response = new CamisetaPageDTO();
+        response.asignarTotal(regCount);
+        response.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
+        return response;
+    }
+
+    @Override
+    public CamisetaDTO darCamiseta(String id) {
+         return CamisetaConverter.entity2PersistenceDTO(entityManager.find(CamisetaEntity.class, id));
+    }
+
+    @Override
+    public void eliminarCamiseta(String id) {
+        CamisetaEntity entity = entityManager.find(CamisetaEntity.class, id);
+        entityManager.remove(entity);
+    }
+    
+
     
 }
