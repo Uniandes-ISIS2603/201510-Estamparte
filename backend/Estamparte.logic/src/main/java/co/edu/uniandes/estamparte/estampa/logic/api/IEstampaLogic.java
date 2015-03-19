@@ -4,6 +4,7 @@
 package co.edu.uniandes.estamparte.estampa.logic.api;
 
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public interface IEstampaLogic {
     public List<EstampaDTO> obtenerEstampas();
     
     //Obtiene las estampas guardadas de acuerdo a paginacion
-    public List<EstampaDTO> obtenerEstampas(Integer pagina, Integer datosMaximos);
+    public EstampaPageDTO obtenerEstampas(Integer pagina, Integer datosMaximos);
     
     //Obtiene las estampas de un artista con un id dado
     public List<EstampaDTO> obtenerEstampasDeArtista(Long id);

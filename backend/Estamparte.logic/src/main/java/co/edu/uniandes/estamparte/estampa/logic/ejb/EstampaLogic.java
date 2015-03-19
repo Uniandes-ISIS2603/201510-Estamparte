@@ -3,7 +3,60 @@
  */
 package co.edu.uniandes.estamparte.estampa.logic.ejb;
 
+import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
+import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
+import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
+import java.util.List;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-public class EstampaLogic {
+@Default
+@Stateless
+@LocalBean
+public class EstampaLogic implements IEstampaLogic {
+    
+    @PersistenceContext(unitName="EstampasPU")
+    protected EntityManager manejador;
+    
+    @Override
+    public EstampaDTO crearEstampa(EstampaDTO estampa) {
+        EstampaEntity entidad = EstampaConverter.convertirDeDTOAEntidad(estampa);
+        manejador.persist(entidad);
+        return EstampaConverter.convertirDeEntidadADTO(entidad);
+    }
+
+    @Override
+    public EstampaDTO eliminarEstampa(Long id) {
+        EstampaEntity entidad = manejador.find(EstampaEntity.class, id);
+        manejador.remove(entidad);
+        return EstampaConverter.convertirDeEntidadADTO(entidad);
+    }
+
+    @Override
+    public List<EstampaDTO> obtenerEstampas() {
+        Query query = manejador.createQuery("select u from EstampaEntity u");
+        return EstampaConverter.convertirDeListaEntidadesAListaDTO(query.getResultList());
+    }
+
+    @Override
+    public EstampaPageDTO obtenerEstampas(Integer pagina, Integer datosMaximos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<EstampaDTO> obtenerEstampasDeArtista(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public EstampaDTO actualizarEstampa(EstampaDTO estampa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
