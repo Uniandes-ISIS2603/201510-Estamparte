@@ -1,86 +1,83 @@
-angular.module('CrudModule')
-.factory('CRUDUtils', ['Restangular', function (Restangular) {
+(function () {
+	var crud = angular.module('CrudModule');
 
-    function crudConstructor() {
-        this.api = Restangular.all(this.url);
+	crud.factory('CRUDBase', ['Restangular', function (RestAngular) {
+			function crudConstructor() {
+				this.api = RestAngular.all(this.url);
 
-        this.consultarDatos = function (paginaActual, itemsPorPagina) {
-            return this.api.getList(null, {page: paginaActual, maxRecords: itemsPorPagina});
-        }
+				this.fetchRecords = function (currentPage, itemsPerPage) {
+					return this.api.getList(null, {page: currentPage, maxRecords: itemsPerPage});
+				};
 
-        this.guardarDato = function (datoActual) {
-            if (datoActual.id) {
-                return datoActual.put();
-            } else {
-                return this.api.post(datoActual);
-            }
-        }
+				this.saveRecord = function (currentRecord) {
+					if (currentRecord.id) {
+						return currentRecord.put();
+					} else {
+						return this.api.post(currentRecord);
+					}
+				};
 
-        this.eliminarDato = function (dato) {
-            return dato.remove();
-        }
+				this.deleteRecord = function (record) {
+					return record.remove();
+				};
 
-        this.extendCtrl = function (ctrl, scope) {
+				this.extendCtrl = function (ctrl, scope) {
+					//Variables para el scope
+					scope.currentRecord = {};
+					scope.records = [];
 
-            //Variables para el scope.
+					//Variables de paginaci�n
+					scope.maxSize = 5;
+					scope.itemsPerPage = 5;
+					scope.totalItems = 0;
+					scope.currentPage = 1;
 
-            scope.datoActual = {};
-            scope.datos = [];
+					//Variables para el controlador
+					ctrl.editMode = false;
 
-            //Variables de paginacion.
+					//Funciones que no requieren del servicio
+					ctrl.createRecord = function () {
+						this.editMode = true;
+						scope.currentRecord = {};
+					};
 
-            scope.maxSize = 8;
-            scope.itemsPorPagina = 8;
-            scope.totalItems = 0;
-            scope.paginaActual = 1;
+					ctrl.editRecord = function (record) {
+						scope.currentRecord = RestAngular.copy(record);
+						this.editMode = true;
+					};
 
+					//Funciones que usan el servicio CRUD
+					var service = this;
 
-            // Funciones que no requieren del servicio.
+					ctrl.pageChanged = function () {
+						this.fetchRecords();
+					};
 
-            ctrl.crearDato = function () {
-                scope.datoActual = {};
-            }
+					ctrl.fetchRecords = function () {
+						return service.fetchRecords(scope.currentPage, scope.itemsPerPage).then(function (data) {
+							scope.records = data;
+							scope.totalItems = data.totalRecords;
+							scope.currentRecord = {};
+							ctrl.editMode = false;
+							return data;
+						});
+					};
 
-            ctrl.editarDato = function (dato) {
-                scope.datoActual = Restangular.copy(dato);
-            }
+					ctrl.saveRecord = function () {
+						return service.saveRecord(scope.currentRecord).then(function () {
+							ctrl.fetchRecords();
+						});
+					};
 
-            // Funciones que usan el servicio CRUD.
-
-            var service = this;
-
-            ctrl.pageChanged = function () {
-                this.consultarDatos();
-            }
-
-            ctrl.consultarDatos = function () {
-                return service.consultarDatos(scope.paginaActual, scope.itemsPorPagina).then(function (data) {
-                    scope.datos = [];
-                    scope.datos = data;
-                    scope.totalItems = data.totalRecords;
-                    scope.datoActual = {};
-                    return data;
-                });
-            }
-
-            ctrl.guardarDato = function () {
-                return service.guardarDato(scope.datoActual).then(function () {
-                    ctrl.consultarDatos();
-                });
-            }
-
-            ctrl.eliminarDato = function (dato) {
-                return service.eliminarDato(dato).then(function () {
-                    ctrl.consultarDatos();
-                });
-            }
-        }
-    }
-
-    return {
-        extendService: function (svc) {
-            crudConstructor.call(svc);
-        }
-    };
-
-}]);
+					ctrl.deleteRecord = function (record) {
+						return service.deleteRecord(record).then(function () {
+							ctrl.fetchRecords();
+						});
+					};
+				};
+			}
+			return {extendService: function (svc) {
+					crudConstructor.call(svc);
+				}};
+		}]);
+})();

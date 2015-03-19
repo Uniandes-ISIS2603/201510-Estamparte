@@ -7,4 +7,7 @@ angular.module('misestampasModule')
 
 	_this.consultarDatos();
 
+	// Debug line
+	console.log('Mis estampas fueron cargadas con exito. Longitud: ' + $scope.datos.length);
+
 }]);
