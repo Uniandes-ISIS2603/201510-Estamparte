@@ -15,6 +15,8 @@ public class FormaPagoEntity {
     @GeneratedValue(generator = "FormaPago")
     private String nombre;
     
+    private String idComprador;
+    
     private Long numeroTarjeta;
     
     private Date fechaVencimiento;
@@ -23,43 +25,51 @@ public class FormaPagoEntity {
     
     private String direccionCorrespondencia;
     
-    public String getNombre(){
+    public String darNombre(){
         return nombre;
     }
     
-    public void setNombre(String nNombre){
+    public void asignarNombre(String nNombre){
         nombre = nNombre;
     }
     
-    public void setFechaVencimiento(Date fecha){
+    public String darIdComprador(){
+        return idComprador;
+    }
+    
+    public void asignarIdComprador(String nIdCliente){
+        idComprador = nIdCliente;
+    }
+    
+    public void asignarFechaVencimiento(Date fecha){
         fechaVencimiento = fecha;
     }
     
-    public Date getFechaVencimiento(){
+    public Date darFechaVencimiento(){
         return fechaVencimiento;
     }
     
-    public long getNumTarjeta(){
+    public long darNumTarjeta(){
         return numeroTarjeta;
     }
     
-    public void setNumTarjeta(long nNumTarjeta){
+    public void asignarNumTarjeta(long nNumTarjeta){
         numeroTarjeta = nNumTarjeta;
     } 
     
-    public int getCodSeguridad(){
+    public int darCodSeguridad(){
         return codigoSeguridad;
     }
     
-    public void setCodSeguridad(int nCodSeguridad){
+    public void asignarCodSeguridad(int nCodSeguridad){
         codigoSeguridad = nCodSeguridad;
     }
     
-    public String getDireccion(){
+    public String darDireccion(){
         return direccionCorrespondencia;
     }
     
-    public void setDireccion(String nDireccion){
+    public void asignarDireccion(String nDireccion){
         direccionCorrespondencia = nDireccion;
     } 
 }

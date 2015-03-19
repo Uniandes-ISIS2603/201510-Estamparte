@@ -63,27 +63,27 @@ public class FacturaDTO {
     
     public String getTipoFormPago()
     {
-        return formaPago.getNombre();
+        return formaPago.darNombre();
     }
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.getNumTarjeta();
+        return formaPago.darNumTarjeta();
     }
     
     public Date getFechaVencimiento()
     {
-        return formaPago.getFechaVencimiento();
+        return formaPago.darFechaVencimiento();
     }
     
     public int getCodigoSeguridad()
     {
-        return formaPago.getCodSeguridad();                
+        return formaPago.darCodSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.getDireccion();
+        return formaPago.darDireccion();
     }
     
     public double getMontoTotal()
