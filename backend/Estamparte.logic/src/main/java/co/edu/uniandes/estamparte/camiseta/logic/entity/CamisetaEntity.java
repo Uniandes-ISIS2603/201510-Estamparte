@@ -3,8 +3,8 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.entity;
 
-import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
-import java.util.ArrayList;
+import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
+import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +16,7 @@ public class CamisetaEntity {
     @GeneratedValue(generator = "Camiasignara")
     public String id;
     
-    public ArrayList<EstampaDTO> estampas;
+    public List<EstampaEntity> estampas;
     
     public String talla;
     
@@ -36,11 +36,11 @@ public class CamisetaEntity {
         this.id = id;
     }
 
-    public ArrayList<EstampaDTO> darEstampas() {
+    public List<EstampaEntity> darEstampas() {
         return estampas;
     }
 
-    public void asignarEstampas(ArrayList<EstampaDTO> estampas) {
+    public void asignarEstampas(List<EstampaEntity> estampas) {
         this.estampas = estampas;
     }
 

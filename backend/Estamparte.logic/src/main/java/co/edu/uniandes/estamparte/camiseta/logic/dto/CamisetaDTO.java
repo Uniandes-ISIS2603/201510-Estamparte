@@ -4,14 +4,14 @@
 package co.edu.uniandes.estamparte.camiseta.logic.dto;
 
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class CamisetaDTO {
 
     public String id;
     
-    public ArrayList<EstampaDTO> estampas;
+    public List<EstampaDTO> estampas;
     
     public String talla;
     
@@ -31,11 +31,11 @@ public class CamisetaDTO {
         this.id = id;
     }
 
-    public ArrayList<EstampaDTO> darEstampas() {
+    public List<EstampaDTO> darEstampas() {
         return estampas;
     }
 
-    public void asignarEstampas(ArrayList<EstampaDTO> estampas) {
+    public void asignarEstampas(List<EstampaDTO> estampas) {
         this.estampas = estampas;
     }
 

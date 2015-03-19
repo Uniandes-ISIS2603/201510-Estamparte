@@ -39,7 +39,7 @@ public class EstampaConverter {
         return listaDTO;
     }
 
-    public static List<EstampaEntity> convertirDeListaDTOAListaEntidades (ArrayList<EstampaDTO> listaDTO) {
+    public static List<EstampaEntity> convertirDeListaDTOAListaEntidades (List<EstampaDTO> listaDTO) {
         List<EstampaEntity> listaEntities = new ArrayList<EstampaEntity>();
         for (EstampaDTO dto : listaDTO) {
             listaEntities.add(convertirDeDTOAEntidad(dto));
