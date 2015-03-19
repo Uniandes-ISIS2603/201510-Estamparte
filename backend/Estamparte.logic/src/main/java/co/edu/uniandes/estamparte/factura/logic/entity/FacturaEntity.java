@@ -3,29 +3,29 @@
  */
 package co.edu.uniandes.estamparte.factura.logic.entity;
 
-import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
-import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
-import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
-import java.util.ArrayList;
+import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
+import java.util.*;
 import java.util.Date;
 
 
 public class FacturaEntity {
     
     
-    private CompradorDTO comprador;
-    private FormaPagoDTO formaPago;
+    private CompradorEntity comprador;
+    private FormaPagoEntity formaPago;
     private String fechaCompra;
     private long id;
-    private ArrayList<CamisetaDTO> articulos;
+    private List<CamisetaEntity> articulos;
     
-    public void setComprador(CompradorDTO pComprador)
+    public void setComprador(CompradorEntity pComprador)
     {
         comprador = pComprador;
     }
     
-    public CompradorDTO getComprador()
+    public CompradorEntity getComprador()
     {
         return comprador;
     }
@@ -40,22 +40,22 @@ public class FacturaEntity {
         return comprador.getId();
     }
     
-    public void setArticulos(ArrayList<CamisetaDTO> pCamisetas)
+    public void setArticulos(List<CamisetaEntity> pCamisetas)
     {
         articulos = pCamisetas;
     }
     
-    public ArrayList<CamisetaDTO> getArticulos()
+    public List<CamisetaEntity> getArticulos()
     {
         return articulos;
     }
     
-    public void setFormaPago(FormaPagoDTO pFormaPago)
+    public void setFormaPago(FormaPagoEntity pFormaPago)
     {
         formaPago = pFormaPago;
     }
     
-    public FormaPagoDTO getFormaPago()
+    public FormaPagoEntity getFormaPago()
     {
         return formaPago;
     }

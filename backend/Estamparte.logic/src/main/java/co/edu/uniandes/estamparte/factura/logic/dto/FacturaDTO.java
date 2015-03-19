@@ -8,7 +8,7 @@ import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class FacturaDTO {
     private FormaPagoDTO formaPago;
     private String fechaCompra;
     private long id;
-    private ArrayList<CamisetaDTO> articulos;
+    private List<CamisetaDTO> articulos;
     
     public void setComprador(CompradorDTO pComprador)
     {
@@ -41,12 +41,12 @@ public class FacturaDTO {
         return comprador.getId();
     }
     
-    public void setArticulos(ArrayList<CamisetaDTO> pCamisetas)
+    public void setArticulos(List<CamisetaDTO> pCamisetas)
     {
         articulos = pCamisetas;
     }
     
-    public ArrayList<CamisetaDTO> getArticulos()
+    public List<CamisetaDTO> getArticulos()
     {
         return articulos;
     }

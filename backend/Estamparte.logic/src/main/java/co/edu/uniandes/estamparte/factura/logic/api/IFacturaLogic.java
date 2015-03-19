@@ -15,10 +15,8 @@ import java.util.ArrayList;
 public interface IFacturaLogic {
     
     public FacturaDTO createFactura(FacturaDTO detalles);
-    
-    public FacturaPageDTO getFacturas(Integer numPagina, Integer maxRecords);
-    
-    public ArrayList<FacturaDTO> getFacturas();
+        
+    public List<FacturaDTO> getFacturas();
     
     public FacturaDTO getFactura(Long id);
     
