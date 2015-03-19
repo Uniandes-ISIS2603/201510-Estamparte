@@ -12,7 +12,7 @@ angular.module('inicioModule')
 		var altura = Math.max(w.height(), 480);
 		inicio.height(altura);
 
-		var contenedor = angular.element('.container');
+		var contenedor = angular.element('#inicio .container');
 		var padding = altura / 3;
 		contenedor.css('padding-top', padding);
 	}
