@@ -50,7 +50,7 @@ public class FacturaConverter
         return dtos;
     }
     
-     public static List<FacturaEntity> persistenceDTO2EntityList(List<FacturaDTO> dtos) {
+     public static ArrayList<FacturaEntity> persistenceDTO2EntityList(ArrayList<FacturaDTO> dtos) {
         ArrayList<FacturaEntity> entities = new ArrayList<FacturaEntity>();
         for (FacturaDTO dto : dtos) {
             entities.add(persistenceDTO2Entity(dto));
