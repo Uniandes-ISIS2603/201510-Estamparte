@@ -1,94 +1,15 @@
 <div id="camiseta">
-    <div class="container target">
-        <div class="container"></div>
-        <div class="row">
-            <h1 class="">Diseña tu camiseta</h1>
+
+        <div class="container">
+
+            <div id="tituloCamiseta">
+
+                <h2>Disena tu camiseta</h2>
+
+            </div>
+
+            <div id="vistaprevia" class="col-md-8"></div>
+
         </div>
 
-        <div class="">
-            <form name="countryForm" role="form" class="">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <h3 class="">Selecciona como te gustaria tu camiseta ...</h3>
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <th class="">
-                                        <div class="form-group">
-                                            <label for="Estilo" class="">Estilo</label>
-                                            <select class="form-control" ng-model="datoActual.camiseta.estilo">
-                                                <option class="">Estilo 1</option>
-                                                <option class="">Estilo 2</option>
-                                                <option class="">Estilo 3</option>
-                                            </select>
-                                        </div>
-                                        </th>
-                                        <th class="">
-                                        <div class="form-group">
-                                            <label for="Talla" class="">Talla</label>
-                                            <select class="form-control" ng-model="datoActual.camiseta.talla">
-                                                <option class="">Talla 1</option>
-                                                <option class="">Talla 2</option>
-                                                <option class="">Talla 3</option>
-                                            </select>
-                                        </div>
-                                        </th>
-                                        <th class="">
-                                        <div class="form-group">
-                                            <label for="Color" class="">Color</label>
-                                            <select class="form-control" ng-model="datoActual.camiseta.color">
-                                                <option class="">Color 1</option>
-                                                <option class="">Color 2</option>
-                                                <option class="">Color 3</option>
-                                            </select>
-                                        </div>
-                                        </th>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                            <td class="">
-                                <div class="form-group">
-                                    <h3>Nombra tu camiseta</h3>
-                                    <input ng-model ="datoActual.camiseta.nombreCamiseta"> 
-                                    <h3 class="">Total: $ {{datoActual.camiseta.total}} </h3>
-                                    
-                                        <button class="btn btn-default navbar-btn" ng-click="camisetaCtrl.continuar()"><span class="glyphicon glyphicon-ok"></span> Continuar</button>
-                                   
-                                </div>                            
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="" contenteditable="false">
-                                <img src="http://placehold.it/800x600" class="img-responsive" contenteditable="false">
-                            </th>
-                            <th class="" contenteditable="false">
-                    <h3> Agrega tus estampas... </h3>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th class="">Estampa</th>
-                                <th class="">Acciones</th>
-                            </tr>
-
-                            <tr ng-repeat ="estampa in camisetaCtrl.estampasSeleccionadas">
-                                <td class="">
-                                    
-                                    <img ng-src="estampa.imagenes[0]" >
-                                </td>
-                        </tbody>
-                    </table>
-                    </th>
-                    </tr>
-                    </tbody>
-                </table>
-            </form>
-            <div class="row"></div>
-        </div>
-        <div class="container"></div>
-
-    </div>
+</div>

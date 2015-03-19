@@ -1,13 +1,31 @@
 angular.module('camisetaModule')
-.controller('camisetaCtrl', ['$scope', 'servicioCamiseta', 'servicioEstampa', function ($scope, servicioCamiseta, servicioEstampa) {
+.controller('camisetaCtrl', ['$scope', '$window', 'servicioCamiseta', function ($scope, $window, servicioCamiseta) {
 
 	// Extension de servicios CRUD.
 
 	servicioCamiseta.extendCtrl(this, $scope);
 
-	$scope.datoActual.camiseta.estampasUsadas = [];
-	$scope.datoActual.camiseta.idCamiseta;
-	$scope.datoActual.camiseta.nombreCamiseta;
+	// Configuracion visual.
+
+	var w = angular.element($window);
+	w.bind('resize', function() {
+		alinearAltura();
+	})
+
+	alinearAltura();
+	function alinearAltura() {
+		var inicio = angular.element('#vistaprevia');
+		var altura = Math.max(w.height() - 250, 480);
+		inicio.height(altura);
+
+		var contenedor = angular.element('#inicio .container');
+		var padding = altura / 3;
+		contenedor.css('padding-top', padding);
+	}
+
+	// $scope.datoActual.camiseta.estampasUsadas = [];
+	// $scope.datoActual.camiseta.idCamiseta;
+	// $scope.datoActual.camiseta.nombreCamiseta;
 
 	this.contiene = function (id) {
 		var respuesta = false;
@@ -38,9 +56,9 @@ angular.module('camisetaModule')
 		}
 	}
 
-	this.estampasSeleccionadas = function() {
-		return servicioEstampa.darEstampasSeleccionadas();
-	}
+	// this.estampasSeleccionadas = function() {
+	// 	return servicioEstampa.darEstampasSeleccionadas();
+	// }
 
 	this.cadenaAleatoria = function (longitud) {
 		var numeros = '0123456789';
@@ -75,7 +93,7 @@ angular.module('camisetaModule')
 
 		alert(mensaje);
 
-		servicioCamiseta.agregarCamiseta($scope.datoActual.camiseta);
+		//servicioCamiseta.agregarCamiseta($scope.datoActual.camiseta);
 	}
 
 }]);
