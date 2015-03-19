@@ -6,7 +6,7 @@ package co.edu.uniandes.estamparte.factura.logic.entity;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
-import co.edu.uniandes.estamparte.fromaPago.logic.dto.FormaPagoDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import java.util.ArrayList;
 
 
