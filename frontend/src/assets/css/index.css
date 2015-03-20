@@ -44,17 +44,53 @@ body {
 }
 
 #carrito, #misestampas {
+	overflow: scroll;
 	display: none;
 	position: fixed;
 	right: 0;
 	top: 50px;
-	padding-top: 20px;
 	background: rgba(255, 255, 255, 0.86);
 	height: 100%;
 	width: 320px;
 	z-index: 2000;
 	font-weight: 300;
 	border-left: 1px solid #EEE;
+}
+
+.miestampa {
+	list-style: none;
+}
+
+.miestampa img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin-right: 8px;
+}
+
+.miestampa p {
+	display: inline-block;
+	padding-top: 15px;
+}
+
+.miestampa button {
+	display: inline-block;
+	margin-top: 11px;
+	float: right;
+	margin-right: 15px;
+	border: none;
+	text-align: center;
+	border-radius: 0;
+	background-color: #EEE;
+	color: #999;
+}
+
+.miestampa button:hover {
+	color: #777;
+}
+
+.miestampa p:hover {
+	text-decoration: underline;
 }
 
 #estampas {
