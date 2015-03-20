@@ -5,54 +5,52 @@
  */
 package co.edu.uniandes.estamparte.estamparte.service;
 
-import co.edu.uniandes.estamparte.fromaPago.logic.api.IFormaPagoLogic;
-import co.edu.uniandes.estamparte.fromaPago.logic.dto.
-import co.edu.uniandes.estamparte.fromaPago.logic.dto.FormaPagoPageDTO;
-import java.util.ArrayList;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.api.IFormaPagoLogic;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author estudiante
  */
+@Path("/formaPago")
+@Stateless
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ServicioFormaPago {
-    
-    //@Inject
-    protected IFormaPagoLogic formaPagoLogic;
+
+    @Inject
+    protected IFormaPagoLogic formaPago;
     
     //@POST
-    public FormaPagoDTO createFormaPago(FormaPagoDTO detalles)
-    {
-        return formaPagoLogic.createFormaPago(detalles);
+    public FormaPagoDTO crearFormaPago (FormaPagoDTO formaPago){
+        return this.formaPago.crearFormaPago(formaPago);
     }
     
-   // @GET
-    public FormaPagoPageDTO getFormaPago(Integer numPagina, Integer maxRecords)
-    {
-        return formaPagoLogic.getFormaPago(numPagina, maxRecords);
+    @GET
+    public List<FormaPagoDTO> darFormasPago(){
+        return formaPago.darFormasPago();
     }
     
-    //@GET
-    public ArrayList<FormaPagoDTO> getFormasPago()
-    {
-        return formaPagoLogic.getFormasPago();
+    @PUT
+    public void actualizarFormaPago(FormaPagoDTO formaPago){
+        this.formaPago.actualizarFormaPago(formaPago);
     }
     
-   // @GET
-    public FormaPagoDTO getFormaPago(Long id)
-    {
-        return formaPagoLogic.getFormaPago(id);
+    @DELETE
+    public void eliminarFormaPago(String nombre){
+        formaPago.eliminarFormaPago(nombre);
     }
-    
-    //@DELETE
-    public FormaPagoDTO deleteFormaPago(Long id)
-    {
-        return formaPagoLogic.deleteFormaPago(id);
-    }
-    
-    //@PUT
-    public void updateFormaPago(FormaPagoDTO detalles)
-    {
-        formaPagoLogic.updateFormaPago(detalles);
-    }
-    
 }
