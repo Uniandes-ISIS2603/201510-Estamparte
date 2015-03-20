@@ -2,7 +2,14 @@
 
 	<ul>
 
-		<li ng-repeat="estampa in datos">{{ estampa.nombre }}</li>
+		<li class="miestampa" ng-repeat="estampa in records">
+			<img class="img-circle" ng-src="{{ estampa.imagenes[0] }}">
+			<p>{{ estampa.nombre }}</p>
+			<button class="btn btn-default quitarmiestampa" ng-click="eliminar(estampa)">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+			<hr>
+		</li>
 
 	</ul>
 

@@ -7,7 +7,7 @@
 
 		servicioEstampa.extendCtrl(_this, $scope);
 
-		_this.consultarDatos();
+		_this.fetchRecords();
 
 		$scope.prueba = [
 			{  
@@ -100,21 +100,21 @@
 			}
 		];
 
-		this.agregarPrueba = function() {
+		_this.agregarPrueba = function () {
 			for (var i = 0; i < $scope.prueba.length; i++) {
 				var estampa = $scope.prueba[i];
-				this.editarDato(estampa);
-				this.guardarDato();
+				_this.editRecord(estampa);
+				_this.saveRecord();
 			}
 		}
-		this.agregarPrueba();
+		_this.agregarPrueba();
 
 		$scope.darAnchoEstampa = function (index) {
 			var ans = '';
 
-			if ($scope.datos.length - index >= 3) {
+			if ($scope.records.length - index >= 3) {
 				ans = 'col-md-4';
-			} else if ($scope.datos.length - index == 2) {
+			} else if ($scope.records.length - index == 2) {
 				ans = 'col-md-6';
 			} else {
 				ans = 'col-md-12';
@@ -134,23 +134,19 @@
 		}
 
 		$scope.agregar = function (estampa) {
-			_this.editarDato(estampa);
-
-			servicioMisestampas.guardarDato($scope.datoActual);
-
-			_this.guardarDato();
+			servicioMisestampas.agregar(estampa);
 			_this.verMisEstampas();
 		}
 
 		$scope.gusta = function (estampa, seleccion) {
-			_this.editarDato(estampa);
+			_this.editRecord(estampa);
 
 			if (seleccion === 'si')
-				$scope.datoActual.siGusta += 1;
+				$scope.currentRecord.siGusta += 1;
 			else if (seleccion === 'no')
-				$scope.datoActual.noGusta += 1
+				$scope.currentRecord.noGusta += 1
 			
-			_this.guardarDato();
+			_this.saveRecord();
 		}
 
 	}]);

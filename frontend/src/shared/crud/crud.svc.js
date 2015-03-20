@@ -1,7 +1,7 @@
 (function () {
 	var app = angular.module('CrudModule');
 
-	app.factory('CRUDBase', ['Restangular', function (RestAngular) {
+	app.factory('CRUDUtils', ['Restangular', function (RestAngular) {
 		function crudConstructor() {
 			this.api = RestAngular.all(this.url);
 

@@ -5,12 +5,11 @@
 
 		var _this = this;
 		
-		servicioMisestampas.extendCtrl(_this, $scope);
+		$scope.records = servicioMisestampas.darMisestampas();
 
-		_this.consultarDatos();
-
-		// Debug line
-		console.log('Mis estampas fueron cargadas con exito. Longitud: ' + $scope.datos.length);
+		$scope.eliminar = function (estampa) {
+			servicioMisestampas.eliminar(estampa);
+		}
 
 	}]);
 })();
