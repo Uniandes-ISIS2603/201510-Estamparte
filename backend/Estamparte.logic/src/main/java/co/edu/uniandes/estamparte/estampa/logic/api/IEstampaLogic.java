@@ -22,11 +22,12 @@ public interface IEstampaLogic {
     //Obtiene las estampas guardadas de acuerdo a paginacion
     public EstampaPageDTO obtenerEstampas(Integer pagina, Integer datosMaximos);
     
-    //Obtiene las estampas de un artista con un id dado
-    public List<EstampaDTO> obtenerEstampasDeArtista(Long id);
+    //Obtiene una estampa con un id dado
+    public EstampaDTO darEstampa(Long id);
     
     //Actualiza la informacion de una estampa
     public EstampaDTO actualizarEstampa(EstampaDTO estampa);
+    
     
    
 }

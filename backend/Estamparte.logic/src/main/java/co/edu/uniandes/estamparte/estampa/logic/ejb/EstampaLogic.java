@@ -61,13 +61,15 @@ public class EstampaLogic implements IEstampaLogic {
     }
 
     @Override
-    public List<EstampaDTO> obtenerEstampasDeArtista(Long id) {
-        return null;
+    public EstampaDTO actualizarEstampa(EstampaDTO estampa) {
+        EstampaEntity entidad = manejador.merge(EstampaConverter.convertirDeDTOAEntidad(estampa));
+        return EstampaConverter.convertirDeEntidadADTO(entidad);
     }
 
     @Override
-    public EstampaDTO actualizarEstampa(EstampaDTO estampa) {
-        return null;
+    public EstampaDTO darEstampa(Long id) {
+        EstampaEntity entidad = manejador.find(EstampaEntity.class, id);
+        return EstampaConverter.convertirDeEntidadADTO(entidad);
     }
     
 }
