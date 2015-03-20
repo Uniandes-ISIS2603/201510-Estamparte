@@ -55,4 +55,9 @@ public class ServicioEstampa {
         return servicioLogicaEstampa.actualizarEstampa(estampa);
     }
     
+    @DELETE
+    public void eliminarEstampas(){
+        servicioLogicaEstampa.eliminarEstampas();
+    }
+    
 }

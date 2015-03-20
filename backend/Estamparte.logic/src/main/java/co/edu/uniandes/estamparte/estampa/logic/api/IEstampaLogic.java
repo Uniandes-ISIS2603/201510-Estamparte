@@ -28,6 +28,9 @@ public interface IEstampaLogic {
     //Actualiza la informacion de una estampa
     public EstampaDTO actualizarEstampa(EstampaDTO estampa);
     
+    //Elimina todas las estampas de la BD
+    public void eliminarEstampas();
+    
     
    
 }

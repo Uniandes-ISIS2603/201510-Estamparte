@@ -71,5 +71,11 @@ public class EstampaLogic implements IEstampaLogic {
         EstampaEntity entidad = manejador.find(EstampaEntity.class, id);
         return EstampaConverter.convertirDeEntidadADTO(entidad);
     }
+
+    @Override
+    public void eliminarEstampas() {
+        Query q = manejador.createQuery("delete from EstampaEntity u");
+        q.executeUpdate();
+    }
     
 }

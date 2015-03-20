@@ -47,7 +47,7 @@ public class ServicioCamiseta
     }
 
     @GET
-    public CamisetaPageDTO getCountries(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+    public CamisetaPageDTO darCamisetas(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
         return countryLogic.darCamisetas(page, maxRecords);
     }
 
