@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @LocalBean
 public class EstampaLogic implements IEstampaLogic {
     
-    @PersistenceContext(unitName="EstampasPU")
+    @PersistenceContext(unitName="EstampartePU")
     protected EntityManager manejador;
     
     @Override

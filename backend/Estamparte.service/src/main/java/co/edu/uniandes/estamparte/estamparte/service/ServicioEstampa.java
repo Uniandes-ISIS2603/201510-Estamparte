@@ -51,7 +51,6 @@ public class ServicioEstampa {
     }
     
     @PUT
-    @Path("{id}")
     public EstampaDTO actualizarEstampa(@PathParam("id")Long id, EstampaDTO estampa){
         return servicioLogicaEstampa.actualizarEstampa(estampa);
     }
