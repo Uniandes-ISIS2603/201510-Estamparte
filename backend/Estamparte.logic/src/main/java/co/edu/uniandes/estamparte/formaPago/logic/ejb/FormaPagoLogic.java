@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.formaPago.logic.ejb;
 
+import co.edu.uniandes.estamparte.formaPago.logic.api.IFormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
@@ -11,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-public class FormaPagoLogic {
+public class FormaPagoLogic implements IFormaPagoLogic{
     
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
