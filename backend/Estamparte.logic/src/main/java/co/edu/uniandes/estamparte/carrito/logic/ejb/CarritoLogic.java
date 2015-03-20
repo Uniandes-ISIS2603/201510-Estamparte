@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.carrito.logic.ejb;
 
+import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
@@ -11,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-public class CarritoLogic {
+public class CarritoLogic implements ICarritoLogic {
    
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
