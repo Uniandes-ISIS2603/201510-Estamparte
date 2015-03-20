@@ -46,17 +46,28 @@ public class EstampaLogic implements IEstampaLogic {
 
     @Override
     public EstampaPageDTO obtenerEstampas(Integer pagina, Integer datosMaximos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query cuenta = manejador.createQuery("select count(u) from EstampaEntity u");
+        Long cuentaReg = 0L;
+        cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
+        Query q = manejador.createQuery("select u from EstampaEntity u");
+        if(pagina != null && datosMaximos != null){
+            q.setFirstResult((pagina-1)*datosMaximos);
+            q.setMaxResults(datosMaximos);
+        }
+        EstampaPageDTO respuesta = new EstampaPageDTO();
+        respuesta.cambiarTotalEstampas(cuentaReg);
+        respuesta.cambiarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        return respuesta;
     }
 
     @Override
     public List<EstampaDTO> obtenerEstampasDeArtista(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
     public EstampaDTO actualizarEstampa(EstampaDTO estampa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
     
 }
