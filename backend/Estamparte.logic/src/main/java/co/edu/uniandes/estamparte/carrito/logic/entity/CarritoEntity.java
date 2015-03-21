@@ -5,19 +5,23 @@ package co.edu.uniandes.estamparte.carrito.logic.entity;
 
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CarritoEntity {
     
     @Id
     @GeneratedValue(generator="Carrito")
+    @Column(name="CARRITO_ID")
     private String idCarrito;
     
     private String idComprador;
     
+    @OneToMany(mappedBy="carroDuenio")
     private List<CamisetaEntity> camisetas;
     
     public String darIdCarrito(){

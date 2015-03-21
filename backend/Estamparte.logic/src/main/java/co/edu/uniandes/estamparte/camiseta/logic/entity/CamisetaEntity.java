@@ -3,32 +3,41 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.entity;
 
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CamisetaEntity {
     
     @Id
     @GeneratedValue(generator = "Camiseta")
-    public String id;
+    private String id;
     
-    public List<EstampaEntity> estampas;
+    @ManyToMany(mappedBy="camisetas")
+    @JoinTable(name="camiseta_estampa")
+    private List<EstampaEntity> estampas;
     
-    public String talla;
+    private String talla;
     
-    public String color;
+    private String color;
     
-    public String estilo;
+    private String estilo;
     
-    public String nombre;
+    private String nombre;
     
-    public double costo;
+    private double costo;
+    
+    @ManyToOne
+    @JoinColumn(name="CARRITO_ID")
+    private CarritoEntity carroDuenio;
     
     public String darId() {
         return id;
@@ -38,8 +47,6 @@ public class CamisetaEntity {
         this.id = id;
     }
 
-    @ManyToMany(mappedBy="camisetas")
-    @JoinTable(name="camiseta_estampa")
     public List<EstampaEntity> darEstampas() {
         return estampas;
     }
