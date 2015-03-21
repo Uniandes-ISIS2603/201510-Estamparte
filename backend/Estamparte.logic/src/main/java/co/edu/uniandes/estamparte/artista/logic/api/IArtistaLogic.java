@@ -5,6 +5,7 @@ package co.edu.uniandes.estamparte.artista.logic.api;
 
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import java.util.List;
 
 public interface IArtistaLogic {
@@ -24,5 +25,11 @@ public interface IArtistaLogic {
     //Actualiza un artista
     public ArtistaDTO actualizarArtista(ArtistaDTO artista);
     
-    //Elimina un artista con l
+    //Elimina todos los artistas
+    public void eliminarArtistas();
+    
+    //Elimina un artista con el id dado
+    public ArtistaDTO eliminarArtista(Long id);
+    
+    
 }
