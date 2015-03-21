@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.camiseta.logic.entity;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,10 +20,14 @@ public class CamisetaEntity {
     
     @Id
     @GeneratedValue(generator = "Camiseta")
+    @Column(name="CAMISETA_ID")
     private String id;
     
-    @ManyToMany(mappedBy="camisetas")
-    @JoinTable(name="camiseta_estampa")
+    @ManyToMany
+    @JoinTable(
+    name="CAMISETA_ESTAMPA",
+    joinColumns={@JoinColumn(name="CAMISETA_ID", referencedColumnName="CAMISETA_ID")},
+    inverseJoinColumns={@JoinColumn(name="ESTAMPA_ID", referencedColumnName="ESTAMPA_ID")})
     private List<EstampaEntity> estampas;
     
     private String talla;

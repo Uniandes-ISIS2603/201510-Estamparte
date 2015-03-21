@@ -9,14 +9,22 @@ import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.*;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-
+@Entity
 public class FacturaEntity {
     
     
     private CompradorEntity comprador;
     private FormaPagoEntity formaPago;
     private String fechaCompra;
+    
+    @Id
+    @GeneratedValue(generator="Factura")
+    @Column(name="FACTURA_ID")
     private long id;
     private List<CamisetaEntity> articulos;
     

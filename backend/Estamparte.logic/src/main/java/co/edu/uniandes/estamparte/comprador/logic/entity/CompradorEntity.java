@@ -8,10 +8,21 @@ import co.edu.uniandes.estamparte.artista.logic.entity.*;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.*;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class CompradorEntity {
-     private String nombre;
+    private String nombre;
+    
+    @Id
+    @GeneratedValue(generator="Comprador")
+    @Column(name="COMPRADOR_ID")
     private String id;
+    
+    
     private CarritoDTO carrito;
     
     public String getNombre()

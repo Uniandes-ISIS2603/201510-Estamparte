@@ -19,6 +19,7 @@ public class CarritoEntity {
     @Column(name="CARRITO_ID")
     private String idCarrito;
     
+    
     private String idComprador;
     
     @OneToMany(mappedBy="carroDuenio")
