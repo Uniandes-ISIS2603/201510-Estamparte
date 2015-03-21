@@ -12,6 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CompradorEntity {
@@ -22,7 +24,8 @@ public class CompradorEntity {
     @Column(name="COMPRADOR_ID")
     private String id;
     
-    
+    @OneToOne
+    @JoinColumn(name="CARRITO_ID")
     private CarritoDTO carrito;
     
     public String getNombre()

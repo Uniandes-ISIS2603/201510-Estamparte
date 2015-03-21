@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CarritoEntity {
@@ -17,9 +18,9 @@ public class CarritoEntity {
     @Id
     @GeneratedValue(generator="Carrito")
     @Column(name="CARRITO_ID")
-    private String idCarrito;
+    private String idCarrito;   
     
-    
+    @OneToOne(mappedBy="carrito")
     private String idComprador;
     
     @OneToMany(mappedBy="carroDuenio")
