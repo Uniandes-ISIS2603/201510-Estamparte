@@ -44,7 +44,7 @@ public class ArtistaEntity {
     private String descripcion;
     
     //Estampas del artista
-    @OneToMany(mappedBy="artistaentity")
+    @OneToMany(mappedBy="duenho")
     private List<EstampaEntity> estampas;
     
     //Metodos analizadores
