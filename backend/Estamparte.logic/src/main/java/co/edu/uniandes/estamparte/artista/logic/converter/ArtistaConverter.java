@@ -12,10 +12,17 @@ import java.util.List;
 
 public class ArtistaConverter {
     
-    public static ArtistaDTO convertirDeEntidadADTO (ArtistaEntity entity) {
-        if (entity != null) {
+    public static ArtistaDTO convertirDeEntidadADTO (ArtistaEntity entidad) {
+        if (entidad != null) {
             ArtistaDTO dto = new ArtistaDTO();
-            //Al objeto DTO se le asignan los atributos del objeto entity
+            dto.cambiarId(entidad.darId());
+            dto.cambiarUsuario(entidad.darUsuario());
+            dto.cambiarContrasenha(entidad.darContrasenha());
+            dto.cambiarNombre(entidad.darNombre());
+            dto.cambiarCedula(entidad.darCedula());
+            dto.cambiarCorreo(entidad.darCorreo());
+            dto.cambiarImagenPerfil(entidad.darImagenPerfil());
+            dto.cambiarDescripcion(entidad.darDescripcion());
             return dto;
         } else {
             return null;
