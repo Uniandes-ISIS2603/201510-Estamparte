@@ -4,11 +4,14 @@
 package co.edu.uniandes.estamparte.estampa.logic.entity;
 
 import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -24,6 +27,10 @@ public class EstampaEntity {
     @ManyToOne
     @JoinColumn(name="ARTISTA_ID")
     private ArtistaEntity duenho;
+    
+    //Camiseta a la que pertenece
+    @ManyToMany(mappedBy="estampas")
+    private List<CamisetaEntity> camisetas;
     
     //Nombre de la estampa
     private String nombre;

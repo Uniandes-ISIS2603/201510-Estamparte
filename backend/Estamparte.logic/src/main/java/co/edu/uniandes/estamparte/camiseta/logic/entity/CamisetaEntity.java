@@ -8,12 +8,14 @@ import java.util.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class CamisetaEntity {
     
     @Id
-    @GeneratedValue(generator = "Camiasignara")
+    @GeneratedValue(generator = "Camiseta")
     public String id;
     
     public List<EstampaEntity> estampas;
@@ -36,6 +38,8 @@ public class CamisetaEntity {
         this.id = id;
     }
 
+    @ManyToMany(mappedBy="camisetas")
+    @JoinTable(name="camiseta_estampa")
     public List<EstampaEntity> darEstampas() {
         return estampas;
     }
