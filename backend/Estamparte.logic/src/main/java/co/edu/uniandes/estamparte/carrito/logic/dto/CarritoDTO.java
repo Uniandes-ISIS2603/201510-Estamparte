@@ -40,6 +40,10 @@ public class CarritoDTO {
         return camisetas;
     }
     
+    public void asignarCamisetas(List<CamisetaDTO> camisetas){
+        this.camisetas.addAll(camisetas);
+    }
+    
     public void agregarCamiseta (CamisetaDTO camiseta){
         camisetas.add(camiseta);
     }

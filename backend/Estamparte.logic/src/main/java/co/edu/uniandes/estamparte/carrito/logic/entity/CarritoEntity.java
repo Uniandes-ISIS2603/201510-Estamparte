@@ -50,6 +50,10 @@ public class CarritoEntity {
         return camisetas;
     }
     
+    public void asignarCamisetas(List<CamisetaEntity> camisetas){
+        this.camisetas.addAll(camisetas);
+    }
+    
     public void agregarCamiseta (CamisetaEntity camiseta){
         camisetas.add(camiseta);
     }
