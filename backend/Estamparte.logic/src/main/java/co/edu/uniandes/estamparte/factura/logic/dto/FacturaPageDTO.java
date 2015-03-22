@@ -6,8 +6,9 @@ package co.edu.uniandes.estamparte.factura.logic.dto;
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
-
+@XmlRootElement
 public class FacturaPageDTO {
     private Long totalRecords;
 
