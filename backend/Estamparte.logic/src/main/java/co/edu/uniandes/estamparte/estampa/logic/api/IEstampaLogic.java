@@ -31,6 +31,9 @@ public interface IEstampaLogic {
     //Elimina todas las estampas de la BD
     public void eliminarEstampas();
     
+    //Obtiene las estampas de un artista
+    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos);
+    
     
    
 }

@@ -77,5 +77,21 @@ public class EstampaLogic implements IEstampaLogic {
         Query q = manejador.createQuery("delete from EstampaEntity u");
         q.executeUpdate();
     }
+
+    @Override
+    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos) {
+        Query cuenta = manejador.createQuery("select count(u) from EstampaEntity u");
+        Long cuentaReg = 0L;
+        cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
+        Query q = manejador.createQuery("select u from EstampaEntity u where u.duenho = '"+idArtista+"'");
+        if(pagina != null && datosMaximos != null){
+            q.setFirstResult((pagina-1)*datosMaximos);
+            q.setMaxResults(datosMaximos);
+        }
+        EstampaPageDTO respuesta = new EstampaPageDTO();
+        respuesta.cambiarTotalEstampas(cuentaReg);
+        respuesta.cambiarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        return respuesta;
+    }
     
 }

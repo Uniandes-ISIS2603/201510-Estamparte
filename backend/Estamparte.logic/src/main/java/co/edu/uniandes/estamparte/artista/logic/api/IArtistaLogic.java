@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.artista.logic.api;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
 import java.util.List;
 
 public interface IArtistaLogic {
@@ -30,6 +31,20 @@ public interface IArtistaLogic {
     
     //Elimina un artista con el id dado
     public ArtistaDTO eliminarArtista(Long id);
+    
+    //Funcionalidades para estampas de un artista
+    
+    //Crea una nueva estampa de un artista
+    public EstampaDTO crearEstampaDeArtista(Long idArtista, EstampaDTO estampa);
+    
+    //Elimina una estampa de un artista
+    public EstampaDTO eliminarEstampaDeArtista(Long idArtista, Long idEstampa);
+    
+    //Obtiene las estampas de un artista dado
+    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos);
+    
+    //Actualiza la estampa de un artista dado
+    public EstampaDTO actualizarEstampaDeArtista(Long idArtista, EstampaDTO estampa);
     
     
 }
