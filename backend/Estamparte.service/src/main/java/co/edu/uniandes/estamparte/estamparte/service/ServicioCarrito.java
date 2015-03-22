@@ -40,8 +40,8 @@ public class ServicioCarrito {
     }
     
     @GET
-    public List<CarritoDTO> darFormasPago(){
-        return carrito.darFormasPago();
+    public List<CarritoDTO> darCarritos(){
+        return carrito.darCarritos();
     }
     
     @PUT

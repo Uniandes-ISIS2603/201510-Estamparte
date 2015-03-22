@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface ICarritoLogic {
    
-    public CarritoDTO crearCarrito (CarritoDTO formaPago);
+    public CarritoDTO crearCarrito (CarritoDTO carrito);
     
-    public List<CarritoDTO> darFormasPago();
+    public List<CarritoDTO> darCarritos();
     
-    public void actualizarCarrito(CarritoDTO formaPago);
+    public void actualizarCarrito(CarritoDTO carrito);
     
     public void eliminarCarrito(String nombre);    
 }

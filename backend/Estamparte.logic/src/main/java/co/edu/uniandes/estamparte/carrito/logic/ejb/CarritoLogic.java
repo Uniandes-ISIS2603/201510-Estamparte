@@ -17,13 +17,13 @@ public class CarritoLogic implements ICarritoLogic {
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
     
-    public CarritoDTO crearCarrito (CarritoDTO formaPago){
-        CarritoEntity entity = CarritoConverter.convertirDeDTOAEntidad(formaPago);
+    public CarritoDTO crearCarrito (CarritoDTO carrito){
+        CarritoEntity entity = CarritoConverter.convertirDeDTOAEntidad(carrito);
         em.persist(entity);
         return CarritoConverter.convertirDeEntidadADTO(entity);
     }
     
-    public List<CarritoDTO> darFormasPago(){
+    public List<CarritoDTO> darCarritos(){
         Query consulta = em.createQuery("Select carritos From CarritoEntity carritos");
         return CarritoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
     }
