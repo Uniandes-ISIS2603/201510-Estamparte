@@ -71,4 +71,12 @@ public class CarritoEntity {
     public void eliminarListaDeCamisetas(List<CamisetaEntity> aEliminar){
         camisetas.removeAll(aEliminar);
     }
+    
+    public void asignarFactura(FacturaEntity nFactura){
+        factura = nFactura;
+    }
+    
+    public FacturaEntity darFactura(){
+        return factura;
+    }
 }

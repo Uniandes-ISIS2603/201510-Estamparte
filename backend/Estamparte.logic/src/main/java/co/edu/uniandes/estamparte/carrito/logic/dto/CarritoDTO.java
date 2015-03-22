@@ -4,6 +4,7 @@
 package co.edu.uniandes.estamparte.carrito.logic.dto;
 
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,6 +16,8 @@ public class CarritoDTO {
     private String idComprador;
     
     private List<CamisetaDTO> camisetas;
+    
+    private FacturaDTO factura;
     
     public String darIdCarrito(){
         return idCarrito;
@@ -54,5 +57,13 @@ public class CarritoDTO {
     
     public void eliminarListaDeCamisetas(List<CamisetaDTO> aEliminar){
         camisetas.removeAll(aEliminar);
+    }
+    
+    public void asignarFactura(FacturaDTO nFactura){
+        factura = nFactura;
+    }
+    
+    public FacturaDTO darFactura(){
+        return factura;
     }
 }
