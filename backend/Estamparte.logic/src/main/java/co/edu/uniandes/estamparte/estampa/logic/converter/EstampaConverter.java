@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.estampa.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class EstampaConverter {
             ArtistaEntity artistaDuenho = new ArtistaEntity();
             artistaDuenho.cambiarId(dto.darIdArtista());
             artistaDuenho.cambiarUsuario(dto.darUsuarioArtista());
+            List<CamisetaEntity> camisetas = new ArrayList<>();
             //Al objeto entity se le asignan los atributos del objeto dto
             entidad.cambiarId(dto.darId());
             entidad.cambiarDuenho(artistaDuenho);
@@ -52,6 +54,7 @@ public class EstampaConverter {
             entidad.cambiarAltura(dto.darAltura());
             entidad.cambiarAncho(dto.darAncho());
             entidad.cambiarPrecio(dto.darPrecio());
+            entidad.cambiarCamisetas(camisetas);
             return entidad;
         } else {
             return null;

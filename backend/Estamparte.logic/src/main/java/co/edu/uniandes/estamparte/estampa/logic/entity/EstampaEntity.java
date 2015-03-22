@@ -116,6 +116,11 @@ public class EstampaEntity {
         return precio;
     }
     
+    //Retorna las camisetas asociadas
+    public List<CamisetaEntity> darCamisetas(){
+        return camisetas;
+    }
+    
     //Metodos modificadores
     
     //Asigna el id
@@ -171,6 +176,11 @@ public class EstampaEntity {
     //Asigna el precio de la estampa
     public void cambiarPrecio(Double nPrecio){
         this.precio = nPrecio;
+    }
+    
+    //Asigna las camisetas asociadas a la estampa
+    public void cambiarCamisetas(List<CamisetaEntity> nCamisetas){
+        this.camisetas = nCamisetas;
     }
     
         
