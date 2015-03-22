@@ -4,6 +4,7 @@
 package co.edu.uniandes.estamparte.factura.logic.dto;
 
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
@@ -19,7 +20,21 @@ public class FacturaDTO {
     private FormaPagoDTO formaPago;
     private String fechaCompra;
     private long id;
-    private List<CamisetaDTO> articulos;
+    private CarritoDTO carrito;
+    
+    public List<CamisetaDTO> getArticulos(){
+        return carrito.darCamisetas();
+    }
+       
+    public void setCarrito(CarritoDTO pCarrito)
+    {
+        carrito = pCarrito;
+    }
+    
+    public CarritoDTO getCarrito()
+    {
+        return carrito;
+    }
     
     public void setComprador(CompradorDTO pComprador)
     {
@@ -39,16 +54,6 @@ public class FacturaDTO {
     public String getIdComprador()
     {
         return comprador.getId();
-    }
-    
-    public void setArticulos(List<CamisetaDTO> pCamisetas)
-    {
-        articulos = pCamisetas;
-    }
-    
-    public List<CamisetaDTO> getArticulos()
-    {
-        return articulos;
     }
     
     public void setFormaPago(FormaPagoDTO pFormaPago)
@@ -89,9 +94,9 @@ public class FacturaDTO {
     public double getMontoTotal()
     {
         double respuesta = 0;
-        for(int i=0; i<articulos.size();i++)
+        for(int i=0; i<carrito.darCamisetas().size();i++)
         {
-            respuesta += articulos.get(i).darCosto();
+            respuesta += carrito.darCamisetas().get(i).darCosto();
         }
         return respuesta;
     }
