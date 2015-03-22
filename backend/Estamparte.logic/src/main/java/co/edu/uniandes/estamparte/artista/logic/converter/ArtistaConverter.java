@@ -7,6 +7,7 @@ package co.edu.uniandes.estamparte.artista.logic.converter;
 
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +32,19 @@ public class ArtistaConverter {
 
     public static ArtistaEntity convertirDeDTOAEntidad (ArtistaDTO dto) {
         if (dto != null) {
-            ArtistaEntity entity = new ArtistaEntity();
+            ArtistaEntity entidad = new ArtistaEntity();
+            List<EstampaEntity> estampas = new ArrayList<>();
             //Al objeto entity se le asignan los atributos del objeto dto
-            return entity;
+            entidad.cambiarId(dto.darId());
+            entidad.cambiarUsuario(dto.darUsuario());
+            entidad.cambiarContrasenha(dto.darContrasenha());
+            entidad.cambiarNombre(dto.darNombre());
+            entidad.cambiarCedula(dto.darCedula());
+            entidad.cambiarCorreo(dto.darCorreo());
+            entidad.cambiarImagenPerfil(dto.darImagenPerfil());
+            entidad.cambiarDescripcion(dto.darDescripcion());
+            entidad.cambiarEstampas(estampas);
+            return entidad;
         } else {
             return null;
         }
