@@ -9,6 +9,7 @@ package co.edu.uniandes.estamparte.camiseta.logic.converter;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class CamisetaConverter{
             dto.asignarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.darEstampas()));
             dto.asignarEstilo(entity.darEstilo());
             dto.asignarTalla(entity.darTalla());
-
+            dto.asignarCarroDuenio(CarritoConverter.convertirDeEntidadADTO(entity.darCarroDuenio()));
             return dto;
         } else {
             return null;
@@ -44,7 +45,7 @@ public class CamisetaConverter{
             entity.asignarEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(dto.darEstampas()));
             entity.asignarEstilo(dto.darEstilo());
             entity.asignarTalla(dto.darTalla());
-
+            entity.asignarCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(dto.darCarroDuenio()));
             return entity;
         } else {
             return null;
