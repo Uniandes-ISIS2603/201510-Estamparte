@@ -17,7 +17,7 @@ import javax.persistence.Query;
 
 public class CamisetaLogic implements ICamisetaLogic  {
 
-        @PersistenceContext(unitName = "EstampartePU")
+    @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager entityManager;
     
     @Override

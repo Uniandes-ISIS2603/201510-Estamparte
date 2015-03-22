@@ -99,4 +99,12 @@ public class CamisetaEntity {
     public void asignarCosto(double costo) {
         this.costo = costo;
     }
+    
+    public void asignarCarroDuenio(CarritoEntity carro){
+        carroDuenio = carro;
+    }
+    
+    public CarritoEntity darCarroDuenio(){
+        return carroDuenio;
+    }
 }
