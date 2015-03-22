@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class FacturaEntity {
@@ -28,7 +29,7 @@ public class FacturaEntity {
     @Column(name="FACTURA_ID")
     private long id;
     
-    
+    @OneToOne(mappedBy="factura")
     private CarritoEntity carrito;
     
     public List<CamisetaEntity> getArticulos(){
