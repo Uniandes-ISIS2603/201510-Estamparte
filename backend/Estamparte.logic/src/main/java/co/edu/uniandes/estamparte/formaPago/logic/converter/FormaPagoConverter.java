@@ -15,6 +15,12 @@ public class FormaPagoConverter {
         if (entity != null) {
             FormaPagoDTO dto = new FormaPagoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
+            dto.asignarCodSeguridad(entity.darCodSeguridad());
+            dto.asignarDireccion(entity.darDireccion());
+            dto.asignarFechaVencimiento(entity.darFechaVencimiento());
+            dto.asignarIdComprador(entity.darIdComprador());
+            dto.asignarNombre(entity.darNombre());
+            dto.asignarNumTarjeta(entity.darNumTarjeta());
             return dto;
         } else {
             return null;
@@ -25,13 +31,19 @@ public class FormaPagoConverter {
         if (dto != null) {
             FormaPagoEntity entity = new FormaPagoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
+            entity.asignarCodSeguridad(dto.darCodSeguridad());
+            entity.asignarDireccion(dto.darDireccion());
+            entity.asignarFechaVencimiento(dto.darFechaVencimiento());
+            entity.asignarIdComprador(dto.darIdComprador());
+            entity.asignarNombre(dto.darNombre());
+            entity.asignarNumTarjeta(dto.darNumTarjeta());
             return entity;
         } else {
             return null;
         }
     }
-
-    public static List<FormaPagoDTO> convertirDeListaEntidadesAListaDTO (List<FormaPagoEntity> listaEntities) {
+    
+        public static List<FormaPagoDTO> convertirDeListaEntidadesAListaDTO (List<FormaPagoEntity> listaEntities) {
         List<FormaPagoDTO> listaDTO = new ArrayList<FormaPagoDTO>();
         for (FormaPagoEntity entity : listaEntities) {
             listaDTO.add(convertirDeEntidadADTO(entity));
@@ -39,13 +51,12 @@ public class FormaPagoConverter {
         return listaDTO;
     }
 
-    public static List<FormaPagoEntity> convertirDeListaDTOAListaEntidades (ArrayList<FormaPagoDTO> listaDTO) {
+    public static List<FormaPagoEntity> convertirDeListaDTOAListaEntidades (List<FormaPagoDTO> listaDTO) {
         List<FormaPagoEntity> listaEntities = new ArrayList<FormaPagoEntity>();
         for (FormaPagoDTO dto : listaDTO) {
             listaEntities.add(convertirDeDTOAEntidad(dto));
         }
         return listaEntities;
     }
-     
 }
 

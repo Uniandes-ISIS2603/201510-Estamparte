@@ -3,9 +3,16 @@
  */
 package co.edu.uniandes.estamparte.estampa.logic.entity;
 
+import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class EstampaEntity {
@@ -13,13 +20,23 @@ public class EstampaEntity {
     //Id de la estampa, es autogenerado por la base de datos
     @Id
     @GeneratedValue
+    @Column(name="ESTAMPA_ID")
     private Long id;
+    
+    //Artista duenho de la estampa
+    @ManyToOne
+    @JoinColumn(name="ARTISTA_ID")
+    private ArtistaEntity duenho;
+    
+    //Camiseta a la que pertenece
+    @ManyToMany(mappedBy="estampas")
+    private List<CamisetaEntity> camisetas;
     
     //Nombre de la estampa
     private String nombre;
     
-    //Id de la imagen de estampa
-    private Long imagen;
+    //Url de la imagen de la estampa en el servidor
+    private String imagen;
     
     //Descripcion de la estampa
     private String descripcion;
@@ -49,13 +66,18 @@ public class EstampaEntity {
         return id;
     }
     
+    //Retorna el artista duenho de la estampa
+    public ArtistaEntity darDuenho(){
+        return duenho;
+    }
+    
     //Retorna el nombre de la estampa
     public String darNombre(){
         return nombre;
     }
     
-    //Retorna el id de la imagen de la estampa
-    public Long darImagen(){
+    //Retorna la url de la imagen de la estampa
+    public String darImagen(){
         return imagen;
     }
     
@@ -94,6 +116,11 @@ public class EstampaEntity {
         return precio;
     }
     
+    //Retorna las camisetas asociadas
+    public List<CamisetaEntity> darCamisetas(){
+        return camisetas;
+    }
+    
     //Metodos modificadores
     
     //Asigna el id
@@ -101,13 +128,18 @@ public class EstampaEntity {
         this.id = nId;
     }
     
+    //Asigna el duenho de la estampa
+    public void cambiarDuenho(ArtistaEntity nDuenho){
+        this.duenho=nDuenho;
+    }
+    
     //Asigna el nombre
     public void cambiarNombre(String nNombre){
         this.nombre = nNombre;
     }
     
-    //Asigna el id de la imagen
-    public void cambiarImagen(Long nIdImagen){
+    //Asigna la url de la imagen
+    public void cambiarImagen(String nIdImagen){
         this.imagen = nIdImagen;
     }
     
@@ -144,6 +176,11 @@ public class EstampaEntity {
     //Asigna el precio de la estampa
     public void cambiarPrecio(Double nPrecio){
         this.precio = nPrecio;
+    }
+    
+    //Asigna las camisetas asociadas a la estampa
+    public void cambiarCamisetas(List<CamisetaEntity> nCamisetas){
+        this.camisetas = nCamisetas;
     }
     
         

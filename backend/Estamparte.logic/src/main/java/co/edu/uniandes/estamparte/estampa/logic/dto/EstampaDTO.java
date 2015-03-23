@@ -8,13 +8,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EstampaDTO {
     
+    //Id de la estampa
     private Long id;
+    
+    //Id del artista duenho de la estampa
+    private Long idArtista;
+    
+    //Nombre de usuario del artista duenho de la estampa
+    private String usuarioArtista;
     
     //Nombre de la estampa
     private String nombre;
     
-    //Id de la imagen de estampa
-    private Long imagen;
+    //Url la imagen de estampa
+    private String imagen;
     
     //Descripcion de la estampa
     private String descripcion;
@@ -44,13 +51,23 @@ public class EstampaDTO {
         return id;
     }
     
+    //Retorna el id del artista duenho
+    public Long darIdArtista(){
+        return idArtista;
+    }
+    
+    //Retorna el nombre de usuario del artista
+    public String darUsuarioArtista(){
+        return usuarioArtista;
+    }
+    
     //Retorna el nombre de la estampa
     public String darNombre(){
         return nombre;
     }
     
-    //Retorna el id de la imagen de la estampa
-    public Long darImagen(){
+    //Retorna la url de la imagen de la estampa
+    public String darImagen(){
         return imagen;
     }
     
@@ -96,13 +113,23 @@ public class EstampaDTO {
         this.id = nId;
     }
     
+    //Asigna el id del artista duenho
+    public void cambiarIdArtista(Long nIdArtista){
+        this.idArtista = nIdArtista;
+    }
+    
+    //Asigna el nombre de usuario del artista duenho
+    public void cambiarUsuarioArtista(String nUsuarioArtista){
+        this.usuarioArtista = nUsuarioArtista;
+    }
+    
     //Asigna el nombre
     public void cambiarNombre(String nNombre){
         this.nombre = nNombre;
     }
     
-    //Asigna el id de la imagen
-    public void cambiarImagen(Long nIdImagen){
+    //Asigna la url de la imagen
+    public void cambiarImagen(String nIdImagen){
         this.imagen = nIdImagen;
     }
     

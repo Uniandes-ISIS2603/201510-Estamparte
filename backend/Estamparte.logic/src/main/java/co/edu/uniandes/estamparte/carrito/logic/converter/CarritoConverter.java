@@ -4,8 +4,10 @@
 package co.edu.uniandes.estamparte.carrito.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
+import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
+import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,10 @@ public class CarritoConverter {
         if (entity != null) {
             CarritoDTO dto = new CarritoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
+            dto.asignarIdCarrito(entity.darIdCarrito());
+            dto.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(entity.darCamisetas()));
+            dto.asignarIdCarrito(entity.darIdComprador());
+            dto.asignarFactura(FacturaConverter.entity2PersistenceDTO(entity.darFactura()));
             return dto;
         } else {
             return null;
@@ -24,6 +30,10 @@ public class CarritoConverter {
         if (dto != null) {
             CarritoEntity entity = new CarritoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
+            entity.asignarCamisetas(CamisetaConverter.persistenceDTO2EntityList(dto.darCamisetas()));
+            entity.asignarIdCarrito(dto.darIdCarrito());
+            entity.asignarIdComprador(dto.darIdComprador());
+            entity.asignarFactura(FacturaConverter.persistenceDTO2Entity(dto.darFactura()));
             return entity;
         } else {
             return null;

@@ -17,7 +17,7 @@ import javax.persistence.Query;
 
 public class CamisetaLogic implements ICamisetaLogic  {
 
-        @PersistenceContext(unitName = "EstampartePU")
+    @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager entityManager;
     
     @Override
@@ -61,6 +61,23 @@ public class CamisetaLogic implements ICamisetaLogic  {
         entityManager.remove(entity);
     }
     
-
+    public CamisetaDTO actualizarCamiseta(CamisetaDTO camiseta){
+        CamisetaEntity entidad = entityManager.merge(CamisetaConverter.persistenceDTO2Entity(camiseta));
+        return CamisetaConverter.entity2PersistenceDTO(entidad);
+    }
+    
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(String idCarrito, Integer pagina, Integer datosMaximos) {
+        Query cuenta = entityManager.createQuery("select count(u) from CamisetaEntity u where u.carroDuenio = '" + idCarrito + "'");
+        Long cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
+        Query q = entityManager.createQuery("select u from CamisetaEntity u where u.carroDuenio = '"+idCarrito+"'");
+        if(pagina != null && datosMaximos != null){
+            q.setFirstResult((pagina-1)*datosMaximos);
+            q.setMaxResults(datosMaximos);
+        }
+       CamisetaPageDTO respuesta = new CamisetaPageDTO();
+        respuesta.asignarTotal(cuentaReg);
+        respuesta.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
+        return respuesta;
+    }
     
 }

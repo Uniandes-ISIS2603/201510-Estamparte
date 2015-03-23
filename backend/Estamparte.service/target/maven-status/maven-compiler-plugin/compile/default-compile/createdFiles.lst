@@ -1,2 +1,7 @@
-co\edu\uniandes\estamparte\estamparte\service\ServicioEstampa.class
 co\edu\uniandes\estamparte\estamparte\service\ServicioArtista.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioComprador.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioCamiseta.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioEstampa.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioFactura.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioCarrito.class
+co\edu\uniandes\estamparte\estamparte\service\ServicioFormaPago.class

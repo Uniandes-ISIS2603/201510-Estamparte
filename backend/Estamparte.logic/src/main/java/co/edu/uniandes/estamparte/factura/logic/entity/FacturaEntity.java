@@ -4,21 +4,47 @@
 package co.edu.uniandes.estamparte.factura.logic.entity;
 
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.*;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-
+@Entity
 public class FacturaEntity {
     
     
     private CompradorEntity comprador;
     private FormaPagoEntity formaPago;
     private String fechaCompra;
+    
+    @Id
+    @GeneratedValue(generator="Factura")
+    @Column(name="FACTURA_ID")
     private long id;
-    private List<CamisetaEntity> articulos;
+    
+    @OneToOne(mappedBy="factura")
+    private CarritoEntity carrito;
+    
+    public List<CamisetaEntity> getArticulos(){
+        return carrito.darCamisetas();
+    }
+    
+    public void setCarrito(CarritoEntity pCarrito)
+    {
+        carrito = pCarrito;
+    }
+    
+    public CarritoEntity getCarrito()
+    {
+        return carrito;
+    }
     
     public void setComprador(CompradorEntity pComprador)
     {
@@ -38,16 +64,6 @@ public class FacturaEntity {
     public String getIdComprador()
     {
         return comprador.getId();
-    }
-    
-    public void setArticulos(List<CamisetaEntity> pCamisetas)
-    {
-        articulos = pCamisetas;
-    }
-    
-    public List<CamisetaEntity> getArticulos()
-    {
-        return articulos;
     }
     
     public void setFormaPago(FormaPagoEntity pFormaPago)
@@ -88,9 +104,9 @@ public class FacturaEntity {
     public double getMontoTotal()
     {
         double respuesta = 0;
-        for(int i=0; i<articulos.size();i++)
+        for (int i=0; i<carrito.darCamisetas().size();i++)
         {
-            respuesta += articulos.get(i).darCosto();
+            respuesta += carrito.darCamisetas().get(i).darCosto();
         }
         return respuesta;
     }

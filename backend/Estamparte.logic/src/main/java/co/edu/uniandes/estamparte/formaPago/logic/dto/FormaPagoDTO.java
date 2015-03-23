@@ -11,6 +11,8 @@ public class FormaPagoDTO {
     
     private String nombre;
     
+    private String idComprador;
+    
     private Long numeroTarjeta;
     
     private Date fechaVencimiento;
@@ -19,12 +21,20 @@ public class FormaPagoDTO {
     
     private String direccionCorrespondencia;
     
-     public String darNombre(){
+    public String darNombre(){
         return nombre;
     }
     
     public void asignarNombre(String nNombre){
         nombre = nNombre;
+    }
+    
+    public String darIdComprador(){
+        return idComprador;
+    }
+    
+    public void asignarIdComprador(String nIdComprador){
+        idComprador = nIdComprador;
     }
     
     public void asignarFechaVencimiento(Date fecha){

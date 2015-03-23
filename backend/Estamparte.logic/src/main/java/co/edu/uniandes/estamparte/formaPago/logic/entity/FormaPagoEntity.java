@@ -4,20 +4,26 @@
 package co.edu.uniandes.estamparte.formaPago.logic.entity;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class FormaPagoEntity {
     
     @Id
     @GeneratedValue(generator = "FormaPago")
+    @Column(name="FORMAPAGO_ID")
+    private Long numeroTarjeta;
+    
     private String nombre;
     
+    @ManyToOne
+    @JoinColumn(name="COMPRADOR_ID")
     private String idComprador;
-    
-    private Long numeroTarjeta;
     
     private Date fechaVencimiento;
     

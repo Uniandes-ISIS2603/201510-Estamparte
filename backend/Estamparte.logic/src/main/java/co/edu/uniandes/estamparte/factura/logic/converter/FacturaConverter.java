@@ -7,6 +7,7 @@ import co.edu.uniandes.estamparte.estampa.logic.converter.*;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
+import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 
@@ -25,7 +26,7 @@ public class FacturaConverter
             dto.setFormaPago(FormaPagoConverter.convertirDeEntidadADTO(entity.getFormaPago()));
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setIdFactura(entity.getIdFactura());
-            dto.setArticulos(CamisetaConverter.entity2PersistenceDTOList(entity.getArticulos()));
+            dto.setCarrito(CarritoConverter.convertirDeEntidadADTO(entity.getCarrito()));
             
             return dto;
         } else {
@@ -40,7 +41,7 @@ public class FacturaConverter
             entity.setFormaPago(FormaPagoConverter.convertirDeDTOAEntidad(dto.getFormaPago()));
             entity.setFechaCompra(dto.getFechaCompra());
             entity.setIdFactura(dto.getIdFactura());
-            entity.setArticulos(CamisetaConverter.persistenceDTO2EntityList(dto.getArticulos()));
+            entity.setCarrito(CarritoConverter.convertirDeDTOAEntidad(dto.getCarrito()));
 
             return entity;
         } else {

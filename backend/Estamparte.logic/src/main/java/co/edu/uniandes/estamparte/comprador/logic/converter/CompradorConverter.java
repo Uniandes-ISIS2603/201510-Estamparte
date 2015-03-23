@@ -7,6 +7,7 @@ package co.edu.uniandes.estamparte.comprador.logic.converter;
 
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
+import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class CompradorConverter {
             dto.setNombre(entity.getNombre());
             dto.setId(entity.getId());
             dto.setCarrito(entity.getCarrito());
-            
+            dto.asignarFormasPago(FormaPagoConverter.convertirDeListaEntidadesAListaDTO(entity.darFormasPago()));
             return dto;
         } else {
             return null;
@@ -30,7 +31,7 @@ public class CompradorConverter {
             entity.setNombre(dto.getNombre());
             entity.setId(dto.getId());
             entity.setCarrito(dto.getCarrito());
-
+            entity.asignarFormasPago(FormaPagoConverter.convertirDeListaDTOAListaEntidades(dto.darFormasPago()));
             return entity;
         } else {
             return null;

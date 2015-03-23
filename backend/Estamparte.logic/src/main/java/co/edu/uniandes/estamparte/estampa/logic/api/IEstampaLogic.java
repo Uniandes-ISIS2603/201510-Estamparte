@@ -28,6 +28,12 @@ public interface IEstampaLogic {
     //Actualiza la informacion de una estampa
     public EstampaDTO actualizarEstampa(EstampaDTO estampa);
     
+    //Elimina todas las estampas de la BD
+    public void eliminarEstampas();
+    
+    //Obtiene las estampas de un artista
+    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos);
+    
     
    
 }

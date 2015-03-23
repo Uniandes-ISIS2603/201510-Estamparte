@@ -3,30 +3,46 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.entity;
 
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CamisetaEntity {
     
     @Id
-    @GeneratedValue(generator = "Camiasignara")
-    public String id;
+    @GeneratedValue(generator = "Camiseta")
+    @Column(name="CAMISETA_ID")
+    private String id;
     
-    public List<EstampaEntity> estampas;
+    @ManyToMany
+    @JoinTable(
+    name="CAMISETA_ESTAMPA",
+    joinColumns={@JoinColumn(name="CAMISETA_ID", referencedColumnName="CAMISETA_ID")},
+    inverseJoinColumns={@JoinColumn(name="ESTAMPA_ID", referencedColumnName="ESTAMPA_ID")})
+    private List<EstampaEntity> estampas;
     
-    public String talla;
+    private String talla;
     
-    public String color;
+    private String color;
     
-    public String estilo;
+    private String estilo;
     
-    public String nombre;
+    private String nombre;
     
-    public double costo;
+    private double costo;
+    
+    @ManyToOne
+    @JoinColumn(name="CARRITO_ID")
+    private CarritoEntity carroDuenio;
     
     public String darId() {
         return id;
@@ -82,5 +98,13 @@ public class CamisetaEntity {
 
     public void asignarCosto(double costo) {
         this.costo = costo;
+    }
+    
+    public void asignarCarroDuenio(CarritoEntity carro){
+        carroDuenio = carro;
+    }
+    
+    public CarritoEntity darCarroDuenio(){
+        return carroDuenio;
     }
 }
