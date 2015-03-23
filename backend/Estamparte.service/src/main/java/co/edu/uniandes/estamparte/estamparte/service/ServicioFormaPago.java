@@ -33,35 +33,37 @@ import javax.ws.rs.core.MediaType;
 public class ServicioFormaPago {
 
     @Inject
-    protected IFormaPagoLogic formaPago;
+    protected IFormaPagoLogic formaPagoLogic;
     
     @POST
     public FormaPagoDTO crearFormaPago (FormaPagoDTO formaPago){
-        
+        return formaPagoLogic.crearFormaPago(formaPago);
     }
         
     @GET
     public FormaPagoPageDTO darFormasPago(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
-        
+        return formaPagoLogic.darFormasPago(pagina, datosMaximos);
     }
     
     @PUT
-    public void actualizarFormaPago(FormaPagoDTO formaPago){
-        
+    @Path("{FORMAPAGO_ID}")
+    public void actualizarFormaPago(@PathParam("FORMAPAGO_ID")Long id, FormaPagoDTO formaPago){
+        formaPagoLogic.actualizarFormaPago(formaPago);
     }
     
     @GET
     public List<FormaPagoDTO> darFormasPago(){
-        
+        return formaPagoLogic.darFormasPago();
     }
     
     @DELETE
-    public void eliminarFormaPago(@PathParam("id")Long id){
-        
+    @Path("{FORMAPAGO_ID}")
+    public void eliminarFormaPago(@PathParam("FORMAPAGO_ID")Long id){
+        formaPagoLogic.eliminarFormaPago(id);
     }
     
     @DELETE
     public void eliminarFormasPago(){
-        
+        formaPagoLogic.eliminarFormasPago();
     }
 }
