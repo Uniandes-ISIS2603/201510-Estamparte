@@ -17,7 +17,7 @@ public interface ICarritoLogic {
     
     public CarritoPageDTO darCarritos(Integer pagina, Integer datosMaximos);
     
-    public CamisetaDTO crearEstampaDeArtista(Long idArtista, CamisetaDTO camiseta);
+    public CamisetaDTO agregarCamisetaACarrito (String idCarrito, CamisetaDTO camiseta);
     
     public CamisetaPageDTO darCamisetasCarrito(String idCarrito, Integer pagina, Integer datosMaximos);
     

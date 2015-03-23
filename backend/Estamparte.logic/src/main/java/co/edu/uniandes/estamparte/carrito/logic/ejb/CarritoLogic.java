@@ -67,8 +67,8 @@ public class CarritoLogic implements ICarritoLogic {
         return respuesta;
     }
     
-    public CamisetaDTO crearEstampaDeArtista(Long idArtista, CamisetaDTO camiseta) {
-        CarritoEntity entidad = em.find(CarritoEntity.class, idArtista);
+    public CamisetaDTO agregarCamisetaACarrito(String idCarrito, CamisetaDTO camiseta) {
+        CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         CamisetaDTO respuesta = null;
         if(entidad != null){
             respuesta = camisetaLogic.crearCamiseta(camiseta);
