@@ -41,7 +41,7 @@
 		_this.eliminar = function (estampa) {
 			var posicion = _this.posicion(estampa);
 
-			if (posicion != -1) {
+			if (posicion !== -1) {
 				_this.misestampas.splice(posicion, 1);
 			}
 		}
