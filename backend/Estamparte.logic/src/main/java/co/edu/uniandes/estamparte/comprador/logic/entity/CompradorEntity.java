@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -31,6 +32,7 @@ public class CompradorEntity {
     @JoinColumn(name="CARRITO_ID")
     private CarritoDTO carrito;
     
+    @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
     public String getNombre()
