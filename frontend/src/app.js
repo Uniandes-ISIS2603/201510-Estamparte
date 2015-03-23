@@ -5,6 +5,7 @@ angular.module('mainApp', [
     // 'artistaModule',
     // 'carritoModule',
     // 'formaPagoModule',
+    'ngDragDrop',
     'navbarModule',
     'inicioModule',
     'equipoModule',

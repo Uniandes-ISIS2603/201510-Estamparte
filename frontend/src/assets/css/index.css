@@ -3,6 +3,12 @@ body {
 	font-weight: 100;
 }
 
+.list {
+	height: 100px;
+	width: 400px;
+	background-color: red;
+}
+
 .navbar {
 	font-weight: 300;
 	font-size: 1.12em;
@@ -83,6 +89,10 @@ body {
 	border-radius: 0;
 	background-color: #EEE;
 	color: #999;
+}
+
+.miestampa .acamisa {
+	margin-right: 3px;
 }
 
 .miestampa button:hover {
@@ -200,12 +210,36 @@ body {
 }
 
 #tituloCamiseta {
-	margin-bottom: 90px;
+	margin-bottom: 50px;
+}
+
+#propiedades {
+	background-color: white;
+	margin-right: 15px;
+	padding-bottom: 32px;
+}
+
+#propiedades h4 {
+	margin-top: 40px;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+#propiedades .form-group {
+	margin-top: 30px;
+	font-size: 1.1em;
+}
+
+#propiedades label {
+	font-weight: lighter;
 }
 
 #vistaprevia {
-	padding-top: 100px;
-	background: #FFF;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	padding-bottom: 32px;
+	position: relative;
 }
 
 #equipo {
