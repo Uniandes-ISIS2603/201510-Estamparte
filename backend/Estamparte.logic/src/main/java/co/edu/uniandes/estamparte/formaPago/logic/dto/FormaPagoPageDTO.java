@@ -9,10 +9,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class FormaPagoPageDTO {
 
+    private Long cantidad;
+    
     private List<FormaPagoDTO> formasPago;
 
-    public int darNumeroFormasPago() {
-        return formasPago.size();
+    public Long darNumeroFormasPago() {
+        return cantidad;
+    }
+    
+    public void asignarCantidad(Long nuevaCantidad){
+        cantidad = nuevaCantidad;
     }
 
     public List<FormaPagoDTO> darFormasPago() {

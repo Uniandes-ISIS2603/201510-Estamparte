@@ -7,6 +7,7 @@ package co.edu.uniandes.estamparte.estamparte.service;
 
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.api.IFormaPagoLogic;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoPageDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -34,23 +35,33 @@ public class ServicioFormaPago {
     @Inject
     protected IFormaPagoLogic formaPago;
     
-    //@POST
+    @POST
     public FormaPagoDTO crearFormaPago (FormaPagoDTO formaPago){
-        return this.formaPago.crearFormaPago(formaPago);
+        
     }
-    
+        
     @GET
-    public List<FormaPagoDTO> darFormasPago(){
-        return formaPago.darFormasPago();
+    public FormaPagoPageDTO darFormasPago(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        
     }
     
     @PUT
     public void actualizarFormaPago(FormaPagoDTO formaPago){
-        this.formaPago.actualizarFormaPago(formaPago);
+        
+    }
+    
+    @GET
+    public List<FormaPagoDTO> darFormasPago(){
+        
     }
     
     @DELETE
-    public void eliminarFormaPago(String nombre){
-        formaPago.eliminarFormaPago(nombre);
+    public void eliminarFormaPago(@PathParam("id")Long id){
+        
+    }
+    
+    @DELETE
+    public void eliminarFormasPago(){
+        
     }
 }

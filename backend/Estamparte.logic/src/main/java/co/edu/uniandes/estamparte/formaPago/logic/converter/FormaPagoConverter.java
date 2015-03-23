@@ -51,7 +51,7 @@ public class FormaPagoConverter {
         return listaDTO;
     }
 
-    public static List<FormaPagoEntity> convertirDeListaDTOAListaEntidades (ArrayList<FormaPagoDTO> listaDTO) {
+    public static List<FormaPagoEntity> convertirDeListaDTOAListaEntidades (List<FormaPagoDTO> listaDTO) {
         List<FormaPagoEntity> listaEntities = new ArrayList<FormaPagoEntity>();
         for (FormaPagoDTO dto : listaDTO) {
             listaEntities.add(convertirDeDTOAEntidad(dto));

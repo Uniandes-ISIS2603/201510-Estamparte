@@ -15,11 +15,12 @@ public class FormaPagoEntity {
     @Id
     @GeneratedValue(generator = "FormaPago")
     @Column(name="FORMAPAGO_ID")
+    private Long numeroTarjeta;
+    
     private String nombre;
     
-    private String idComprador;
     
-    private Long numeroTarjeta;
+    private String idComprador;
     
     private Date fechaVencimiento;
     
