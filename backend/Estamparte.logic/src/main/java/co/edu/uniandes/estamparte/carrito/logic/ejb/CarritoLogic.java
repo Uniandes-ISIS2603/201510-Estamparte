@@ -3,9 +3,13 @@
  */
 package co.edu.uniandes.estamparte.carrito.logic.ejb;
 
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.ejb.CamisetaLogic;
 import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoPageDTO;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -17,10 +21,26 @@ public class CarritoLogic implements ICarritoLogic {
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
     
+    private CamisetaLogic camisetaLogic;
+    
     public CarritoDTO crearCarrito (CarritoDTO carrito){
         CarritoEntity entity = CarritoConverter.convertirDeDTOAEntidad(carrito);
         em.persist(entity);
         return CarritoConverter.convertirDeEntidadADTO(entity);
+    }
+    
+    public CarritoPageDTO darCarritos(Integer pagina, Integer datosMaximos){
+        Query cantidad = em.createQuery("select count(carritos) from CarritoEntity carritos");
+        Long cuentaReg = Long.parseLong(cantidad.getSingleResult().toString());
+        Query consulta = em.createQuery("select carritos from CarritoEntity carritos");
+        if(pagina !=null && datosMaximos!=null){
+            consulta.setFirstResult((pagina-1)*datosMaximos);
+            consulta.setMaxResults(datosMaximos);
+        }
+        CarritoPageDTO respuesta = new CarritoPageDTO();
+        respuesta.asignarCantidad(cuentaReg);
+        respuesta.asignarCarritos(CarritoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
+        return respuesta;
     }
     
     public List<CarritoDTO> darCarritos(){
@@ -38,4 +58,37 @@ public class CarritoLogic implements ICarritoLogic {
         em.remove(entity);
     }
     
+    public CamisetaPageDTO darCamisetasCarrito(String idCarrito, Integer pagina, Integer datosMaximos) {
+        CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
+        CamisetaPageDTO respuesta = null;
+        if(entidad != null){
+            respuesta = camisetaLogic.obtenerCamisetasDeCarrito(idCarrito, pagina, datosMaximos);
+        }
+        return respuesta;
+    }
+    
+    public CamisetaDTO crearEstampaDeArtista(Long idArtista, CamisetaDTO camiseta) {
+        CarritoEntity entidad = em.find(CarritoEntity.class, idArtista);
+        CamisetaDTO respuesta = null;
+        if(entidad != null){
+            respuesta = camisetaLogic.crearCamiseta(camiseta);
+        }
+        return respuesta;
+    }
+    
+    public void eliminarCamisetaCarrito(String idCarrito, String idCamiseta) {
+        CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
+        if(entidad != null){
+            camisetaLogic.eliminarCamiseta(idCamiseta);
+        }
+    }
+    
+    public CamisetaDTO actualizarCamisetaCarrito(String idCarrito, CamisetaDTO camiseta) {
+        CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
+        CamisetaDTO respuesta = null;
+        if(entidad != null){
+            respuesta = camisetaLogic.actualizarCamiseta(camiseta);
+        }
+        return respuesta;
+    }
 }

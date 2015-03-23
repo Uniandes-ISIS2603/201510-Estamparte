@@ -9,10 +9,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CarritoPageDTO {
     
+    private Long cantidad;
+    
     private List<CarritoDTO> carritos;
     
-    public int getNumeroCarritos(){
-        return carritos.size();
+    public Long darCantidad(){
+        return cantidad;
     }
     
     public List<CarritoDTO> darCarritos(){
@@ -21,5 +23,9 @@ public class CarritoPageDTO {
     
     public void asignarCarritos (List<CarritoDTO> carritos){
         this.carritos = carritos;
+    }
+    
+    public void asignarCantidad(Long cantidad){
+        this.cantidad = cantidad;
     }
 }

@@ -14,9 +14,13 @@ public interface ICamisetaLogic {
      public CamisetaDTO crearCamiseta(CamisetaDTO detail);
 
     public List<CamisetaDTO> darCamisetas();
-
+    
     public CamisetaPageDTO darCamisetas(Integer page, Integer maxRecords);
 
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(String idCarrito, Integer pagina, Integer datosMaximos);
+    
+    public CamisetaDTO actualizarCamiseta(CamisetaDTO camiseta);
+    
     public CamisetaDTO darCamiseta(String id);
 
     public void eliminarCamiseta(String id);

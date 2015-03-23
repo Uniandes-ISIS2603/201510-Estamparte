@@ -7,6 +7,7 @@ package co.edu.uniandes.estamparte.estamparte.service;
 
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoPageDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -32,26 +33,31 @@ import javax.ws.rs.core.MediaType;
 public class ServicioCarrito {
 
     @Inject
-    private ICarritoLogic carrito;
+    private ICarritoLogic carritoLogic;
     
     @POST
     public CarritoDTO crearCarrito (CarritoDTO formaPago){
-        return carrito.crearCarrito(formaPago);
+        return carritoLogic.crearCarrito(formaPago);
+    }
+    
+    @GET
+    public CarritoPageDTO darCarritos(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return carritoLogic.darCarritos(pagina, datosMaximos);
     }
     
     @GET
     public List<CarritoDTO> darCarritos(){
-        return carrito.darCarritos();
+        return carritoLogic.darCarritos();
     }
     
     @PUT
     public void actualizarCarrito(CarritoDTO formaPago){
-        carrito.actualizarCarrito(formaPago);
+        carritoLogic.actualizarCarrito(formaPago);
     }
     
     @DELETE
     public void eliminarCarrito(String nombre){
-        carrito.eliminarCarrito(nombre);
+        carritoLogic.eliminarCarrito(nombre);
     }
     
 }
