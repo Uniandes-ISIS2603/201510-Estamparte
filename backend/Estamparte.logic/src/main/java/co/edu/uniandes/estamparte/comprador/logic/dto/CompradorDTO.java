@@ -22,9 +22,31 @@ public class CompradorDTO
     private String clave;
     private String nombre;
     private String id;
+    private String correo;
+    private int cedula;
     private CarritoDTO carrito;
     private List<FormaPagoDTO> formasPago;
     private List<FacturaDTO> facturas;
+    
+    public int getCedula()
+    {
+        return cedula;
+    }
+    
+    public void setCedula(int pCedula)
+    {
+        cedula = pCedula;
+    }
+    
+    public String getCorreo()
+    {
+        return correo;
+    }
+    
+    public void setCorreo(String pCorreo)
+    {
+        correo = pCorreo;
+    }
     
     public List<FacturaDTO> getFacturas()
     {
