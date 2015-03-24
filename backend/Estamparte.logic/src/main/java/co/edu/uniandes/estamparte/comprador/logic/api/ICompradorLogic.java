@@ -11,16 +11,14 @@ import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
 
 
-import java.util.ArrayList;
+import java.util.*;
 
 
 
 public interface ICompradorLogic {
-      public CompradorDTO createComprador(CompradorDTO detalles);
-    
-    public CompradorPageDTO getComprador(Integer numPagina, Integer maxRecords);
-    
-    public ArrayList<CompradorDTO> getComprador();
+    public CompradorDTO createComprador(CompradorDTO detalles);
+        
+    public List<CompradorDTO> getCompradores();
     
     public CompradorDTO getComprador(Long id);
     

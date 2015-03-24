@@ -42,7 +42,7 @@ public class CompradorEntity {
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
-    @OneToMany(mappedBy="idComprador")
+    @OneToMany(mappedBy="comprador")
     private List<FacturaEntity> facturas;
 
     
