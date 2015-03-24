@@ -24,6 +24,8 @@ public class CompradorEntity {
     private String nombre;
     private String usuario;
     private String clave;
+    private String direccion;
+    private int telefono;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -37,7 +39,27 @@ public class CompradorEntity {
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
-        public String getClave()
+    
+    public String getDireccion()
+    {
+        return direccion;
+    }
+    public void setDireccion(String pDireccion)
+    {
+        direccion = pDireccion;
+    }
+    
+    public int getTelefono()
+    {
+        return telefono;
+    }
+    
+    public void setTelefono(int pTelefono)
+    {
+        telefono = pTelefono;
+    }
+    
+    public String getClave()
     {
         return clave;
     }
