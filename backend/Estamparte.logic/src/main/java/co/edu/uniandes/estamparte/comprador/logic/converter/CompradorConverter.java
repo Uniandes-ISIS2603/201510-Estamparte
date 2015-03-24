@@ -15,6 +15,8 @@ public class CompradorConverter {
    public static CompradorDTO entity2PersistenceDTO(CompradorEntity entity) {
         if (entity != null) {
             CompradorDTO dto = new CompradorDTO();
+            dto.setUsuario(entity.getUsuario());
+            dto.setClave(entity.getClave());
             dto.setNombre(entity.getNombre());
             dto.setId(entity.getId());
             dto.setCarrito(entity.getCarrito());
@@ -28,6 +30,8 @@ public class CompradorConverter {
     public static CompradorEntity persistenceDTO2Entity(CompradorDTO dto) {
         if (dto != null) {
             CompradorEntity entity = new CompradorEntity();
+            entity.setUsuario(dto.getUsuario());
+            entity.setClave(dto.getClave());
             entity.setNombre(dto.getNombre());
             entity.setId(dto.getId());
             entity.setCarrito(dto.getCarrito());

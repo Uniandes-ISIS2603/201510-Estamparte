@@ -22,6 +22,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class CompradorEntity {
     private String nombre;
+    private String usuario;
+    private String clave;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -34,6 +36,26 @@ public class CompradorEntity {
     
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
+    
+        public String getClave()
+    {
+        return clave;
+    }
+    
+    public void setClave(String pClave)
+    {
+        clave =   pClave;      
+    }
+    
+    public String getUsuario()
+    {
+        return usuario;
+    }
+    
+    public void setUsuario(String pUsuario)
+    {
+        usuario =   pUsuario;      
+    }
     
     public String getNombre()
     {
