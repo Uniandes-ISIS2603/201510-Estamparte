@@ -7,6 +7,7 @@ import co.edu.uniandes.estamparte.carrito.logic.dto.*;
 import co.edu.uniandes.estamparte.artista.logic.dto.*;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.*;
 import co.edu.uniandes.estamparte.estampa.logic.dto.*;
+import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +16,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CompradorDTO 
 {
+    private String direccion;
+    private int telefono;
     private String usuario;
     private String clave;
     private String nombre;
     private String id;
     private CarritoDTO carrito;
     private List<FormaPagoDTO> formasPago;
+    private List<FacturaDTO> facturas;
     
+    public List<FacturaDTO> getFacturas()
+    {
+        return facturas;
+    }
+    public void setFacturas(List<FacturaDTO> pFacturas)
+    {
+        facturas = pFacturas;
+    }
+    
+    public String getDireccion()
+    {
+        return direccion;
+    }
+    public void setDireccion(String pDireccion)
+    {
+        direccion = pDireccion;
+    }
+    
+    public int getTelefono()
+    {
+        return telefono;
+    }
+    
+    public void setTelefono(int pTelefono)
+    {
+        telefono = pTelefono;
+    }
     
     public String getClave()
     {

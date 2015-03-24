@@ -8,6 +8,7 @@ import co.edu.uniandes.estamparte.artista.logic.entity.*;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.*;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
+import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class CompradorEntity {
     private String clave;
     private String direccion;
     private int telefono;
+    private List<FacturaEntity> facturas;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -39,6 +41,17 @@ public class CompradorEntity {
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
+    
+    
+    
+    public List<FacturaEntity> getFacturas()
+    {
+        return facturas;
+    }
+    public void setFacturas(List<FacturaEntity> pFacturas)
+    {
+        facturas = pFacturas;
+    }
     
     public String getDireccion()
     {
