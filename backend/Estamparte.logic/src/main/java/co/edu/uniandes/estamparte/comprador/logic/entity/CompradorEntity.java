@@ -27,7 +27,8 @@ public class CompradorEntity {
     private String clave;
     private String direccion;
     private int telefono;
-    private List<FacturaEntity> facturas;
+    private String correo;
+    private int cedula;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -41,8 +42,29 @@ public class CompradorEntity {
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
+    @OneToMany(mappedBy="idComprador")
+    private List<FacturaEntity> facturas;
+
     
+    public int getCedula()
+    {
+        return cedula;
+    }
     
+    public void setCedula(int pCedula)
+    {
+        cedula = pCedula;
+    }
+    
+    public String getCorreo()
+    {
+        return correo;
+    }
+    
+    public void setCorreo(String pCorreo)
+    {
+        correo = pCorreo;
+    }
     
     public List<FacturaEntity> getFacturas()
     {
