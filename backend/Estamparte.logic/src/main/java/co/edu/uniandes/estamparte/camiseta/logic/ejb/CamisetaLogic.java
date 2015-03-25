@@ -9,6 +9,9 @@ import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
+import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import java.util.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -78,6 +81,25 @@ public class CamisetaLogic implements ICamisetaLogic  {
         respuesta.asignarTotal(cuentaReg);
         respuesta.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
         return respuesta;
+    }
+
+    @Override
+    public boolean agregarEstampa(String idCamiseta, EstampaDTO estampa) {
+        CamisetaEntity entidad = entityManager.find(CamisetaEntity.class, idCamiseta);
+        if(entidad != null)
+        {
+            return entidad.agregarEstampa(EstampaConverter.convertirDeDTOAEntidad(estampa));
+        }
+        return false;
+    }
+
+    @Override
+    public boolean eliminarEstampa(String idCamiseta, long id) {
+         CamisetaEntity entidad = entityManager.find(CamisetaEntity.class, idCamiseta);
+        if(entidad != null)
+            return entidad.eliminarEstampa(id);
+        
+        return false;
     }
     
 }
