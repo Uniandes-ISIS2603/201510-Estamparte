@@ -19,6 +19,45 @@ public class CompradorDTO
     private String id;
     private CarritoDTO carrito;
     private List<FormaPagoDTO> formasPago;
+    private String direccion;
+    private int telefono;
+    private String usuario;
+    private String clave;
+    
+    public String getUsuario()
+    {
+        return usuario;
+    }
+    public void setUsuario(String pUsuario)
+    {
+        usuario = pUsuario;
+    }
+    public String getClave()
+    {
+        return clave;
+    }
+    public void setClave(String pClave)
+    {
+        clave = pClave;
+    }
+    public String getDireccion()
+    {
+        return direccion;
+    }
+    public void setDireccion(String pDireccion)
+    {
+        direccion = pDireccion;
+    }
+    
+    public int getTelefono()
+    {
+        return telefono;
+    }
+    
+    public void setTelefono(int pTelefono)
+    {
+        telefono = pTelefono;
+    }
     
     public String getNombre()
     {

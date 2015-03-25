@@ -17,6 +17,8 @@ public class CompradorConverter {
             CompradorDTO dto = new CompradorDTO();
             dto.setDireccion(entity.getDireccion());
             dto.setTelefono(entity.getTelefono());
+            dto.setClave(entity.getClave());
+            dto.setUsuario(entity.getUsuario());
             dto.setNombre(entity.getNombre());
             dto.setId(entity.getId());
             dto.setCarrito(entity.getCarrito());
@@ -32,6 +34,8 @@ public class CompradorConverter {
             CompradorEntity entity = new CompradorEntity();
             entity.setDireccion(dto.getDireccion());
             entity.setTelefono(dto.getTelefono());
+            entity.setClave(dto.getClave());
+            entity.setUsuario(dto.getUsuario());
             entity.setNombre(dto.getNombre());
             entity.setId(dto.getId());
             entity.setCarrito(dto.getCarrito());
