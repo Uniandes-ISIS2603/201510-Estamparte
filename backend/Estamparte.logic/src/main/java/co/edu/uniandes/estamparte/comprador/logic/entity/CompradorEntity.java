@@ -22,8 +22,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class CompradorEntity {
     private String nombre;
-    private String usuario;
-    private String clave;
     private String direccion;
     private int telefono;
     
@@ -38,7 +36,6 @@ public class CompradorEntity {
     
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
-    
     
     public String getDireccion()
     {
@@ -59,25 +56,6 @@ public class CompradorEntity {
         telefono = pTelefono;
     }
     
-    public String getClave()
-    {
-        return clave;
-    }
-    
-    public void setClave(String pClave)
-    {
-        clave =   pClave;      
-    }
-    
-    public String getUsuario()
-    {
-        return usuario;
-    }
-    
-    public void setUsuario(String pUsuario)
-    {
-        usuario =   pUsuario;      
-    }
     
     public String getNombre()
     {

@@ -15,33 +15,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CompradorDTO 
 {
-    private String usuario;
-    private String clave;
     private String nombre;
     private String id;
     private CarritoDTO carrito;
     private List<FormaPagoDTO> formasPago;
-    
-    
-    public String getClave()
-    {
-        return clave;
-    }
-    
-    public void setClave(String pClave)
-    {
-        clave =   pClave;      
-    }
-    
-    public String getUsuario()
-    {
-        return usuario;
-    }
-    
-    public void setUsuario(String pUsuario)
-    {
-        usuario =   pUsuario;      
-    }
     
     public String getNombre()
     {
