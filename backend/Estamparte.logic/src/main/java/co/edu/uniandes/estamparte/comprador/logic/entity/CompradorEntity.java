@@ -26,6 +26,8 @@ public class CompradorEntity {
     private int telefono;
     private String usuario;
     private String clave;
+    private String correo;
+    private int cedula;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -34,13 +36,29 @@ public class CompradorEntity {
     
     @OneToOne
     @JoinColumn(name="CARRITO_ID")
-    private CarritoDTO carrito;
+    private CarritoEntity carrito;
     
     @OneToMany(mappedBy="idComprador")
     private List<FormaPagoEntity> formasPago;
     
     
+    public String getCorreo()
+    {
+        return correo;
+    }
+    public void setCorreo(String pCorreo)
+    {
+        correo = pCorreo;
+    }
+    public int getCedula()
+    {
+        return cedula;
+    }
     
+    public void setCedula(int pCedula)
+    {
+        cedula = pCedula;
+    }    
     public String getUsuario()
     {
         return usuario;
@@ -96,12 +114,12 @@ public class CompradorEntity {
         id = pId;
     }
     
-    public CarritoDTO getCarrito()
+    public CarritoEntity getCarrito()
     {
         return carrito;
     }
     
-    public void setCarrito(CarritoDTO pCarrito)
+    public void setCarrito(CarritoEntity pCarrito)
     {
         carrito = pCarrito;
     }
