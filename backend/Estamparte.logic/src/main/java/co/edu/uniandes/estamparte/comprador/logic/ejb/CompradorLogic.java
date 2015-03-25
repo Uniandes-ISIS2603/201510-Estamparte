@@ -47,7 +47,8 @@ public class CompradorLogic implements ICompradorLogic{
 
     @Override
     public void updateComprador(CompradorDTO detalles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CompradorEntity entity = entityManager.merge(CompradorConverter.persistenceDTO2Entity(detalles));
+        CompradorConverter.entity2PersistenceDTO(entity);
     }
     
 }
