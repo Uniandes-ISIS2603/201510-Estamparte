@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
 public class FormaPagoEntity {
@@ -26,6 +27,7 @@ public class FormaPagoEntity {
     @JoinColumn(name="COMPRADOR_ID")
     private CompradorEntity comprador;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaVencimiento;
     
     private int codigoSeguridad;
@@ -44,8 +46,8 @@ public class FormaPagoEntity {
         return comprador;
     }
     
-    public void asignarComprador(CompradorEntity nIdCliente){
-        comprador = nIdCliente;
+    public void asignarComprador(CompradorEntity nCliente){
+        comprador = nCliente;
     }
     
     public void asignarFechaVencimiento(Date fecha){

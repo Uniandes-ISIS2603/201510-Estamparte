@@ -39,7 +39,7 @@ public class CompradorEntity {
     @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carrito;
     
-    @OneToMany(mappedBy="idComprador")
+    @OneToMany(mappedBy="comprador")
     private List<FormaPagoEntity> formasPago;
     
     @OneToMany(mappedBy="comprador")
