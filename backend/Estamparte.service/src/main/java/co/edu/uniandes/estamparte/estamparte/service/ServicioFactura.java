@@ -17,6 +17,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/factura")
@@ -33,15 +34,16 @@ public class ServicioFactura
         return facturalogic.createFactura(detalles);
     }
     
-        
+    /*ERROR!!!!    
     @GET
     public List<FacturaDTO> getFacturas()
     {
         return facturalogic.getFacturas();
     }
-    
+    */
     @GET
-    public FacturaDTO getFactura(Long id){
+    @Path("/{id}")
+    public FacturaDTO getFactura(@PathParam("id")Long id){
         return facturalogic.getFactura(id);
     }
     
