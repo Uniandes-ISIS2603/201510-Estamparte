@@ -91,4 +91,19 @@ public class CamisetaDTO {
         return carroDuenio;
     }
     
+    
+    public boolean agregarEstampa(EstampaDTO estampa)
+    {
+        if(estampas == null)
+            estampas = new ArrayList<>();
+        return estampas.add(estampa);
+    }
+    
+    public boolean eliminarEstampa(long id)
+    {
+        for(EstampaDTO es: estampas)
+            if(es.darId() == id)
+                return estampas.remove(es);
+        return false;
+    }
 }

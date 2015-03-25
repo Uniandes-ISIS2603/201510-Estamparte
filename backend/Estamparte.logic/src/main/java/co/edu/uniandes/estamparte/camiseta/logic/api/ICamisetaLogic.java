@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.camiseta.logic.api;
 import co.edu.uniandes.estamparte.estampa.logic.api.*;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import java.util.List;
 
 
@@ -25,4 +26,7 @@ public interface ICamisetaLogic {
 
     public void eliminarCamiseta(String id);
     
+    public boolean agregarEstampa(String idCamiseta, EstampaDTO estampa);
+    
+    public boolean eliminarEstampa(String idCamiseta,long id);
 }
