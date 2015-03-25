@@ -36,13 +36,14 @@ public class CompradorLogic implements ICompradorLogic{
 
     @Override
     public CompradorDTO getComprador(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return CompradorConverter.entity2PersistenceDTO(entityManager.find(CompradorEntity.class, id));
     }
 
     @Override
     public CompradorDTO deleteComprador(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        CompradorEntity entity = entityManager.find(CompradorEntity.class, id);
+        entityManager.remove(entity);    
+        return CompradorConverter.entity2PersistenceDTO(entity);    }
 
     @Override
     public void updateComprador(CompradorDTO detalles) {
