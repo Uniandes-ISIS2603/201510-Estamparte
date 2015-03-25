@@ -7,7 +7,6 @@ package co.edu.uniandes.estamparte.carrito.logic.converter;
 import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
-import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class CarritoConverter {
             //Al objeto DTO se le asignan los atributos del objeto entity
             dto.asignarIdCarrito(entity.darIdCarrito());
             dto.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(entity.darCamisetas()));
-            dto.asignarComprador(CompradorConverter.entity2PersistenceDTO(entity.darComprador()));
+            dto.asignarIdCarrito(entity.darIdComprador());
             dto.asignarFactura(FacturaConverter.entity2PersistenceDTO(entity.darFactura()));
             return dto;
         } else {
@@ -33,7 +32,7 @@ public class CarritoConverter {
             //Al objeto entity se le asignan los atributos del objeto dto
             entity.asignarCamisetas(CamisetaConverter.persistenceDTO2EntityList(dto.darCamisetas()));
             entity.asignarIdCarrito(dto.darIdCarrito());
-            entity.asignarComprador(CompradorConverter.persistenceDTO2Entity(dto.darComprador()));
+            entity.asignarIdComprador(dto.darIdComprador());
             entity.asignarFactura(FacturaConverter.persistenceDTO2Entity(dto.darFactura()));
             return entity;
         } else {
