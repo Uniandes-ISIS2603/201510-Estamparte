@@ -38,16 +38,16 @@ public class CompradorConverter {
         }
     }
 
-    public static ArrayList<CompradorDTO> convertirDeListaEntidadesAListaDTO (ArrayList<CompradorEntity> listaEntities) {
-        ArrayList<CompradorDTO> listaDTO = new ArrayList<CompradorDTO>();
+    public static List<CompradorDTO> convertirDeListaEntidadesAListaDTO (List<CompradorEntity> listaEntities) {
+        List<CompradorDTO> listaDTO = new ArrayList<CompradorDTO>();
         for (CompradorEntity entity : listaEntities) {
             listaDTO.add(entity2PersistenceDTO(entity));
         }
         return listaDTO;
     }
 
-    public static ArrayList<CompradorEntity> convertirDeListaDTOAListaEntidades (ArrayList<CompradorDTO> listaDTO) {
-        ArrayList<CompradorEntity> listaEntities = new ArrayList<CompradorEntity>();
+    public static List<CompradorEntity> convertirDeListaDTOAListaEntidades (List<CompradorDTO> listaDTO) {
+        List<CompradorEntity> listaEntities = new ArrayList<CompradorEntity>();
         for (CompradorDTO dto : listaDTO) {
             listaEntities.add(persistenceDTO2Entity(dto));
         }
