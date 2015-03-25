@@ -2,3 +2,4 @@
 /frontend/nbproject
 /backend/Estamparte.logic/target/
 /backend/Estamparte.service/target/
+*.class
