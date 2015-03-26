@@ -34,6 +34,9 @@ public class ArtistaDTO {
     //Descripcion del artista
     private String descripcion;
     
+    //constructor vacio
+    public ArtistaDTO(){}
+    
     //Metodos analizadores
     
     //Retorna el id del artista
