@@ -1,16 +1,17 @@
 angular.module('mainApp', [
     // 'ngRoute',
-    // 'facturaModule',
     // 'compradorModule',
     // 'artistaModule',
-    // 'carritoModule',
-    // 'formaPagoModule',
-    'ngDragDrop',
     'navbarModule',
     'inicioModule',
     'equipoModule',
     'footerModule',
     'estampasModule',
+    'estampaModule',
+    'nuevaModule',
     'misestampasModule',
-    'camisetaModule'
+    'camisetaModule',
+    'carritoModule',
+    'formaPagoModule',
+    'facturaModule'
 ]);

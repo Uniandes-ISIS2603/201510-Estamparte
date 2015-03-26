@@ -2,79 +2,140 @@
 	var app = angular.module('CrudModule');
 
 	app.factory('CRUDUtils', ['Restangular', function (RestAngular) {
+
 		function crudConstructor() {
-			this.api = RestAngular.all(this.url);
 
-			this.fetchRecords = function (currentPage, itemsPerPage) {
-				return this.api.getList(null, {page: currentPage, maxRecords: itemsPerPage});
-			};
+			// Variable que apunta a _this.
 
-			this.saveRecord = function (currentRecord) {
+			var _this = this;
+
+			// Asignacion de URLs.
+
+			_this.api = RestAngular.all(_this.url);
+
+			// ############################################################################
+			// ############################## Seccion CRUD ################################
+			// ############################################################################
+
+			// Trae todos los elementos con GET, letra R en CRUD (Read).
+
+			_this.fetchRecords = function (currentPage, itemsPerPage) {
+				return _this.api.getList(null, {page: currentPage, maxRecords: itemsPerPage});
+			}
+
+			// Guarda el elemento con POST, creandolo o actualizandolo.
+			// Letras C y U en CRUD (Create y Update).
+
+			_this.saveRecord = function (currentRecord) {
 				if (currentRecord.id) {
-					return currentRecord.put();
+					return currentRecord.put().then(function (data) {
+						_this.llamarEventos();
+						return data;
+					});
 				} else {
-					return this.api.post(currentRecord);
+					return _this.api.post(currentRecord).then(function (data) {
+						_this.llamarEventos();
+						return data;
+					});
 				}
-			};
+			}
 
-			this.deleteRecord = function (record) {
-				return record.remove();
-			};
+			// Elimina el elemento con DELETE, letra en CRUD (Delete).
 
-			this.extendCtrl = function (ctrl, scope) {
-				//Variables para el scope
+			_this.deleteRecord = function (record) {
+				return record.remove().then(function () {
+					_this.llamarEventos();
+				});
+			}
+
+			// ############################################################################
+			// ############################# Seccion Eventos ##############################
+			// ############################################################################
+
+			// Mantiene los eventos registrados.
+
+			_this.eventos = [];
+
+			// Registra un nuevo evento.
+
+			_this.registrarEvento = function (evento) {
+				_this.eventos.push(evento);
+			}
+
+			// Llama los eventos registrados.
+
+			_this.llamarEventos = function () {
+				angular.forEach(_this.eventos, function (evento) {
+					evento();
+				})
+			}
+
+			// ############################################################################
+			// ############################## Seccion CTRL ################################
+			// ############################################################################
+
+			// Extiende el controlador del modulo con funciones para
+			// llamar al servicio y mantener los datos en variables
+			// del scope validas dentro del controlador.
+
+			_this.extendCtrl = function (ctrl, scope) {
+
+				// Variables para el scope.
+
 				scope.currentRecord = {};
 				scope.records = [];
 
-				//Variables de paginaci�n
-				scope.maxSize = 5;
-				scope.itemsPerPage = 5;
-				scope.totalItems = 0;
-				scope.currentPage = 1;
+				// Variables de paginacion.
 
-				//Variables para el controlador
+				// scope.maxSize = 5;
+				// scope.itemsPerPage = 5;
+				// scope.totalItems = 0;
+				// scope.currentPage = 2;
+
+				// Variables para el controlador.
+
 				ctrl.editMode = false;
 
-				//Funciones que no requieren del servicio
+				// Funciones que no requieren del servicio.
+
 				ctrl.createRecord = function () {
-					this.editMode = true;
+					_this.editMode = true;
 					scope.currentRecord = {};
-				};
+				}
 
 				ctrl.editRecord = function (record) {
 					scope.currentRecord = RestAngular.copy(record);
-					this.editMode = true;
-				};
+					_this.editMode = true;
+				}
 
-				//Funciones que usan el servicio CRUD
-				var service = this;
+				// Funciones que usan el servicio CRUD.
 
 				ctrl.pageChanged = function () {
-					this.fetchRecords();
-				};
+					_this.fetchRecords();
+				}
 
 				ctrl.fetchRecords = function () {
-					return service.fetchRecords(scope.currentPage, scope.itemsPerPage).then(function (data) {
+					return _this.fetchRecords().then(function (data) {
 						scope.records = data;
 						scope.totalItems = data.totalRecords;
 						scope.currentRecord = {};
 						ctrl.editMode = false;
 						return data;
 					});
-				};
+				}
 
 				ctrl.saveRecord = function () {
-					return service.saveRecord(scope.currentRecord).then(function () {
+					return _this.saveRecord(scope.currentRecord).then(function () {
 						ctrl.fetchRecords();
 					});
-				};
+				}
 
 				ctrl.deleteRecord = function (record) {
-					return service.deleteRecord(record).then(function () {
+					return _this.deleteRecord(record).then(function () {
 						ctrl.fetchRecords();
 					});
-				};
-			};
+				}
+			}
 		}
 
 		return {

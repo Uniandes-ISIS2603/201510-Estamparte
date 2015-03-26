@@ -3,6 +3,43 @@ body {
 	font-weight: 100;
 }
 
+#comprarcarrito {
+	background-color: #F7F7F7;
+	padding: 20px 0 50px 0;
+}
+
+#formFormapagoCarrito {
+	width: 90%;
+	margin: auto;
+}
+
+.cantidadcamisa {
+	max-width: 40px;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: white;
+	box-shadow: none;
+	border-radius: 0;
+	border: none;
+}
+
+button, a {
+	border-radius: 0;
+}
+
+#formFormapagoCarrito button {
+	border-radius: 0;
+	border: none;
+}
+
+.formacomprar {
+	padding-bottom: 7px;
+}
+
 .list {
 	height: 100px;
 	width: 400px;
@@ -49,7 +86,7 @@ body {
 	text-align: center;
 }
 
-#carrito, #misestampas {
+#carrito, #misestampas, #nueva, #formapago {
 	overflow: scroll;
 	display: none;
 	position: fixed;
@@ -61,6 +98,50 @@ body {
 	z-index: 2000;
 	font-weight: 300;
 	border-left: 1px solid #EEE;
+}
+
+#formapago .botones {
+	background-color: #F7F7F7;
+	min-width: 320px;
+	float: left;
+	display: block;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#formapago button {
+	display: inline-block;
+	margin-top: 11px;
+	float: right;
+	margin-right: 15px;
+	border: none;
+	text-align: center;
+	border-radius: 0;
+	background-color: #EEE;
+	color: #999;
+}
+
+#formapago form {
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+#formapago #nuevaformaboton, #formapago .formaform {
+	margin-bottom: 10px;
+}
+
+#nuevaformaboton h5 {
+	float: right;
+	margin-top: 20px;
+	margin-right: 90px;
+}
+
+#nueva {
+	width: 600px;
+}
+
+#nueva .container {
+	padding: 20px;
 }
 
 .miestampa {
@@ -232,6 +313,10 @@ body {
 
 #propiedades label {
 	font-weight: lighter;
+}
+
+label {
+	font-weight: normal;
 }
 
 #vistaprevia {
