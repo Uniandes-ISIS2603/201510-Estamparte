@@ -1,13 +1,9 @@
 (function () {	
 	var app = angular.module('camisetaModule');
 
-	app.controller('camisetaCtrl', ['$scope', '$window', 'servicioCamiseta', function ($scope, $window, servicioCamiseta) {
+	app.controller('camisetaCtrl', ['$scope', '$window', 'servicioCamiseta', 'servicioCarrito', function ($scope, $window, servicioCamiseta, servicioCarrito) {
 
-		$scope.list3 = ['s'];
-
-		// Extension de servicios CRUD.
-
-		servicioCamiseta.extendCtrl(this, $scope);
+		var _this = this;
 
 		// Estilos para el formulario.
 
@@ -162,9 +158,94 @@
 			});
 		}
 
-		// Datos de las estampas agregadas.
+		// Mantiene las estampas.
 
-		$scope.records = servicioCamiseta.darEstampas();
+		$scope.estampas = servicioCamiseta.darEstampas();
+
+		// Mantiene el dato actual para edicion.
+
+		$scope.currentRecord
+
+		// Agregar la camisa al carrito.
+
+		$scope.acarrito = function () {
+			servicioCamiseta.datoEditar.nombre = $scope.nombre;
+			servicioCamiseta.datoEditar.estilo = $scope.estilo;
+			servicioCamiseta.datoEditar.talla = $scope.talla;
+			servicioCamiseta.datoEditar.color = $scope.color;
+			servicioCamiseta.datoEditar.estampas = $scope.estampas;
+			servicioCamiseta.datoEditar.precio = $scope.darPrecio();
+			servicioCamiseta.datoEditar.cantidad = 1;
+
+			servicioCarrito.saveRecord(servicioCamiseta.datoEditar).then(function () {
+				_this.reiniciar();
+			});
+
+			_this.verCarrito();
+		}
+
+		// Reinicia la camiseta.
+
+		_this.reiniciar = function () {
+			servicioCamiseta.datoEditar  = {};
+			$scope.estilo = $scope.estilos[0].id;
+			$scope.talla = $scope.tallas[0].id;
+			$scope.color = $scope.colores[0].id;
+			$scope.nombre = '';
+			$scope.darEstilo();
+			servicioCamiseta.estampas.length = 0;
+		}
+
+		// Asigna la funcion reiniciar.
+
+		servicioCamiseta.reiniciar = _this.reiniciar;
+
+		// Configuracion usada para el carrito.
+
+		_this.verCarrito = function () {
+			var carrito = angular.element('#carrito');
+			if (carrito.css('display') === 'none') {
+				var misestampas = angular.element('#misestampas');
+				if (misestampas.css('display') !== 'none')
+					misestampas.animate({width: 'toggle'});
+
+				angular.element('#carrito').animate({width: 'toggle'});
+			}
+		}
+
+		// Nos da el precio total de la camisa.
+
+		$scope.darPrecio = function () {
+			var respuesta = 0;
+
+			var n = $scope.estampas.length;
+			for (var i = 0; i < n; i++) {
+				var actual = $scope.estampas[i];
+				respuesta += actual.estampa.precio;
+			}
+
+			return respuesta;
+		}
+
+		// El nombre de la camiseta.
+
+		$scope.nombre = '';
+
+		// Habilita la edicion de una camisa en carrito.
+
+		_this.editar = function () {
+			$scope.nombre = servicioCamiseta.datoEditar.nombre;
+			$scope.estilo = servicioCamiseta.datoEditar.estilo;
+			$scope.talla = servicioCamiseta.datoEditar.talla;
+			$scope.color = servicioCamiseta.datoEditar.color;
+			servicioCamiseta.asignarEstampas();
+			$scope.precio = servicioCamiseta.datoEditar.precio;
+			$scope.darEstilo();
+		}
+
+		// Asigna la funcion de edicion de camiseta.
+
+		servicioCamiseta.ahoraEditar = _this.editar;
 
 		// $scope.datoActual.camiseta.estampasUsadas = [];
 		// $scope.datoActual.camiseta.idCamiseta;
