@@ -98,7 +98,6 @@ public class CamisetaLogic implements ICamisetaLogic  {
          CamisetaEntity entidad = entityManager.find(CamisetaEntity.class, idCamiseta);
         if(entidad != null)
             return entidad.eliminarEstampa(id);
-        
         return false;
     }
     
