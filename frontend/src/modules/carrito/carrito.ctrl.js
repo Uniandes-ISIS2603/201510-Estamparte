@@ -85,15 +85,25 @@
 			servicioCamiseta.reiniciar();
 
 			servicioFactura.saveRecord(factura).then(function () {
+				var texto = 'Factura\n Medio de pago: ' + factura.pago.tipo + ' ' + factura.pago.numeroTarjeta + '\n\n Camisetas:\n';
+
+				for (var i = 0; i < factura.camisetas.length; i++) {
+					var actual = factura.camisetas[i];
+					texto += actual.nombre + '($' + actual.precio + ') - ' + actual.cantidad + '\n';
+				}
+
+				alert(texto);
+
 				$scope.pago = '';
 				_this.limpiarCarrito();
 			});
+
+			angular.element('#carrito').animate({width: 'toggle'});
 		}
 
 		// Limpia el carrito.
 
 		_this.limpiarCarrito = function () {
-			console.log($scope.records.length);
 			if ($scope.records.length > 0) {
 				var actual = $scope.records[0];
 				_this.deleteRecord(actual).then(function () {

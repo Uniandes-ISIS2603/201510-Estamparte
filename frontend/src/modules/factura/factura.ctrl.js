@@ -3,32 +3,45 @@
 
 	app.controller('facturaCtrl', ['$scope','servicioFactura', 'servicioFormaPago', 'servicioCarrito', function ($scope, servicioFactura, servicioFormaPago, servicioCarrito) {
 
-		// Extension de los servicion del CRUD
-		servicioFactura.extendCtrl(this,$scope);
+		// Variable que apunta a this.
+
+		var _this = this;
+
+		// Extension de los servicion del CRUD.
+
+		servicioFactura.extendCtrl(_this,$scope);
 		
-		this.editMode = false;
-		this.camisetas = servicioCarrito.darCarritoActual();
-		this.formaPago = servicioFormaPago.darFormaPagoActual();
+		// _this.editMode = false;
+		// _this.camisetas = servicioCarrito.darCarritoActual();
+		// _this.formaPago = servicioFormaPago.darFormaPagoActual();
 					
-		this.editar = function (dato) {
-			this.editMode = true;
-			this.editarDato(dato);
-		}
+		// _this.editar = function (dato) {
+		// 	this.editMode = true;
+		// 	this.editarDato(dato);
+		// }
 		
-		this.cancelar = function () {
-			this.editMode = false;
-			this.consultarDatos();
-		}
+		// _this.cancelar = function () {
+		// 	this.editMode = false;
+		// 	this.consultarDatos();
+		// }
 		
-		this.guardar = function () {
-			this.editMode = false;
-			this.guardarDato();
-		}
+		// _this.guardar = function () {
+		// 	this.editMode = false;
+		// 	this.guardarDato();
+		// }
 	 
-	 	this.crear = function () {
-			this.editMode = true;
-			this.crearDato();	 
+	 // 	_this.crear = function () {
+		// 	this.editMode = true;
+		// 	this.crearDato();	 
+	 // 	}
+
+	 	_this.actualizarDatos = function () {
+	 		_this.fetchRecords().then(function () {
+	 			console.log($scope.records);
+	 		});
 	 	}
+
+	 	servicioFactura.registrarEvento(_this.actualizarDatos);
 
 	}]);
 })();
