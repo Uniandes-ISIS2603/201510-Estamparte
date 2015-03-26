@@ -1,3 +1,3 @@
 (function () {	
-	var app = angular.module('estampaModule', ['ngDragDrop']);
+	var app = angular.module('estampaModule', []);
 })();

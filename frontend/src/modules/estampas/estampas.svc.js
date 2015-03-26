@@ -3,9 +3,13 @@
 
 	app.service('servicioEstampa', ['CRUDUtils', 'estampas.context', function (CRUDUtils, context) {
 
-		this.url = context;
+		var _this = this;
 
-		CRUDUtils.extendService(this);
+		// Extension de los servicios del CRUD.
+
+		_this.url = context;
+
+		CRUDUtils.extendService(_this);
 
 		// Estampa seleccionada en particular.
 

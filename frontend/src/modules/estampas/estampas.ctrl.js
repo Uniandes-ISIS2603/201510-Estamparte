@@ -5,9 +5,23 @@
 
 		var _this = this;
 
+		// Extension de los servicion del CRUD.
+
 		servicioEstampa.extendCtrl(_this, $scope);
 
 		_this.fetchRecords();
+
+		// Evento de actualizacion de datos.
+
+		_this.actualizarDatos = function () {
+			_this.fetchRecords();
+		}
+
+		// Regista el evento de actualizacion.
+
+		servicioEstampa.registrarEvento(_this.actualizarDatos);
+
+		// Datos de prueba.
 
 		$scope.prueba = [
 			{  
@@ -124,6 +138,10 @@
 		}
 
 		_this.verMisEstampas = function () {
+			var carrito = angular.element('#carrito');
+			if (carrito.css('display') !== 'none')
+				carrito.animate({width: 'toggle'});
+
 			var misestampas = angular.element('#misestampas');
 			if (misestampas.css('display') === 'none')
 				misestampas.animate({width: 'toggle'});

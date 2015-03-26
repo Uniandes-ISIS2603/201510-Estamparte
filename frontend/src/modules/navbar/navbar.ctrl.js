@@ -57,13 +57,33 @@
 		// Configuracion usada para el carrito.
 
 		$scope.verCarrito = function () {
+			var misestampas = angular.element('#misestampas');
+			if (misestampas.css('display') !== 'none')
+				$scope.verMisEstampas();
+
 			angular.element('#carrito').animate({width: 'toggle'});
 		}
 
 		// Configuracion usada para mis estampas.
 
 		$scope.verMisEstampas = function () {
+			var carrito = angular.element('#carrito');
+			if (carrito.css('display') !== 'none')
+				$scope.verCarrito();
+			
 			angular.element('#misestampas').animate({width: 'toggle'});
+		}
+
+		// Configuracion usada para nueva estampa.
+
+		$scope.verNuevaEstampa = function () {
+			angular.element('#nueva').animate({width: 'toggle'});
+		}
+
+		// Configuracion usada para forma pago.
+
+		$scope.verFormaPago = function () {
+			angular.element('#formapago').animate({width: 'toggle'});
 		}
 
 		// Configutacion inicial.

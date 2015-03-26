@@ -1,5 +1,5 @@
 (function () {	
-	var app = angular.module('estampasModule', ['CrudModule', 'MockModule', 'estampaModule', 'misestampasModule']);
+	var app = angular.module('estampasModule', ['CrudModule', 'MockModule']);
 
 	app.constant('estampas.context', 'estampas');
 
