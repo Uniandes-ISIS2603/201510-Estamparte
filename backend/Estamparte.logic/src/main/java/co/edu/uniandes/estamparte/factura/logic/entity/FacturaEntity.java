@@ -24,6 +24,7 @@ public class FacturaEntity {
     @ManyToOne
     @JoinColumn(name="COMPRADOR_ID")
     private CompradorEntity comprador;
+    
     private FormaPagoEntity formaPago;
     private String fechaCompra;
     
