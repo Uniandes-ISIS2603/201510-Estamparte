@@ -76,7 +76,7 @@
 				<!-- Opciones para el artista -->
 
 				<li ng-show="usuario.tipo === 'artista'">
-					<a href="#/artista" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa">
+					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa" ng-click="verNuevaEstampa()">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
 				</li>
@@ -123,7 +123,7 @@
 						<li class="divider"></li>
 
 						<!-- Opctiones para el comprador -->
-						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)">
+						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)" ng-click="verFormaPago()">
 							Administrar pagos
 						</a></li>
 
