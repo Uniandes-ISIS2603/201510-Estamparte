@@ -38,87 +38,69 @@ public class ArtistaDTO {
     public ArtistaDTO(){}
     
     //Metodos analizadores
-    
-    //Retorna el id del artista
-    public Long darId(){
+
+    public Long getId() {
         return id;
     }
-    
-    //Retorna el usuario del artista
-    public String darUsuario(){
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsuario() {
         return usuario;
     }
-    
-    //Retorna la contrasenha del usuario
-    public String darContrasenha(){
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasenha() {
         return contrasenha;
     }
-    
-    //Retorna el nombre del artista
-    public String darNombre(){
+
+    public void setContrasenha(String contrasenha) {
+        this.contrasenha = contrasenha;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    //Retorna la cedula del artista
-    public String darCedula(){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCedula() {
         return cedula;
     }
-    
-    //Retorna el correo electronico del artista
-    public String darCorreo(){
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCorreo() {
         return correo;
     }
-    
-    //Retorna la url de la imagen de perfil del artista
-    public String darImagenPerfil(){
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getImagenPerfil() {
         return imagenPerfil;
     }
-    
-    //Retorna la descripcion del artista
-    public String darDescripcion(){
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
+    }
+
+    public String getDescripcion() {
         return descripcion;
     }
-    
-    //Metodos modificadores
-    
-    //Cambia el id del artista
-    public void cambiarId(Long nId){
-        this.id = nId;
-    }
-    
-    //Cambia el nombre de usuario del artista
-    public void cambiarUsuario(String nUsuario){
-        this.usuario = nUsuario;
-    }
-    
-    //Cambia la contrasenha del artista
-    public void cambiarContrasenha(String nContrasenha){
-        this.contrasenha = nContrasenha;
-    }
-    
-    //Cambia el nombre del artista
-    public void cambiarNombre(String nNombre){
-        this.nombre = nNombre;
-    }
-    
-    //Cambia la cedula del artista
-    public void cambiarCedula(String nCedula){
-        this.cedula = nCedula;
-    }
-    
-    //Cambia el correo electronico del artista
-    public void cambiarCorreo(String nCorreo){
-        this.correo = nCorreo;
-    }
-    
-    //Cambia la url de la imagen de perfil del artista
-    public void cambiarImagenPerfil(String nImagen){
-        this.imagenPerfil = nImagen;
-    }
-    
-    //Cambia la descripcion del artista
-    public void cambiarDescripcion(String nDescripcion){
-        this.descripcion = nDescripcion;
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
 }

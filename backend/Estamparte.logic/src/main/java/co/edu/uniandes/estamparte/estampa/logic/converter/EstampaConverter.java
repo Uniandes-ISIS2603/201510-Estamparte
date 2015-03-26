@@ -18,8 +18,8 @@ public class EstampaConverter {
             EstampaDTO dto = new EstampaDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
             dto.cambiarId(entidad.darId());
-            dto.cambiarIdArtista(entidad.darDuenho().darId());
-            dto.cambiarUsuarioArtista(entidad.darDuenho().darUsuario());
+            dto.cambiarIdArtista(entidad.darDuenho().getId());
+            dto.cambiarUsuarioArtista(entidad.darDuenho().getUsuario());
             dto.cambiarNombre(entidad.darNombre());
             dto.cambiarImagen(entidad.darImagen());
             dto.cambiarDescripcion(entidad.darDescripcion());
@@ -39,8 +39,8 @@ public class EstampaConverter {
         if (dto != null) {
             EstampaEntity entidad = new EstampaEntity();
             ArtistaEntity artistaDuenho = new ArtistaEntity();
-            artistaDuenho.cambiarId(dto.darIdArtista());
-            artistaDuenho.cambiarUsuario(dto.darUsuarioArtista());
+            artistaDuenho.setId(dto.darIdArtista());
+            artistaDuenho.setUsuario(dto.darUsuarioArtista());
             List<CamisetaEntity> camisetas = new ArrayList();
             //Al objeto entity se le asignan los atributos del objeto dto
             entidad.cambiarId(dto.darId());
