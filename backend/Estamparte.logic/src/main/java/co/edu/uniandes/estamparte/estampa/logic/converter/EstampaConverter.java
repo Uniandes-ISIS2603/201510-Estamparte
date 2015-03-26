@@ -17,7 +17,7 @@ public class EstampaConverter {
         if (entidad != null) {
             EstampaDTO dto = new EstampaDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.cambiarId(entidad.darId());
+            dto.cambiarId(entidad.getId());
             dto.cambiarIdArtista(entidad.darDuenho().getId());
             dto.cambiarUsuarioArtista(entidad.darDuenho().getUsuario());
             dto.cambiarNombre(entidad.darNombre());
@@ -39,21 +39,21 @@ public class EstampaConverter {
         if (dto != null) {
             EstampaEntity entidad = new EstampaEntity();
             ArtistaEntity artistaDuenho = new ArtistaEntity();
-            artistaDuenho.setId(dto.darIdArtista());
-            artistaDuenho.setUsuario(dto.darUsuarioArtista());
+            artistaDuenho.setId(dto.getIdArtista());
+            artistaDuenho.setUsuario(dto.getUsuarioArtista());
             List<CamisetaEntity> camisetas = new ArrayList();
             //Al objeto entity se le asignan los atributos del objeto dto
-            entidad.cambiarId(dto.darId());
+            entidad.cambiarId(dto.getId());
             entidad.cambiarDuenho(artistaDuenho);
-            entidad.cambiarNombre(dto.darNombre());
-            entidad.cambiarImagen(dto.darImagen());
-            entidad.cambiarDescripcion(dto.darDescripcion());
-            entidad.cambiarSiGusta(dto.darSiGusta());
-            entidad.cambiarNoGusta(dto.darNoGusta());
-            entidad.cambiarTema(dto.darTema());
-            entidad.cambiarAltura(dto.darAltura());
-            entidad.cambiarAncho(dto.darAncho());
-            entidad.cambiarPrecio(dto.darPrecio());
+            entidad.cambiarNombre(dto.getNombre());
+            entidad.cambiarImagen(dto.getImagen());
+            entidad.cambiarDescripcion(dto.getDescripcion());
+            entidad.cambiarSiGusta(dto.getSiGusta());
+            entidad.cambiarNoGusta(dto.getNoGusta());
+            entidad.cambiarTema(dto.getTema());
+            entidad.cambiarAltura(dto.getAltura());
+            entidad.cambiarAncho(dto.getAncho());
+            entidad.cambiarPrecio(dto.getPrecio());
             entidad.cambiarCamisetas(camisetas);
             return entidad;
         } else {

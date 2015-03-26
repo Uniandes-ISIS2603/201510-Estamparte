@@ -62,7 +62,7 @@ public class EstampaEntity {
     //Metodos analizadores de la entidad
     
     //Retorna el id autogenerado de la estampa
-    public Long darId(){
+    public Long getId(){
         return id;
     }
     

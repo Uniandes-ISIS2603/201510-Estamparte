@@ -17,10 +17,10 @@ public class CarritoConverter {
         if (entity != null) {
             CarritoDTO dto = new CarritoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.asignarIdCarrito(entity.darIdCarrito());
-            dto.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(entity.darCamisetas()));
-            dto.asignarComprador(CompradorConverter.entity2PersistenceDTO(entity.darComprador()));
-            dto.asignarFactura(FacturaConverter.entity2PersistenceDTO(entity.darFactura()));
+            dto.setIdCarrito(entity.getIdCarrito());
+            dto.setCamisetas(CamisetaConverter.entity2PersistenceDTOList(entity.getCamisetas()));
+            dto.setComprador(CompradorConverter.entity2PersistenceDTO(entity.getComprador()));
+            dto.setFactura(FacturaConverter.entity2PersistenceDTO(entity.getFactura()));
             return dto;
         } else {
             return null;
@@ -31,10 +31,10 @@ public class CarritoConverter {
         if (dto != null) {
             CarritoEntity entity = new CarritoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
-            entity.asignarCamisetas(CamisetaConverter.persistenceDTO2EntityList(dto.darCamisetas()));
-            entity.asignarIdCarrito(dto.darIdCarrito());
-            entity.asignarComprador(CompradorConverter.persistenceDTO2Entity(dto.darComprador()));
-            entity.asignarFactura(FacturaConverter.persistenceDTO2Entity(dto.darFactura()));
+            entity.setCamisetas(CamisetaConverter.persistenceDTO2EntityList(dto.getCamisetas()));
+            entity.setIdCarrito(dto.getIdCarrito());
+            entity.setComprador(CompradorConverter.persistenceDTO2Entity(dto.getComprador()));
+            entity.setFactura(FacturaConverter.persistenceDTO2Entity(dto.getFactura()));
             return entity;
         } else {
             return null;

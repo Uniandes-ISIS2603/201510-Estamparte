@@ -38,8 +38,8 @@ public class FormaPagoLogic implements IFormaPagoLogic{
             consulta.setMaxResults(datosMaximos);
         }
         FormaPagoPageDTO respuesta = new FormaPagoPageDTO();
-        respuesta.asignarCantidad(cuentaReg);
-        respuesta.asignarFormasPago(FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
+        respuesta.setCantidad(cuentaReg);
+        respuesta.setFormasPago(FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
         return respuesta;
     }
     

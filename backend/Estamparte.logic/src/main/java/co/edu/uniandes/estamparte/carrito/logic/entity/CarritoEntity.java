@@ -33,31 +33,31 @@ public class CarritoEntity {
     @JoinColumn(name="FACTURA_ID")
     private FacturaEntity factura;
     
-    public String darIdCarrito(){
+    public String getIdCarrito(){
         return idCarrito;
     }
     
-    public void asignarIdCarrito(String nIdCarrito){
+    public void setIdCarrito(String nIdCarrito){
         idCarrito = nIdCarrito;
     }
     
-    public CompradorEntity darComprador(){
+    public CompradorEntity getComprador(){
         return comprador;
     }
     
-    public void asignarComprador(CompradorEntity nComprador){
+    public void setComprador(CompradorEntity nComprador){
         comprador = nComprador;
     }
     
-    public int darNumeroCamisetas(){
+    public int getNumeroCamisetas(){
         return camisetas.size();
     }
     
-    public List<CamisetaEntity> darCamisetas(){
+    public List<CamisetaEntity> getCamisetas(){
         return camisetas;
     }
     
-    public void asignarCamisetas(List<CamisetaEntity> camisetas){
+    public void setCamisetas(List<CamisetaEntity> camisetas){
         this.camisetas.addAll(camisetas);
     }
     
@@ -73,11 +73,11 @@ public class CarritoEntity {
         camisetas.removeAll(aEliminar);
     }
     
-    public void asignarFactura(FacturaEntity nFactura){
+    public void setFactura(FacturaEntity nFactura){
         factura = nFactura;
     }
     
-    public FacturaEntity darFactura(){
+    public FacturaEntity getFactura(){
         return factura;
     }
 }

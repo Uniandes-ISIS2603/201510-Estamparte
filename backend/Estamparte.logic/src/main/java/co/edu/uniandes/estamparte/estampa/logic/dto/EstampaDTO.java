@@ -47,62 +47,62 @@ public class EstampaDTO {
     //Metodos analizadores de la entidad
     
     //Retorna el id autogenerado de la estampa
-    public Long darId(){
+    public Long getId(){
         return id;
     }
     
     //Retorna el id del artista duenho
-    public Long darIdArtista(){
+    public Long getIdArtista(){
         return idArtista;
     }
     
     //Retorna el nombre de usuario del artista
-    public String darUsuarioArtista(){
+    public String getUsuarioArtista(){
         return usuarioArtista;
     }
     
     //Retorna el nombre de la estampa
-    public String darNombre(){
+    public String getNombre(){
         return nombre;
     }
     
     //Retorna la url de la imagen de la estampa
-    public String darImagen(){
+    public String getImagen(){
         return imagen;
     }
     
     //Retorna la descripcion de la estampa
-    public String darDescripcion(){
+    public String getDescripcion(){
         return descripcion;
     }
     
     //Retorna el numero de likes de la estampa
-    public Integer darSiGusta(){
+    public Integer getSiGusta(){
         return siGusta;
     }
     
     //Retorna el numero de dislikes de la estampa
-    public Integer darNoGusta(){
+    public Integer getNoGusta(){
         return noGusta;
     }
     
     //Retorna el tema de la estampa
-    public String darTema(){
+    public String getTema(){
         return tema;
     }
     
     //Retorna la altura de la estampa
-    public Double darAltura(){
+    public Double getAltura(){
         return altura;
     }
     
     //Retorna el ancho de la estampa
-    public Double darAncho(){
+    public Double getAncho(){
         return ancho;
     }
     
     //Retorna el precio de la estampa
-    public Double darPrecio(){
+    public Double getPrecio(){
         return precio;
     }
     

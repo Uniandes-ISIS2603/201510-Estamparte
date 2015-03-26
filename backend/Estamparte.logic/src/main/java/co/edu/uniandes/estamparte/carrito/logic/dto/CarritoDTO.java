@@ -20,31 +20,31 @@ public class CarritoDTO {
     
     private FacturaDTO factura;
     
-    public String darIdCarrito(){
+    public String getIdCarrito(){
         return idCarrito;
     }
     
-    public void asignarIdCarrito(String idCarrito){
+    public void setIdCarrito(String idCarrito){
         this.idCarrito = idCarrito;
     }
     
-    public CompradorDTO darComprador(){
+    public CompradorDTO getComprador(){
         return comprador;
     }
     
-    public void asignarComprador(CompradorDTO nComprador){
+    public void setComprador(CompradorDTO nComprador){
         comprador = nComprador;
     }
     
-    public int darNumeroCamisetas(){
+    public int getNumeroCamisetas(){
         return camisetas.size();
     }
     
-    public List<CamisetaDTO> darCamisetas(){
+    public List<CamisetaDTO> getCamisetas(){
         return camisetas;
     }
     
-    public void asignarCamisetas(List<CamisetaDTO> camisetas){
+    public void setCamisetas(List<CamisetaDTO> camisetas){
         this.camisetas.addAll(camisetas);
     }
     
@@ -60,11 +60,11 @@ public class CarritoDTO {
         camisetas.removeAll(aEliminar);
     }
     
-    public void asignarFactura(FacturaDTO nFactura){
+    public void setFactura(FacturaDTO nFactura){
         factura = nFactura;
     }
     
-    public FacturaDTO darFactura(){
+    public FacturaDTO getFactura(){
         return factura;
     }
 }

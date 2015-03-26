@@ -112,7 +112,7 @@ public class CamisetaEntity {
     public boolean agregarEstampa(EstampaEntity estampa)
     {
         if(estampas == null)
-            estampas = new ArrayList<>();
+            estampas = new ArrayList();
         return estampas.add(estampa);
     }
     
