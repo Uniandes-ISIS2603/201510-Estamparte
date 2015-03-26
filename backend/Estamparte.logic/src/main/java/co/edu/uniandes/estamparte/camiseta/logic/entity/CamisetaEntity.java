@@ -107,4 +107,20 @@ public class CamisetaEntity {
     public CarritoEntity darCarroDuenio(){
         return carroDuenio;
     }
+    
+    
+    public boolean agregarEstampa(EstampaEntity estampa)
+    {
+        if(estampas == null)
+            estampas = new ArrayList<>();
+        return estampas.add(estampa);
+    }
+    
+    public boolean eliminarEstampa(long id)
+    {
+        for(EstampaEntity es: estampas)
+            if(es.darId() == id)
+                return estampas.remove(es);
+        return false;
+    }
 }

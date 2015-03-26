@@ -4,6 +4,7 @@
 package co.edu.uniandes.estamparte.carrito.logic.dto;
 
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,7 +14,7 @@ public class CarritoDTO {
     
     private String idCarrito;
     
-    private String idComprador;
+    private CompradorDTO comprador;
     
     private List<CamisetaDTO> camisetas;
     
@@ -27,12 +28,12 @@ public class CarritoDTO {
         this.idCarrito = idCarrito;
     }
     
-    public String darIdComprador(){
-        return idComprador;
+    public CompradorDTO darComprador(){
+        return comprador;
     }
     
-    public void asignarIdComprador(String nIdComprador){
-        idComprador = nIdComprador;
+    public void asignarComprador(CompradorDTO nComprador){
+        comprador = nComprador;
     }
     
     public int darNumeroCamisetas(){

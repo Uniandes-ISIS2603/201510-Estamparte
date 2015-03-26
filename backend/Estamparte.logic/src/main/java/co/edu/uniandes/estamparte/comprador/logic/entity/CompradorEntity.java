@@ -8,6 +8,7 @@ import co.edu.uniandes.estamparte.artista.logic.entity.*;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.*;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
+import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,12 @@ import javax.persistence.OneToOne;
 @Entity
 public class CompradorEntity {
     private String nombre;
+    private String direccion;
+    private int telefono;
+    private String usuario;
+    private String clave;
+    private String correo;
+    private int cedula;
     
     @Id
     @GeneratedValue(generator="Comprador")
@@ -30,10 +37,76 @@ public class CompradorEntity {
     
     @OneToOne
     @JoinColumn(name="CARRITO_ID")
-    private CarritoDTO carrito;
+    private CarritoEntity carrito;
     
-    @OneToMany(mappedBy="idComprador")
+    @OneToMany(mappedBy="comprador")
     private List<FormaPagoEntity> formasPago;
+    
+    @OneToMany(mappedBy="comprador")
+    private List<FacturaEntity> facturas;
+    
+    
+    public List<FacturaEntity> getFacturas()
+    {
+        return facturas;
+    }
+    public void setFacturas(List<FacturaEntity> pList)
+    {
+        facturas = pList;
+    }
+    
+    public String getCorreo()
+    {
+        return correo;
+    }
+    public void setCorreo(String pCorreo)
+    {
+        correo = pCorreo;
+    }
+    public int getCedula()
+    {
+        return cedula;
+    }
+    
+    public void setCedula(int pCedula)
+    {
+        cedula = pCedula;
+    }    
+    public String getUsuario()
+    {
+        return usuario;
+    }
+    public void setUsuario(String pUsuario)
+    {
+        usuario = pUsuario;
+    }
+    public String getClave()
+    {
+        return clave;
+    }
+    public void setClave(String pClave)
+    {
+        clave = pClave;
+    }
+    public String getDireccion()
+    {
+        return direccion;
+    }
+    public void setDireccion(String pDireccion)
+    {
+        direccion = pDireccion;
+    }
+    
+    public int getTelefono()
+    {
+        return telefono;
+    }
+    
+    public void setTelefono(int pTelefono)
+    {
+        telefono = pTelefono;
+    }
+    
     
     public String getNombre()
     {
@@ -54,12 +127,12 @@ public class CompradorEntity {
         id = pId;
     }
     
-    public CarritoDTO getCarrito()
+    public CarritoEntity getCarrito()
     {
         return carrito;
     }
     
-    public void setCarrito(CarritoDTO pCarrito)
+    public void setCarrito(CarritoEntity pCarrito)
     {
         carrito = pCarrito;
     }

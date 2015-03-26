@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.formaPago.logic.dto;
 
+import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -11,7 +12,7 @@ public class FormaPagoDTO {
     
     private String nombre;
     
-    private String idComprador;
+    private CompradorDTO comprador;
     
     private Long numeroTarjeta;
     
@@ -29,12 +30,12 @@ public class FormaPagoDTO {
         nombre = nNombre;
     }
     
-    public String darIdComprador(){
-        return idComprador;
+    public CompradorDTO darComprador(){
+        return comprador;
     }
     
-    public void asignarIdComprador(String nIdComprador){
-        idComprador = nIdComprador;
+    public void asignarComprador(CompradorDTO nComprador){
+        comprador = nComprador;
     }
     
     public void asignarFechaVencimiento(Date fecha){

@@ -4,6 +4,7 @@
 package co.edu.uniandes.estamparte.carrito.logic.entity;
 
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import java.util.List;
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class CarritoEntity {
     private String idCarrito;   
     
     @OneToOne(mappedBy="carrito")
-    private String idComprador;
+    private CompradorEntity comprador;
     
     @OneToMany(mappedBy="carroDuenio")
     private List<CamisetaEntity> camisetas;
@@ -40,12 +41,12 @@ public class CarritoEntity {
         idCarrito = nIdCarrito;
     }
     
-    public String darIdComprador(){
-        return idComprador;
+    public CompradorEntity darComprador(){
+        return comprador;
     }
     
-    public void asignarIdComprador(String nIdComprador){
-        idComprador = nIdComprador;
+    public void asignarComprador(CompradorEntity nComprador){
+        comprador = nComprador;
     }
     
     public int darNumeroCamisetas(){

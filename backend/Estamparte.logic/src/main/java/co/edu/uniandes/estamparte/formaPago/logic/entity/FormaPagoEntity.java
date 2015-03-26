@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.formaPago.logic.entity;
 
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
 public class FormaPagoEntity {
@@ -23,8 +25,9 @@ public class FormaPagoEntity {
     
     @ManyToOne
     @JoinColumn(name="COMPRADOR_ID")
-    private String idComprador;
+    private CompradorEntity comprador;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaVencimiento;
     
     private int codigoSeguridad;
@@ -39,12 +42,12 @@ public class FormaPagoEntity {
         nombre = nNombre;
     }
     
-    public String darIdComprador(){
-        return idComprador;
+    public CompradorEntity darComprador(){
+        return comprador;
     }
     
-    public void asignarIdComprador(String nIdCliente){
-        idComprador = nIdCliente;
+    public void asignarComprador(CompradorEntity nCliente){
+        comprador = nCliente;
     }
     
     public void asignarFechaVencimiento(Date fecha){
