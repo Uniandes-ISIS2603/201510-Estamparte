@@ -86,6 +86,12 @@
 			angular.element('#formapago').animate({width: 'toggle'});
 		}
 
+		// Configuracion usada para facturas.
+
+		$scope.verFacturas = function () {
+			angular.element('#factura').animate({width: 'toggle'});
+		}
+
 		// Configutacion inicial.
 
 		$scope.irArriba = function () {
