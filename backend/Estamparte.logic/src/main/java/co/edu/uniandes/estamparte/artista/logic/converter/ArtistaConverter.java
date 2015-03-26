@@ -33,7 +33,7 @@ public class ArtistaConverter {
     public static ArtistaEntity convertirDeDTOAEntidad (ArtistaDTO dto) {
         if (dto != null) {
             ArtistaEntity entidad = new ArtistaEntity();
-            List<EstampaEntity> estampas = new ArrayList<>();
+            List<EstampaEntity> estampas = new ArrayList();
             //Al objeto entity se le asignan los atributos del objeto dto
             entidad.cambiarId(dto.darId());
             entidad.cambiarUsuario(dto.darUsuario());

@@ -41,7 +41,7 @@ public class EstampaConverter {
             ArtistaEntity artistaDuenho = new ArtistaEntity();
             artistaDuenho.cambiarId(dto.darIdArtista());
             artistaDuenho.cambiarUsuario(dto.darUsuarioArtista());
-            List<CamisetaEntity> camisetas = new ArrayList<>();
+            List<CamisetaEntity> camisetas = new ArrayList();
             //Al objeto entity se le asignan los atributos del objeto dto
             entidad.cambiarId(dto.darId());
             entidad.cambiarDuenho(artistaDuenho);
@@ -62,7 +62,7 @@ public class EstampaConverter {
     }
 
     public static List<EstampaDTO> convertirDeListaEntidadesAListaDTO (List<EstampaEntity> listaEntities) {
-        List<EstampaDTO> listaDTO = new ArrayList<>();
+        List<EstampaDTO> listaDTO = new ArrayList();
         for (EstampaEntity entidad : listaEntities) {
             listaDTO.add(convertirDeEntidadADTO(entidad));
         }
@@ -70,7 +70,7 @@ public class EstampaConverter {
     }
 
     public static List<EstampaEntity> convertirDeListaDTOAListaEntidades (List<EstampaDTO> listaDTO) {
-        List<EstampaEntity> listaEntities = new ArrayList<>();
+        List<EstampaEntity> listaEntities = new ArrayList();
         for (EstampaDTO dto : listaDTO) {
             listaEntities.add(convertirDeDTOAEntidad(dto));
         }

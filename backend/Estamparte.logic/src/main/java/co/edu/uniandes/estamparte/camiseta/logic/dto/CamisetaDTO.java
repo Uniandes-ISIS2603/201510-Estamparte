@@ -95,7 +95,7 @@ public class CamisetaDTO {
     public boolean agregarEstampa(EstampaDTO estampa)
     {
         if(estampas == null)
-            estampas = new ArrayList<>();
+            estampas = new ArrayList();
         return estampas.add(estampa);
     }
     
