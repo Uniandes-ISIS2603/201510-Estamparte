@@ -3,7 +3,6 @@
  */
 package co.edu.uniandes.estamparte.artista.logic.entity;
 
-import co.edu.uniandes.estamparte.camiseta.logic.entity.*;
 import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import java.util.List;
 import javax.persistence.Column;
