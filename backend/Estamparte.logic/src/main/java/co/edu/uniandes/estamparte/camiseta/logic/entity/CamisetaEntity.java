@@ -44,67 +44,67 @@ public class CamisetaEntity {
     @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carroDuenio;
     
-    public String darId() {
+    public String getId() {
         return id;
     }
 
-    public void asignarId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public List<EstampaEntity> darEstampas() {
+    public List<EstampaEntity> getEstampas() {
         return estampas;
     }
 
-    public void asignarEstampas(List<EstampaEntity> estampas) {
+    public void setEstampas(List<EstampaEntity> estampas) {
         this.estampas = estampas;
     }
 
-    public String darTalla() {
+    public String getTalla() {
         return talla;
     }
 
-    public void asignarTalla(String talla) {
+    public void setTalla(String talla) {
         this.talla = talla;
     }
 
-    public String darColor() {
+    public String getColor() {
         return color;
     }
 
-    public void asignarColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
-    public String darEstilo() {
+    public String getEstilo() {
         return estilo;
     }
 
-    public void asignarEstilo(String estilo) {
+    public void setEstilo(String estilo) {
         this.estilo = estilo;
     }
 
-    public String darNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void asignarNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public double darCosto() {
+    public double getCosto() {
         return costo;
     }
 
-    public void asignarCosto(double costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
     
-    public void asignarCarroDuenio(CarritoEntity carro){
+    public void setCarroDuenio(CarritoEntity carro){
         carroDuenio = carro;
     }
     
-    public CarritoEntity darCarroDuenio(){
+    public CarritoEntity getCarroDuenio(){
         return carroDuenio;
     }
     

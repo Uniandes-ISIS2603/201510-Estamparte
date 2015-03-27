@@ -13,19 +13,19 @@ public class CarritoPageDTO {
     
     private List<CarritoDTO> carritos;
     
-    public Long darCantidad(){
+    public Long getCantidad(){
         return cantidad;
     }
     
-    public List<CarritoDTO> darCarritos(){
+    public List<CarritoDTO> getCarritos(){
         return carritos;
     }
     
-    public void asignarCarritos (List<CarritoDTO> carritos){
+    public void setCarritos (List<CarritoDTO> carritos){
         this.carritos = carritos;
     }
     
-    public void asignarCantidad(Long cantidad){
+    public void setCantidad(Long cantidad){
         this.cantidad = cantidad;
     }
 }

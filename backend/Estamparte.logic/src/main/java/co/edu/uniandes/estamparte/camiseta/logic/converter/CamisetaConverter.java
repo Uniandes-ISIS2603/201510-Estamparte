@@ -20,14 +20,14 @@ public class CamisetaConverter{
         public static CamisetaDTO entity2PersistenceDTO(CamisetaEntity entity) {
         if (entity != null) {
             CamisetaDTO dto = new CamisetaDTO();
-            dto.asignarId(entity.darId());
-            dto.asignarNombre(entity.darNombre());
-            dto.asignarColor(entity.darColor());
-            dto.asignarCosto(entity.darCosto());
-            dto.asignarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.darEstampas()));
-            dto.asignarEstilo(entity.darEstilo());
-            dto.asignarTalla(entity.darTalla());
-            dto.asignarCarroDuenio(CarritoConverter.convertirDeEntidadADTO(entity.darCarroDuenio()));
+            dto.setId(entity.getId());
+            dto.setNombre(entity.getNombre());
+            dto.setColor(entity.getColor());
+            dto.setCosto(entity.getCosto());
+            dto.setEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.getEstampas()));
+            dto.setEstilo(entity.getEstilo());
+            dto.setTalla(entity.getTalla());
+            dto.setCarroDuenio(CarritoConverter.convertirDeEntidadADTO(entity.getCarroDuenio()));
             return dto;
         } else {
             return null;
@@ -38,14 +38,14 @@ public class CamisetaConverter{
     public static CamisetaEntity persistenceDTO2Entity(CamisetaDTO dto) {
         if (dto != null) {
             CamisetaEntity entity = new CamisetaEntity();
-            entity.asignarId(dto.darId());
-            entity.asignarNombre(dto.darNombre());
-            entity.asignarColor(dto.darColor());
-            entity.asignarCosto(dto.darCosto());
-            entity.asignarEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(dto.darEstampas()));
-            entity.asignarEstilo(dto.darEstilo());
-            entity.asignarTalla(dto.darTalla());
-            entity.asignarCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(dto.darCarroDuenio()));
+            entity.setId(dto.getId());
+            entity.setNombre(dto.getNombre());
+            entity.setColor(dto.getColor());
+            entity.setCosto(dto.getCosto());
+            entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(dto.getEstampas()));
+            entity.setEstilo(dto.getEstilo());
+            entity.setTalla(dto.getTalla());
+            entity.setCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(dto.getCarroDuenio()));
             return entity;
         } else {
             return null;

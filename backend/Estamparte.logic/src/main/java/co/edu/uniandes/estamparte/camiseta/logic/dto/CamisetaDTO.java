@@ -27,67 +27,67 @@ public class CamisetaDTO {
     
     private CarritoDTO carroDuenio;
     
-    public String darId() {
+    public String getId() {
         return id;
     }
 
-    public void asignarId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public List<EstampaDTO> darEstampas() {
+    public List<EstampaDTO> getEstampas() {
         return estampas;
     }
 
-    public void asignarEstampas(List<EstampaDTO> estampas) {
+    public void setEstampas(List<EstampaDTO> estampas) {
         this.estampas = estampas;
     }
 
-    public String darTalla() {
+    public String getTalla() {
         return talla;
     }
 
-    public void asignarTalla(String talla) {
+    public void setTalla(String talla) {
         this.talla = talla;
     }
 
-    public String darColor() {
+    public String getColor() {
         return color;
     }
 
-    public void asignarColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
-    public String darEstilo() {
+    public String getEstilo() {
         return estilo;
     }
 
-    public void asignarEstilo(String estilo) {
+    public void setEstilo(String estilo) {
         this.estilo = estilo;
     }
 
-    public String darNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void asignarNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public double darCosto() {
+    public double getCosto() {
         return costo;
     }
 
-    public void asignarCosto(double costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
     
-    public void asignarCarroDuenio(CarritoDTO carro){
+    public void setCarroDuenio(CarritoDTO carro){
         carroDuenio = carro;
     }
     
-    public CarritoDTO darCarroDuenio(){
+    public CarritoDTO getCarroDuenio(){
         return carroDuenio;
     }
     

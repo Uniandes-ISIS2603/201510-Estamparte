@@ -13,19 +13,19 @@ public class FormaPagoPageDTO {
     
     private List<FormaPagoDTO> formasPago;
 
-    public Long darNumeroFormasPago() {
+    public Long getNumeroFormasPago() {
         return cantidad;
     }
     
-    public void asignarCantidad(Long nuevaCantidad){
+    public void setCantidad(Long nuevaCantidad){
         cantidad = nuevaCantidad;
     }
 
-    public List<FormaPagoDTO> darFormasPago() {
+    public List<FormaPagoDTO> getFormasPago() {
         return formasPago;
     }
 
-    public void asignarFormasPago(List<FormaPagoDTO> formasPago) {
+    public void setFormasPago(List<FormaPagoDTO> formasPago) {
         this.formasPago = formasPago;
     }
 }

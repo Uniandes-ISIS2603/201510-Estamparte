@@ -38,8 +38,8 @@ public class CarritoLogic implements ICarritoLogic {
             consulta.setMaxResults(datosMaximos);
         }
         CarritoPageDTO respuesta = new CarritoPageDTO();
-        respuesta.asignarCantidad(cuentaReg);
-        respuesta.asignarCarritos(CarritoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
+        respuesta.setCantidad(cuentaReg);
+        respuesta.setCarritos(CarritoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
         return respuesta;
     }
     

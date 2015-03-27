@@ -16,12 +16,12 @@ public class FormaPagoConverter {
         if (entity != null) {
             FormaPagoDTO dto = new FormaPagoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.asignarCodSeguridad(entity.darCodSeguridad());
-            dto.asignarDireccion(entity.darDireccion());
-            dto.asignarFechaVencimiento(entity.darFechaVencimiento());
-            dto.asignarComprador(CompradorConverter.entity2PersistenceDTO(entity.darComprador()));
-            dto.asignarNombre(entity.darNombre());
-            dto.asignarNumTarjeta(entity.darNumTarjeta());
+            dto.setCodSeguridad(entity.getCodSeguridad());
+            dto.setDireccion(entity.getDireccion());
+            dto.setFechaVencimiento(entity.getFechaVencimiento());
+            dto.setComprador(CompradorConverter.entity2PersistenceDTO(entity.getComprador()));
+            dto.setNombre(entity.getNombre());
+            dto.setNumTarjeta(entity.getNumTarjeta());
             return dto;
         } else {
             return null;
@@ -32,12 +32,12 @@ public class FormaPagoConverter {
         if (dto != null) {
             FormaPagoEntity entity = new FormaPagoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
-            entity.asignarCodSeguridad(dto.darCodSeguridad());
-            entity.asignarDireccion(dto.darDireccion());
-            entity.asignarFechaVencimiento(dto.darFechaVencimiento());
-            entity.asignarComprador(CompradorConverter.persistenceDTO2Entity(dto.darComprador()));
-            entity.asignarNombre(dto.darNombre());
-            entity.asignarNumTarjeta(dto.darNumTarjeta());
+            entity.setCodSeguridad(dto.getCodSeguridad());
+            entity.setDireccion(dto.getDireccion());
+            entity.setFechaVencimiento(dto.getFechaVencimiento());
+            entity.setComprador(CompradorConverter.persistenceDTO2Entity(dto.getComprador()));
+            entity.setNombre(dto.getNombre());
+            entity.setNumTarjeta(dto.getNumTarjeta());
             return entity;
         } else {
             return null;

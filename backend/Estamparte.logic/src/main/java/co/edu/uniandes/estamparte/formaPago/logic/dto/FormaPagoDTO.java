@@ -22,51 +22,51 @@ public class FormaPagoDTO {
     
     private String direccionCorrespondencia;
     
-    public String darNombre(){
+    public String getNombre(){
         return nombre;
     }
     
-    public void asignarNombre(String nNombre){
+    public void setNombre(String nNombre){
         nombre = nNombre;
     }
     
-    public CompradorDTO darComprador(){
+    public CompradorDTO getComprador(){
         return comprador;
     }
     
-    public void asignarComprador(CompradorDTO nComprador){
+    public void setComprador(CompradorDTO nComprador){
         comprador = nComprador;
     }
     
-    public void asignarFechaVencimiento(Date fecha){
+    public void setFechaVencimiento(Date fecha){
         fechaVencimiento = fecha;
     }
     
-    public Date darFechaVencimiento(){
+    public Date getFechaVencimiento(){
         return fechaVencimiento;
     }
     
-    public long darNumTarjeta(){
+    public long getNumTarjeta(){
         return numeroTarjeta;
     }
     
-    public void asignarNumTarjeta(long nNumTarjeta){
+    public void setNumTarjeta(long nNumTarjeta){
         numeroTarjeta = nNumTarjeta;
     } 
     
-    public int darCodSeguridad(){
+    public int getCodSeguridad(){
         return codigoSeguridad;
     }
     
-    public void asignarCodSeguridad(int nCodSeguridad){
+    public void setCodSeguridad(int nCodSeguridad){
         codigoSeguridad = nCodSeguridad;
     }
     
-    public String darDireccion(){
+    public String getDireccion(){
         return direccionCorrespondencia;
     }
     
-    public void asignarDireccion(String nDireccion){
+    public void setDireccion(String nDireccion){
         direccionCorrespondencia = nDireccion;
     }  
 }
