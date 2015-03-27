@@ -31,7 +31,6 @@ public class ArtistaLogic implements IArtistaLogic{
     
     //Es una interfaz, maneja las operaciones de persistencia en los objetos
     @PersistenceContext(unitName = "EstampartePU")
-    //Es a través del Entity Manager que se crean consultas, se insertan datos, se actualizan datos, etc
     protected EntityManager em;
     
     private EstampaLogic servicioEstampaLogic;
@@ -60,8 +59,8 @@ public class ArtistaLogic implements IArtistaLogic{
             q.setMaxResults(datosMaximos);
         }
         ArtistaPageDTO respuesta = new ArtistaPageDTO();
-        respuesta.cambiarTotalArtistas(cuentaReg);
-        respuesta.cambiarArtistas(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        respuesta.setTotalArtistas(cuentaReg);
+        respuesta.setArtistas(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
 

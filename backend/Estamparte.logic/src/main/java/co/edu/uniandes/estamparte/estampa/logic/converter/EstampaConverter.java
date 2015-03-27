@@ -17,18 +17,18 @@ public class EstampaConverter {
         if (entidad != null) {
             EstampaDTO dto = new EstampaDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.cambiarId(entidad.darId());
-            dto.cambiarIdArtista(entidad.darDuenho().getId());
-            dto.cambiarUsuarioArtista(entidad.darDuenho().getUsuario());
-            dto.cambiarNombre(entidad.darNombre());
-            dto.cambiarImagen(entidad.darImagen());
-            dto.cambiarDescripcion(entidad.darDescripcion());
-            dto.cambiarSiGusta(entidad.darSiGusta());
-            dto.cambiarNoGusta(entidad.darNoGusta());
-            dto.cambiarTema(entidad.darTema());
-            dto.cambiarAltura(entidad.darAltura());
-            dto.cambiarAncho(entidad.darAncho());
-            dto.cambiarPrecio(entidad.darPrecio());
+            dto.setId(entidad.getId());
+            dto.setIdArtista(entidad.getDuenho().getId());
+            dto.setUsuarioArtista(entidad.getDuenho().getUsuario());
+            dto.setNombre(entidad.getNombre());
+            dto.setImagen(entidad.getImagen());
+            dto.setDescripcion(entidad.getDescripcion());
+            dto.setSiGusta(entidad.getSiGusta());
+            dto.setNoGusta(entidad.getNoGusta());
+            dto.setTema(entidad.getTema());
+            dto.setAltura(entidad.getAltura());
+            dto.setAncho(entidad.getAncho());
+            dto.setPrecio(entidad.getPrecio());
             return dto;
         } else {
             return null;
@@ -39,22 +39,22 @@ public class EstampaConverter {
         if (dto != null) {
             EstampaEntity entidad = new EstampaEntity();
             ArtistaEntity artistaDuenho = new ArtistaEntity();
-            artistaDuenho.setId(dto.darIdArtista());
-            artistaDuenho.setUsuario(dto.darUsuarioArtista());
+            artistaDuenho.setId(dto.getIdArtista());
+            artistaDuenho.setUsuario(dto.getUsuarioArtista());
             List<CamisetaEntity> camisetas = new ArrayList();
             //Al objeto entity se le asignan los atributos del objeto dto
-            entidad.cambiarId(dto.darId());
-            entidad.cambiarDuenho(artistaDuenho);
-            entidad.cambiarNombre(dto.darNombre());
-            entidad.cambiarImagen(dto.darImagen());
-            entidad.cambiarDescripcion(dto.darDescripcion());
-            entidad.cambiarSiGusta(dto.darSiGusta());
-            entidad.cambiarNoGusta(dto.darNoGusta());
-            entidad.cambiarTema(dto.darTema());
-            entidad.cambiarAltura(dto.darAltura());
-            entidad.cambiarAncho(dto.darAncho());
-            entidad.cambiarPrecio(dto.darPrecio());
-            entidad.cambiarCamisetas(camisetas);
+            entidad.setId(dto.getId());
+            entidad.setDuenho(artistaDuenho);
+            entidad.setNombre(dto.getNombre());
+            entidad.setImagen(dto.getImagen());
+            entidad.setDescripcion(dto.getDescripcion());
+            entidad.setSiGusta(dto.getSiGusta());
+            entidad.setNoGusta(dto.getNoGusta());
+            entidad.setTema(dto.getTema());
+            entidad.setAltura(dto.getAltura());
+            entidad.setAncho(dto.getAncho());
+            entidad.setPrecio(dto.getPrecio());
+            entidad.setCamisetas(camisetas);
             return entidad;
         } else {
             return null;

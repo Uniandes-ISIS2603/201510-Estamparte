@@ -45,7 +45,9 @@ public class ArtistaEntity {
     //Estampas del artista
     @OneToMany(mappedBy="duenho")
     private List<EstampaEntity> estampas;
-    
+   
+    //Constructor vacio
+    public ArtistaEntity(){}
     //Metodos analizadores
     
     //Retorna el id del artista

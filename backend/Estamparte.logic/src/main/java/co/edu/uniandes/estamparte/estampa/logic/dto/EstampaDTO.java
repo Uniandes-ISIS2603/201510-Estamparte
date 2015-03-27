@@ -47,124 +47,124 @@ public class EstampaDTO {
     //Metodos analizadores de la entidad
     
     //Retorna el id autogenerado de la estampa
-    public Long darId(){
+    public Long getId(){
         return id;
     }
     
     //Retorna el id del artista duenho
-    public Long darIdArtista(){
+    public Long getIdArtista(){
         return idArtista;
     }
     
     //Retorna el nombre de usuario del artista
-    public String darUsuarioArtista(){
+    public String getUsuarioArtista(){
         return usuarioArtista;
     }
     
     //Retorna el nombre de la estampa
-    public String darNombre(){
+    public String getNombre(){
         return nombre;
     }
     
     //Retorna la url de la imagen de la estampa
-    public String darImagen(){
+    public String getImagen(){
         return imagen;
     }
     
     //Retorna la descripcion de la estampa
-    public String darDescripcion(){
+    public String getDescripcion(){
         return descripcion;
     }
     
     //Retorna el numero de likes de la estampa
-    public Integer darSiGusta(){
+    public Integer getSiGusta(){
         return siGusta;
     }
     
     //Retorna el numero de dislikes de la estampa
-    public Integer darNoGusta(){
+    public Integer getNoGusta(){
         return noGusta;
     }
     
     //Retorna el tema de la estampa
-    public String darTema(){
+    public String getTema(){
         return tema;
     }
     
     //Retorna la altura de la estampa
-    public Double darAltura(){
+    public Double getAltura(){
         return altura;
     }
     
     //Retorna el ancho de la estampa
-    public Double darAncho(){
+    public Double getAncho(){
         return ancho;
     }
     
     //Retorna el precio de la estampa
-    public Double darPrecio(){
+    public Double getPrecio(){
         return precio;
     }
     
     //Metodos modificadores
     
     //Asigna el id
-    public void cambiarId(Long nId){
+    public void setId(Long nId){
         this.id = nId;
     }
     
     //Asigna el id del artista duenho
-    public void cambiarIdArtista(Long nIdArtista){
+    public void setIdArtista(Long nIdArtista){
         this.idArtista = nIdArtista;
     }
     
     //Asigna el nombre de usuario del artista duenho
-    public void cambiarUsuarioArtista(String nUsuarioArtista){
+    public void setUsuarioArtista(String nUsuarioArtista){
         this.usuarioArtista = nUsuarioArtista;
     }
     
     //Asigna el nombre
-    public void cambiarNombre(String nNombre){
+    public void setNombre(String nNombre){
         this.nombre = nNombre;
     }
     
     //Asigna la url de la imagen
-    public void cambiarImagen(String nIdImagen){
+    public void setImagen(String nIdImagen){
         this.imagen = nIdImagen;
     }
     
     //Asigna la descripcion
-    public void cambiarDescripcion(String nDescripcion){
+    public void setDescripcion(String nDescripcion){
         this.descripcion = nDescripcion;
     }
     
     //Asigna el numero de likes
-    public void cambiarSiGusta(Integer nSiGusta){
+    public void setSiGusta(Integer nSiGusta){
         this.siGusta = nSiGusta;
     }
     
     //Asigna el numero de dislikes
-    public void cambiarNoGusta(Integer nNoGusta){
+    public void setNoGusta(Integer nNoGusta){
         this.noGusta = nNoGusta;
     }
     
     //Asigna el tema de la estampa
-    public void cambiarTema(String nTema){
+    public void setTema(String nTema){
         this.tema = nTema;
     }
     
     //Asigna la altura de la estampa
-    public void cambiarAltura(Double nAltura){
+    public void setAltura(Double nAltura){
         this.altura = nAltura;
     }
     
     //Asigna el ancho de la estampa
-    public void cambiarAncho(Double nAncho){
+    public void setAncho(Double nAncho){
         this.ancho = nAncho;
     }
     
     //Asigna el precio de la estampa
-    public void cambiarPrecio(Double nPrecio){
+    public void setPrecio(Double nPrecio){
         this.precio = nPrecio;
     }
     

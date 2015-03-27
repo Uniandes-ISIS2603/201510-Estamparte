@@ -119,7 +119,7 @@ public class CamisetaEntity {
     public boolean eliminarEstampa(long id)
     {
         for(EstampaEntity es: estampas)
-            if(es.darId() == id)
+            if(es.getId() == id)
                 return estampas.remove(es);
         return false;
     }

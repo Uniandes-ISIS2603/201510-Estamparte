@@ -19,27 +19,22 @@ public class ArtistaPageDTO {
     private List<ArtistaDTO> artistas;
     
     //Metodos analizadores
-    
-    //Retorna el numero total de artistas
-    public Long darTotalArtistas(){
+
+    public Long getTotalArtistas() {
         return totalArtistas;
     }
-    
-    //Retorna la lista de artistas
-    public List<ArtistaDTO> darArtistas(){
+
+    public void setTotalArtistas(Long totalArtistas) {
+        this.totalArtistas = totalArtistas;
+    }
+
+    public List<ArtistaDTO> getArtistas() {
         return artistas;
     }
-    
-    //Metodos modificadores
-    
-    //Asigna el numero total de artistas por la pagina
-    public void cambiarTotalArtistas(Long nTotalArtistas){
-        this.totalArtistas = nTotalArtistas;
+
+    public void setArtistas(List<ArtistaDTO> artistas) {
+        this.artistas = artistas;
     }
     
-    //Asigna la lista de artistas en la pagina
-    public void cambiarArtistas(List<ArtistaDTO> nArtistas){
-        this.artistas = nArtistas;
-    } 
-    
+   
 }
