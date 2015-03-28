@@ -60,128 +60,104 @@ public class EstampaEntity {
     private Double precio;
     
     //Metodos analizadores de la entidad
-    
-    //Retorna el id autogenerado de la estampa
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
-    
-    //Retorna el artista duenho de la estampa
-    public ArtistaEntity getDuenho(){
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ArtistaEntity getDuenho() {
         return duenho;
     }
-    
-    //Retorna el nombre de la estampa
-    public String getNombre(){
-        return nombre;
+
+    public void setDuenho(ArtistaEntity duenho) {
+        this.duenho = duenho;
     }
-    
-    //Retorna la url de la imagen de la estampa
-    public String getImagen(){
-        return imagen;
-    }
-    
-    //Retorna la descripcion de la estampa
-    public String getDescripcion(){
-        return descripcion;
-    }
-    
-    //Retorna el numero de likes de la estampa
-    public Integer getSiGusta(){
-        return siGusta;
-    }
-    
-    //Retorna el numero de dislikes de la estampa
-    public Integer getNoGusta(){
-        return noGusta;
-    }
-    
-    //Retorna el tema de la estampa
-    public String getTema(){
-        return tema;
-    }
-    
-    //Retorna la altura de la estampa
-    public Double getAltura(){
-        return altura;
-    }
-    
-    //Retorna el ancho de la estampa
-    public Double getAncho(){
-        return ancho;
-    }
-    
-    //Retorna el precio de la estampa
-    public Double getPrecio(){
-        return precio;
-    }
-    
-    //Retorna las camisetas asociadas
-    public List<CamisetaEntity> getCamisetas(){
+
+    public List<CamisetaEntity> getCamisetas() {
         return camisetas;
     }
-    
-    //Metodos modificadores
-    
-    //Asigna el id
-    public void setId(Long nId){
-        this.id = nId;
+
+    public void setCamisetas(List<CamisetaEntity> camisetas) {
+        this.camisetas = camisetas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getSiGusta() {
+        return siGusta;
+    }
+
+    public void setSiGusta(Integer siGusta) {
+        this.siGusta = siGusta;
+    }
+
+    public Integer getNoGusta() {
+        return noGusta;
+    }
+
+    public void setNoGusta(Integer noGusta) {
+        this.noGusta = noGusta;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public Double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
+    public Double getAncho() {
+        return ancho;
+    }
+
+    public void setAncho(Double ancho) {
+        this.ancho = ancho;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
     
-    //Asigna el duenho de la estampa
-    public void setDuenho(ArtistaEntity nDuenho){
-        this.duenho=nDuenho;
-    }
     
-    //Asigna el nombre
-    public void setNombre(String nNombre){
-        this.nombre = nNombre;
-    }
-    
-    //Asigna la url de la imagen
-    public void setImagen(String nIdImagen){
-        this.imagen = nIdImagen;
-    }
-    
-    //Asigna la descripcion
-    public void setDescripcion(String nDescripcion){
-        this.descripcion = nDescripcion;
-    }
-    
-    //Asigna el numero de likes
-    public void setSiGusta(Integer nSiGusta){
-        this.siGusta = nSiGusta;
-    }
-    
-    //Asigna el numero de dislikes
-    public void setNoGusta(Integer nNoGusta){
-        this.noGusta = nNoGusta;
-    }
-    
-    //Asigna el tema de la estampa
-    public void setTema(String nTema){
-        this.tema = nTema;
-    }
-    
-    //Asigna la altura de la estampa
-    public void setAltura(Double nAltura){
-        this.altura = nAltura;
-    }
-    
-    //Asigna el ancho de la estampa
-    public void setAncho(Double nAncho){
-        this.ancho = nAncho;
-    }
-    
-    //Asigna el precio de la estampa
-    public void setPrecio(Double nPrecio){
-        this.precio = nPrecio;
-    }
-    
-    //Asigna las camisetas asociadas a la estampa
-    public void setCamisetas(List<CamisetaEntity> nCamisetas){
-        this.camisetas = nCamisetas;
-    }
     
         
     

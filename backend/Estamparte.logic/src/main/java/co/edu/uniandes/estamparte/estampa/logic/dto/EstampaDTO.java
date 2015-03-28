@@ -44,128 +44,107 @@ public class EstampaDTO {
     //Precio de la estampa
     private Double precio;
     
-    //Metodos analizadores de la entidad
+    //Construcor vacio
+    public EstampaDTO(){}
     
-    //Retorna el id autogenerado de la estampa
-    public Long getId(){
+    //Metodos analizadores de la entidad
+
+    public Long getId() {
         return id;
     }
-    
-    //Retorna el id del artista duenho
-    public Long getIdArtista(){
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdArtista() {
         return idArtista;
     }
-    
-    //Retorna el nombre de usuario del artista
-    public String getUsuarioArtista(){
+
+    public void setIdArtista(Long idArtista) {
+        this.idArtista = idArtista;
+    }
+
+    public String getUsuarioArtista() {
         return usuarioArtista;
     }
-    
-    //Retorna el nombre de la estampa
-    public String getNombre(){
+
+    public void setUsuarioArtista(String usuarioArtista) {
+        this.usuarioArtista = usuarioArtista;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    //Retorna la url de la imagen de la estampa
-    public String getImagen(){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getImagen() {
         return imagen;
     }
-    
-    //Retorna la descripcion de la estampa
-    public String getDescripcion(){
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getDescripcion() {
         return descripcion;
     }
-    
-    //Retorna el numero de likes de la estampa
-    public Integer getSiGusta(){
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getSiGusta() {
         return siGusta;
     }
-    
-    //Retorna el numero de dislikes de la estampa
-    public Integer getNoGusta(){
+
+    public void setSiGusta(Integer siGusta) {
+        this.siGusta = siGusta;
+    }
+
+    public Integer getNoGusta() {
         return noGusta;
     }
-    
-    //Retorna el tema de la estampa
-    public String getTema(){
+
+    public void setNoGusta(Integer noGusta) {
+        this.noGusta = noGusta;
+    }
+
+    public String getTema() {
         return tema;
     }
-    
-    //Retorna la altura de la estampa
-    public Double getAltura(){
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public Double getAltura() {
         return altura;
     }
-    
-    //Retorna el ancho de la estampa
-    public Double getAncho(){
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
+    public Double getAncho() {
         return ancho;
     }
-    
-    //Retorna el precio de la estampa
-    public Double getPrecio(){
+
+    public void setAncho(Double ancho) {
+        this.ancho = ancho;
+    }
+
+    public Double getPrecio() {
         return precio;
     }
-    
-    //Metodos modificadores
-    
-    //Asigna el id
-    public void setId(Long nId){
-        this.id = nId;
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
     
-    //Asigna el id del artista duenho
-    public void setIdArtista(Long nIdArtista){
-        this.idArtista = nIdArtista;
-    }
     
-    //Asigna el nombre de usuario del artista duenho
-    public void setUsuarioArtista(String nUsuarioArtista){
-        this.usuarioArtista = nUsuarioArtista;
-    }
-    
-    //Asigna el nombre
-    public void setNombre(String nNombre){
-        this.nombre = nNombre;
-    }
-    
-    //Asigna la url de la imagen
-    public void setImagen(String nIdImagen){
-        this.imagen = nIdImagen;
-    }
-    
-    //Asigna la descripcion
-    public void setDescripcion(String nDescripcion){
-        this.descripcion = nDescripcion;
-    }
-    
-    //Asigna el numero de likes
-    public void setSiGusta(Integer nSiGusta){
-        this.siGusta = nSiGusta;
-    }
-    
-    //Asigna el numero de dislikes
-    public void setNoGusta(Integer nNoGusta){
-        this.noGusta = nNoGusta;
-    }
-    
-    //Asigna el tema de la estampa
-    public void setTema(String nTema){
-        this.tema = nTema;
-    }
-    
-    //Asigna la altura de la estampa
-    public void setAltura(Double nAltura){
-        this.altura = nAltura;
-    }
-    
-    //Asigna el ancho de la estampa
-    public void setAncho(Double nAncho){
-        this.ancho = nAncho;
-    }
-    
-    //Asigna el precio de la estampa
-    public void setPrecio(Double nPrecio){
-        this.precio = nPrecio;
-    }
     
 }
