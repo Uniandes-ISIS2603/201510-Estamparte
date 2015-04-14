@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class AdministradorDTO {
     
-    private int id;
+    private long id;
     private String usuario;
     private String contrasena;
     private String nombre;
@@ -23,11 +23,11 @@ public class AdministradorDTO {
     
     //Metodos analizadores
 
-    public int getId()
+    public long getId()
     {
         return id;
     }
-    public void setId(int pId)
+    public void setId(long pId)
     {
         id = pId;
     }
