@@ -11,97 +11,70 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class AdministradorDTO {
     
-    //Id del artista
-    private Long id;
-    
-    //usuario del artista
+    private int id;
     private String usuario;
-    
-    //Contrasenha del artista
-    private String contrasenha;
-    
-    //Nombre del artista
+    private String contrasena;
     private String nombre;
-    
-    //Cedula del artista
-    private String cedula;
-    
-    //Correo del artista
+    private int cedula;
     private String correo;
-    
-    //Url de imagen de perfil 
-    private String imagenPerfil;
-    
-    //Descripcion del artista
-    private String descripcion;
     
     //constructor vacio
     public AdministradorDTO(){}
     
     //Metodos analizadores
 
-    public Long getId() {
+    public int getId()
+    {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(int pId)
+    {
+        id = pId;
     }
-
-    public String getUsuario() {
+    
+    public String getUsuario()
+    {
         return usuario;
     }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String pusuario)
+    {
+        usuario = pusuario;
     }
-
-    public String getContrasenha() {
-        return contrasenha;
+    
+    public String getContrasena()
+    {
+        return contrasena;
     }
-
-    public void setContrasenha(String contrasenha) {
-        this.contrasenha = contrasenha;
+    public void setContrasena(String pContrasena)
+    {
+        contrasena = pContrasena;
     }
-
-    public String getNombre() {
+    
+    public String getNombre()
+    {
         return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String pNombre)
+    {
+        nombre = pNombre;
     }
-
-    public String getCedula() {
+    
+    public int getCedula()
+    {
         return cedula;
     }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCedula(int pCedula)
+    {
+        cedula = pCedula;
     }
-
-    public String getCorreo() {
+    
+    public String getCorreo()
+    {
         return correo;
     }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getImagenPerfil() {
-        return imagenPerfil;
-    }
-
-    public void setImagenPerfil(String imagenPerfil) {
-        this.imagenPerfil = imagenPerfil;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCorreo(String pCorreo)
+    {
+        correo = pCorreo;
     }
     
 }

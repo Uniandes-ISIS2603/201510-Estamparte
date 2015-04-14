@@ -16,7 +16,7 @@ import java.util.List;
 public interface IAdministradorLogic {
     
     //Crea un nuevo Administrador
-    public AdministradorDTO crearAdministrador(AdministradorDTO artista);
+    public AdministradorDTO crearAdministrador(AdministradorDTO admin);
     
     //Obtiene todos los Administrador registrador
     public List<AdministradorDTO> obtenerAdministrador();
@@ -28,7 +28,7 @@ public interface IAdministradorLogic {
     public AdministradorDTO darAdministrador(Long id);
     
     //Actualiza un Administrador
-    public AdministradorDTO actualizarAdministrador(AdministradorDTO artista);
+    public AdministradorDTO actualizarAdministrador(AdministradorDTO admin);
     
     //Elimina todos los Administrador
     public void eliminarAdministrador();
