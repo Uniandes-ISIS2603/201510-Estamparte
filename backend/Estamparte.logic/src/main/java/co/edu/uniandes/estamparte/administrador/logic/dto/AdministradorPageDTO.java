@@ -13,28 +13,26 @@ public class AdministradorPageDTO {
     
     //Atributos
     
-    //Numero total de artistas en la pagina
-    private Long totalArtistas;
+    private Long totalAdministrador;
     
-    //Lista de artistas en la pagina
-    private List<ArtistaDTO> artistas;
+    private List<AdministradorDTO> administradores;
     
     //Metodos analizadores
 
-    public Long getTotalArtistas() {
-        return totalArtistas;
+    public Long getTotalAdministradores() {
+        return totalAdministrador;
     }
 
-    public void setTotalArtistas(Long totalArtistas) {
-        this.totalArtistas = totalArtistas;
+    public void setTotalAdministradores(Long pTotal) {
+        totalAdministrador = pTotal;
     }
 
-    public List<ArtistaDTO> getArtistas() {
-        return artistas;
+    public List<AdministradorDTO> getAdministradores() {
+        return administradores;
     }
 
-    public void setArtistas(List<ArtistaDTO> artistas) {
-        this.artistas = artistas;
+    public void setadministradores(List<AdministradorDTO> pAdministradores) {
+        administradores = pAdministradores;
     }
     
    
