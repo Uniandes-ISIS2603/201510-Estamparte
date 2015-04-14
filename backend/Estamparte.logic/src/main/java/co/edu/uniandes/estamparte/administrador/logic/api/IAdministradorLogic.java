@@ -19,19 +19,16 @@ public interface IAdministradorLogic {
     public AdministradorDTO crearAdministrador(AdministradorDTO admin);
     
     //Obtiene todos los Administrador registrador
-    public List<AdministradorDTO> obtenerAdministrador();
-    
-    //Obtiene todos los Administrador de acuerdo a paginacion
-    public AdministradorPageDTO obtenerAdministrador(Integer pagina, Integer datosMaximos);
-    
+    public List<AdministradorDTO> obtenerAdministradores();
+        
     //Obtiene un Administrador con un id determinado
-    public AdministradorDTO darAdministrador(Long id);
+    public AdministradorDTO getAdministrador(Long id);
     
     //Actualiza un Administrador
     public AdministradorDTO actualizarAdministrador(AdministradorDTO admin);
     
     //Elimina todos los Administrador
-    public void eliminarAdministrador();
+    public void eliminarAdministradores();
     
     //Elimina un Administrador con el id dado
     public AdministradorDTO eliminarAdministrador(Long id);

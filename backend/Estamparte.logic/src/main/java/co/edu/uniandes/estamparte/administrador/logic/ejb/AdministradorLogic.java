@@ -3,6 +3,11 @@
  */
 package co.edu.uniandes.estamparte.administrador.logic.ejb;
 
+import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
+import co.edu.uniandes.estamparte.administrador.logic.converter.AdministradorConverter;
+import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
+import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorPageDTO;
+import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
 import co.edu.uniandes.estamparte.artista.logic.ejb.*;
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
@@ -29,106 +34,44 @@ import javax.persistence.Query;
 @Default
 @Stateless
 @LocalBean
-public class AdministradorLogic implements IArtistaLogic{
+public class AdministradorLogic implements IAdministradorLogic{
     
     //Es una interfaz, maneja las operaciones de persistencia en los objetos
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
-    
 
-    @Override
-    public ArtistaDTO crearArtista(ArtistaDTO artista) {
-        ArtistaEntity entidad = ArtistaConverter.convertirDeDTOAEntidad(artista);
+    public AdministradorDTO crearAdministrador(AdministradorDTO admin) {
+        AdministradorEntity entidad = AdministradorConverter.convertirDeDTOAEntidad(admin);
         em.persist(entidad);
-        return ArtistaConverter.convertirDeEntidadADTO(entidad);
+        return AdministradorConverter.convertirDeEntidadADTO(entidad);
     }
 
-    @Override
-    public List<ArtistaDTO> obtenerArtistas() {
-        Query q = em.createQuery("select u from ArtistaEntity u");
-        return ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList());
+    public List<AdministradorDTO> obtenerAdministradores() {
+        Query q = em.createQuery("select u from AdministradorEntity u");
+        return AdministradorConverter.convertirDeListaEntidadesAListaDTO(q.getResultList());
     }
 
-    @Override
-    public ArtistaPageDTO obtenerArtistas(Integer pagina, Integer datosMaximos) {
-        Query cuenta = em.createQuery("select count(u) from ArtistaEntity u");
-        Long cuentaReg = 0L;
-        cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
-        Query q = em.createQuery("select u from ArtistaEntity u");
-        if(pagina !=null && datosMaximos!=null){
-            q.setFirstResult((pagina-1)*datosMaximos);
-            q.setMaxResults(datosMaximos);
-        }
-        ArtistaPageDTO respuesta = new ArtistaPageDTO();
-        respuesta.setTotalArtistas(cuentaReg);
-        respuesta.setArtistas(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
-        return respuesta;
+    public AdministradorDTO getAdministrador(Long id) {
+        AdministradorEntity entidad = em.find(AdministradorEntity.class, id);
+        return AdministradorConverter.convertirDeEntidadADTO(entidad);
     }
 
-    @Override
-    public ArtistaDTO darArtista(Long id) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, id);
-        return ArtistaConverter.convertirDeEntidadADTO(entidad);
+    public AdministradorDTO actualizarAdministrador(AdministradorDTO admin) {
+        AdministradorEntity entidad = em.merge(AdministradorConverter.convertirDeDTOAEntidad(admin));
+        return AdministradorConverter.convertirDeEntidadADTO(entidad);
     }
 
-    @Override
-    public ArtistaDTO actualizarArtista(ArtistaDTO artista) {
-        ArtistaEntity entidad = em.merge(ArtistaConverter.convertirDeDTOAEntidad(artista));
-        return ArtistaConverter.convertirDeEntidadADTO(entidad);
-    }
-
-    @Override
-    public void eliminarArtistas() {
-        Query q = em.createQuery("delete from ArtistaEntity u");
+    public void eliminarAdministradores() {
+        Query q = em.createQuery("delete from AdministradorEntity u");
         q.executeUpdate();
     }
 
-    @Override
-    public ArtistaDTO eliminarArtista(Long id) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, id);
+    public AdministradorDTO eliminarAdministrador(Long id) {
+        AdministradorEntity entidad = em.find(AdministradorEntity.class, id);
         em.remove(entidad);
-        return ArtistaConverter.convertirDeEntidadADTO(entidad);
+        return AdministradorConverter.convertirDeEntidadADTO(entidad);
     }
+    
 
-    @Override
-    public EstampaDTO crearEstampaDeArtista(Long idArtista, EstampaDTO estampa, IEstampaLogic servicioLogicaEstampa) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
-        EstampaDTO respuesta = null;
-        if(entidad != null){
-            respuesta = servicioLogicaEstampa.crearEstampa(estampa);
-        }
-        return respuesta;
-    }
-
-
-    @Override
-    public EstampaDTO eliminarEstampaDeArtista(Long idArtista, Long idEstampa, IEstampaLogic servicioLogicaEstampa) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
-        EstampaDTO respuesta = null;
-        if(entidad != null){
-            respuesta = servicioLogicaEstampa.eliminarEstampa(idEstampa);
-        }
-        return respuesta;
-    }
-
-    @Override
-    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos, IEstampaLogic servicioLogicaEstampa) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
-        EstampaPageDTO respuesta = null;
-        if(entidad != null){
-            respuesta = servicioLogicaEstampa.obtenerEstampasDeArtista(idArtista, pagina, datosMaximos);
-        }
-        return respuesta;
-    }
-
-    @Override
-    public EstampaDTO actualizarEstampaDeArtista(Long idArtista, EstampaDTO estampa, IEstampaLogic servicioLogicaEstampa) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
-        EstampaDTO respuesta = null;
-        if(entidad != null){
-            respuesta = servicioLogicaEstampa.actualizarEstampa(estampa);
-        }
-        return respuesta;
-    }
-
+    
 }
