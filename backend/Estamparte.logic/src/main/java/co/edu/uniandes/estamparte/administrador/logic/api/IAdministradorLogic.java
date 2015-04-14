@@ -3,6 +3,8 @@
  */
 package co.edu.uniandes.estamparte.administrador.logic.api;
 
+import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
+import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorPageDTO;
 import co.edu.uniandes.estamparte.artista.logic.api.*;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
@@ -13,41 +15,28 @@ import java.util.List;
 
 public interface IAdministradorLogic {
     
-    //Crea un nuevo artista
-    public ArtistaDTO crearArtista(ArtistaDTO artista);
+    //Crea un nuevo Administrador
+    public AdministradorDTO crearAdministrador(AdministradorDTO artista);
     
-    //Obtiene todos los artistas registrador
-    public List<ArtistaDTO> obtenerArtistas();
+    //Obtiene todos los Administrador registrador
+    public List<AdministradorDTO> obtenerAdministrador();
     
-    //Obtiene todos los artistas de acuerdo a paginacion
-    public ArtistaPageDTO obtenerArtistas(Integer pagina, Integer datosMaximos);
+    //Obtiene todos los Administrador de acuerdo a paginacion
+    public AdministradorPageDTO obtenerAdministrador(Integer pagina, Integer datosMaximos);
     
-    //Obtiene un artista con un id determinado
-    public ArtistaDTO darArtista(Long id);
+    //Obtiene un Administrador con un id determinado
+    public AdministradorDTO darAdministrador(Long id);
     
-    //Actualiza un artista
-    public ArtistaDTO actualizarArtista(ArtistaDTO artista);
+    //Actualiza un Administrador
+    public AdministradorDTO actualizarAdministrador(AdministradorDTO artista);
     
-    //Elimina todos los artistas
-    public void eliminarArtistas();
+    //Elimina todos los Administrador
+    public void eliminarAdministrador();
     
-    //Elimina un artista con el id dado
-    public ArtistaDTO eliminarArtista(Long id);
+    //Elimina un Administrador con el id dado
+    public AdministradorDTO eliminarAdministrador(Long id);
     
-    //Funcionalidades para estampas de un artista
-    
-    //Crea una nueva estampa de un artista
-    public EstampaDTO crearEstampaDeArtista(Long idArtista, EstampaDTO estampa,IEstampaLogic servicioLogicaEstampa);
-    
-    
-    //Elimina una estampa de un artista
-    public EstampaDTO eliminarEstampaDeArtista(Long idArtista, Long idEstampa, IEstampaLogic servicioLogicaEstampa);
-    
-    //Obtiene las estampas de un artista dado
-    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos, IEstampaLogic servicioLogicaEstampa);
-    
-    //Actualiza la estampa de un artista dado
-    public EstampaDTO actualizarEstampaDeArtista(Long idArtista, EstampaDTO estampa, IEstampaLogic servicioLogicaEstampa);
+    //Funcionalidades para estampas de un artista  
     
     
 }
