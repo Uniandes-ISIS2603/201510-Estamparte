@@ -1,12 +1,12 @@
 (function () {
-    var app = angular.module('MockModule');
+    var mock = angular.module('MockModule');
 
-    app.value('MockModule.mockRecords', {});
+    mock.value('MockModule.mockRecords', {});
 
-    app.provider('MockModule.urls', function () {
+    mock.provider('MockModule.urls', function () {
         var context = [];
-        this.registerUrl = function (value) {
-            context.push(value);
+        this.registerUrl = function (value, skip) {
+            context.push({url: value, skip: !!skip});
         };
         this.$get = function () {
             return context;
