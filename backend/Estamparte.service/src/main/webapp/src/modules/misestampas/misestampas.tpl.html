@@ -1,0 +1,25 @@
+<div id="misestampas">
+
+	<ul>
+
+		<li class="miestampa" ng-repeat="estampa in records">
+
+			<img class="img-circle" ng-src="{{ estampa.imagenes[0] }}">
+
+			<p>{{ estampa.nombre }}</p>
+
+			<button class="btn btn-default quitar" ng-click="eliminar(estampa)">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+
+			<button class="btn btn-default acamisa" ng-click="acamisa(estampa)">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+
+			<hr>
+
+		</li>
+
+	</ul>
+
+</div>

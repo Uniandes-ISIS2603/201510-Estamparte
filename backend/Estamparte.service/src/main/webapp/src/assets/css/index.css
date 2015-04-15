@@ -1,0 +1,407 @@
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+#factura {
+	display: none;
+}
+
+#comprarcarrito {
+	background-color: #F7F7F7;
+	padding: 20px 0 50px 0;
+}
+
+#formFormapagoCarrito {
+	width: 90%;
+	margin: auto;
+}
+
+.cantidadcamisa {
+	max-width: 40px;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: white;
+	box-shadow: none;
+	border-radius: 0;
+	border: none;
+}
+
+button, a {
+	border-radius: 0;
+}
+
+#formFormapagoCarrito button {
+	border-radius: 0;
+	border: none;
+}
+
+.formacomprar {
+	padding-bottom: 7px;
+}
+
+.list {
+	height: 100px;
+	width: 400px;
+	background-color: red;
+}
+
+.navbar {
+	font-weight: 300;
+	font-size: 1.12em;
+	border: none;
+}
+
+.navbar-default{
+	background: rgba(255, 255, 255, 0.86);
+	border-color: #EEE;
+}
+
+.usuario {
+	min-width: 200px;
+}
+
+.usuario .caret {
+	margin-top: 9px;
+	float: right;
+}
+
+.ok {
+	float: right;
+}
+
+.menu-usuario {
+	min-width: 200px;
+	border-radius: 0;
+}
+
+.tooltip {
+	min-width: 120px;
+}
+
+#inicio {
+	background: #F7F7F7;
+	color: #333333;
+	padding-top: 70px;
+	text-align: center;
+}
+
+#carrito, #misestampas, #nueva, #formapago, #factura {
+	overflow: scroll;
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 50px;
+	background: rgba(255, 255, 255, 0.86);
+	height: 100%;
+	width: 320px;
+	z-index: 2000;
+	font-weight: 300;
+	border-left: 1px solid #EEE;
+}
+
+#formapago .botones {
+	background-color: #F7F7F7;
+	min-width: 320px;
+	float: left;
+	display: block;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#formapago button {
+	display: inline-block;
+	margin-top: 11px;
+	float: right;
+	margin-right: 15px;
+	border: none;
+	text-align: center;
+	border-radius: 0;
+	background-color: #EEE;
+	color: #999;
+}
+
+#formapago form {
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+#formapago #nuevaformaboton, #formapago .formaform {
+	margin-bottom: 10px;
+}
+
+#nuevaformaboton h5 {
+	float: right;
+	margin-top: 20px;
+	margin-right: 90px;
+}
+
+#nueva {
+	width: 600px;
+}
+
+#nueva .container {
+	padding: 20px;
+}
+
+.miestampa {
+	list-style: none;
+}
+
+.miestampa img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin-right: 8px;
+}
+
+.miestampa p {
+	display: inline-block;
+	padding-top: 15px;
+}
+
+.miestampa button {
+	display: inline-block;
+	margin-top: 11px;
+	float: right;
+	margin-right: 15px;
+	border: none;
+	text-align: center;
+	border-radius: 0;
+	background-color: #EEE;
+	color: #999;
+}
+
+.miestampa .acamisa {
+	margin-right: 3px;
+}
+
+.miestampa button:hover {
+	color: #777;
+}
+
+.miestampa p:hover {
+	text-decoration: underline;
+}
+
+#estampas {
+	color: #353535;
+	padding-top: 70px;
+	padding-bottom: 30px;
+}
+
+#busqueda {
+	margin-top: 22px;
+}
+
+#busqueda input, #busqueda button, #busqueda-avanzada {
+	border-radius: 0;
+}
+
+#tituloEstampas {
+	margin-bottom: 90px;
+}
+
+.estampa {
+	margin-bottom: 150px;
+}
+
+.contenido {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 225px;
+	margin: 0 auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	border: 1px solid #FFF;
+}
+
+.contenido:hover {
+	cursor: pointer;
+	border: 1px solid rgba(100, 100, 100, 0.4);
+}
+
+.nombre {
+	margin: 0 auto 10px auto;
+	width: 200px;
+	color: #888;
+}
+
+.nombre a {
+	border: none;
+	color: #AAA;
+	border-radius: 0;
+	background-color: #EEE;
+}
+
+.nombre a:hover {
+	color: #777;
+}
+
+.nombre h4 {
+	text-align: left;
+}
+
+.nombre a {
+	margin-top: 4px;
+	float: right;
+}
+
+.nombre h4, .nombre a {
+	display: inline-block;
+}
+
+.calificacion {
+	margin: 0 auto 0 auto;
+	width: 200px;
+}
+
+.calificacion button {
+	border: none;
+	background: #EEE;
+	color: #999;
+	border-radius: 0;
+}
+
+.calificacion button:hover {
+	color: #777;
+}
+
+.gusta {
+	max-width: 47%;
+}
+
+.gusta, .gusta p, .gusta button {
+	display: inline-block;
+}
+
+#siGusta {
+	float: left;
+}
+
+#noGusta {
+	float: right;
+}
+
+#camiseta {
+	background: #F7F7F7;
+	padding-top: 70px;
+	padding-bottom: 120px;
+}
+
+#tituloCamiseta {
+	margin-bottom: 50px;
+}
+
+#propiedades {
+	background-color: white;
+	margin-right: 15px;
+	padding-bottom: 32px;
+}
+
+#propiedades h4 {
+	margin-top: 40px;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+#propiedades .form-group {
+	margin-top: 30px;
+	font-size: 1.1em;
+}
+
+#propiedades label {
+	font-weight: lighter;
+}
+
+label {
+	font-weight: normal;
+}
+
+#vistaprevia {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	padding-bottom: 32px;
+	position: relative;
+}
+
+#equipo {
+	padding-top: 110px;
+	background: #FFF;
+	padding-bottom: 80px;
+}
+
+#tituloEquipo {
+	margin-bottom: 90px;
+}
+
+.miembro-equipo {
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: #888;
+	margin-bottom: 120px;
+	text-align: center;
+}
+
+.miembro-foto {
+	margin: 0 auto;
+	border-radius: 100px;
+	height: 150px;
+	width: 150px;
+}
+
+#footer {
+	text-align: center;
+	background: #F7F7F7;
+	color: #353535;
+	padding-top: 150px;
+	padding-bottom: 130px;
+}
+
+#temp {
+	padding-top: 70px;
+}
+
+
+.tabla {
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+td {
+    border: 1px solid gray;
+    width: 50%;
+}
+
+.imagen {
+    padding: 2% 2% 2% 2%;
+    width: 94%;
+    height: 94%;
+}
+
+.inputPequeno {
+    width: 50%;
+}
+
+.inline{
+    float: left;
+    margin-left: 10%;
+}
+
+.inputMediano{
+    width:70%;
+}
+
+.datos{
+   padding-left: 5%;
+   width: 30%; 
+}
+

@@ -49,98 +49,79 @@ public class ArtistaEntity {
     //Constructor vacio
     public ArtistaEntity(){}
     //Metodos analizadores
-    
-    //Retorna el id del artista
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
-    
-    //Retorna el usuario del artista
-    public String getUsuario(){
-        return usuario;
-    }
-    
-    //Retorna la contrasenha del usuario
-    public String getContrasenha(){
-        return contrasenha;
-    }
-    
-    //Retorna el nombre del artista
-    public String getNombre(){
-        return nombre;
-    }
-    
-    //Retorna la cedula del artista
-    public String getCedula(){
-        return cedula;
-    }
-    
-    //Retorna el correo electronico del artista
-    public String getCorreo(){
-        return correo;
-    }
-    
-    //Retorna la url de la imagen de perfil del artista
-    public String getImagenPerfil(){
-        return imagenPerfil;
-    }
-    
-    //Retorna la descripcion del artista
-    public String getDescripcion(){
-        return descripcion;
-    }
-    
-    //Retorna le conjunto de estampas del artista
-    public List<EstampaEntity> getEstampas(){
-        return estampas;
-    }
-    
-    //Metodos modificadores
-    
-    //Cambia el id del artista
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
-    
-    //Cambia el nombre de usuario del artista
-    public void setUsuario(String usuario){
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
-    //Cambia la contrasenha del artista
-    public void setContrasenha(String contrasenha){
+
+    public String getContrasenha() {
+        return contrasenha;
+    }
+
+    public void setContrasenha(String contrasenha) {
         this.contrasenha = contrasenha;
     }
-    
-    //Cambia el nombre del artista
-    public void setNombre(String nombre){
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    //Cambia la cedula del artista
-    public void setCedula(String cedula){
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
-    
-    //Cambia el correo electronico del artista
-    public void setCorreo(String correo){
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
-    //Cambia la url de la imagen de perfil del artista
-    public void setImagenPerfil(String imagen){
-        this.imagenPerfil = imagen;
+
+    public String getImagenPerfil() {
+        return imagenPerfil;
     }
-    
-    //Cambia la descripcion del artista
-    public void setDescripcion(String descripcion){
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    //Cambia el conjunto de estampas del artista
-    public void setEstampas(List<EstampaEntity> estampas){
+
+    public List<EstampaEntity> getEstampas() {
+        return estampas;
+    }
+
+    public void setEstampas(List<EstampaEntity> estampas) {
         this.estampas = estampas;
     }
+    
     
     
     
