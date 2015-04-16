@@ -16,90 +16,42 @@ import java.util.List;
 @XmlRootElement
 public class FacturaDTO {
     
-    private CompradorDTO comprador;
-    private FormaPagoDTO formaPago;
+    private long idComprador;
+    private long idFormaPago;
     private String fechaCompra;
     private long id;
-    private CarritoDTO carrito;
+    private long idCarrito;
     
-    public List<CamisetaDTO> getArticulos(){
-        return carrito.getCamisetas();
+    public long getIdCarrito(){
+        return idCarrito;
     }
        
-    public void setCarrito(CarritoDTO pCarrito)
+    public void setIdCarrito(long pId)
     {
-        carrito = pCarrito;
+        idCarrito = pId;
     }
     
-    public CarritoDTO getCarrito()
+    
+    public void setIdComprador(long pId)
     {
-        return carrito;
+        idComprador = pId;
     }
     
-    public void setComprador(CompradorDTO pComprador)
+    public long getIdComprador()
     {
-        comprador = pComprador;
+        return idComprador;
     }
     
-    public CompradorDTO getComprador()
+    public void setIdFormaPago(long pFormaPago)
     {
-        return comprador;
+        idFormaPago = pFormaPago;
     }
     
-    public String getNombreComprador()
+    public long getIdFormaPago()
     {
-        return comprador.getNombre();
+        return idFormaPago;
     }
     
-    public String getIdComprador()
-    {
-        return comprador.getId();
-    }
-    
-    public void setFormaPago(FormaPagoDTO pFormaPago)
-    {
-        formaPago = pFormaPago;
-    }
-    
-    public FormaPagoDTO getFormaPago()
-    {
-        return formaPago;
-    }
-    
-    public String getTipoFormPago()
-    {
-        return formaPago.getNombre();
-    }
-    
-    public Long getNumeroTarjeta()
-    {
-        return formaPago.getNumTarjeta();
-    }
-    
-    public Date getFechaVencimiento()
-    {
-        return formaPago.getFechaVencimiento();
-    }
-    
-    public int getCodigoSeguridad()
-    {
-        return formaPago.getCodSeguridad();                
-    }
-    
-    public String getDireccionCorrespondencia()
-    {
-        return formaPago.getDireccion();
-    }
-    
-    public double getMontoTotal()
-    {
-        double respuesta = 0;
-        for(int i=0; i<carrito.getCamisetas().size();i++)
-        {
-            respuesta += carrito.getCamisetas().get(i).getCosto();
-        }
-        return respuesta;
-    }
     
     public void setFechaCompra(String pFecha)
     {

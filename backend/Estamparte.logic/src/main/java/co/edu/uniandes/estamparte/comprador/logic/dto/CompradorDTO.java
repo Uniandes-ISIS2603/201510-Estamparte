@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CompradorDTO 
 {
     private String nombre;
-    private String id;
+    private long id;
     private CarritoDTO carrito;
     private List<FormaPagoDTO> formasPago;
     private String direccion;
@@ -99,12 +99,12 @@ public class CompradorDTO
     {
         nombre = pNom;
     }
-    public String getId()
+    public long getId()
     {
         return id;
     }
     
-    public void setId(String pId)
+    public void setId(long pId)
     {
         id = pId;
     }
