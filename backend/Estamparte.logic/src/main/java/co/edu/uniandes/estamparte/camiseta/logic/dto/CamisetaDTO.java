@@ -92,18 +92,5 @@ public class CamisetaDTO {
     }
     
     
-    public boolean agregarEstampa(EstampaDTO estampa)
-    {
-        if(estampas == null)
-            estampas = new ArrayList();
-        return estampas.add(estampa);
-    }
     
-    public boolean eliminarEstampa(long id)
-    {
-        for(EstampaDTO es: estampas)
-            if(es.getId() == id)
-                return estampas.remove(es);
-        return false;
-    }
 }
