@@ -53,7 +53,7 @@
 		// Verifica la validez de la compra.
 
 		$scope.compraInvalida = function () {
-			return $scope.pago === '' || $scope.records.length === 0 || _this.hayNegativa();
+			return $scope.pago === '' || $scope.records.length === 0 ||_this.hayNegativa();
 		}
 
 		// Verifica la cantidad positiva de camisas.

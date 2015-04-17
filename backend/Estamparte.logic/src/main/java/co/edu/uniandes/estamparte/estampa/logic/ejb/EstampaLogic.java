@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.estampa.logic.ejb;
 
+import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
 import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
 import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
@@ -80,10 +81,11 @@ public class EstampaLogic implements IEstampaLogic {
 
     @Override
     public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos) {
+
         Query cuenta = manejador.createQuery("select count(u) from EstampaEntity u");
         Long cuentaReg = 0L;
         cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
-        Query q = manejador.createQuery("select u from EstampaEntity u where u.duenho = '"+idArtista+"'");
+        Query q = manejador.createQuery("select u from EstampaEntity u where u.duenho.id =  '"+idArtista+"'");
         if(pagina != null && datosMaximos != null){
             q.setFirstResult((pagina-1)*datosMaximos);
             q.setMaxResults(datosMaximos);
