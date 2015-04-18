@@ -25,6 +25,8 @@ public class FacturaEntity {
     @JoinColumn(name="COMPRADOR_ID")
     private CompradorEntity comprador;
     
+    @OneToOne
+    @JoinColumn(name="FORMAPAGO_ID")
     private FormaPagoEntity formaPago;
     private String fechaCompra;
     
@@ -33,7 +35,8 @@ public class FacturaEntity {
     @Column(name="FACTURA_ID")
     private long id;
     
-    @OneToOne(mappedBy="factura")
+    @OneToOne
+    @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carrito;
     
     public List<CamisetaEntity> getArticulos(){
@@ -65,7 +68,7 @@ public class FacturaEntity {
         return comprador.getNombre();
     }
     
-    public String getIdComprador()
+    public long getIdComprador()
     {
         return comprador.getId();
     }
