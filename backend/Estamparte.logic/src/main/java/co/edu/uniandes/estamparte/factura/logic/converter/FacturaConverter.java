@@ -30,7 +30,7 @@ public class FacturaConverter
             dto.setIdFormaPago(entity.getFormaPago().getNumTarjeta());
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setIdFactura(entity.getIdFactura());
-            dto.setCarrito(entity.getCarrito().getIdCarrito());
+            dto.setIdCarrito(entity.getCarrito().getIdCarrito());
             
             return dto;
         } else {
