@@ -53,7 +53,7 @@ public class ServicioArtista {
     
     @PUT
     @Path("{id}")
-    public ArtistaDTO doActualizarArtista(@PathParam("id")Long id, ArtistaDTO artista) {
+    public ArtistaDTO actualizarArtista(@PathParam("id")Long id, ArtistaDTO artista) {
         return servicioLogicaArtista.actualizarArtista(artista);
     }
     
