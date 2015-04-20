@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.formaPago.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class FormaPagoConverter {
             dto.setCodSeguridad(entity.getCodSeguridad());
             dto.setDireccion(entity.getDireccion());
             dto.setFechaVencimiento(entity.getFechaVencimiento());
-            dto.setComprador(CompradorConverter.entity2PersistenceDTO(entity.getComprador()));
+            dto.setComprador(entity.getComprador().getUsuario());
             dto.setNombre(entity.getNombre());
             dto.setNumTarjeta(entity.getNumTarjeta());
             return dto;
@@ -32,10 +33,12 @@ public class FormaPagoConverter {
         if (dto != null) {
             FormaPagoEntity entity = new FormaPagoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
+            CompradorEntity comprador = new CompradorEntity();
+            comprador.setUsuario(dto.getComprador());
             entity.setCodSeguridad(dto.getCodSeguridad());
             entity.setDireccion(dto.getDireccion());
             entity.setFechaVencimiento(dto.getFechaVencimiento());
-            entity.setComprador(CompradorConverter.persistenceDTO2Entity(dto.getComprador()));
+            entity.setComprador(comprador);
             entity.setNombre(dto.getNombre());
             entity.setNumTarjeta(dto.getNumTarjeta());
             return entity;

@@ -12,59 +12,33 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class CarritoDTO {
     
-    private String idCarrito;
+    private long idCarrito;
     
-    private CompradorDTO comprador;
+    private String idComprador;
+        
+    private String idFactura;
     
-    private List<CamisetaDTO> camisetas;
-    
-    private FacturaDTO factura;
-    
-    public String getIdCarrito(){
+    public long getIdCarrito(){
         return idCarrito;
     }
     
-    public void setIdCarrito(String idCarrito){
+    public void setIdCarrito(long idCarrito){
         this.idCarrito = idCarrito;
     }
     
-    public CompradorDTO getComprador(){
-        return comprador;
+    public String getComprador(){
+        return idComprador;
     }
     
-    public void setComprador(CompradorDTO nComprador){
-        comprador = nComprador;
+    public void setComprador(String nComprador){
+        idComprador = nComprador;
+    }
+
+    public void setFactura(String nFactura){
+        idFactura = nFactura;
     }
     
-    public int getNumeroCamisetas(){
-        return camisetas.size();
-    }
-    
-    public List<CamisetaDTO> getCamisetas(){
-        return camisetas;
-    }
-    
-    public void setCamisetas(List<CamisetaDTO> camisetas){
-        this.camisetas.addAll(camisetas);
-    }
-    
-    public void agregarCamiseta (CamisetaDTO camiseta){
-        camisetas.add(camiseta);
-    }
-    
-    public void eliminarCamiseta(CamisetaDTO camiseta){
-        camisetas.remove(camiseta);
-    }
-    
-    public void eliminarListaDeCamisetas(List<CamisetaDTO> aEliminar){
-        camisetas.removeAll(aEliminar);
-    }
-    
-    public void setFactura(FacturaDTO nFactura){
-        factura = nFactura;
-    }
-    
-    public FacturaDTO getFactura(){
-        return factura;
+    public String getFactura(){
+        return idFactura;
     }
 }

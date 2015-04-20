@@ -21,7 +21,7 @@ public class FormaPagoEntity {
     @Id
     @GeneratedValue(generator = "FormaPago")
     @Column(name="FORMAPAGO_ID")
-    private Long numeroTarjeta;
+    private long numeroTarjeta;
     
     private String nombre;
     
