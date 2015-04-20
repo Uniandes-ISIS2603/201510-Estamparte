@@ -22,7 +22,7 @@ public class CamisetaDTO {
     
     private double costo;
     
-    private String carroDuenio;
+    private long carroDuenio;
     
     public long getId() {
         return id;
@@ -80,11 +80,11 @@ public class CamisetaDTO {
         this.costo = costo;
     }
     
-    public void setCarroDuenio(String carro){
+    public void setCarroDuenio(long carro){
         carroDuenio = carro;
     }
     
-    public String getCarroDuenio(){
+    public long getCarroDuenio(){
         return carroDuenio;
     }
     

@@ -22,7 +22,7 @@ public class CarritoConverter {
             //Al objeto DTO se le asignan los atributos del objeto entity
             dto.setIdCarrito(entity.getIdCarrito());
             dto.setComprador(entity.getComprador().getUsuario());
-            dto.setFactura(entity.getFactura().getId());
+            dto.setFactura(entity.getFactura().getIdFactura());
             return dto;
         } else {
             return null;
@@ -40,7 +40,7 @@ public class CarritoConverter {
             comprador.setUsuario(dto.getComprador());
             entity.setComprador(comprador);
             FacturaEntity factura = new FacturaEntity();
-            factura.setId(dto.getFactura());
+            factura.setIdFactura(dto.getFactura());
             entity.setFactura(factura);
             return entity;
         } else {

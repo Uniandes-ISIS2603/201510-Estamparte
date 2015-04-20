@@ -16,7 +16,7 @@ public class CarritoDTO {
     
     private String idComprador;
         
-    private String idFactura;
+    private long idFactura;
     
     public long getIdCarrito(){
         return idCarrito;
@@ -34,11 +34,11 @@ public class CarritoDTO {
         idComprador = nComprador;
     }
 
-    public void setFactura(String nFactura){
+    public void setFactura(long nFactura){
         idFactura = nFactura;
     }
     
-    public String getFactura(){
+    public long getFactura(){
         return idFactura;
     }
 }
