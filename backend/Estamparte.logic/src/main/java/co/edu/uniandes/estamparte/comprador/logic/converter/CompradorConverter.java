@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.comprador.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
@@ -24,8 +25,6 @@ public class CompradorConverter {
             dto.setId(entity.getId());
             dto.setCorreo(entity.getCorreo());
             dto.setCedula(entity.getCedula());
-            dto.setCarrito(CarritoConverter.convertirDeEntidadADTO(entity.getCarrito()));
-            dto.asignarFormasPago(FormaPagoConverter.convertirDeListaEntidadesAListaDTO(entity.darFormasPago()));
             return dto;
         } else {
             return null;
@@ -43,8 +42,13 @@ public class CompradorConverter {
             entity.setId(dto.getId());
             entity.setCedula(dto.getCedula());
             entity.setCorreo(dto.getCorreo());
-            entity.setCarrito(CarritoConverter.convertirDeDTOAEntidad(dto.getCarrito()));
-            entity.asignarFormasPago(FormaPagoConverter.convertirDeListaDTOAListaEntidades(dto.darFormasPago()));
+            
+            CarritoEntity car = new CarritoEntity();
+            car.setIdCarrito(dto.getCarrito());
+            entity.setCarrito(car);
+            
+            entity.asignarFormasPago(new ArrayList());
+            entity.setFacturas(new ArrayList());
             return entity;
         } else {
             return null;

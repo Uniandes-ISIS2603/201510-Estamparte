@@ -63,12 +63,12 @@ public class FacturaDTO {
         return fechaCompra;
     }
     
-    public void setIdFactura(Long pId)
+    public void setIdFactura(long pId)
     {
         id = pId;
     }
     
-    public Long getIdFactura()
+    public long getIdFactura()
     {
         return id;
     }
