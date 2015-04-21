@@ -20,13 +20,13 @@ public class FacturaDTO {
     private long idFormaPago;
     private String fechaCompra;
     private long id;
-    private String idCarrito;
+    private long idCarrito;
     
-    public String getIdCarrito(){
+    public long getIdCarrito(){
         return idCarrito;
     }
        
-    public void setIdCarrito(String pId)
+    public void setIdCarrito(long pId)
     {
         idCarrito = pId;
     }
