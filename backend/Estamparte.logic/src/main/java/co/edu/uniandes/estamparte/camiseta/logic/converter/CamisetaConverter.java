@@ -7,10 +7,11 @@ package co.edu.uniandes.estamparte.camiseta.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
-
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,15 @@ public class CamisetaConverter{
             dto.setNombre(entity.getNombre());
             dto.setColor(entity.getColor());
             dto.setCosto(entity.getCosto());
-            dto.setEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.getEstampas()));
+            List<EstampaDTO> estampas = EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.getEstampas());
+            long[] arrEst = new long[estampas.size()];
+            for (int i = 0; i < estampas.size(); i++) 
+                arrEst[i]= estampas.get(i).getId();
+           
+            dto.setEstampas(arrEst);
             dto.setEstilo(entity.getEstilo());
             dto.setTalla(entity.getTalla());
-            dto.setCarroDuenio(CarritoConverter.convertirDeEntidadADTO(entity.getCarroDuenio()));
+            dto.setCarroDuenio(entity.getCarroDuenio().getIdCarrito());
             return dto;
         } else {
             return null;
@@ -42,10 +48,20 @@ public class CamisetaConverter{
             entity.setNombre(dto.getNombre());
             entity.setColor(dto.getColor());
             entity.setCosto(dto.getCosto());
-            entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(dto.getEstampas()));
+            List<EstampaDTO> estampas = new ArrayList<EstampaDTO>();
+            long[] ids= dto.getEstampas();
+            for(long id: ids)
+            {
+                EstampaDTO ed = new EstampaDTO();
+                ed.setId(id);
+                estampas.add(ed);
+            }
+            entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
             entity.setEstilo(dto.getEstilo());
             entity.setTalla(dto.getTalla());
-            entity.setCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(dto.getCarroDuenio()));
+            CarritoDTO cd = new CarritoDTO();
+            cd.setIdCarrito(dto.getCarroDuenio());
+            entity.setCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(cd));
             return entity;
         } else {
             return null;

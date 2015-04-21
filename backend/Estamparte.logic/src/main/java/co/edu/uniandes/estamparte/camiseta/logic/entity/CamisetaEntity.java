@@ -21,7 +21,7 @@ public class CamisetaEntity {
     @Id
     @GeneratedValue(generator = "Camiseta")
     @Column(name="CAMISETA_ID")
-    private String id;
+    private long id;
     
     @ManyToMany
     @JoinTable(
@@ -44,11 +44,11 @@ public class CamisetaEntity {
     @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carroDuenio;
     
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

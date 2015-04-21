@@ -3,17 +3,14 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.dto;
 
-import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
-import java.util.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class CamisetaDTO {
 
-    private String id;
+    private long id;
     
-    private List<EstampaDTO> estampas;
+    private long[] estampas;
     
     private String talla;
     
@@ -25,21 +22,21 @@ public class CamisetaDTO {
     
     private double costo;
     
-    private CarritoDTO carroDuenio;
+    private long carroDuenio;
     
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public List<EstampaDTO> getEstampas() {
+    public long[] getEstampas() {
         return estampas;
     }
 
-    public void setEstampas(List<EstampaDTO> estampas) {
+    public void setEstampas(long[] estampas) {
         this.estampas = estampas;
     }
 
@@ -83,11 +80,11 @@ public class CamisetaDTO {
         this.costo = costo;
     }
     
-    public void setCarroDuenio(CarritoDTO carro){
+    public void setCarroDuenio(long carro){
         carroDuenio = carro;
     }
     
-    public CarritoDTO getCarroDuenio(){
+    public long getCarroDuenio(){
         return carroDuenio;
     }
     

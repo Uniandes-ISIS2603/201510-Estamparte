@@ -21,7 +21,7 @@ public class CarritoEntity {
     @Id
     @GeneratedValue(generator="Carrito")
     @Column(name="CARRITO_ID")
-    private String idCarrito;   
+    private long idCarrito;   
     
     @OneToOne(mappedBy="carrito")
     private CompradorEntity comprador;
@@ -33,11 +33,11 @@ public class CarritoEntity {
     @JoinColumn(name="FACTURA_ID")
     private FacturaEntity factura;
     
-    public String getIdCarrito(){
+    public long getIdCarrito(){
         return idCarrito;
     }
     
-    public void setIdCarrito(String nIdCarrito){
+    public void setIdCarrito(long nIdCarrito){
         idCarrito = nIdCarrito;
     }
     
