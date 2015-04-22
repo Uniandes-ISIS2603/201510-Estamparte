@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.estamparte.estamparte.service;
 
+import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import java.util.List;
@@ -31,9 +32,13 @@ public class ServicioComprador {
     @Inject
     protected ICompradorLogic compradorlogic;
     
+    @Inject 
+    protected ICarritoLogic carritoLogic;
+    
     @POST
     public CompradorDTO createComprador(CompradorDTO detalles)
     {
+        
         return compradorlogic.createComprador(detalles);
     }
      
