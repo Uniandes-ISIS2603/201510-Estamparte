@@ -1,7 +1,7 @@
 (function () {
 	var app = angular.module('facturaModule');
 
-	app.controller('facturaCtrl', ['$scope','servicioFactura', 'servicioFormaPago', 'servicioCarrito', function ($scope, servicioFactura, servicioFormaPago, servicioCarrito) {
+	app.controller('facturaCtrl', ['$scope', 'servicioFactura', function ($scope, servicioFactura) {
 
 		// Variable que apunta a this.
 
@@ -9,7 +9,7 @@
 
 		// Extension de los servicion del CRUD.
 
-		servicioFactura.extendCtrl(_this,$scope);
+		servicioFactura.extendCtrl(_this,$ scope);
 		
 		// _this.editMode = false;
 		// _this.camisetas = servicioCarrito.darCarritoActual();
