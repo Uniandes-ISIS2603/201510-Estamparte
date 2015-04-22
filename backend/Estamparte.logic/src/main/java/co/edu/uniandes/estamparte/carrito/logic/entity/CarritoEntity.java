@@ -23,15 +23,11 @@ public class CarritoEntity {
     @Column(name="CARRITO_ID")
     private long idCarrito;   
     
-    @OneToOne(mappedBy="carrito")
-    private CompradorEntity comprador;
     
     @OneToMany(mappedBy="carroDuenio")
     private List<CamisetaEntity> camisetas;
     
-    @OneToOne
-    @JoinColumn(name="FACTURA_ID")
-    private FacturaEntity factura;
+ 
     
     public long getIdCarrito(){
         return idCarrito;
@@ -41,13 +37,7 @@ public class CarritoEntity {
         idCarrito = nIdCarrito;
     }
     
-    public CompradorEntity getComprador(){
-        return comprador;
-    }
-    
-    public void setComprador(CompradorEntity nComprador){
-        comprador = nComprador;
-    }
+  
     
     public int getNumeroCamisetas(){
         return camisetas.size();
@@ -73,11 +63,5 @@ public class CarritoEntity {
         camisetas.removeAll(aEliminar);
     }
     
-    public void setFactura(FacturaEntity nFactura){
-        factura = nFactura;
-    }
     
-    public FacturaEntity getFactura(){
-        return factura;
-    }
 }
