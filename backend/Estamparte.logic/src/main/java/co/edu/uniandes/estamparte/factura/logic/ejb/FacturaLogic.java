@@ -12,11 +12,12 @@ import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
 
 import java.util.*;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 public class FacturaLogic implements IFacturaLogic{
 
-
+    @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager entityManager;
     
     @Override
