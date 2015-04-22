@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.formaPago.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
@@ -16,12 +17,12 @@ public class FormaPagoConverter {
         if (entity != null) {
             FormaPagoDTO dto = new FormaPagoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.asignarCodSeguridad(entity.darCodSeguridad());
-            dto.asignarDireccion(entity.darDireccion());
-            dto.asignarFechaVencimiento(entity.darFechaVencimiento());
-            dto.asignarComprador(CompradorConverter.entity2PersistenceDTO(entity.darComprador()));
-            dto.asignarNombre(entity.darNombre());
-            dto.asignarNumTarjeta(entity.darNumTarjeta());
+            dto.setCodSeguridad(entity.getCodSeguridad());
+            dto.setDireccion(entity.getDireccion());
+            dto.setFechaVencimiento(entity.getFechaVencimiento());
+            dto.setComprador(entity.getComprador().getUsuario());
+            dto.setNombre(entity.getNombre());
+            dto.setNumTarjeta(entity.getNumTarjeta());
             return dto;
         } else {
             return null;
@@ -32,12 +33,14 @@ public class FormaPagoConverter {
         if (dto != null) {
             FormaPagoEntity entity = new FormaPagoEntity();
             //Al objeto entity se le asignan los atributos del objeto dto
-            entity.asignarCodSeguridad(dto.darCodSeguridad());
-            entity.asignarDireccion(dto.darDireccion());
-            entity.asignarFechaVencimiento(dto.darFechaVencimiento());
-            entity.asignarComprador(CompradorConverter.persistenceDTO2Entity(dto.darComprador()));
-            entity.asignarNombre(dto.darNombre());
-            entity.asignarNumTarjeta(dto.darNumTarjeta());
+            CompradorEntity comprador = new CompradorEntity();
+            comprador.setUsuario(dto.getComprador());
+            entity.setCodSeguridad(dto.getCodSeguridad());
+            entity.setDireccion(dto.getDireccion());
+            entity.setFechaVencimiento(dto.getFechaVencimiento());
+            entity.setComprador(comprador);
+            entity.setNombre(dto.getNombre());
+            entity.setNumTarjeta(dto.getNumTarjeta());
             return entity;
         } else {
             return null;

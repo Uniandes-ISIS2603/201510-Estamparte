@@ -17,26 +17,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CompradorDTO 
 {
     private String nombre;
-    private String id;
-    private CarritoDTO carrito;
-    private List<FormaPagoDTO> formasPago;
+    private long id;
+    private long idCarrito;
     private String direccion;
     private int telefono;
     private String usuario;
     private String clave;
     private String correo;
     private int cedula;
-    private List<FacturaDTO> facturas;
     
     
-    public List<FacturaDTO> getFacturas()
-    {
-        return facturas;
-    }
-    public void setFacturas(List<FacturaDTO> pList)
-    {
-        facturas = pList;
-    }
+    
     
     public String getCorreo()
     {
@@ -99,43 +90,24 @@ public class CompradorDTO
     {
         nombre = pNom;
     }
-    public String getId()
+    public long getId()
     {
         return id;
     }
     
-    public void setId(String pId)
+    public void setId(long pId)
     {
         id = pId;
     }
     
-    public CarritoDTO getCarrito()
+    public long getCarrito()
     {
-        return carrito;
+        return idCarrito;
     }
     
-    public void setCarrito(CarritoDTO pCarrito)
+    public void setCarrito(long pCarrito)
     {
-        carrito = pCarrito;
+        idCarrito = pCarrito;
     }
     
-    public void agregarFormaPago(FormaPagoDTO formaPago){
-        formasPago.add(formaPago);
-    }
-    
-    public void eliminarFormasPago(){
-        formasPago = new ArrayList<FormaPagoDTO>();
-    }
-    
-    public void eliminarFormaPago(FormaPagoDTO formaPago){
-        formasPago.remove(formaPago);
-    }
-    
-    public List<FormaPagoDTO> darFormasPago(){
-        return formasPago;
-    }
-    
-    public void asignarFormasPago(List<FormaPagoDTO> nuevasFormasPago){
-        formasPago = nuevasFormasPago;
-    }
 }

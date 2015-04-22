@@ -14,7 +14,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -36,8 +35,8 @@ public class ServicioCamiseta
     protected ICamisetaLogic countryLogic;
 
     @POST
-    public CamisetaDTO createCamiseta(CamisetaDTO sport) {
-        return countryLogic.crearCamiseta(sport);
+    public CamisetaDTO createCamiseta(CamisetaDTO camiseta) {
+        return countryLogic.crearCamiseta(camiseta);
     }
 
     @DELETE

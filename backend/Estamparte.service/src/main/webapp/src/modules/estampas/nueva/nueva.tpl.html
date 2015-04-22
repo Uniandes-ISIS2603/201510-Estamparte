@@ -1,0 +1,32 @@
+<div id="nueva">
+
+	<div class="container">
+
+		<form name="nuevaForm" class="col-md-6" novalidate>
+
+			<h2>Agregar estampa</h2>
+
+			<br>
+
+			<div class="form-group">
+				<label for="nombre">Nombre</label>
+				<input id="nombre" type="text" ng-model="currentRecord.nombre" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Precio</label>
+				<input id="nombre" type="number" ng-model="currentRecord.precio" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Cargar imagen</label>
+				<input id="nombre" type="file" nv-file-select uploader="uploader">
+			</div>
+
+			<button class="btn btn-default" ng-disabled="!nuevaForm.$valid || noImagen" ng-click="crearEstampa()">Crear estampa</button>
+
+		</form>
+
+	</div>
+
+</div>

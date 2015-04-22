@@ -3,17 +3,14 @@
  */
 package co.edu.uniandes.estamparte.camiseta.logic.dto;
 
-import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
-import java.util.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class CamisetaDTO {
 
-    private String id;
+    private long id;
     
-    private List<EstampaDTO> estampas;
+    private long[] estampas;
     
     private String talla;
     
@@ -25,85 +22,72 @@ public class CamisetaDTO {
     
     private double costo;
     
-    private CarritoDTO carroDuenio;
+    private long carroDuenio;
     
-    public String darId() {
+    public long getId() {
         return id;
     }
 
-    public void asignarId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public List<EstampaDTO> darEstampas() {
+    public long[] getEstampas() {
         return estampas;
     }
 
-    public void asignarEstampas(List<EstampaDTO> estampas) {
+    public void setEstampas(long[] estampas) {
         this.estampas = estampas;
     }
 
-    public String darTalla() {
+    public String getTalla() {
         return talla;
     }
 
-    public void asignarTalla(String talla) {
+    public void setTalla(String talla) {
         this.talla = talla;
     }
 
-    public String darColor() {
+    public String getColor() {
         return color;
     }
 
-    public void asignarColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
-    public String darEstilo() {
+    public String getEstilo() {
         return estilo;
     }
 
-    public void asignarEstilo(String estilo) {
+    public void setEstilo(String estilo) {
         this.estilo = estilo;
     }
 
-    public String darNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void asignarNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public double darCosto() {
+    public double getCosto() {
         return costo;
     }
 
-    public void asignarCosto(double costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
     
-    public void asignarCarroDuenio(CarritoDTO carro){
+    public void setCarroDuenio(long carro){
         carroDuenio = carro;
     }
     
-    public CarritoDTO darCarroDuenio(){
+    public long getCarroDuenio(){
         return carroDuenio;
     }
     
     
-    public boolean agregarEstampa(EstampaDTO estampa)
-    {
-        if(estampas == null)
-            estampas = new ArrayList<>();
-        return estampas.add(estampa);
-    }
     
-    public boolean eliminarEstampa(long id)
-    {
-        for(EstampaDTO es: estampas)
-            if(es.darId() == id)
-                return estampas.remove(es);
-        return false;
-    }
 }

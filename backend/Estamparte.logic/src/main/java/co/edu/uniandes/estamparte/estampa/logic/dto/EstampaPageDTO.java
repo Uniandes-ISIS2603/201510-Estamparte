@@ -18,27 +18,23 @@ public class EstampaPageDTO {
     private List<EstampaDTO> estampas;
     
     //Metodos analizadores
-    
-    //Retorna el numero de estampas
-    public Long darTotalEstampas(){
+
+    public Long getTotalEstampas() {
         return totalEstampas;
     }
-    
-    //Retorna la lista de estampas
-    public List<EstampaDTO> darEstampas(){
+
+    public void setTotalEstampas(Long totalEstampas) {
+        this.totalEstampas = totalEstampas;
+    }
+
+    public List<EstampaDTO> getEstampas() {
         return estampas;
     }
-    
-    //Metodos modificadores
-    
-    //Asigna el numero total de estampas por la pagina
-    public void cambiarTotalEstampas(Long nTotalEstampas){
-        this.totalEstampas = nTotalEstampas;
+
+    public void setEstampas(List<EstampaDTO> estampas) {
+        this.estampas = estampas;
     }
     
-    //Asigna la lista de estampas en la pagina
-    public void cambiarEstampas(List<EstampaDTO> nEstampas){
-        this.estampas = nEstampas;
-    } 
+   
     
 }

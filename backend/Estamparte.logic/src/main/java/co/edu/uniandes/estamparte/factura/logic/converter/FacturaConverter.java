@@ -8,8 +8,12 @@ import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity_;
+import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 
 
 
@@ -22,11 +26,11 @@ public class FacturaConverter
     public static FacturaDTO entity2PersistenceDTO(FacturaEntity entity) {
         if (entity != null) {
             FacturaDTO dto = new FacturaDTO();
-            dto.setComprador(CompradorConverter.entity2PersistenceDTO(entity.getComprador()));
-            dto.setFormaPago(FormaPagoConverter.convertirDeEntidadADTO(entity.getFormaPago()));
+            dto.setIdComprador(entity.getComprador().getId());
+            dto.setIdFormaPago(entity.getFormaPago().getNumTarjeta());
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setIdFactura(entity.getIdFactura());
-            dto.setCarrito(CarritoConverter.convertirDeEntidadADTO(entity.getCarrito()));
+            dto.setIdCarrito(entity.getCarrito().getIdCarrito());
             
             return dto;
         } else {
@@ -37,11 +41,21 @@ public class FacturaConverter
     public static FacturaEntity persistenceDTO2Entity(FacturaDTO dto) {
         if (dto != null) {
             FacturaEntity entity = new FacturaEntity();
-            entity.setComprador(CompradorConverter.persistenceDTO2Entity(dto.getComprador()));
-            entity.setFormaPago(FormaPagoConverter.convertirDeDTOAEntidad(dto.getFormaPago()));
+            
+            CompradorEntity comp = new CompradorEntity();
+            comp.setId(dto.getIdComprador());
+            entity.setComprador(comp);
+            
+            FormaPagoEntity form = new FormaPagoEntity();
+            form.setNumTarjeta(dto.getIdFormaPago());
+            entity.setFormaPago(form);
+            
             entity.setFechaCompra(dto.getFechaCompra());
             entity.setIdFactura(dto.getIdFactura());
-            entity.setCarrito(CarritoConverter.convertirDeDTOAEntidad(dto.getCarrito()));
+            
+            CarritoEntity carr = new CarritoEntity();
+            carr.setIdCarrito(dto.getIdCarrito());
+            entity.setCarrito(carr);
 
             return entity;
         } else {

@@ -25,6 +25,8 @@ public class FacturaEntity {
     @JoinColumn(name="COMPRADOR_ID")
     private CompradorEntity comprador;
     
+    @OneToOne
+    @JoinColumn(name="FORMAPAGO_ID")
     private FormaPagoEntity formaPago;
     private String fechaCompra;
     
@@ -33,11 +35,12 @@ public class FacturaEntity {
     @Column(name="FACTURA_ID")
     private long id;
     
-    @OneToOne(mappedBy="factura")
+    @OneToOne
+    @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carrito;
     
     public List<CamisetaEntity> getArticulos(){
-        return carrito.darCamisetas();
+        return carrito.getCamisetas();
     }
     
     public void setCarrito(CarritoEntity pCarrito)
@@ -65,7 +68,7 @@ public class FacturaEntity {
         return comprador.getNombre();
     }
     
-    public String getIdComprador()
+    public long getIdComprador()
     {
         return comprador.getId();
     }
@@ -82,35 +85,35 @@ public class FacturaEntity {
     
     public String getTipoFormPago()
     {
-        return formaPago.darNombre();
+        return formaPago.getNombre();
     }
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.darNumTarjeta();
+        return formaPago.getNumTarjeta();
     }
     
     public Date getFechaVencimiento()
     {
-        return formaPago.darFechaVencimiento();
+        return formaPago.getFechaVencimiento();
     }
     
     public int getCodigoSeguridad()
     {
-        return formaPago.darCodSeguridad();                
+        return formaPago.getCodSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.darDireccion();
+        return formaPago.getDireccion();
     }
     
     public double getMontoTotal()
     {
         double respuesta = 0;
-        for (int i=0; i<carrito.darCamisetas().size();i++)
+        for (int i=0; i<carrito.getCamisetas().size();i++)
         {
-            respuesta += carrito.darCamisetas().get(i).darCosto();
+            respuesta += carrito.getCamisetas().get(i).getCosto();
         }
         return respuesta;
     }

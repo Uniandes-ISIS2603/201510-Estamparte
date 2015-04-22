@@ -33,7 +33,7 @@ public class CompradorEntity {
     @Id
     @GeneratedValue(generator="Comprador")
     @Column(name="COMPRADOR_ID")
-    private String id;
+    private long id;
     
     @OneToOne
     @JoinColumn(name="CARRITO_ID")
@@ -117,12 +117,12 @@ public class CompradorEntity {
     {
         nombre = pNom;
     }
-    public String getId()
+    public long getId()
     {
         return id;
     }
     
-    public void setId(String pId)
+    public void setId(long pId)
     {
         id = pId;
     }

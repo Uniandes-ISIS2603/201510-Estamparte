@@ -21,43 +21,33 @@ public class CarritoEntity {
     @Id
     @GeneratedValue(generator="Carrito")
     @Column(name="CARRITO_ID")
-    private String idCarrito;   
+    private long idCarrito;   
     
-    @OneToOne(mappedBy="carrito")
-    private CompradorEntity comprador;
     
     @OneToMany(mappedBy="carroDuenio")
     private List<CamisetaEntity> camisetas;
     
-    @OneToOne
-    @JoinColumn(name="FACTURA_ID")
-    private FacturaEntity factura;
+ 
     
-    public String darIdCarrito(){
+    public long getIdCarrito(){
         return idCarrito;
     }
     
-    public void asignarIdCarrito(String nIdCarrito){
+    public void setIdCarrito(long nIdCarrito){
         idCarrito = nIdCarrito;
     }
     
-    public CompradorEntity darComprador(){
-        return comprador;
-    }
+  
     
-    public void asignarComprador(CompradorEntity nComprador){
-        comprador = nComprador;
-    }
-    
-    public int darNumeroCamisetas(){
+    public int getNumeroCamisetas(){
         return camisetas.size();
     }
     
-    public List<CamisetaEntity> darCamisetas(){
+    public List<CamisetaEntity> getCamisetas(){
         return camisetas;
     }
     
-    public void asignarCamisetas(List<CamisetaEntity> camisetas){
+    public void setCamisetas(List<CamisetaEntity> camisetas){
         this.camisetas.addAll(camisetas);
     }
     
@@ -73,11 +63,5 @@ public class CarritoEntity {
         camisetas.removeAll(aEliminar);
     }
     
-    public void asignarFactura(FacturaEntity nFactura){
-        factura = nFactura;
-    }
     
-    public FacturaEntity darFactura(){
-        return factura;
-    }
 }

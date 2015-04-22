@@ -7,10 +7,11 @@ package co.edu.uniandes.estamparte.camiseta.logic.converter;
 //Convierte los objetos de clases de java a DTO (objeto que transfiere archivos a persistencia)
 
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
-
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +21,19 @@ public class CamisetaConverter{
         public static CamisetaDTO entity2PersistenceDTO(CamisetaEntity entity) {
         if (entity != null) {
             CamisetaDTO dto = new CamisetaDTO();
-            dto.asignarId(entity.darId());
-            dto.asignarNombre(entity.darNombre());
-            dto.asignarColor(entity.darColor());
-            dto.asignarCosto(entity.darCosto());
-            dto.asignarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.darEstampas()));
-            dto.asignarEstilo(entity.darEstilo());
-            dto.asignarTalla(entity.darTalla());
-            dto.asignarCarroDuenio(CarritoConverter.convertirDeEntidadADTO(entity.darCarroDuenio()));
+            dto.setId(entity.getId());
+            dto.setNombre(entity.getNombre());
+            dto.setColor(entity.getColor());
+            dto.setCosto(entity.getCosto());
+            List<EstampaDTO> estampas = EstampaConverter.convertirDeListaEntidadesAListaDTO(entity.getEstampas());
+            long[] arrEst = new long[estampas.size()];
+            for (int i = 0; i < estampas.size(); i++) 
+                arrEst[i]= estampas.get(i).getId();
+           
+            dto.setEstampas(arrEst);
+            dto.setEstilo(entity.getEstilo());
+            dto.setTalla(entity.getTalla());
+            dto.setCarroDuenio(entity.getCarroDuenio().getIdCarrito());
             return dto;
         } else {
             return null;
@@ -38,14 +44,24 @@ public class CamisetaConverter{
     public static CamisetaEntity persistenceDTO2Entity(CamisetaDTO dto) {
         if (dto != null) {
             CamisetaEntity entity = new CamisetaEntity();
-            entity.asignarId(dto.darId());
-            entity.asignarNombre(dto.darNombre());
-            entity.asignarColor(dto.darColor());
-            entity.asignarCosto(dto.darCosto());
-            entity.asignarEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(dto.darEstampas()));
-            entity.asignarEstilo(dto.darEstilo());
-            entity.asignarTalla(dto.darTalla());
-            entity.asignarCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(dto.darCarroDuenio()));
+            entity.setId(dto.getId());
+            entity.setNombre(dto.getNombre());
+            entity.setColor(dto.getColor());
+            entity.setCosto(dto.getCosto());
+            List<EstampaDTO> estampas = new ArrayList<EstampaDTO>();
+            long[] ids= dto.getEstampas();
+            for(long id: ids)
+            {
+                EstampaDTO ed = new EstampaDTO();
+                ed.setId(id);
+                estampas.add(ed);
+            }
+            entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
+            entity.setEstilo(dto.getEstilo());
+            entity.setTalla(dto.getTalla());
+            CarritoDTO cd = new CarritoDTO();
+            cd.setIdCarrito(dto.getCarroDuenio());
+            entity.setCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(cd));
             return entity;
         } else {
             return null;

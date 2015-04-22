@@ -8,6 +8,7 @@ import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
 import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
 import co.edu.uniandes.estamparte.estampa.logic.ejb.EstampaLogic;
@@ -31,10 +32,8 @@ public class ArtistaLogic implements IArtistaLogic{
     
     //Es una interfaz, maneja las operaciones de persistencia en los objetos
     @PersistenceContext(unitName = "EstampartePU")
-    //Es a través del Entity Manager que se crean consultas, se insertan datos, se actualizan datos, etc
     protected EntityManager em;
     
-    private EstampaLogic servicioEstampaLogic;
 
     @Override
     public ArtistaDTO crearArtista(ArtistaDTO artista) {
@@ -60,8 +59,8 @@ public class ArtistaLogic implements IArtistaLogic{
             q.setMaxResults(datosMaximos);
         }
         ArtistaPageDTO respuesta = new ArtistaPageDTO();
-        respuesta.cambiarTotalArtistas(cuentaReg);
-        respuesta.cambiarArtistas(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        respuesta.setTotalArtistas(cuentaReg);
+        respuesta.setArtistas(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
 
@@ -91,45 +90,44 @@ public class ArtistaLogic implements IArtistaLogic{
     }
 
     @Override
-    public EstampaDTO crearEstampaDeArtista(Long idArtista, EstampaDTO estampa) {
+    public EstampaDTO crearEstampaDeArtista(Long idArtista, EstampaDTO estampa, IEstampaLogic servicioLogicaEstampa) {
         ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
         EstampaDTO respuesta = null;
         if(entidad != null){
-            respuesta = servicioEstampaLogic.crearEstampa(estampa);
+            respuesta = servicioLogicaEstampa.crearEstampa(estampa);
+        }
+        return respuesta;
+    }
+
+
+    @Override
+    public EstampaDTO eliminarEstampaDeArtista(Long idArtista, Long idEstampa, IEstampaLogic servicioLogicaEstampa) {
+        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
+        EstampaDTO respuesta = null;
+        if(entidad != null){
+            respuesta = servicioLogicaEstampa.eliminarEstampa(idEstampa);
         }
         return respuesta;
     }
 
     @Override
-    public EstampaDTO eliminarEstampaDeArtista(Long idArtista, Long idEstampa) {
-        ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
-        EstampaDTO respuesta = null;
-        if(entidad != null){
-            respuesta = servicioEstampaLogic.eliminarEstampa(idEstampa);
-        }
-        return respuesta;
-    }
-
-    @Override
-    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos) {
+    public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos, IEstampaLogic servicioLogicaEstampa) {
         ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
         EstampaPageDTO respuesta = null;
         if(entidad != null){
-            respuesta = servicioEstampaLogic.obtenerEstampasDeArtista(idArtista, pagina, datosMaximos);
+            respuesta = servicioLogicaEstampa.obtenerEstampasDeArtista(idArtista, pagina, datosMaximos);
         }
         return respuesta;
     }
 
     @Override
-    public EstampaDTO actualizarEstampaDeArtista(Long idArtista, EstampaDTO estampa) {
+    public EstampaDTO actualizarEstampaDeArtista(Long idArtista, EstampaDTO estampa, IEstampaLogic servicioLogicaEstampa) {
         ArtistaEntity entidad = em.find(ArtistaEntity.class, idArtista);
         EstampaDTO respuesta = null;
         if(entidad != null){
-            respuesta = servicioEstampaLogic.actualizarEstampa(estampa);
+            respuesta = servicioLogicaEstampa.actualizarEstampa(estampa);
         }
         return respuesta;
     }
-    
-    
-    
+
 }

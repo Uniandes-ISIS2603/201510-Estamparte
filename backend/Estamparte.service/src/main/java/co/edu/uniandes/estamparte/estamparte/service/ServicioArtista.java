@@ -6,6 +6,7 @@ package co.edu.uniandes.estamparte.estamparte.service;
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
+import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import org.apache.catalina.logger.SystemOutLogger;
 
 @Path("/artistas")
 @Stateless
@@ -29,6 +31,9 @@ public class ServicioArtista {
     
     @Inject
     protected IArtistaLogic servicioLogicaArtista;
+    
+    @Inject
+    protected IEstampaLogic servicioLogicaEstampa;
     
     @POST
     public ArtistaDTO crearArtista(ArtistaDTO artista){
@@ -64,28 +69,30 @@ public class ServicioArtista {
     }
     
     @POST
-    @Path("{id}/estampas")
+    @Path("/{id}/estampas")
     public EstampaDTO crearEstampaDeArtista(@PathParam("id")Long id,EstampaDTO estampa){
-        return servicioLogicaArtista.crearEstampaDeArtista(id, estampa);
+        return servicioLogicaArtista.crearEstampaDeArtista(id, estampa,servicioLogicaEstampa);
     }
     
+  
     @DELETE
     @Path("{id}/estampas/{id2}")
     public EstampaDTO eliminarEstampaDeArtista(@PathParam("id")Long idArtista, @PathParam("id2")Long idEstampa){
-        return servicioLogicaArtista.eliminarEstampaDeArtista(idArtista, idEstampa);
+        return servicioLogicaArtista.eliminarEstampaDeArtista(idArtista, idEstampa, servicioLogicaEstampa);
     }
     
     @GET
     @Path("{id}/estampas")
     public EstampaPageDTO obtenerEstampasDeArtista(@PathParam("id")Long id, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
-        return servicioLogicaArtista.obtenerEstampasDeArtista(id, pagina, datosMaximos);
+        return servicioLogicaArtista.obtenerEstampasDeArtista(id, pagina, datosMaximos, servicioLogicaEstampa);
     }
     
     @PUT
     @Path("{id}/estampas/{id2}")
     public EstampaDTO actualizarEstampaDeArtista(@PathParam("id")Long idArtista,@PathParam("id2")Long idEstampa, EstampaDTO estampa){
-        return servicioLogicaArtista.actualizarEstampaDeArtista(idArtista, estampa);
+        return servicioLogicaArtista.actualizarEstampaDeArtista(idArtista, estampa, servicioLogicaEstampa);
     }
+   
 
     
 }

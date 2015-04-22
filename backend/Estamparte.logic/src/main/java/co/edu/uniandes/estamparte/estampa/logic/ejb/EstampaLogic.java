@@ -55,8 +55,8 @@ public class EstampaLogic implements IEstampaLogic {
             q.setMaxResults(datosMaximos);
         }
         EstampaPageDTO respuesta = new EstampaPageDTO();
-        respuesta.cambiarTotalEstampas(cuentaReg);
-        respuesta.cambiarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        respuesta.setTotalEstampas(cuentaReg);
+        respuesta.setEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
 
@@ -89,8 +89,8 @@ public class EstampaLogic implements IEstampaLogic {
             q.setMaxResults(datosMaximos);
         }
         EstampaPageDTO respuesta = new EstampaPageDTO();
-        respuesta.cambiarTotalEstampas(cuentaReg);
-        respuesta.cambiarEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        respuesta.setTotalEstampas(cuentaReg);
+        respuesta.setEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
     
