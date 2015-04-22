@@ -40,6 +40,7 @@ public class CamisetaEntity {
     
     private double costo;
     
+
     
     public long getId() {
         return id;

@@ -50,11 +50,13 @@ public class CamisetaConverter{
             entity.setCosto(dto.getCosto());
             List<EstampaDTO> estampas = new ArrayList<EstampaDTO>();
             long[] ids= dto.getEstampas();
+            if(ids!=null){
             for(long id: ids)
             {
                 EstampaDTO ed = new EstampaDTO();
                 ed.setId(id);
                 estampas.add(ed);
+            }
             }
             entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
             entity.setEstilo(dto.getEstilo());

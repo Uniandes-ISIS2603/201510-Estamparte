@@ -24,7 +24,7 @@ public class CarritoEntity {
     private long idCarrito;   
     
     
-    @OneToMany(mappedBy="carroDuenio")
+    @OneToMany
     private List<CamisetaEntity> camisetas;
     
  
