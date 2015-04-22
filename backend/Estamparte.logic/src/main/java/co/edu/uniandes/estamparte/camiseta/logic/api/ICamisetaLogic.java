@@ -18,15 +18,15 @@ public interface ICamisetaLogic {
     
     public CamisetaPageDTO darCamisetas(Integer page, Integer maxRecords);
 
-    public CamisetaPageDTO obtenerCamisetasDeCarrito(String idCarrito, Integer pagina, Integer datosMaximos);
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(long idCarrito, Integer pagina, Integer datosMaximos);
     
     public CamisetaDTO actualizarCamiseta(CamisetaDTO camiseta);
     
-    public CamisetaDTO darCamiseta(String id);
+    public CamisetaDTO darCamiseta(long id);
 
-    public void eliminarCamiseta(String id);
+    public void eliminarCamiseta(long id);
     
-    public boolean agregarEstampa(String idCamiseta, EstampaDTO estampa);
+    public boolean agregarEstampa(long idCamiseta, EstampaDTO estampa);
     
-    public boolean eliminarEstampa(String idCamiseta,long id);
+    public boolean eliminarEstampa(long idCamiseta,long id);
 }

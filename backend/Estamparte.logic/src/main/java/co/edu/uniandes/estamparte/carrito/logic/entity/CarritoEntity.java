@@ -48,7 +48,7 @@ public class CarritoEntity {
     }
     
     public void setCamisetas(List<CamisetaEntity> camisetas){
-        this.camisetas.addAll(camisetas);
+        this.camisetas = camisetas;
     }
     
     public void agregarCamiseta (CamisetaEntity camiseta){

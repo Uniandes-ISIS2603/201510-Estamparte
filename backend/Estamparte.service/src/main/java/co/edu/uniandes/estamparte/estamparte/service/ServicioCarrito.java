@@ -55,39 +55,39 @@ public class ServicioCarrito {
     }
     
     @POST
-    @Path("{CARRITO_ID}/estampas")
-    public CamisetaDTO agregarCamisetaACarrito (@PathParam("CARRITO_ID") String idCarrito, CamisetaDTO camiseta){
+    @Path("{CARRITO_ID}/camisetas")
+    public CamisetaDTO agregarCamisetaACarrito (@PathParam("CARRITO_ID") long idCarrito, CamisetaDTO camiseta){
         return carritoLogic.agregarCamisetaACarrito(idCarrito, camiseta);
     }
     
     @GET
-    @Path("{CARRITO_ID}/estampas")
-    public CamisetaPageDTO darCamisetasCarrito(@PathParam("CARRITO_ID") String idCarrito, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+    @Path("{CARRITO_ID}/camisetas")
+    public CamisetaPageDTO darCamisetasCarrito(@PathParam("CARRITO_ID") long idCarrito, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
         return carritoLogic.darCamisetasCarrito(idCarrito, pagina, datosMaximos);
     }
     
     @PUT
     @Path("{CARRITO_ID}/estampas/{CAMISETA_ID}")
-    public CamisetaDTO actualizarCamisetaCarrito(@PathParam("CARRITO_ID") String idCarrito, @PathParam("CAMISETA_ID") String idCamiseta, CamisetaDTO camiseta){
+    public CamisetaDTO actualizarCamisetaCarrito(@PathParam("CARRITO_ID") long idCarrito, @PathParam("CAMISETA_ID") long idCamiseta, CamisetaDTO camiseta){
         return carritoLogic.actualizarCamisetaCarrito(idCarrito, camiseta);
     }
     
     @DELETE
     @Path("{CARRITO_ID}/camisetas/{CAMISETA_ID}")
-    public void eliminarCamisetaCarrito(@PathParam("CARRITO_ID") String idCarrito, @PathParam("CAMISETA_ID") String idCamiseta){
+    public void eliminarCamisetaCarrito(@PathParam("CARRITO_ID") long idCarrito, @PathParam("CAMISETA_ID") long idCamiseta){
         carritoLogic.eliminarCamisetaCarrito(idCarrito, idCamiseta);
     }
     
     @PUT
     @Path("{CARRITO_ID}")
-    public void actualizarCarrito(@PathParam("CARRITO_ID") String idCarrito, CarritoDTO carrito){
+    public void actualizarCarrito(@PathParam("CARRITO_ID") long idCarrito, CarritoDTO carrito){
         carritoLogic.actualizarCarrito(carrito);
     }
     
     @DELETE
     @Path("{CARRITO_ID}")
-    public void eliminarCarrito(@PathParam("CARRITO_ID") String nombre){
-        carritoLogic.eliminarCarrito(nombre);
+    public void eliminarCarrito(@PathParam("CARRITO_ID") long id){
+        carritoLogic.eliminarCarrito(id);
     }
     
 }

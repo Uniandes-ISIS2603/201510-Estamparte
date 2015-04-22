@@ -34,8 +34,7 @@ public class CarritoConverter {
             List<CamisetaEntity> camisetas = new ArrayList<CamisetaEntity>();
             entity.setCamisetas(camisetas);
             entity.setIdCarrito(dto.getIdCarrito());
-            CompradorEntity comprador = new CompradorEntity();
-            FacturaEntity factura = new FacturaEntity();
+
             return entity;
         } else {
             return null;

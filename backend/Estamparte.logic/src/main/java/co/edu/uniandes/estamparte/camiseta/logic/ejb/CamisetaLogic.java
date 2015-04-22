@@ -54,12 +54,12 @@ public class CamisetaLogic implements ICamisetaLogic  {
     }
 
     @Override
-    public CamisetaDTO darCamiseta(String id) {
+    public CamisetaDTO darCamiseta(long id) {
          return CamisetaConverter.entity2PersistenceDTO(entityManager.find(CamisetaEntity.class, id));
     }
 
     @Override
-    public void eliminarCamiseta(String id) {
+    public void eliminarCamiseta(long id) {
         CamisetaEntity entity = entityManager.find(CamisetaEntity.class, id);
         entityManager.remove(entity);
     }
@@ -69,10 +69,10 @@ public class CamisetaLogic implements ICamisetaLogic  {
         return CamisetaConverter.entity2PersistenceDTO(entidad);
     }
     
-    public CamisetaPageDTO obtenerCamisetasDeCarrito(String idCarrito, Integer pagina, Integer datosMaximos) {
-        Query cuenta = entityManager.createQuery("select count(u) from CamisetaEntity u where u.carroDuenio = '" + idCarrito + "'");
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(long idCarrito, Integer pagina, Integer datosMaximos) {
+        Query cuenta = entityManager.createQuery("select count(u) from CamisetaEntity u");
         Long cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
-        Query q = entityManager.createQuery("select u from CamisetaEntity u where u.carroDuenio = '"+idCarrito+"'");
+        Query q = entityManager.createQuery("select u from CamisetaEntity u where u.carroDuenio.idCarrito = '"+idCarrito+"'");
         if(pagina != null && datosMaximos != null){
             q.setFirstResult((pagina-1)*datosMaximos);
             q.setMaxResults(datosMaximos);
@@ -84,7 +84,7 @@ public class CamisetaLogic implements ICamisetaLogic  {
     }
 
     @Override
-    public boolean agregarEstampa(String idCamiseta, EstampaDTO estampa) {
+    public boolean agregarEstampa(long idCamiseta, EstampaDTO estampa) {
         CamisetaEntity entidad = entityManager.find(CamisetaEntity.class, idCamiseta);
         if(entidad != null)
         {
@@ -94,7 +94,7 @@ public class CamisetaLogic implements ICamisetaLogic  {
     }
 
     @Override
-    public boolean eliminarEstampa(String idCamiseta, long id) {
+    public boolean eliminarEstampa(long idCamiseta, long id) {
          CamisetaEntity entidad = entityManager.find(CamisetaEntity.class, idCamiseta);
         if(entidad != null)
             return entidad.eliminarEstampa(id);

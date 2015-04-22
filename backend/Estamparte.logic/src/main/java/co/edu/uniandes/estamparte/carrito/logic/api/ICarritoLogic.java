@@ -17,15 +17,15 @@ public interface ICarritoLogic {
     
     public CarritoPageDTO darCarritos(Integer pagina, Integer datosMaximos);
     
-    public CamisetaDTO agregarCamisetaACarrito (String idCarrito, CamisetaDTO camiseta);
+    public CamisetaDTO agregarCamisetaACarrito (long idCarrito, CamisetaDTO camiseta);
     
-    public CamisetaPageDTO darCamisetasCarrito(String idCarrito, Integer pagina, Integer datosMaximos);
+    public CamisetaPageDTO darCamisetasCarrito(long idCarrito, Integer pagina, Integer datosMaximos);
     
-    public CamisetaDTO actualizarCamisetaCarrito(String idCarrito, CamisetaDTO camiseta);
+    public CamisetaDTO actualizarCamisetaCarrito(long idCarrito, CamisetaDTO camiseta);
     
-    public void eliminarCamisetaCarrito(String idCarrito, String idCamiseta);
+    public void eliminarCamisetaCarrito(long idCarrito, long idCamiseta);
     
     public void actualizarCarrito(CarritoDTO carrito);
     
-    public void eliminarCarrito(String nombre);    
+    public void eliminarCarrito(long id);    
 }

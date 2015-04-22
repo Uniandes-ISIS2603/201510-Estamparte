@@ -12,6 +12,7 @@ import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoPageDTO;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import java.util.List;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -21,6 +22,7 @@ public class CarritoLogic implements ICarritoLogic {
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
     
+    @Inject
     private CamisetaLogic camisetaLogic;
     
     public CarritoDTO crearCarrito (CarritoDTO carrito){
@@ -53,12 +55,12 @@ public class CarritoLogic implements ICarritoLogic {
         CarritoConverter.convertirDeEntidadADTO(entity);
     }
     
-    public void eliminarCarrito(String nombre){
-        CarritoEntity entity = em.find(CarritoEntity.class, nombre);
+    public void eliminarCarrito(long id){
+        CarritoEntity entity = em.find(CarritoEntity.class, id);
         em.remove(entity);
     }
     
-    public CamisetaPageDTO darCamisetasCarrito(String idCarrito, Integer pagina, Integer datosMaximos) {
+    public CamisetaPageDTO darCamisetasCarrito(long idCarrito, Integer pagina, Integer datosMaximos) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         CamisetaPageDTO respuesta = null;
         if(entidad != null){
@@ -67,7 +69,7 @@ public class CarritoLogic implements ICarritoLogic {
         return respuesta;
     }
     
-    public CamisetaDTO agregarCamisetaACarrito(String idCarrito, CamisetaDTO camiseta) {
+    public CamisetaDTO agregarCamisetaACarrito(long idCarrito, CamisetaDTO camiseta) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         CamisetaDTO respuesta = null;
         if(entidad != null){
@@ -76,14 +78,14 @@ public class CarritoLogic implements ICarritoLogic {
         return respuesta;
     }
     
-    public void eliminarCamisetaCarrito(String idCarrito, String idCamiseta) {
+    public void eliminarCamisetaCarrito(long idCarrito, long idCamiseta) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         if(entidad != null){
             camisetaLogic.eliminarCamiseta(idCamiseta);
         }
     }
     
-    public CamisetaDTO actualizarCamisetaCarrito(String idCarrito, CamisetaDTO camiseta) {
+    public CamisetaDTO actualizarCamisetaCarrito(long idCarrito, CamisetaDTO camiseta) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         CamisetaDTO respuesta = null;
         if(entidad != null){

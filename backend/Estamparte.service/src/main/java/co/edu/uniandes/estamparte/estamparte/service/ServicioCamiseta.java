@@ -41,7 +41,7 @@ public class ServicioCamiseta
 
     @DELETE
     @Path("{id}")
-    public void deleteCamiseta(@PathParam("id") String id) {
+    public void deleteCamiseta(@PathParam("id") long id) {
         countryLogic.eliminarCamiseta(id);
     }
 
@@ -52,7 +52,7 @@ public class ServicioCamiseta
 
     @GET
     @Path("{id}")
-    public CamisetaDTO darCamiseta(@PathParam("id") String id) {
+    public CamisetaDTO darCamiseta(@PathParam("id") long id) {
         return countryLogic.darCamiseta(id);
     }
 }
