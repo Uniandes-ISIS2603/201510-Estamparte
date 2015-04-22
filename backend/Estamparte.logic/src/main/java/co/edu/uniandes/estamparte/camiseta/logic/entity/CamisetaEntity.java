@@ -40,9 +40,6 @@ public class CamisetaEntity {
     
     private double costo;
     
-    @ManyToOne
-    @JoinColumn(name="CARRITO_ID")
-    private CarritoEntity carroDuenio;
     
     public long getId() {
         return id;
@@ -100,13 +97,7 @@ public class CamisetaEntity {
         this.costo = costo;
     }
     
-    public void setCarroDuenio(CarritoEntity carro){
-        carroDuenio = carro;
-    }
-    
-    public CarritoEntity getCarroDuenio(){
-        return carroDuenio;
-    }
+
     
     
     public boolean agregarEstampa(EstampaEntity estampa)

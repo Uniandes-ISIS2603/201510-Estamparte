@@ -67,7 +67,7 @@ public class ServicioCarrito {
     }
     
     @PUT
-    @Path("{CARRITO_ID}/estampas/{CAMISETA_ID}")
+    @Path("{CARRITO_ID}/camisetas/{CAMISETA_ID}")
     public CamisetaDTO actualizarCamisetaCarrito(@PathParam("CARRITO_ID") long idCarrito, @PathParam("CAMISETA_ID") long idCamiseta, CamisetaDTO camiseta){
         return carritoLogic.actualizarCamisetaCarrito(idCarrito, camiseta);
     }

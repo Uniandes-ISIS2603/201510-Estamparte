@@ -22,7 +22,6 @@ public class CamisetaDTO {
     
     private double costo;
     
-    private long carroDuenio;
     
     public long getId() {
         return id;
@@ -79,15 +78,7 @@ public class CamisetaDTO {
     public void setCosto(double costo) {
         this.costo = costo;
     }
-    
-    public void setCarroDuenio(long carro){
-        carroDuenio = carro;
-    }
-    
-    public long getCarroDuenio(){
-        return carroDuenio;
-    }
-    
+
     
     
 }

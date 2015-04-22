@@ -33,7 +33,7 @@ public class CamisetaConverter{
             dto.setEstampas(arrEst);
             dto.setEstilo(entity.getEstilo());
             dto.setTalla(entity.getTalla());
-            dto.setCarroDuenio(entity.getCarroDuenio().getIdCarrito());
+
             return dto;
         } else {
             return null;
@@ -59,9 +59,9 @@ public class CamisetaConverter{
             entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
             entity.setEstilo(dto.getEstilo());
             entity.setTalla(dto.getTalla());
-            CarritoDTO cd = new CarritoDTO();
-            cd.setIdCarrito(dto.getCarroDuenio());
-            entity.setCarroDuenio(CarritoConverter.convertirDeDTOAEntidad(cd));
+
+
+
             return entity;
         } else {
             return null;
