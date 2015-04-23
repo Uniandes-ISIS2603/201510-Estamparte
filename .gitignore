@@ -3,3 +3,5 @@
 /backend/Estamparte.logic/target/
 /backend/Estamparte.service/target/
 *.class
+/Estamparte.web.test/nbproject/private/
+/Estamparte.web.test/target/
