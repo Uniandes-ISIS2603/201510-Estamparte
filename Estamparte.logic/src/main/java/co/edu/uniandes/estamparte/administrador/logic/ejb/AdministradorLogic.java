@@ -45,6 +45,12 @@ public class AdministradorLogic implements IAdministradorLogic{
         em.persist(entidad);
         return AdministradorConverter.convertirDeEntidadADTO(entidad);
     }
+    
+    
+    public List<AdministradorDTO> obtenerAdministradores() {
+        Query q = em.createQuery("select u from AdministradorEntity u");
+        return AdministradorConverter.convertirDeListaEntidadesAListaDTO(q.getResultList());
+    }
 
     public AdministradorPageDTO obtenerAdministradores(Integer pagina, Integer datosMaximos) {
         Query cuenta = em.createQuery("select count(u) from AdministradorEntity u");
@@ -57,7 +63,7 @@ public class AdministradorLogic implements IAdministradorLogic{
         }
         AdministradorPageDTO respuesta = new AdministradorPageDTO();
         respuesta.setTotalAdministradores(cuentaReg);
-        respuesta.setadministradores(ArtistaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
+        respuesta.setAdministradores(AdministradorConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
 
