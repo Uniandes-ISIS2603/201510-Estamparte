@@ -82,7 +82,7 @@ public class EstampaLogic implements IEstampaLogic {
     @Override
     public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos) {
 
-        Query cuenta = manejador.createQuery("select count(u) from EstampaEntity u");
+        Query cuenta = manejador.createQuery("select count(u) from EstampaEntity u where u.duenho.id = '"+idArtista+"'");
         Long cuentaReg = 0L;
         cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
         Query q = manejador.createQuery("select u from EstampaEntity u where u.duenho.id =  '"+idArtista+"'");
