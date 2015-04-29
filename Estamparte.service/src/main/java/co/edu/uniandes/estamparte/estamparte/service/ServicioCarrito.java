@@ -42,12 +42,6 @@ public class ServicioCarrito {
         return carritoLogic.crearCarrito(carrito);
     }
     
-    /*
-    @GET
-    public List<CarritoDTO> darCarritos(){
-        return carritoLogic.darCarritos();
-    }
-    */
     
     @GET
     public CarritoPageDTO darCarritos(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
