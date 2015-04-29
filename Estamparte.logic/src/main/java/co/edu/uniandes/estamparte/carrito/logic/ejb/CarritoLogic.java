@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.carrito.logic.ejb;
 
+import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.ejb.CamisetaLogic;
@@ -74,6 +75,8 @@ public class CarritoLogic implements ICarritoLogic {
         CamisetaDTO respuesta = null;
         if(entidad != null){
             respuesta = camisetaLogic.crearCamiseta(camiseta);
+            entidad.agregarCamiseta(CamisetaConverter.persistenceDTO2Entity(respuesta));
+            em.merge(entidad);
         }
         return respuesta;
     }
