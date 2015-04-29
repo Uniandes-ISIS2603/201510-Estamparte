@@ -13,22 +13,21 @@ public class CamisetaPageDTO {
     private long total;
     
     private List<CamisetaDTO> camisetas;
-    
-    
-    public Long darTotal() {
+
+    public long getTotal() {
         return total;
     }
 
-    public void asignarTotal(Long total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 
-    public List<CamisetaDTO> darCamisetas() {
+    public List<CamisetaDTO> getCamisetas() {
         return camisetas;
     }
 
-    public void asignarCamisetas(List<CamisetaDTO> camisetas) {
+    public void setCamisetas(List<CamisetaDTO> camisetas) {
         this.camisetas = camisetas;
     }
-    
+       
 }

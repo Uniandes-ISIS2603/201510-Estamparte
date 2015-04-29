@@ -29,7 +29,8 @@ public class EstampaEntity {
     private ArtistaEntity duenho;
     
     //Camiseta a la que pertenece
-    @ManyToMany(mappedBy="estampas")
+    @ManyToMany
+    @JoinColumn(name="CAMISETA_ID")
     private List<CamisetaEntity> camisetas;
     
     //Nombre de la estampa

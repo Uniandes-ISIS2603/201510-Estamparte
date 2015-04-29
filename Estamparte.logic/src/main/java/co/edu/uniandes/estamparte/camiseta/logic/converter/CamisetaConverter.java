@@ -12,7 +12,6 @@ import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
 import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
-import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,17 +48,17 @@ public class CamisetaConverter{
             entity.setNombre(dto.getNombre());
             entity.setColor(dto.getColor());
             entity.setCosto(dto.getCosto());
-            List<EstampaEntity> estampas = new ArrayList<EstampaEntity>();
+            List<EstampaDTO> estampas = new ArrayList<EstampaDTO>();
             long[] ids= dto.getEstampas();
             if(ids!=null){
             for(long id: ids)
             {
-                EstampaEntity estampa = new EstampaEntity();
-                estampa.setId(id);
-                estampas.add(estampa);
+                EstampaDTO ed = new EstampaDTO();
+                ed.setId(id);
+                estampas.add(ed);
             }
             }
-            entity.setEstampas(estampas);
+            entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
             entity.setEstilo(dto.getEstilo());
             entity.setTalla(dto.getTalla());
 
