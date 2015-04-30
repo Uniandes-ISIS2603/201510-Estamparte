@@ -57,11 +57,25 @@ public class CarritoEntity {
     
     public void eliminarCamiseta(CamisetaEntity camiseta){
         camisetas.remove(camiseta);
+        
     }
     
     public void eliminarListaDeCamisetas(List<CamisetaEntity> aEliminar){
         camisetas.removeAll(aEliminar);
     }
+    
+    public void actualizarCamiseta(CamisetaEntity camiseta){
+        boolean end =false;
+        for(int i=0; i<camisetas.size() && !end; i++){
+            if(camisetas.get(i).getId() == camiseta.getId()){
+                camisetas.set(i, camiseta);
+                end=true;
+            }
+                
+        }
+    }
+
+    
     
     
 }

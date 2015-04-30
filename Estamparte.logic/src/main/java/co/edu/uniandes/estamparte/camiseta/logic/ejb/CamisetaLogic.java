@@ -105,5 +105,5 @@ public class CamisetaLogic implements ICamisetaLogic  {
         Query q = entityManager.createQuery("delete from CamisetaEntity u");
         q.executeUpdate();
     }
-    
+       
 }

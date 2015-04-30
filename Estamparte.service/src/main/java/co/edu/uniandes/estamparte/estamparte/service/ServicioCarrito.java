@@ -56,8 +56,9 @@ public class ServicioCarrito {
     
     @GET
     @Path("{CARRITO_ID}/camisetas")
-    public CamisetaPageDTO darCamisetasCarrito(@PathParam("CARRITO_ID") long idCarrito, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
-        return carritoLogic.darCamisetasCarrito(idCarrito, pagina, datosMaximos);
+    public CamisetaPageDTO darCamisetasCarrito(@PathParam("CARRITO_ID") long idCarrito){
+        return carritoLogic.obtenerCamisetasDeCarrito(idCarrito);
+        //return carritoLogic.darCamisetasCarrito(idCarrito, pagina, datosMaximos);
     }
     
     @PUT

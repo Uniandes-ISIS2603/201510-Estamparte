@@ -92,8 +92,18 @@ public class CarritoLogic implements ICarritoLogic {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         CamisetaDTO respuesta = null;
         if(entidad != null){
+            entidad.actualizarCamiseta(CamisetaConverter.persistenceDTO2Entity(camiseta));
+            em.merge(entidad);
             respuesta = camisetaLogic.actualizarCamiseta(camiseta);
         }
+        return respuesta;
+    }
+    
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(long idCarrito){
+        CarritoEntity carrito = em.find(CarritoEntity.class, idCarrito);
+        CamisetaPageDTO respuesta = new CamisetaPageDTO();
+        respuesta.setTotal(carrito.getCamisetas().size());
+        respuesta.setCamisetas(CamisetaConverter.entity2PersistenceDTOList(carrito.getCamisetas()));
         return respuesta;
     }
 }
