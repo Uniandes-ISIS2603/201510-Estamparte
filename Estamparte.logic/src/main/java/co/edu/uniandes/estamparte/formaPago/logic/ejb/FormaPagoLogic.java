@@ -25,7 +25,7 @@ public class FormaPagoLogic implements IFormaPagoLogic{
     }
     
     public List<FormaPagoDTO> darFormasPago(){
-        Query consulta = em.createQuery("select u from ArtistaEntity u");
+        Query consulta = em.createQuery("select u from FormaPagoEntity u");
         return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
     }
     

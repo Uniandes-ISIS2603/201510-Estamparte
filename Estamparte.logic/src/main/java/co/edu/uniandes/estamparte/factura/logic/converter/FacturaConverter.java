@@ -27,7 +27,7 @@ public class FacturaConverter
         if (entity != null) {
             FacturaDTO dto = new FacturaDTO();
             dto.setIdComprador(entity.getComprador().getId());
-            dto.setIdFormaPago(entity.getFormaPago().getNumTarjeta());
+            dto.setIdFormaPago(entity.getFormaPago().getNumeroTarjeta());
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setIdFactura(entity.getIdFactura());
             dto.setIdCarrito(entity.getCarrito().getIdCarrito());
@@ -47,7 +47,7 @@ public class FacturaConverter
             entity.setComprador(comp);
             
             FormaPagoEntity form = new FormaPagoEntity();
-            form.setNumTarjeta(dto.getIdFormaPago());
+            form.setNumeroTarjeta(dto.getIdCarrito());
             entity.setFormaPago(form);
             
             entity.setFechaCompra(dto.getFechaCompra());
