@@ -8,7 +8,7 @@ package co.edu.uniandes.estamparte.estamparte.service;
 import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
-import java.util.List;
+import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -18,6 +18,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -43,8 +44,8 @@ public class ServicioComprador {
     }
      
     @GET
-    public List<CompradorDTO> getCompradores(){
-        return compradorlogic.getCompradores();
+    public CompradorPageDTO getCompradores(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return compradorlogic.getCompradores(pagina, datosMaximos);
     }
     
     @GET

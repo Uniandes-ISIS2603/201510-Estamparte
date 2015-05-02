@@ -4,7 +4,6 @@
 package co.edu.uniandes.estamparte.formaPago.logic.entity;
 
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
-import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 @Entity
@@ -45,7 +42,7 @@ public class FormaPagoEntity {
     private String direccionCorrespondencia;
     
     //Comprador duenio
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="COMPRADOR_ID")
     private CompradorEntity comprador;
 

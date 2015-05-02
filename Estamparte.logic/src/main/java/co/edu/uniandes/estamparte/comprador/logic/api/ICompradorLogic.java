@@ -9,6 +9,7 @@ import co.edu.uniandes.estamparte.camiseta.logic.api.*;
 import co.edu.uniandes.estamparte.estampa.logic.api.*;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 
 
 import java.util.*;
@@ -16,14 +17,24 @@ import java.util.*;
 
 
 public interface ICompradorLogic {
-      public CompradorDTO createComprador(CompradorDTO detalles);
+    
+    public CompradorDTO createComprador(CompradorDTO detalles);
         
-    public List<CompradorDTO> getCompradores();
+    public CompradorPageDTO getCompradores(Integer pagina, Integer datosMaximos);
     
-    public CompradorDTO getComprador(Long id);
+    public CompradorDTO getComprador(long id);
     
-    public CompradorDTO deleteComprador(Long id);
+    public CompradorDTO deleteComprador(long id);
     
     public void updateComprador(CompradorDTO detalles);
+    
+    public FormaPagoDTO crearFormaPagoComprador(long idComprador, FormaPagoDTO formaPago);
+    
+    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador);
+    
+    public FormaPagoDTO actualizarFormaPagoComprador(long idComprador, FormaPagoDTO formaPago);
+    
+    public void eliminarFormaPagoComprador(long idComprador, long idFormaPago);
+
     
 }

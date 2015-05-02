@@ -1,11 +1,5 @@
 package co.edu.uniandes.estamparte.artista.persistence;
 
-import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.converter.AdministradorConverter;
-import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
-import co.edu.uniandes.estamparte.administrador.logic.ejb.AdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
-import co.edu.uniandes.estamparte.administrador.persistence.*;
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
@@ -37,14 +31,14 @@ public class ArtistaPersistenceTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
-                //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportPersistance.java'
                 .addPackage(IArtistaLogic.class.getPackage())
                 .addPackage(ArtistaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(ArtistaEntity.class.getPackage())
                 .addPackage(ArtistaDTO.class.getPackage())
                 .addPackage(ArtistaConverter.class.getPackage())
-                //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
+                //Finalmente se aï¿½aden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mï¿½nimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }

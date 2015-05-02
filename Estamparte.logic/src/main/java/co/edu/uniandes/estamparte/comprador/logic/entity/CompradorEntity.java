@@ -4,10 +4,6 @@
 package co.edu.uniandes.estamparte.comprador.logic.entity;
 
 import co.edu.uniandes.estamparte.carrito.logic.entity.*;
-import co.edu.uniandes.estamparte.artista.logic.entity.*;
-import co.edu.uniandes.estamparte.camiseta.logic.entity.*;
-import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
-import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
@@ -58,6 +54,17 @@ public class CompradorEntity {
     
     public void eliminarFormaPago(FormaPagoEntity formaPago){
         formasPago.remove(formaPago);
+    }
+    
+    public void actualizarFormaPago(FormaPagoEntity formaPago){
+        boolean end =false;
+        for(int i=0; i<formasPago.size() && !end; i++){
+            if(formasPago.get(i).getId() == formaPago.getId()){
+                formasPago.set(i, formaPago);
+                end=true;
+            }
+                
+        }
     }
        
 
@@ -148,4 +155,6 @@ public class CompradorEntity {
     public void setFacturas(List<FacturaEntity> facturas) {
         this.facturas = facturas;
     }
+    
+    
 }

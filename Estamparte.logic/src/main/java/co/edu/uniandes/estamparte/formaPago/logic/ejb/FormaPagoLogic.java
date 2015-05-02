@@ -24,10 +24,6 @@ public class FormaPagoLogic implements IFormaPagoLogic{
         return FormaPagoConverter.convertirDeEntidadADTO(entity);
     }
     
-    public List<FormaPagoDTO> darFormasPago(){
-        Query consulta = em.createQuery("select u from FormaPagoEntity u");
-        return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
-    }
     
     public FormaPagoPageDTO darFormasPago(Integer pagina, Integer datosMaximos){
         Query cantidad = em.createQuery("select count(formaPago) from FormaPagoEntity formaPago");
@@ -43,9 +39,9 @@ public class FormaPagoLogic implements IFormaPagoLogic{
         return respuesta;
     }
     
-    public void actualizarFormaPago(FormaPagoDTO formaPago){
+    public FormaPagoDTO actualizarFormaPago(FormaPagoDTO formaPago){
         FormaPagoEntity entity = em.merge(FormaPagoConverter.convertirDeDTOAEntidad(formaPago));
-        FormaPagoConverter.convertirDeEntidadADTO(entity);
+        return FormaPagoConverter.convertirDeEntidadADTO(entity);
     }
     
     public void eliminarFormaPago(Long numeroTarjeta){
@@ -56,5 +52,10 @@ public class FormaPagoLogic implements IFormaPagoLogic{
     public void eliminarFormasPago() {
         Query consulta = em.createQuery("delete from FormaPagoEntity formasPago");
         consulta.executeUpdate();
+    }
+
+    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador) {
+        Query consulta = em.createQuery("select u from FormaPagoEntity u where u.comprador.id = '"+idComprador+"'");
+        return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
     }
 }
