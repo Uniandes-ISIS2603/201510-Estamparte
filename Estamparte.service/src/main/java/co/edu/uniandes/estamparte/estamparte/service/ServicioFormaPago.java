@@ -51,12 +51,6 @@ public class ServicioFormaPago {
         formaPagoLogic.actualizarFormaPago(formaPago);
     }
     
-    /*
-    @GET
-    public List<FormaPagoDTO> darFormasPago(){
-        return formaPagoLogic.darFormasPago();
-    }
-    */
     
     @DELETE
     @Path("{FORMAPAGO_ID}")
