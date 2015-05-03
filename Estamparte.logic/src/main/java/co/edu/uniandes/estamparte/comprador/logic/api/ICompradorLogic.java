@@ -26,7 +26,7 @@ public interface ICompradorLogic {
     
     public CompradorDTO deleteComprador(long id);
     
-    public void updateComprador(CompradorDTO detalles);
+    public void updateComprador(long id,CompradorDTO detalles);
     
     public FormaPagoDTO crearFormaPagoComprador(long idComprador, FormaPagoDTO formaPago);
     

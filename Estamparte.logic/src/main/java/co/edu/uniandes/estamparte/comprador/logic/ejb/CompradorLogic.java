@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.comprador.logic.ejb;
 
+import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
@@ -26,6 +27,10 @@ public class CompradorLogic implements ICompradorLogic{
     
     @Inject
     IFormaPagoLogic formaPagoLogic;
+    
+    @Inject
+    ICarritoLogic carritoLogic;
+             
 
     @Override
     public CompradorDTO createComprador(CompradorDTO detalles) {
@@ -58,13 +63,24 @@ public class CompradorLogic implements ICompradorLogic{
     @Override
     public CompradorDTO deleteComprador(long id) {
         CompradorEntity entity = entityManager.find(CompradorEntity.class, id);
+        if(entity!=null){
+        carritoLogic.eliminarCarrito(entity.getCarrito().getIdCarrito());
         entityManager.remove(entity);    
-        return CompradorConverter.entity2PersistenceDTO(entity);    }
+        return CompradorConverter.entity2PersistenceDTO(entity);
+        }
+        else
+            return null;
+    }
 
     @Override
-    public void updateComprador(CompradorDTO detalles) {
-        CompradorEntity entity = entityManager.merge(CompradorConverter.persistenceDTO2Entity(detalles));
-        CompradorConverter.entity2PersistenceDTO(entity);
+    public void updateComprador(long id, CompradorDTO detalles) {
+        CompradorEntity entity = entityManager.find(CompradorEntity.class, id);
+        if(entity!=null){
+        entityManager.merge(CompradorConverter.persistenceDTO2Entity(detalles));
+        }
+        else{
+            entityManager.persist(CompradorConverter.persistenceDTO2Entity(detalles));
+        }
     }
 
     public FormaPagoDTO crearFormaPagoComprador(long idComprador, FormaPagoDTO formaPago) {

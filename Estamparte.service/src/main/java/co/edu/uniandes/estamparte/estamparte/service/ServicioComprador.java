@@ -53,18 +53,20 @@ public class ServicioComprador {
     
     @GET
     @Path("{id}")
-    public CompradorDTO getComprador(Long id){
+    public CompradorDTO getComprador(@PathParam("id")long id){
         return compradorlogic.getComprador(id);
     }
     
     @DELETE
-    public CompradorDTO deleteComprador(Long id){
+    @Path("{id}")
+    public CompradorDTO deleteComprador(@PathParam("id")long id){
         return compradorlogic.deleteComprador(id);
     }
     
     @PUT
-    public void updateComprador(CompradorDTO detalles){
-        compradorlogic.updateComprador(detalles);
+    @Path("{id}")
+    public void updateComprador(@PathParam("id")long id,CompradorDTO detalles){
+        compradorlogic.updateComprador(id,detalles);
     }
     
     @POST
