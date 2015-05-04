@@ -83,7 +83,7 @@ public class ServicioComprador {
     
     @PUT
     @Path("{id}/formaPago/{id2}")
-    public FormaPagoDTO actualizarFormaPagoComprador(@PathParam("id")long idComprador, @PathParam("id")long idFormaPago, FormaPagoDTO formaPago){
+    public FormaPagoDTO actualizarFormaPagoComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFormaPago, FormaPagoDTO formaPago){
         return compradorlogic.actualizarFormaPagoComprador(idComprador, formaPago);
     }
     

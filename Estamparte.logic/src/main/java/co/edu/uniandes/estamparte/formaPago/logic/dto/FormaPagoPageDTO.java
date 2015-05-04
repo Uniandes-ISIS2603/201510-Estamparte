@@ -13,7 +13,7 @@ public class FormaPagoPageDTO {
     
     private List<FormaPagoDTO> formasPago;
 
-    public Long getNumeroFormasPago() {
+    public Long getCantidad() {
         return cantidad;
     }
     

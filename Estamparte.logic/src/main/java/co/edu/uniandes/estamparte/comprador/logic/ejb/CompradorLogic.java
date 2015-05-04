@@ -87,10 +87,11 @@ public class CompradorLogic implements ICompradorLogic{
         CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
         FormaPagoDTO respuesta = null;
         if(comprador!=null){
-           respuesta = formaPagoLogic.crearFormaPago(formaPago);
+           //respuesta = formaPagoLogic.crearFormaPago(formaPago);
            FormaPagoEntity nuevaForma = FormaPagoConverter.convertirDeDTOAEntidad(formaPago);
            comprador.agregarFormaPago(nuevaForma);
            entityManager.merge(comprador);
+           respuesta = FormaPagoConverter.convertirDeEntidadADTO(nuevaForma);
         }
         return respuesta;
     }
@@ -103,7 +104,10 @@ public class CompradorLogic implements ICompradorLogic{
         CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
         FormaPagoDTO respuesta = null;
         if(comprador!=null){
-            respuesta = formaPagoLogic.actualizarFormaPago(formaPago);
+            FormaPagoEntity forma = FormaPagoConverter.convertirDeDTOAEntidad(formaPago);
+            comprador.actualizarFormaPago(forma);
+            entityManager.merge(comprador);
+            respuesta = FormaPagoConverter.convertirDeEntidadADTO(forma);
         }
         return respuesta;
     }
