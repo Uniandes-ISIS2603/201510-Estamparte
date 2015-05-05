@@ -110,4 +110,51 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(dto.getCedula(), entity.getCedula());
         Assert.assertEquals(dto.getCorreo(), entity.getCorreo());
     }
+    
+    @Test
+    public void getAdminTest(){
+         PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+        AdministradorDTO dto = factory.manufacturePojo(AdministradorDTO.class);
+        AdministradorDTO result = adminPersistence.crearAdministrador(dto);
+        Assert.assertNotNull(result);    
+        Assert.assertNotNull(dto);
+        
+        AdministradorDTO entity = adminPersistence.getAdministrador(result.getId());
+        
+         Assert.assertEquals(dto.getId(), entity.getId());
+        Assert.assertEquals(dto.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(dto.getContrasena(), entity.getContrasena());
+        Assert.assertEquals(dto.getNombre(), entity.getNombre());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
+        Assert.assertEquals(dto.getCorreo(), entity.getCorreo());
+
+    }
+    
+    @Test
+    public void deleteAdminTest(){
+         PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+        AdministradorDTO dto = factory.manufacturePojo(AdministradorDTO.class);
+        AdministradorDTO result = adminPersistence.crearAdministrador(dto);
+        Assert.assertNotNull(result);
+        AdministradorDTO dtop = adminPersistence.eliminarAdministrador(result.getId());
+        Assert.assertNotNull(dtop);
+        
+        
+        AdministradorEntity entity = em.find(AdministradorEntity.class, dtop.getId());
+        Assert.assertNull(entity);
+        
+    }
+    
+    @Test
+    public void updateAdminTest(){
+         PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+        AdministradorDTO dto = factory.manufacturePojo(AdministradorDTO.class);
+        AdministradorDTO result = adminPersistence.crearAdministrador(dto);
+        Assert.assertNotNull(result);
+        Assert.assertNotNull(dto);
+        result.setCedula(123);
+        
+        AdministradorDTO ress = adminPersistence.actualizarAdministrador(result);
+        Assert.assertEquals(result.getCedula(), ress.getCedula());
+    }
 }

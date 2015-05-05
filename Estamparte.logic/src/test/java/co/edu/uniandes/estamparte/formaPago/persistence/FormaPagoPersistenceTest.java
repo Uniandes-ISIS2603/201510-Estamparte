@@ -12,11 +12,22 @@ import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.ejb.FormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 
 
@@ -48,4 +59,70 @@ public class FormaPagoPersistenceTest {
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
+    
+    @Inject
+     private IFormaPagoLogic adminPersistence;
+     @PersistenceContext
+     private EntityManager em;
+     @Inject
+     UserTransaction utx;
+    
+     @Before
+    public void configTest() {
+        System.out.println("em: " + em);
+        try {
+            utx.begin();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from FormaPagoEntity").executeUpdate();
+    }
+
+    private List<FormaPagoEntity> data = new ArrayList<FormaPagoEntity>();
+
+    private void insertData() {
+        for (int i = 0; i < 3; i++) {
+            PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+            FormaPagoEntity entity = factory.manufacturePojo(FormaPagoEntity.class);
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+    
+    
+    @Test
+    public void createFormaPagoTest() {
+        // se instancia el generador de datos Podam
+                Assert.assertTrue(true);
+
+    }
+    /**
+    @Test
+    public void getFormaPagoTest(){
+                Assert.assertTrue(true);
+
+    }
+    
+    @Test
+    public void deleteFormaPagoTest(){
+                Assert.assertTrue(true);
+
+    }
+    
+    @Test
+    public void updateFormaPagoTest(){
+        Assert.assertTrue(true);
+    }
+    */
 }

@@ -1,25 +1,34 @@
 package co.edu.uniandes.estamparte.artista.persistence;
 
-import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.converter.AdministradorConverter;
-import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
-import co.edu.uniandes.estamparte.administrador.logic.ejb.AdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
-import co.edu.uniandes.estamparte.administrador.persistence.*;
+
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
+import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
 import co.edu.uniandes.estamparte.artista.logic.ejb.ArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
+import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
+import co.edu.uniandes.estamparte.estampa.logic.ejb.EstampaLogic;
+import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-
-
-
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,7 +41,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class ArtistaPersistenceTest {
-    
+    /**
     public static final String DEPLOY = "Prueba";
     @Deployment
     public static WebArchive createDeployment() {
@@ -43,10 +52,67 @@ public class ArtistaPersistenceTest {
                 //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(ArtistaEntity.class.getPackage())
                 .addPackage(ArtistaDTO.class.getPackage())
+                                .addPackage(ArtistaPageDTO.class.getPackage())
+
                 .addPackage(ArtistaConverter.class.getPackage())
+                 .addPackage(IEstampaLogic.class.getPackage())
+                .addPackage(EstampaLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(EstampaEntity.class.getPackage())
+                .addPackage(EstampaDTO.class.getPackage())
+                .addPackage(EstampaConverter.class.getPackage())
                 //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
+    
+     @Inject
+     private IArtistaLogic artistaPersistence;
+     @PersistenceContext
+     private EntityManager em;
+     @Inject
+     UserTransaction utx;
+     
+      @Before
+    public void configTest() {
+        System.out.println("em: " + em);
+        try {
+            utx.begin();
+            //clearData();
+            //insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ArtistaEntity").executeUpdate();
+    }
+
+    private List<ArtistaEntity> data = new ArrayList<ArtistaEntity>();
+
+    private void insertData() {
+        for (int i = 0; i < 3; i++) {
+            PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+            ArtistaEntity entity = factory.manufacturePojo(ArtistaEntity.class);
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+    
+    
+    @Test
+    public void asd()
+    {
+        
+        junit.framework.Assert.assertTrue(true);
+    }
+   */
     
 }

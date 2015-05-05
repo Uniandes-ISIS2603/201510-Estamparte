@@ -37,10 +37,15 @@ import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.ejb.FormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.io.File;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 
@@ -57,7 +62,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class FacturaPersistenceTest {
-    
+   /** 
      public static final String DEPLOY = "Prueba";
     @Deployment
     public static WebArchive createDeployment() {
@@ -105,4 +110,34 @@ public class FacturaPersistenceTest {
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
     
+    @Inject
+     private IFacturaLogic adminPersistence;
+     @PersistenceContext
+     private EntityManager em;
+     @Inject
+     UserTransaction utx;
+    
+    
+    
+    
+    @Test
+    public void createFacturaTest() {
+        // se instancia el generador de datos Podam
+        
+    }
+    
+    @Test
+    public void getFacturaTest(){
+        
+    }
+    
+    @Test
+    public void deleteFacturaTest(){
+        
+    }
+    
+    @Test
+    public void updateFacturaTest(){
+        
+    }*/
 }
