@@ -7,6 +7,7 @@ import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaPageDTO;
 import co.edu.uniandes.estamparte.camiseta.logic.ejb.CamisetaLogic;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
@@ -72,9 +73,14 @@ public class CarritoLogic implements ICarritoLogic {
     
     public CamisetaDTO agregarCamisetaACarrito(long idCarrito, CamisetaDTO camiseta) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
+        CamisetaEntity camisetaBD = em.find(CamisetaEntity.class, camiseta.getId());
         CamisetaDTO respuesta = null;
         if(entidad != null){
-            respuesta = camisetaLogic.crearCamiseta(camiseta);
+            if(camisetaBD == null)
+                respuesta = camisetaLogic.crearCamiseta(camiseta);
+            else
+                respuesta = CamisetaConverter.entity2PersistenceDTO(camisetaBD);
+            
             entidad.agregarCamiseta(CamisetaConverter.persistenceDTO2Entity(respuesta));
             em.merge(entidad);
         }
@@ -84,7 +90,9 @@ public class CarritoLogic implements ICarritoLogic {
     public void eliminarCamisetaCarrito(long idCarrito, long idCamiseta) {
         CarritoEntity entidad = em.find(CarritoEntity.class, idCarrito);
         if(entidad != null){
-            camisetaLogic.eliminarCamiseta(idCamiseta);
+            entidad.eliminarCamiseta(em.find(CamisetaEntity.class, idCamiseta));
+            em.merge(entidad);
+            
         }
     }
     

@@ -9,63 +9,93 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class FormaPagoDTO {
     
+    //Id
+    private long id;
+    
+    //Nombre de la forma de pago
     private String nombre;
     
-    private String comprador;
+    //Tipo de la forma de pago
+    private String tipo;
     
+    //Numero de tarjeta
     private long numeroTarjeta;
     
-    private Date fechaVencimiento;
+    //Fecha de vencimiento
+    private String fechaVencimiento;
     
+    //Codigo de seguridad
     private int codigoSeguridad;
     
+    //Direccion de correspondencia
     private String direccionCorrespondencia;
     
-    public String getNombre(){
+    //Id del comprador duenio
+    private long idComprador;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public void setNombre(String nNombre){
-        nombre = nNombre;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public String getComprador(){
-        return comprador;
+
+    public String getTipo() {
+        return tipo;
     }
-    
-    public void setComprador(String nComprador){
-        comprador = nComprador;
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    
-    public void setFechaVencimiento(Date fecha){
-        fechaVencimiento = fecha;
-    }
-    
-    public Date getFechaVencimiento(){
-        return fechaVencimiento;
-    }
-    
-    public long getNumTarjeta(){
+
+    public long getNumeroTarjeta() {
         return numeroTarjeta;
     }
-    
-    public void setNumTarjeta(long nNumTarjeta){
-        numeroTarjeta = nNumTarjeta;
-    } 
-    
-    public int getCodSeguridad(){
+
+    public void setNumeroTarjeta(long numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public int getCodigoSeguridad() {
         return codigoSeguridad;
     }
-    
-    public void setCodSeguridad(int nCodSeguridad){
-        codigoSeguridad = nCodSeguridad;
+
+    public void setCodigoSeguridad(int codigoSeguridad) {
+        this.codigoSeguridad = codigoSeguridad;
     }
-    
-    public String getDireccion(){
+
+    public String getDireccionCorrespondencia() {
         return direccionCorrespondencia;
     }
+
+    public void setDireccionCorrespondencia(String direccionCorrespondencia) {
+        this.direccionCorrespondencia = direccionCorrespondencia;
+    }
     
-    public void setDireccion(String nDireccion){
-        direccionCorrespondencia = nDireccion;
-    }  
+    public long getIdComprador(){
+        return idComprador;
+    }
+    
+    public void setIdComprador(long idComprador){
+        this.idComprador = idComprador;
+    }
+    
+  
 }

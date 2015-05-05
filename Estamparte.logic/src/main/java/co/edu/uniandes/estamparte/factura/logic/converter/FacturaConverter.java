@@ -12,7 +12,6 @@ import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
-import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity_;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 
 
@@ -27,7 +26,7 @@ public class FacturaConverter
         if (entity != null) {
             FacturaDTO dto = new FacturaDTO();
             dto.setIdComprador(entity.getComprador().getId());
-            dto.setIdFormaPago(entity.getFormaPago().getNumTarjeta());
+            dto.setIdFormaPago(entity.getFormaPago().getNumeroTarjeta());
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setIdFactura(entity.getIdFactura());
             dto.setIdCarrito(entity.getCarrito().getIdCarrito());
@@ -47,7 +46,7 @@ public class FacturaConverter
             entity.setComprador(comp);
             
             FormaPagoEntity form = new FormaPagoEntity();
-            form.setNumTarjeta(dto.getIdFormaPago());
+            form.setNumeroTarjeta(dto.getIdCarrito());
             entity.setFormaPago(form);
             
             entity.setFechaCompra(dto.getFechaCompra());

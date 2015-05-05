@@ -1,0 +1,51 @@
+<div id="carrito">
+
+	<div id="comprarcarrito">
+
+		<form id="formFormapagoCarrito" name="formularioComprar">
+
+			<button class="btn btn-default col-md-4 formacomprar" ng-click="comprar()" ng-disabled="compraInvalida()">Comprar</button>
+
+			<div class="form-group col-md-8">
+
+				<select id="formapagoCarrito" class="form-control" ng-options="(f.tipo + ' - ' + f.numeroTarjeta) for f in formas" ng-model="pago">
+					<option value="" disabled selected>Forma de pago</option>
+				</select>
+
+			</div>
+
+		</form>
+
+	</div>
+
+	<ul>
+
+		<li class="miestampa" ng-repeat="camisa in records">
+
+			<!-- <img class="img-circle" ng-src="{{ estampa.imagenes[0] }}"> -->
+
+			<p>
+				{{ camisa.nombre }}
+				<br>
+				Precio: {{ camisa.precio | currency }}
+				<br>
+				Cantidad: 
+			</p>
+
+			<input class="cantidadcamisa" type="number" ng-model="camisa.cantidad" ng-change="cambiarCantidad(camisa)">
+
+			<button class="btn btn-default acamisa" ng-click="quitar(camisa)">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+
+			<button class="btn btn-default acamisa" ng-click="acamisa(camisa)">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+
+			<hr>
+
+		</li>
+
+	</ul>
+
+</div>

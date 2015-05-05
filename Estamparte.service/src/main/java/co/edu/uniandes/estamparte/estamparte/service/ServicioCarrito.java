@@ -58,7 +58,7 @@ public class ServicioCarrito {
     @Path("{CARRITO_ID}/camisetas")
     public CamisetaPageDTO darCamisetasCarrito(@PathParam("CARRITO_ID") long idCarrito){
         return carritoLogic.obtenerCamisetasDeCarrito(idCarrito);
-        //return carritoLogic.darCamisetasCarrito(idCarrito, pagina, datosMaximos);
+        
     }
     
     @PUT
@@ -72,13 +72,7 @@ public class ServicioCarrito {
     public void eliminarCamisetaCarrito(@PathParam("CARRITO_ID") long idCarrito, @PathParam("CAMISETA_ID") long idCamiseta){
         carritoLogic.eliminarCamisetaCarrito(idCarrito, idCamiseta);
     }
-    
-    @PUT
-    @Path("{CARRITO_ID}")
-    public void actualizarCarrito(@PathParam("CARRITO_ID") long idCarrito, CarritoDTO carrito){
-        carritoLogic.actualizarCarrito(carrito);
-    }
-    
+        
     @DELETE
     @Path("{CARRITO_ID}")
     public void eliminarCarrito(@PathParam("CARRITO_ID") long id){

@@ -3,11 +3,6 @@
 /backend/Estamparte.logic/target/
 /backend/Estamparte.service/target/
 *.class
-<<<<<<< HEAD
-/Estamparte.service/target/
-/Estamparte.service/src/main/webapp/src/nbproject/private/
-=======
 /Estamparte.web.test/nbproject/private/
 /Estamparte.web.test/target/
->>>>>>> origin/master
 /Estamparte.logic/target/

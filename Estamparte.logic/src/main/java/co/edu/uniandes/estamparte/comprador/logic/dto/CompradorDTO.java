@@ -25,89 +25,79 @@ public class CompradorDTO
     private String clave;
     private String correo;
     private int cedula;
-    
-    
-    
-    
-    public String getCorreo()
-    {
-        return correo;
-    }
-    public void setCorreo(String pCorreo)
-    {
-        correo = pCorreo;
-    }
-    public int getCedula()
-    {
-        return cedula;
-    }
-    
-    public void setCedula(int pCedula)
-    {
-        cedula = pCedula;
-    }
-    public String getUsuario()
-    {
-        return usuario;
-    }
-    public void setUsuario(String pUsuario)
-    {
-        usuario = pUsuario;
-    }
-    public String getClave()
-    {
-        return clave;
-    }
-    public void setClave(String pClave)
-    {
-        clave = pClave;
-    }
-    public String getDireccion()
-    {
-        return direccion;
-    }
-    public void setDireccion(String pDireccion)
-    {
-        direccion = pDireccion;
-    }
-    
-    public int getTelefono()
-    {
-        return telefono;
-    }
-    
-    public void setTelefono(int pTelefono)
-    {
-        telefono = pTelefono;
-    }
-    
-    public String getNombre()
-    {
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public void setNombre(String pNom)
-    {
-        nombre = pNom;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    public long getId()
-    {
+
+    public long getId() {
         return id;
     }
-    
-    public void setId(long pId)
-    {
-        id = pId;
+
+    public void setId(long id) {
+        this.id = id;
     }
-    
-    public long getCarrito()
-    {
+
+    public long getIdCarrito() {
         return idCarrito;
     }
-    
-    public void setCarrito(long pCarrito)
-    {
-        idCarrito = pCarrito;
+
+    public void setIdCarrito(long idCarrito) {
+        this.idCarrito = idCarrito;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+    
+    
     
 }

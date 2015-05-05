@@ -16,6 +16,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import javax.inject.Inject;
 import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -33,6 +34,9 @@ public class ArtistaLogic implements IArtistaLogic{
     //Es una interfaz, maneja las operaciones de persistencia en los objetos
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
+    
+    @Inject
+    private IEstampaLogic estampaLogic;
     
 
     @Override
@@ -78,12 +82,14 @@ public class ArtistaLogic implements IArtistaLogic{
 
     @Override
     public void eliminarArtistas() {
+        estampaLogic.eliminarEstampas();
         Query q = em.createQuery("delete from ArtistaEntity u");
         q.executeUpdate();
     }
 
     @Override
     public ArtistaDTO eliminarArtista(Long id) {
+        estampaLogic.eliminarEstampasDeArtista(id);
         ArtistaEntity entidad = em.find(ArtistaEntity.class, id);
         em.remove(entidad);
         return ArtistaConverter.convertirDeEntidadADTO(entidad);

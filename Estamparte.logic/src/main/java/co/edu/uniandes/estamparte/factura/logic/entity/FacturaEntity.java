@@ -6,7 +6,6 @@ package co.edu.uniandes.estamparte.factura.logic.entity;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
-import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.*;
 import java.util.Date;
@@ -28,6 +27,7 @@ public class FacturaEntity {
     @OneToOne
     @JoinColumn(name="FORMAPAGO_ID")
     private FormaPagoEntity formaPago;
+    
     private String fechaCompra;
     
     @Id
@@ -90,7 +90,7 @@ public class FacturaEntity {
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.getNumTarjeta();
+        return formaPago.getNumeroTarjeta();
     }
     
     public Date getFechaVencimiento()
@@ -100,12 +100,12 @@ public class FacturaEntity {
     
     public int getCodigoSeguridad()
     {
-        return formaPago.getCodSeguridad();                
+        return formaPago.getCodigoSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.getDireccion();
+        return formaPago.getDireccionCorrespondencia();
     }
     
     public double getMontoTotal()

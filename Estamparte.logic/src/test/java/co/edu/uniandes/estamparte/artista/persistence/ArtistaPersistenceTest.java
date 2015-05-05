@@ -1,6 +1,9 @@
 package co.edu.uniandes.estamparte.artista.persistence;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
@@ -46,15 +49,16 @@ public class ArtistaPersistenceTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
-                //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportPersistance.java'
                 .addPackage(IArtistaLogic.class.getPackage())
                 .addPackage(ArtistaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(ArtistaEntity.class.getPackage())
                 .addPackage(ArtistaDTO.class.getPackage())
                                 .addPackage(ArtistaPageDTO.class.getPackage())
 
                 .addPackage(ArtistaConverter.class.getPackage())
+<<<<<<< HEAD
                  .addPackage(IEstampaLogic.class.getPackage())
                 .addPackage(EstampaLogic.class.getPackage())
                 //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
@@ -62,6 +66,9 @@ public class ArtistaPersistenceTest {
                 .addPackage(EstampaDTO.class.getPackage())
                 .addPackage(EstampaConverter.class.getPackage())
                 //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
+=======
+                //Finalmente se aï¿½aden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mï¿½nimo
+>>>>>>> origin/master
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }

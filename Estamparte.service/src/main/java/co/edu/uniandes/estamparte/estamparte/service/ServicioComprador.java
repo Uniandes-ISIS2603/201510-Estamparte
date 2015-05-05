@@ -8,6 +8,8 @@ package co.edu.uniandes.estamparte.estamparte.service;
 import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
+import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -17,7 +19,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -43,24 +47,50 @@ public class ServicioComprador {
     }
      
     @GET
-    public List<CompradorDTO> getCompradores(){
-        return compradorlogic.getCompradores();
+    public CompradorPageDTO getCompradores(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return compradorlogic.getCompradores(pagina, datosMaximos);
     }
     
     @GET
-    @Path("/{id}")
-    public CompradorDTO getComprador(Long id){
+    @Path("{id}")
+    public CompradorDTO getComprador(@PathParam("id")long id){
         return compradorlogic.getComprador(id);
     }
     
     @DELETE
-    public CompradorDTO deleteComprador(Long id){
+    @Path("{id}")
+    public CompradorDTO deleteComprador(@PathParam("id")long id){
         return compradorlogic.deleteComprador(id);
     }
     
     @PUT
-    public void updateComprador(CompradorDTO detalles){
-        compradorlogic.updateComprador(detalles);
+    @Path("{id}")
+    public void updateComprador(@PathParam("id")long id,CompradorDTO detalles){
+        compradorlogic.updateComprador(id,detalles);
+    }
+    
+    @POST
+    @Path("{id}/formaPago")
+    public FormaPagoDTO crearFormaPagoComprador(@PathParam("id")long idComprador, FormaPagoDTO formaPago){
+        return compradorlogic.crearFormaPagoComprador(idComprador, formaPago);
+    }
+    
+    @GET
+    @Path("{id}/formaPago")
+    public List<FormaPagoDTO> darFormasPagoComprador(@PathParam("id")long idComprador) {
+        return compradorlogic.darFormasPagoComprador(idComprador);
+    }
+    
+    @PUT
+    @Path("{id}/formaPago/{id2}")
+    public FormaPagoDTO actualizarFormaPagoComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFormaPago, FormaPagoDTO formaPago){
+        return compradorlogic.actualizarFormaPagoComprador(idComprador, formaPago);
+    }
+    
+    @DELETE
+    @Path("{id}/formaPago/{id2}")
+    public void eliminarFormaPagoComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFormaPago){
+        compradorlogic.eliminarFormaPagoComprador(idComprador, idFormaPago);
     }
     
 }

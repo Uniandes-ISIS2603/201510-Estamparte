@@ -9,6 +9,8 @@ import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +19,14 @@ public class FormaPagoConverter {
         if (entity != null) {
             FormaPagoDTO dto = new FormaPagoDTO();
             //Al objeto DTO se le asignan los atributos del objeto entity
-            dto.setCodSeguridad(entity.getCodSeguridad());
-            dto.setDireccion(entity.getDireccion());
-            dto.setFechaVencimiento(entity.getFechaVencimiento());
-            dto.setComprador(entity.getComprador().getUsuario());
+            dto.setId(entity.getId());
             dto.setNombre(entity.getNombre());
-            dto.setNumTarjeta(entity.getNumTarjeta());
+            dto.setTipo(entity.getTipo());
+            dto.setNumeroTarjeta(entity.getNumeroTarjeta());
+            dto.setFechaVencimiento(new SimpleDateFormat("dd/MM/yyyy").format(entity.getFechaVencimiento()));
+            dto.setCodigoSeguridad(entity.getCodigoSeguridad());
+            dto.setDireccionCorrespondencia(entity.getDireccionCorrespondencia());
+            dto.setIdComprador(entity.getComprador().getId());
             return dto;
         } else {
             return null;
@@ -30,19 +34,27 @@ public class FormaPagoConverter {
     }
 
     public static FormaPagoEntity convertirDeDTOAEntidad (FormaPagoDTO dto) {
-        if (dto != null) {
-            FormaPagoEntity entity = new FormaPagoEntity();
-            //Al objeto entity se le asignan los atributos del objeto dto
-            CompradorEntity comprador = new CompradorEntity();
-            comprador.setUsuario(dto.getComprador());
-            entity.setCodSeguridad(dto.getCodSeguridad());
-            entity.setDireccion(dto.getDireccion());
-            entity.setFechaVencimiento(dto.getFechaVencimiento());
-            entity.setComprador(comprador);
-            entity.setNombre(dto.getNombre());
-            entity.setNumTarjeta(dto.getNumTarjeta());
-            return entity;
-        } else {
+        try{
+            if (dto != null) {
+                FormaPagoEntity entity = new FormaPagoEntity();
+                CompradorEntity comprador = new CompradorEntity();
+                comprador.setId(dto.getIdComprador());
+                //Al objeto entity se le asignan los atributos del objeto dto
+                entity.setId(dto.getId());
+                entity.setNombre(dto.getNombre());
+                entity.setTipo(dto.getTipo());
+                entity.setNumeroTarjeta(dto.getNumeroTarjeta());
+                entity.setFechaVencimiento(new SimpleDateFormat("dd/MM/yyyy").parse(dto.getFechaVencimiento()));
+                entity.setCodigoSeguridad(dto.getCodigoSeguridad());
+                entity.setDireccionCorrespondencia(dto.getDireccionCorrespondencia());
+                entity.setComprador(comprador);
+                return entity;
+            } else {
+                return null;
+            }
+        }
+        catch(ParseException e){
+            System.out.println("Error en conversion de fecha: "+e.getMessage());
             return null;
         }
     }

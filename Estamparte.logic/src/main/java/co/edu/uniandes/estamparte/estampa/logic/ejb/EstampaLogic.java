@@ -95,5 +95,13 @@ public class EstampaLogic implements IEstampaLogic {
         respuesta.setEstampas(EstampaConverter.convertirDeListaEntidadesAListaDTO(q.getResultList()));
         return respuesta;
     }
+
+    @Override
+    public void eliminarEstampasDeArtista(Long idArtista) {
+        Query q = manejador.createQuery("delete from EstampaEntity u where u.duenho.id = '"+idArtista+"'");
+        q.executeUpdate();
+    }
+    
+   
     
 }
