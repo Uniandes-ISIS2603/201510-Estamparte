@@ -133,8 +133,8 @@ public class ArtistaPersistenceTest {
         System.out.println("em: " + em);
         try {
             utx.begin();
-            //clearData();
-            //insertData();
+            clearData();
+            insertData();
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,19 +154,88 @@ public class ArtistaPersistenceTest {
 
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
-            ArtistaEntity entity = factory.manufacturePojo(ArtistaEntity.class);
+            ArtistaEntity entity = new ArtistaEntity();
+            entity.setCedula("123" + i);
+            entity.setUsuario("sad"+ i);
+            entity.setContrasenha("12"+ i);
+            entity.setNombre("asd"+ i);
+            entity.setCorreo("asd"+ i);
+            entity.setDescripcion("sds"+ i);
+            entity.setImagenPerfil("sd"+ i);
             em.persist(entity);
             data.add(entity);
         }
     }
     
     
-    @Test
-    public void asd()
-    {
+   
+     @Test
+    public void createArtistaTest() {
+        // se instancia el generador de datos Podam
+        ArtistaDTO dto = new ArtistaDTO();
         
-        junit.framework.Assert.assertTrue(true);
+        dto.setCedula("123" );
+        dto.setUsuario("sad");
+        dto.setContrasenha("12");
+        dto.setNombre("asd");
+        dto.setCorreo("asd");
+        dto.setDescripcion("sds");
+        dto.setImagenPerfil("sd");
+        ArtistaDTO result = artistaPersistence.crearArtista(dto);
+        Assert.assertNotNull(result);
+        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+ 
+        Assert.assertEquals(dto.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(dto.getContrasenha(), entity.getContrasenha());
+        Assert.assertEquals(dto.getNombre(), entity.getNombre());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
+        Assert.assertEquals(dto.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(dto.getImagenPerfil(), entity.getImagenPerfil());
+        Assert.assertEquals(dto.getDescripcion(), entity.getDescripcion());
+    }
+    
+    @Test
+    public void getArtistaTest(){
+        ArtistaEntity result = data.get(0);
+        Assert.assertNotNull(result);
+        
+        ArtistaDTO entity = artistaPersistence.darArtista(result.getId());
+        
+        Assert.assertEquals(result.getId(), entity.getId());
+        Assert.assertEquals(result.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(result.getContrasenha(), entity.getContrasenha());
+        Assert.assertEquals(result.getNombre(), entity.getNombre());
+        Assert.assertEquals(result.getCedula(), entity.getCedula());
+        Assert.assertEquals(result.getCorreo(), entity.getCorreo());        
+        Assert.assertEquals(result.getImagenPerfil(), entity.getImagenPerfil());
+        Assert.assertEquals(result.getDescripcion(), entity.getDescripcion());
+
+    }
+    
+    @Test
+    public void deleteArtistaTest(){
+        ArtistaEntity result = data.get(0);
+        Assert.assertNotNull(result);
+        ArtistaDTO dtop = artistaPersistence.eliminarArtista(result.getId());
+        Assert.assertNotNull(dtop);
+        
+        
+        ArtistaEntity entity = em.find(ArtistaEntity.class, dtop.getId());
+        Assert.assertNull(entity);
+        
+    }
+    
+    @Test
+    public void updateAdminTest(){
+        ArtistaDTO result = ArtistaConverter.convertirDeEntidadADTO(data.get(1));
+        Assert.assertNotNull(result);
+        result.setCedula("123");
+        
+        
+        ArtistaDTO ress = artistaPersistence.actualizarArtista(result);
+        ArtistaEntity entity = em.find(ArtistaEntity.class, result.getId());
+
+        Assert.assertEquals(entity.getCedula(), ress.getCedula());
     }
    
     
