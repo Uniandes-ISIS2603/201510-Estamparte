@@ -15,6 +15,7 @@ import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CompradorConverter {
    public static CompradorDTO entity2PersistenceDTO(CompradorEntity entity) {
         if (entity != null) {
