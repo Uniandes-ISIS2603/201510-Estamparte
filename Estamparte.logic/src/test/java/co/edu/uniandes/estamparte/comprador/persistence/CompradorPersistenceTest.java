@@ -51,8 +51,12 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 
 
@@ -126,19 +130,53 @@ public class CompradorPersistenceTest {
     }
     
     @Inject
-     private ICompradorLogic adminPersistence;
+     private ICompradorLogic compradorPersistence;
      @PersistenceContext
      private EntityManager em;
      @Inject
      UserTransaction utx;
     
-    
+    @Before
+    public void configTest() {
+        System.out.println("em: " + em);
+        try {
+            utx.begin();
+           // clearData();
+            //insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
     
     
     
     @Test
     public void createCompradorTest() {
         // se instancia el generador de datos Podam
+        PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+        ICarritoLogic carI = new CarritoLogic();
+        CarritoDTO cc = new CarritoDTO();
+        cc.setIdCarrito(1);
+        CarritoDTO ca = carI.crearCarrito(cc);
+        CompradorDTO dto = new CompradorDTO();
+        dto.setIdCarrito(ca.getIdCarrito());
+        
+        CompradorDTO result = compradorPersistence.createComprador(dto);
+        Assert.assertNotNull(result);
+        CompradorEntity entity = em.find(CompradorEntity.class, result.getId());
+ 
+        Assert.assertEquals(dto.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(dto.getId(), entity.getId());
+        Assert.assertEquals(dto.getClave(), entity.getClave());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
+        Assert.assertEquals(dto.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
         
     }
     

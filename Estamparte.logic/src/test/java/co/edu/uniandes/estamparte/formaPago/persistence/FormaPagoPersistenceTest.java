@@ -6,6 +6,37 @@ import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
 import co.edu.uniandes.estamparte.administrador.logic.ejb.AdministradorLogic;
 import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
 import co.edu.uniandes.estamparte.administrador.persistence.*;
+import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
+import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
+import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
+import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
+import co.edu.uniandes.estamparte.artista.logic.ejb.ArtistaLogic;
+import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
+import co.edu.uniandes.estamparte.camiseta.logic.api.ICamisetaLogic;
+import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
+import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
+import co.edu.uniandes.estamparte.camiseta.logic.ejb.CamisetaLogic;
+import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
+import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
+import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
+import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
+import co.edu.uniandes.estamparte.carrito.logic.ejb.CarritoLogic;
+import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
+import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
+import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
+import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
+import co.edu.uniandes.estamparte.comprador.logic.ejb.CompradorLogic;
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
+import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
+import co.edu.uniandes.estamparte.estampa.logic.converter.EstampaConverter;
+import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
+import co.edu.uniandes.estamparte.estampa.logic.ejb.EstampaLogic;
+import co.edu.uniandes.estamparte.estampa.logic.entity.EstampaEntity;
+import co.edu.uniandes.estamparte.factura.logic.api.IFacturaLogic;
+import co.edu.uniandes.estamparte.factura.logic.converter.FacturaConverter;
+import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
+import co.edu.uniandes.estamparte.factura.logic.ejb.FacturaLogic;
+import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.api.IFormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
@@ -49,19 +80,57 @@ public class FormaPagoPersistenceTest {
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
                 //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                .addPackage(ICompradorLogic.class.getPackage())
+                .addPackage(CompradorLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(CompradorEntity.class.getPackage())
+                .addPackage(CompradorDTO.class.getPackage())
+                .addPackage(CompradorConverter.class.getPackage())
+                .addPackage(IFacturaLogic.class.getPackage())
+                .addPackage(FacturaLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(FacturaEntity.class.getPackage())
+                .addPackage(FacturaDTO.class.getPackage())
+                .addPackage(FacturaConverter.class.getPackage())
                 .addPackage(IFormaPagoLogic.class.getPackage())
                 .addPackage(FormaPagoLogic.class.getPackage())
                 //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(FormaPagoEntity.class.getPackage())
                 .addPackage(FormaPagoDTO.class.getPackage())
                 .addPackage(FormaPagoConverter.class.getPackage())
+                .addPackage(IEstampaLogic.class.getPackage())
+                .addPackage(EstampaLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(EstampaEntity.class.getPackage())
+                .addPackage(EstampaDTO.class.getPackage())
+                .addPackage(EstampaConverter.class.getPackage())
+                .addPackage(ICarritoLogic.class.getPackage())
+                .addPackage(CarritoLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(CarritoEntity.class.getPackage())
+                .addPackage(CarritoDTO.class.getPackage())
+                .addPackage(CarritoConverter.class.getPackage())
+                .addPackage(ICamisetaLogic.class.getPackage())
+                .addPackage(CamisetaLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(CamisetaEntity.class.getPackage())
+                .addPackage(CamisetaDTO.class.getPackage())
+                .addPackage(CamisetaConverter.class.getPackage())
+                .addPackage(IArtistaLogic.class.getPackage())
+                .addPackage(ArtistaLogic.class.getPackage())
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(ArtistaEntity.class.getPackage())
+                .addPackage(ArtistaDTO.class.getPackage())
+                                .addPackage(ArtistaPageDTO.class.getPackage())
+
+                .addPackage(ArtistaConverter.class.getPackage())
                 //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
     
     @Inject
-     private IFormaPagoLogic adminPersistence;
+     private IFormaPagoLogic formaPagoPersistence;
      @PersistenceContext
      private EntityManager em;
      @Inject
@@ -104,7 +173,16 @@ public class FormaPagoPersistenceTest {
     @Test
     public void createFormaPagoTest() {
         // se instancia el generador de datos Podam
-                Assert.assertTrue(true);
+            PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
+            FormaPagoDTO dto = factory.manufacturePojo(FormaPagoDTO.class);
+            FormaPagoDTO dto2 = formaPagoPersistence.crearFormaPago(dto);
+            
+            FormaPagoEntity entity = em.find(FormaPagoEntity.class, dto2.getId());
+            Assert.assertEquals(dto2.getId(), entity.getId());
+
+            
+            
+
 
     }
     /**
