@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 @Entity
 public class FormaPagoEntity {
     
-    //Id autogenerado
+   
     @Id
     @GeneratedValue(generator = "FormaPago")
     @Column(name="FORMAPAGO_ID")

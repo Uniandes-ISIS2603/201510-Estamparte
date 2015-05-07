@@ -35,10 +35,12 @@ public class ServicioFormaPago {
     @Inject
     protected IFormaPagoLogic formaPagoLogic;
     
+    /*
     @POST
     public FormaPagoDTO crearFormaPago (FormaPagoDTO formaPago){
         return formaPagoLogic.crearFormaPago(formaPago);
     }
+    */
         
     @GET
     public FormaPagoPageDTO darFormasPago(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){

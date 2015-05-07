@@ -66,6 +66,7 @@ public class CompradorEntity {
                 
         }
     }
+    
        
 
     public String getNombre() {

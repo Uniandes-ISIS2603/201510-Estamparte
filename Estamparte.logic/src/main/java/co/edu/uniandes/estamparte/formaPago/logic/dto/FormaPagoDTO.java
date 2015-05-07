@@ -3,7 +3,6 @@
  */
 package co.edu.uniandes.estamparte.formaPago.logic.dto;
 
-import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
