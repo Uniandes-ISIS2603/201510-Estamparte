@@ -43,6 +43,8 @@ import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.ejb.FormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -130,6 +132,8 @@ public class CompradorPersistenceTest {
     }
     
     @Inject
+     private ICarritoLogic carritoPersistence;
+    @Inject
      private ICompradorLogic compradorPersistence;
      @PersistenceContext
      private EntityManager em;
@@ -141,8 +145,8 @@ public class CompradorPersistenceTest {
         System.out.println("em: " + em);
         try {
             utx.begin();
-           // clearData();
-            //insertData();
+            clearData();
+            insertData();
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -154,18 +158,50 @@ public class CompradorPersistenceTest {
         }
     }
     
+    private void clearData() {
+        em.createQuery("delete from CompradorEntity").executeUpdate();
+    }
+
+    private List<CompradorEntity> data = new ArrayList<CompradorEntity>();
+
+    private void insertData() {
+        for (int i = 0; i < 3; i++) {
+            CarritoDTO dtoo = new CarritoDTO();        
+            CarritoDTO result = carritoPersistence.crearCarrito(dtoo);
+            
+            CompradorEntity entity = new CompradorEntity();
+            entity.setCarrito(CarritoConverter.convertirDeDTOAEntidad(result));
+            entity.setCedula(i);
+            entity.setClave("asd" + i);
+            entity.setCorreo("asd" + i);
+            entity.setDireccion("asd" + i);
+            entity.setNombre("asd" + i);
+            entity.setTelefono(i);
+            entity.setUsuario("asd" + i);
+            entity.setFacturas(new ArrayList<FacturaEntity>());
+            entity.setFormasPago(new ArrayList<FormaPagoEntity>());
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
     
     
     @Test
     public void createCompradorTest() {
         // se instancia el generador de datos Podam
-        PodamFactory factory = new PodamFactoryImpl(); //This will use the default Random Data Provider Strategy
-        ICarritoLogic carI = new CarritoLogic();
-        CarritoDTO cc = new CarritoDTO();
-        cc.setIdCarrito(1);
-        CarritoDTO ca = carI.crearCarrito(cc);
+        CarritoDTO dtoo = new CarritoDTO();        
+        CarritoDTO resultC = carritoPersistence.crearCarrito(dtoo);
+            
         CompradorDTO dto = new CompradorDTO();
-        dto.setIdCarrito(ca.getIdCarrito());
+        dto.setIdCarrito(resultC.getIdCarrito());
+        dto.setCedula(1);
+        dto.setClave("asd" );
+        dto.setCorreo("asd" );
+        dto.setDireccion("asd");
+        dto.setNombre("asd");
+        dto.setTelefono(1);
+        dto.setUsuario("asd");
+        
         
         CompradorDTO result = compradorPersistence.createComprador(dto);
         Assert.assertNotNull(result);
@@ -182,16 +218,41 @@ public class CompradorPersistenceTest {
     
     @Test
     public void getCompradorTest(){
-        
+        CompradorEntity entity = data.get(0);
+        Assert.assertNotNull(entity);
+
+        CompradorDTO dto = compradorPersistence.getComprador(entity.getId());
+        Assert.assertNotNull(dto);
+
+        Assert.assertEquals(dto.getUsuario(), entity.getUsuario());
+        Assert.assertEquals(dto.getId(), entity.getId());
+        Assert.assertEquals(dto.getClave(), entity.getClave());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
+        Assert.assertEquals(dto.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(dto.getCedula(), entity.getCedula());
     }
     
     @Test
     public void deleteCompradorTest(){
+        CompradorEntity entity = data.get(0);
+        Assert.assertNotNull(entity);
+
+        CompradorDTO dto = compradorPersistence.deleteComprador(entity.getId());
+        Assert.assertNotNull(dto);
         
+        CompradorEntity result = em.find(CompradorEntity.class, dto.getId());
+        Assert.assertNull(result);
     }
     
     @Test
     public void updateCompradorTest(){
+        CompradorEntity entity = data.get(1);
+        Assert.assertNotNull(entity);
+        entity.setClave("cambio");
+
+        compradorPersistence.updateComprador(entity.getId(), CompradorConverter.entity2PersistenceDTO(entity));
         
+        CompradorEntity result = em.find(CompradorEntity.class, entity.getId());
+        Assert.assertEquals(entity.getClave(), result.getClave());
     }
 }
