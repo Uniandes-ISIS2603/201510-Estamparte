@@ -101,25 +101,25 @@ public class ServicioComprador {
     @POST
     @Path("{id}/factura")
     public FacturaDTO crearFacturaComprador(@PathParam("id")long idComprador, FacturaDTO factura){
-        return null;
+        return facturaLogic.createFacturaComprador(idComprador, factura);
     }
     
     @DELETE
     @Path("{id}/factura/{id2}")
     public FacturaDTO deleteFacturaComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFactura){
-        return null;
+        return facturaLogic.deleteFacturaComprador(idComprador, idFactura);
     }
     
     @GET
     @Path("{id}/factura")
     public FacturaPageDTO getFacturasComprador(@PathParam("id")long idComprador, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
-        return null;
+        return facturaLogic.getFacturasComprador(idComprador, pagina, datosMaximos);
     }
     
     @PUT
     @Path("{id}/factura/{id2}")
     public FacturaDTO updateFacturaComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFactura, FacturaDTO factura){
-        return null;
+        return facturaLogic.updateFacturaComprador(idComprador, factura);
     }
     
 }
