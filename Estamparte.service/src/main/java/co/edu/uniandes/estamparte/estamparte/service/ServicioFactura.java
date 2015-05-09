@@ -29,18 +29,6 @@ public class ServicioFactura
     @Inject
     protected IFacturaLogic facturalogic;
     
-    @POST
-    public FacturaDTO createFactura(FacturaDTO detalles)    {
-        return facturalogic.createFactura(detalles);
-    }
-    
-    /*ERROR!!!!    
-    @GET
-    public List<FacturaDTO> getFacturas()
-    {
-        return facturalogic.getFacturas();
-    }
-    */
     @GET
     @Path("/{id}")
     public FacturaDTO getFactura(@PathParam("id")Long id){
@@ -51,10 +39,5 @@ public class ServicioFactura
     public FacturaDTO deleteFactura(Long id){
         return facturalogic.deleteFactura(id);
     }
-            
-    @PUT
-    public void updateFactura(FacturaDTO detalles){
-        facturalogic.updateFactura(detalles);
-    }
-    
+               
 }

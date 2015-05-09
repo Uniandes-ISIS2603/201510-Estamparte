@@ -30,12 +30,9 @@ public class CarritoLogic implements ICarritoLogic {
     @Override
     public CarritoDTO crearCarrito (CarritoDTO carrito){
         CarritoEntity entity = CarritoConverter.convertirDeDTOAEntidad(carrito);
-        try{
         em.persist(entity);
         return CarritoConverter.convertirDeEntidadADTO(entity);
-        }catch(Exception e){
-        return CarritoConverter.convertirDeEntidadADTO(entity);
-        }
+
     }
         
     

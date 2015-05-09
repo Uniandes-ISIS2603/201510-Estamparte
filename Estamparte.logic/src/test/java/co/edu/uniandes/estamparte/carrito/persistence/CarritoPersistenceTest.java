@@ -1,11 +1,5 @@
 package co.edu.uniandes.estamparte.carrito.persistence;
 
-import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.converter.AdministradorConverter;
-import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
-import co.edu.uniandes.estamparte.administrador.logic.ejb.AdministradorLogic;
-import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
-import co.edu.uniandes.estamparte.administrador.persistence.*;
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
@@ -129,12 +123,14 @@ public class CarritoPersistenceTest {
     
     @Inject
      private ICarritoLogic carritoPersistence;
+    
      @PersistenceContext
      private EntityManager em;
+     
      @Inject
      UserTransaction utx;
     
-      @Before
+    @Before
     public void configTest() {
         System.out.println("em: " + em);
         try {
@@ -164,16 +160,14 @@ public class CarritoPersistenceTest {
             em.persist(entity);
             data.add(entity);
         }
+        
     }
-    
-    
-    
-    
+
     
     
     @Test
     public void createCarritoTest() {
-        // se instancia el generador de datos Podam
+        
         CarritoDTO dtoo = new CarritoDTO();        
         CarritoDTO result = carritoPersistence.crearCarrito(dtoo);
         Assert.assertNotNull(result);
