@@ -17,7 +17,7 @@ public interface IImgPersistenceLogic {
     public String createEstampaImagen(ImgDTO img);
     
     //Actualiza una imagen en el servidor dada su direccion
-    public String updateImagen(String url);
+    public String updateImagen(ImgDTO img);
     
     //Elimina una imagen en el servidor dada su direccion
     public void deleteImagen(String url);
