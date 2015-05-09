@@ -53,6 +53,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -139,7 +140,7 @@ public class CarritoPersistenceTest {
         try {
             utx.begin();
             clearData();
-            //insertData();
+            insertData();
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,23 +174,34 @@ public class CarritoPersistenceTest {
     @Test
     public void createCarritoTest() {
         // se instancia el generador de datos Podam
-        CarritoDTO dtoo = new CarritoDTO();
-        CarritoDTO res = carritoPersistence.crearCarrito(dtoo);
+        CarritoDTO dtoo = new CarritoDTO();        
+        CarritoDTO result = carritoPersistence.crearCarrito(dtoo);
+        Assert.assertNotNull(result);
         
+        CarritoEntity entity = em.find(CarritoEntity.class, result.getIdCarrito()); 
+        Assert.assertEquals(result.getIdCarrito(), entity.getIdCarrito());
+
+        
+   
     }
     
     @Test
-    public void getCarritoTest(){
+    public void getCamisetaCarritoTest(){
         
     }
     
     @Test
     public void deleteCarritoTest(){
+        CarritoEntity entity = data.get(0);
+        Assert.assertNotNull(entity);
+        carritoPersistence.eliminarCarrito(entity.getIdCarrito());
         
+        CarritoEntity entityR = em.find(CarritoEntity.class, entity.getIdCarrito());
+        Assert.assertNull(entityR);
     }
     
     @Test
-    public void updateCarritoTest(){
+    public void updateCamisetaCarritoTest(){
         
     } 
 }
