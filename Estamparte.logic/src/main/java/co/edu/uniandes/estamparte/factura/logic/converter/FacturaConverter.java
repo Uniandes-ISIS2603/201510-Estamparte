@@ -28,7 +28,7 @@ public class FacturaConverter
             dto.setIdComprador(entity.getComprador().getId());
             dto.setIdFormaPago(entity.getFormaPago().getNumeroTarjeta());
             dto.setFechaCompra(entity.getFechaCompra());
-            dto.setIdFactura(entity.getIdFactura());
+            dto.setId(entity.getIdFactura());
             dto.setIdCarrito(entity.getCarrito().getIdCarrito());
             
             return dto;
@@ -50,7 +50,7 @@ public class FacturaConverter
             entity.setFormaPago(form);
             
             entity.setFechaCompra(dto.getFechaCompra());
-            entity.setIdFactura(dto.getIdFactura());
+            entity.setIdFactura(dto.getId());
             
             CarritoEntity carr = new CarritoEntity();
             carr.setIdCarrito(dto.getIdCarrito());

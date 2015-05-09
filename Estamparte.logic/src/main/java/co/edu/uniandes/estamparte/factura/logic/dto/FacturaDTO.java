@@ -21,56 +21,47 @@ public class FacturaDTO {
     private String fechaCompra;
     private long id;
     private long idCarrito;
-    
-    public long getIdCarrito(){
-        return idCarrito;
-    }
-       
-    public void setIdCarrito(long pId)
-    {
-        idCarrito = pId;
-    }
-    
-    
-    public void setIdComprador(long pId)
-    {
-        idComprador = pId;
-    }
-    
-    public long getIdComprador()
-    {
+
+    public long getIdComprador() {
         return idComprador;
     }
-    
-    public void setIdFormaPago(long pFormaPago)
-    {
-        idFormaPago = pFormaPago;
+
+    public void setIdComprador(long idComprador) {
+        this.idComprador = idComprador;
     }
-    
-    public long getIdFormaPago()
-    {
+
+    public long getIdFormaPago() {
         return idFormaPago;
     }
-    
-    
-    public void setFechaCompra(String pFecha)
-    {
-        fechaCompra = pFecha;
+
+    public void setIdFormaPago(long idFormaPago) {
+        this.idFormaPago = idFormaPago;
     }
-    
-    public String getFechaCompra()
-    {
+
+    public String getFechaCompra() {
         return fechaCompra;
     }
-    
-    public void setIdFactura(long pId)
-    {
-        id = pId;
+
+    public void setFechaCompra(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
-    
-    public long getIdFactura()
-    {
+
+    public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getIdCarrito() {
+        return idCarrito;
+    }
+
+    public void setIdCarrito(long idCarrito) {
+        this.idCarrito = idCarrito;
+    }
+    
+
 }
                                      
