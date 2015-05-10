@@ -27,6 +27,7 @@ public class FacturaLogic implements IFacturaLogic{
         if(comprador!=null){
             FacturaEntity facturaE = FacturaConverter.persistenceDTO2Entity(factura);
             entityManager.persist(facturaE);
+            
             return FacturaConverter.entity2PersistenceDTO(facturaE);
         }
         else

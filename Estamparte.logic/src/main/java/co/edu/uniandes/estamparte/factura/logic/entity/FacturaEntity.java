@@ -39,6 +39,16 @@ public class FacturaEntity {
     @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carrito;
     
+    private double monto;
+    
+    public void setMonto(double monto){
+        this.monto = monto;
+    }
+    
+    public double getMonto(){
+        return monto;
+    }
+    
     public List<CamisetaEntity> getArticulos(){
         return carrito.getCamisetas();
     }
@@ -111,9 +121,10 @@ public class FacturaEntity {
     public double getMontoTotal()
     {
         double respuesta = 0;
-        for (int i=0; i<carrito.getCamisetas().size();i++)
+        List<CamisetaEntity> camisetas = carrito.getCamisetas();
+        for (int i=0; i<camisetas.size();i++)
         {
-            respuesta += carrito.getCamisetas().get(i).getCosto();
+            respuesta += camisetas.get(i).getCosto();
         }
         return respuesta;
     }
