@@ -3,14 +3,9 @@
  */
 package co.edu.uniandes.estamparte.factura.logic.converter;
 
-import co.edu.uniandes.estamparte.estampa.logic.converter.*;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
-import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
-import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
-import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
-import co.edu.uniandes.estamparte.comprador.logic.converter.CompradorConverter;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 
@@ -30,7 +25,7 @@ public class FacturaConverter
             dto.setFechaCompra(entity.getFechaCompra());
             dto.setId(entity.getIdFactura());
             dto.setIdCarrito(entity.getCarrito().getIdCarrito());
-            
+            dto.setMonto(entity.getMontoTotal());
             return dto;
         } else {
             return null;

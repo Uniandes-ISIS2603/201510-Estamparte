@@ -9,11 +9,11 @@ import co.edu.uniandes.estamparte.estampaImgPersistence.logic.api.IImgPersistenc
 import co.edu.uniandes.estamparte.estampaImgPersistence.logic.dto.ImgDTO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 import javax.imageio.ImageIO;
+
 
 /**
  *
@@ -33,7 +33,8 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
                 byte[] decodedData = Base64.getDecoder().decode(img.getData());
                 BufferedImage buffDecoded = ImageIO.read(new ByteArrayInputStream(decodedData));
                 ImageIO.write(buffDecoded, "png", file);
-                //
+                
+                //Aqui se debe retornar la url a la imagen
             }
  
         }

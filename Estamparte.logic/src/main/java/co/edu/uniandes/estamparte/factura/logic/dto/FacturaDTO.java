@@ -3,15 +3,7 @@
  */
 package co.edu.uniandes.estamparte.factura.logic.dto;
 
-import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
-import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
-import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
-import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.*;
-import java.util.Date;
-import java.util.List;
 
 @XmlRootElement
 public class FacturaDTO {
@@ -21,6 +13,15 @@ public class FacturaDTO {
     private String fechaCompra;
     private long id;
     private long idCarrito;
+    private double monto;
+    
+    public double getMonto(){
+        return monto;
+    }
+    
+    public void setMonto(double monto){
+        this.monto  = monto;
+    }
 
     public long getIdComprador() {
         return idComprador;
