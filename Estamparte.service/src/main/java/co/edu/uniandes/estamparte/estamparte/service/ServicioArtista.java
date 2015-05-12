@@ -9,6 +9,8 @@ import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
 import co.edu.uniandes.estamparte.estampa.logic.api.IEstampaLogic;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaDTO;
 import co.edu.uniandes.estamparte.estampa.logic.dto.EstampaPageDTO;
+import co.edu.uniandes.estamparte.estampaImgPersistence.logic.api.IImgPersistenceLogic;
+import co.edu.uniandes.estamparte.estampaImgPersistence.logic.dto.ImgDTO;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,6 +36,8 @@ public class ServicioArtista {
     
     @Inject
     protected IEstampaLogic servicioLogicaEstampa;
+    
+    @Inject IImgPersistenceLogic servicioLogicaImg;
     
     @POST
     public ArtistaDTO crearArtista(ArtistaDTO artista){
@@ -91,6 +95,25 @@ public class ServicioArtista {
     @Path("{id}/estampas/{id2}")
     public EstampaDTO actualizarEstampaDeArtista(@PathParam("id")Long idArtista,@PathParam("id2")Long idEstampa, EstampaDTO estampa){
         return servicioLogicaArtista.actualizarEstampaDeArtista(idArtista, estampa, servicioLogicaEstampa);
+    }
+    
+    //Serializacion de imagen de estampa
+    @POST
+    @Path("/{id}/estampas/img")
+    public String createImagen(@PathParam("id")Long idArtista, ImgDTO img){
+        return servicioLogicaImg.createEstampaImagen(img);
+    }
+    
+    @PUT
+    @Path("{id}/estampas/{id2}/img")
+    public String updateImagen(@PathParam("id")Long idArtista, @PathParam("id2")Long idEstampa, ImgDTO img){
+        return servicioLogicaImg.updateImagen(img);
+    }
+    
+    @DELETE
+    @Path("{id}/estampas/{id2}/img")
+    public void deleteImagen(@PathParam("id")Long idArtista, @PathParam("id2")Long idEstampa, String urlImg){
+        servicioLogicaImg.deleteImagen(urlImg);
     }
    
 
