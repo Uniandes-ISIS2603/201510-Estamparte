@@ -138,11 +138,16 @@ public class CarritoPersistenceTest {
             clearData();
             insertData();
             utx.commit();
+            
         } catch (Exception e) {
+           
             e.printStackTrace();
             try {
+                
                 utx.rollback();
+                
             } catch (Exception e1) {
+                
                 e1.printStackTrace();
             }
         }
@@ -168,10 +173,10 @@ public class CarritoPersistenceTest {
     @Test
     public void createCarritoTest() {
         
-        CarritoDTO dtoo = new CarritoDTO();        
+        CarritoDTO dtoo = new CarritoDTO();
         CarritoDTO result = carritoPersistence.crearCarrito(dtoo);
         Assert.assertNotNull(result);
-        
+
         CarritoEntity entity = em.find(CarritoEntity.class, result.getIdCarrito()); 
         Assert.assertEquals(result.getIdCarrito(), entity.getIdCarrito());
 

@@ -24,6 +24,9 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
     @Override
     public String createEstampaImagen(ImgDTO img) {
         String respuesta = "";
+        File data = new File("./data");
+        if(!data.exists())
+            data.mkdir();
         try{
             //En donde debe estar la carpeta data??
             File file  = new File("./data/"+img.getNombre()+".png");
@@ -35,6 +38,8 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
                 ImageIO.write(buffDecoded, "png", file);
                 
                 //Aqui se debe retornar la url a la imagen
+                //Temporal:
+                respuesta = "http://localhost:8080/Estamparte.service/webresources/data/"+img.getNombre()+".png";
             }
  
         }
@@ -47,12 +52,33 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
 
     @Override
     public String updateImagen(ImgDTO img) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String respuesta = "";
+        try{
+            //En donde debe estar la carpeta data??
+            File file  = new File("./data/"+img.getNombre()+".png");
+            byte[] decodedData = Base64.getDecoder().decode(img.getData());
+            BufferedImage buffDecoded = ImageIO.read(new ByteArrayInputStream(decodedData));
+            ImageIO.write(buffDecoded, "png", file);
+
+            //Aqui se debe retornar la url a la imagen
+            //Temporal:
+            respuesta = "http://localhost:8080/Estamparte.service/webresources/data/"+img.getNombre()+".png";
+            
+ 
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+            respuesta = "Error en la serializacion";
+        }
+        return respuesta;
     }
 
     @Override
     public void deleteImagen(String url) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] params = url.split("/");
+        File file = new File("./"+params[5]+"/"+params[6]);
+        if(file.exists())
+            file.delete();
     }
     
 }
