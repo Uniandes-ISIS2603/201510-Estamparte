@@ -34,6 +34,9 @@ public interface IEstampaLogic {
     //Obtiene las estampas de un artista
     public EstampaPageDTO obtenerEstampasDeArtista(Long idArtista, Integer pagina, Integer datosMaximos);
     
+    //Elimina las estampas de un artista
+    public void eliminarEstampasDeArtista(Long idArtista);
+    
     
    
 }

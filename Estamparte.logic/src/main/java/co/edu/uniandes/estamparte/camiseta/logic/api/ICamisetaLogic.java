@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface ICamisetaLogic {
     
-     public CamisetaDTO crearCamiseta(CamisetaDTO detail);
+    public CamisetaDTO crearCamiseta(CamisetaDTO detail);
 
     public List<CamisetaDTO> darCamisetas();
     
@@ -29,4 +29,6 @@ public interface ICamisetaLogic {
     public boolean agregarEstampa(long idCamiseta, EstampaDTO estampa);
     
     public boolean eliminarEstampa(long idCamiseta,long id);
+    
+    public void eliminarCamisetas();
 }

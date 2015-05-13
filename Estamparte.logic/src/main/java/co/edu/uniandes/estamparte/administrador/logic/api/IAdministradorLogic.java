@@ -18,8 +18,11 @@ public interface IAdministradorLogic {
     //Crea un nuevo Administrador
     public AdministradorDTO crearAdministrador(AdministradorDTO admin);
     
-    //Obtiene todos los Administrador registrador
+    //Obtiene los administradores
     public List<AdministradorDTO> obtenerAdministradores();
+    
+    //Obtiene todos los Administrador registrados
+    public AdministradorPageDTO obtenerAdministradores(Integer pagina, Integer datosMaximos);
         
     //Obtiene un Administrador con un id determinado
     public AdministradorDTO getAdministrador(Long id);

@@ -31,7 +31,7 @@ public class AdministradorPageDTO {
         return administradores;
     }
 
-    public void setadministradores(List<AdministradorDTO> pAdministradores) {
+    public void setAdministradores(List<AdministradorDTO> pAdministradores) {
         administradores = pAdministradores;
     }
     

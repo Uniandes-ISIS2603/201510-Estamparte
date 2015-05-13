@@ -5,6 +5,7 @@ package co.edu.uniandes.estamparte.estamparte.service;
 
 import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
 import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
+import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorPageDTO;
 import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
 import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
@@ -52,8 +53,8 @@ public class ServicioAdministrador {
     }
     
     @GET
-    public List<AdministradorDTO> darAdministradores(){
-        return servicioLogicaAdmin.obtenerAdministradores();
+    public AdministradorPageDTO darAdministradores(@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return servicioLogicaAdmin.obtenerAdministradores(pagina, datosMaximos);
     }
     
     @PUT

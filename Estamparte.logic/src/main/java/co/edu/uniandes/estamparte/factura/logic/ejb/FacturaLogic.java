@@ -3,6 +3,7 @@
  */
 package co.edu.uniandes.estamparte.factura.logic.ejb;
 
+import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.estampa.logic.ejb.*;
 import co.edu.uniandes.estamparte.factura.logic.api.IFacturaLogic;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
@@ -21,35 +22,91 @@ public class FacturaLogic implements IFacturaLogic{
     protected EntityManager entityManager;
     
     @Override
-    public FacturaDTO createFactura(FacturaDTO detalles) {
-        FacturaEntity entity = FacturaConverter.persistenceDTO2Entity(detalles);
-        entityManager.persist(entity);
-        return FacturaConverter.entity2PersistenceDTO(entity);
+    public FacturaDTO createFacturaComprador(long idComprador, FacturaDTO factura) {
+        CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
+        if(comprador!=null){
+            FacturaEntity facturaE = FacturaConverter.persistenceDTO2Entity(factura);
+            entityManager.persist(facturaE);
+            
+            return FacturaConverter.entity2PersistenceDTO(facturaE);
+        }
+        else
+            return null;
     }
 
     @Override
-    public List<FacturaDTO> getFacturas() {
-        
-        Query q = entityManager.createQuery("select u from FacturaEntity u");
-        return FacturaConverter.entity2PersistenceDTOList(q.getResultList());
+    public FacturaDTO deleteFacturaComprador(long idComprador, long idFactura) {
+        CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
+        if(comprador!=null){
+            FacturaEntity factura = entityManager.find(FacturaEntity.class, idFactura); 
+            entityManager.remove(factura);
+            return FacturaConverter.entity2PersistenceDTO(factura);
+        }
+        else
+            return null;
     }
 
     @Override
-    public FacturaDTO getFactura(Long id) {
-        return FacturaConverter.entity2PersistenceDTO(entityManager.find(FacturaEntity.class, id));
+    public FacturaPageDTO getFacturasComprador(long idComprador, Integer pagina, Integer datosMaximos) {
+        Query cuenta = entityManager.createQuery("select count(u) from FacturaEntity u where u.comprador.id = '"+idComprador+"'");
+        Long cuentaReg = 0L;
+        cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
+        Query q = entityManager.createQuery("select u from FacturaEntity u where u.comprador.id =  '"+idComprador+"'");
+        if(pagina != null && datosMaximos != null){
+            q.setFirstResult((pagina-1)*datosMaximos);
+            q.setMaxResults(datosMaximos);
+        }
+        FacturaPageDTO respuesta = new FacturaPageDTO();
+        respuesta.setTotalRecords(cuentaReg);
+        respuesta.setRecords(FacturaConverter.entity2PersistenceDTOList(q.getResultList()));
+        return respuesta;
     }
 
     @Override
-    public FacturaDTO deleteFactura(Long id) {
-        FacturaEntity entity = entityManager.find(FacturaEntity.class, id);
-        entityManager.remove(entity);    
-        return FacturaConverter.entity2PersistenceDTO(entity);
+    public FacturaDTO updateFacturaComprador(long idComprador, FacturaDTO factura) {
+        CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
+        if(comprador != null){
+            FacturaEntity facturaE = entityManager.merge(FacturaConverter.persistenceDTO2Entity(factura));
+            return FacturaConverter.entity2PersistenceDTO(facturaE);
+        }
+        else
+            return null;
     }
 
     @Override
-    public void updateFactura(FacturaDTO detalles) {
-        FacturaEntity entity = entityManager.merge(FacturaConverter.persistenceDTO2Entity(detalles));
-        FacturaConverter.entity2PersistenceDTO(entity);
+    public FacturaPageDTO getFacturas(Integer pagina, Integer datosMaximos) {
+        Query cuenta = entityManager.createQuery("select count(u) from FacturaEntity u");
+        Long cuentaReg = 0L;
+        cuentaReg = Long.parseLong(cuenta.getSingleResult().toString());
+        Query q = entityManager.createQuery("select u from FacturaEntity u ");
+        if(pagina != null && datosMaximos != null){
+            q.setFirstResult((pagina-1)*datosMaximos);
+            q.setMaxResults(datosMaximos);
+        }
+        FacturaPageDTO respuesta = new FacturaPageDTO();
+        respuesta.setTotalRecords(cuentaReg);
+        respuesta.setRecords(FacturaConverter.entity2PersistenceDTOList(q.getResultList()));
+        return respuesta;
     }
+
+    @Override
+    public FacturaDTO getFactura(long idFactura) {
+       FacturaEntity factura = entityManager.find(FacturaEntity.class, idFactura);
+       return FacturaConverter.entity2PersistenceDTO(factura);
+    }
+
+    @Override
+    public FacturaDTO deleteFactura(long idFactura) {
+        FacturaEntity factura = entityManager.find(FacturaEntity.class, idFactura); 
+        entityManager.remove(factura);
+        return FacturaConverter.entity2PersistenceDTO(factura);
+    }
+
+    @Override
+    public void deleteFacturas() {
+        Query q = entityManager.createQuery("delete from FacturaEntity u");
+        q.executeUpdate();
+    }
+    
     
 }

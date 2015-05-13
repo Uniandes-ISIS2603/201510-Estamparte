@@ -27,5 +27,7 @@ public interface ICarritoLogic {
     
     public void actualizarCarrito(CarritoDTO carrito);
     
-    public void eliminarCarrito(long id);    
+    public void eliminarCarrito(long id); 
+    
+    public CamisetaPageDTO obtenerCamisetasDeCarrito(long idCarrito);
 }

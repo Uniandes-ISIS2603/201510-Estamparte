@@ -27,13 +27,7 @@ public class ServicioEstampa {
     
     @Inject
     protected IEstampaLogic servicioLogicaEstampa;
-    
-    /*
-    @POST
-    public EstampaDTO crearEstampa(EstampaDTO estampa){
-        return servicioLogicaEstampa.crearEstampa(estampa);
-    }
-    */
+
     
     @DELETE
     @Path("{id}")
@@ -52,12 +46,6 @@ public class ServicioEstampa {
         return servicioLogicaEstampa.darEstampa(id);
     }
     
-    /*
-    @PUT
-    public EstampaDTO actualizarEstampa(@PathParam("id")Long id, EstampaDTO estampa){
-        return servicioLogicaEstampa.actualizarEstampa(estampa);
-    }
-    */
     
     @DELETE
     public void eliminarEstampas(){

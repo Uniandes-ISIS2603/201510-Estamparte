@@ -1,7 +1,7 @@
 .DS_Store
-/frontend/nbproject
-/backend/Estamparte.logic/target/
-/backend/Estamparte.service/target/
 *.class
 /Estamparte.logic/target/
 /Estamparte.service/target/
+/Estamparte.web.test/nbproject/private/
+/Estamparte.web.test/target/
+/Estamparte.logic/target/

@@ -18,17 +18,14 @@ public class FormaPagoLogic implements IFormaPagoLogic{
     @PersistenceContext(unitName = "EstampartePU")
     protected EntityManager em;
     
+    @Override 
     public FormaPagoDTO crearFormaPago (FormaPagoDTO formaPago){
         FormaPagoEntity entity = FormaPagoConverter.convertirDeDTOAEntidad(formaPago);
         em.persist(entity);
         return FormaPagoConverter.convertirDeEntidadADTO(entity);
     }
     
-    public List<FormaPagoDTO> darFormasPago(){
-        Query consulta = em.createQuery("select u from ArtistaEntity u");
-        return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
-    }
-    
+    @Override
     public FormaPagoPageDTO darFormasPago(Integer pagina, Integer datosMaximos){
         Query cantidad = em.createQuery("select count(formaPago) from FormaPagoEntity formaPago");
         Long cuentaReg = Long.parseLong(cantidad.getSingleResult().toString());
@@ -43,18 +40,27 @@ public class FormaPagoLogic implements IFormaPagoLogic{
         return respuesta;
     }
     
-    public void actualizarFormaPago(FormaPagoDTO formaPago){
+    @Override
+    public FormaPagoDTO actualizarFormaPago(FormaPagoDTO formaPago){
         FormaPagoEntity entity = em.merge(FormaPagoConverter.convertirDeDTOAEntidad(formaPago));
-        FormaPagoConverter.convertirDeEntidadADTO(entity);
+        return FormaPagoConverter.convertirDeEntidadADTO(entity);
     }
     
+    @Override
     public void eliminarFormaPago(Long numeroTarjeta){
         FormaPagoEntity entity = em.find(FormaPagoEntity.class, numeroTarjeta);
         em.remove(entity);
     }
     
+    @Override
     public void eliminarFormasPago() {
         Query consulta = em.createQuery("delete from FormaPagoEntity formasPago");
         consulta.executeUpdate();
+    }
+    
+    @Override
+    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador) {
+        Query consulta = em.createQuery("select u from FormaPagoEntity u where u.comprador.id = '"+idComprador+"'");
+        return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
     }
 }

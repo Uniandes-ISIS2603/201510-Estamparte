@@ -28,7 +28,7 @@ public class CamisetaLogic implements ICamisetaLogic  {
      
         CamisetaEntity entity = CamisetaConverter.persistenceDTO2Entity(detail);
         entityManager.persist(entity);
-        return CamisetaConverter.entity2PersistenceDTO(entity);
+        return CamisetaConverter.entity2PersistenceDTO(entityManager.find(CamisetaEntity.class, entity.getId()));
     }
 
     @Override
@@ -48,8 +48,8 @@ public class CamisetaLogic implements ICamisetaLogic  {
             q.setMaxResults(maxRecords);
         }
         CamisetaPageDTO response = new CamisetaPageDTO();
-        response.asignarTotal(regCount);
-        response.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
+        response.setTotal(regCount);
+        response.setCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
         return response;
     }
 
@@ -78,8 +78,8 @@ public class CamisetaLogic implements ICamisetaLogic  {
             q.setMaxResults(datosMaximos);
         }
        CamisetaPageDTO respuesta = new CamisetaPageDTO();
-        respuesta.asignarTotal(cuentaReg);
-        respuesta.asignarCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
+        respuesta.setTotal(cuentaReg);
+        respuesta.setCamisetas(CamisetaConverter.entity2PersistenceDTOList(q.getResultList()));
         return respuesta;
     }
 
@@ -100,5 +100,10 @@ public class CamisetaLogic implements ICamisetaLogic  {
             return entidad.eliminarEstampa(id);
         return false;
     }
-    
+
+    public void eliminarCamisetas() {
+        Query q = entityManager.createQuery("delete from CamisetaEntity u");
+        q.executeUpdate();
+    }
+       
 }

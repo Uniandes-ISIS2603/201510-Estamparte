@@ -23,11 +23,7 @@ public class CamisetaEntity {
     @Column(name="CAMISETA_ID")
     private long id;
     
-    @ManyToMany
-    @JoinTable(
-    name="CAMISETA_ESTAMPA",
-    joinColumns={@JoinColumn(name="CAMISETA_ID", referencedColumnName="CAMISETA_ID")},
-    inverseJoinColumns={@JoinColumn(name="ESTAMPA_ID", referencedColumnName="ESTAMPA_ID")})
+    @ManyToMany(mappedBy="camisetas")
     private List<EstampaEntity> estampas;
     
     private String talla;

@@ -9,20 +9,24 @@ import co.edu.uniandes.estamparte.carrito.logic.converter.CarritoConverter;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
+import co.edu.uniandes.estamparte.factura.logic.entity.FacturaEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
+import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CompradorConverter {
    public static CompradorDTO entity2PersistenceDTO(CompradorEntity entity) {
         if (entity != null) {
             CompradorDTO dto = new CompradorDTO();
-            dto.setDireccion(entity.getDireccion());
-            dto.setTelefono(entity.getTelefono());
-            dto.setClave(entity.getClave());
-            dto.setUsuario(entity.getUsuario());
             dto.setNombre(entity.getNombre());
             dto.setId(entity.getId());
+            dto.setIdCarrito(entity.getCarrito().getIdCarrito());
+            dto.setDireccion(entity.getDireccion());
+            dto.setTelefono(entity.getTelefono());
+            dto.setUsuario(entity.getUsuario());
+            dto.setClave(entity.getClave());
             dto.setCorreo(entity.getCorreo());
             dto.setCedula(entity.getCedula());
             return dto;
@@ -34,21 +38,21 @@ public class CompradorConverter {
     public static CompradorEntity persistenceDTO2Entity(CompradorDTO dto) {
         if (dto != null) {
             CompradorEntity entity = new CompradorEntity();
+            CarritoEntity carrito = new CarritoEntity();
+            
+            carrito.setIdCarrito(dto.getIdCarrito());
+            
+            entity.setNombre(dto.getNombre());
             entity.setDireccion(dto.getDireccion());
             entity.setTelefono(dto.getTelefono());
-            entity.setClave(dto.getClave());
             entity.setUsuario(dto.getUsuario());
-            entity.setNombre(dto.getNombre());
-            entity.setId(dto.getId());
-            entity.setCedula(dto.getCedula());
+            entity.setClave(dto.getClave());
             entity.setCorreo(dto.getCorreo());
-            
-            CarritoEntity car = new CarritoEntity();
-            car.setIdCarrito(dto.getCarrito());
-            entity.setCarrito(car);
-            
-            entity.asignarFormasPago(new ArrayList());
-            entity.setFacturas(new ArrayList());
+            entity.setCedula(dto.getCedula());
+            entity.setId(dto.getId());
+            entity.setCarrito(carrito);
+            entity.setFormasPago(new ArrayList<FormaPagoEntity>());
+            entity.setFacturas(new ArrayList<FacturaEntity>());
             return entity;
         } else {
             return null;

@@ -62,4 +62,9 @@ public class ServicioCamiseta
     public CamisetaDTO actualizarCamisetaCarrito(@PathParam("CAMISETA_ID") long idCamiseta, CamisetaDTO camiseta){
         return camisetaLogic.actualizarCamiseta(camiseta);
     }    
+    
+    @DELETE
+    public void eliminarCamisetas(){
+        camisetaLogic.eliminarCamisetas();
+    }
 }

@@ -6,7 +6,6 @@ package co.edu.uniandes.estamparte.factura.logic.entity;
 import co.edu.uniandes.estamparte.camiseta.logic.entity.CamisetaEntity;
 import co.edu.uniandes.estamparte.carrito.logic.entity.CarritoEntity;
 import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
-import co.edu.uniandes.estamparte.estampa.logic.entity.*;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.*;
 import java.util.Date;
@@ -28,6 +27,7 @@ public class FacturaEntity {
     @OneToOne
     @JoinColumn(name="FORMAPAGO_ID")
     private FormaPagoEntity formaPago;
+    
     private String fechaCompra;
     
     @Id
@@ -38,6 +38,16 @@ public class FacturaEntity {
     @OneToOne
     @JoinColumn(name="CARRITO_ID")
     private CarritoEntity carrito;
+    
+    private double monto;
+    
+    public void setMonto(double monto){
+        this.monto = monto;
+    }
+    
+    public double getMonto(){
+        return monto;
+    }
     
     public List<CamisetaEntity> getArticulos(){
         return carrito.getCamisetas();
@@ -90,7 +100,7 @@ public class FacturaEntity {
     
     public Long getNumeroTarjeta()
     {
-        return formaPago.getNumTarjeta();
+        return formaPago.getNumeroTarjeta();
     }
     
     public Date getFechaVencimiento()
@@ -100,20 +110,21 @@ public class FacturaEntity {
     
     public int getCodigoSeguridad()
     {
-        return formaPago.getCodSeguridad();                
+        return formaPago.getCodigoSeguridad();                
     }
     
     public String getDireccionCorrespondencia()
     {
-        return formaPago.getDireccion();
+        return formaPago.getDireccionCorrespondencia();
     }
     
     public double getMontoTotal()
     {
         double respuesta = 0;
-        for (int i=0; i<carrito.getCamisetas().size();i++)
+        List<CamisetaEntity> camisetas = carrito.getCamisetas();
+        for (int i=0; i<camisetas.size();i++)
         {
-            respuesta += carrito.getCamisetas().get(i).getCosto();
+            respuesta += camisetas.get(i).getCosto();
         }
         return respuesta;
     }
