@@ -11,8 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.Base64;
+
 import javax.imageio.ImageIO;
+import org.ow2.util.base64.Base64;
+
 
 
 /**
@@ -33,7 +35,9 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
             if(file.exists())
                 respuesta = "Ya existe una imagen con este nombre";
             else{
-                byte[] decodedData = Base64.getDecoder().decode(img.getData());
+                
+                byte[] decodedData = Base64.decode(img.getData().toCharArray());
+                
                 BufferedImage buffDecoded = ImageIO.read(new ByteArrayInputStream(decodedData));
                 ImageIO.write(buffDecoded, "png", file);
                 
@@ -56,7 +60,7 @@ public class ImgPersistenceLogic implements IImgPersistenceLogic {
         try{
             //En donde debe estar la carpeta data??
             File file  = new File("./data/"+img.getNombre()+".png");
-            byte[] decodedData = Base64.getDecoder().decode(img.getData());
+            byte[] decodedData = Base64.decode(img.getData().toCharArray());
             BufferedImage buffDecoded = ImageIO.read(new ByteArrayInputStream(decodedData));
             ImageIO.write(buffDecoded, "png", file);
 
