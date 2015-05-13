@@ -1,6 +1,6 @@
 (function () {
 	angular.module('facturaModule')
-	.service('servicioFactura', servicioFactura);
+	.service('servicioFactura', servicioFactura)
 
 	function servicioFactura($rootScope, crudService) {
 
@@ -23,5 +23,5 @@
 			_this.postCustom(testPayment);
 		}
 
-	}]);
+	};
 })();

@@ -1,5 +1,5 @@
 (function () {
-	angular.module('facturaModule', []);
+	angular.module('facturaModule', [])
 	.config(facturaConfig);
 
 	function facturaConfig(mockProvider) {
@@ -11,5 +11,5 @@
 		function addCustomReg(value, index) {
 			mockProvider.addCustomReg(basicReg, value);
 		}
-	}]);
+	};
 })();
