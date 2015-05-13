@@ -177,13 +177,12 @@ public class CamisetaPersistenceTest {
     public void createCamisetaTest() {
         // se instancia el generador de datos Podam
         CamisetaDTO dto = new CamisetaDTO();
-        dto.setId(12345);
+        dto.setId(12345l);
         dto.setTalla("123" );
         dto.setColor("sad");
         dto.setEstilo("12");
         dto.setNombre("asd");
         dto.setCosto(1);
-        dto.setEstampas(null);
         CamisetaDTO result = camisetaPersistence.crearCamiseta(dto);
         Assert.assertNotNull(result);
         CamisetaEntity entity = em.find(CamisetaEntity.class, result.getId());
