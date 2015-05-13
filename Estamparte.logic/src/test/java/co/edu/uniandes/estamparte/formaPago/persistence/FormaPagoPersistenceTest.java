@@ -1,4 +1,4 @@
-package co.edu.uniandes.estamparte.camiseta.persistence;
+package co.edu.uniandes.estamparte.formaPago.persistence;
 
 import co.edu.uniandes.estamparte.administrador.logic.api.IAdministradorLogic;
 import co.edu.uniandes.estamparte.administrador.logic.converter.AdministradorConverter;
@@ -44,6 +44,7 @@ import co.edu.uniandes.estamparte.formaPago.logic.ejb.FormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -57,6 +58,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 
 
@@ -71,9 +74,9 @@ import org.junit.runner.RunWith;
  * @author estudiante
  */
 @RunWith(Arquillian.class)
-public class CamisetaPersistenceTest {
+public class FormaPagoPersistenceTest {
     
-    public static final String DEPLOY = "Prueba";
+     public static final String DEPLOY = "Prueba";
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
@@ -126,15 +129,18 @@ public class CamisetaPersistenceTest {
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
-    
     @Inject
-     private ICamisetaLogic camisetaPersistence;
+     private ICarritoLogic carritoPersistence;
+    @Inject
+     private ICompradorLogic compradorPersistence;
+    @Inject
+     private IFormaPagoLogic formaPagoPersistence;
      @PersistenceContext
      private EntityManager em;
      @Inject
      UserTransaction utx;
     
-       @Before
+     @Before
     public void configTest() {
         System.out.println("em: " + em);
         try {
@@ -153,20 +159,35 @@ public class CamisetaPersistenceTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from CamisetaEntity").executeUpdate();
+        em.createQuery("delete from FormaPagoEntity").executeUpdate();
     }
 
-    private List<CamisetaEntity> data = new ArrayList<CamisetaEntity>();
+    private List<FormaPagoEntity> data = new ArrayList<FormaPagoEntity>();
 
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            CamisetaEntity entity = new CamisetaEntity();
-            entity.setTalla("123" + i);
-            entity.setColor("sad"+ i);
-            entity.setEstilo("12"+ i);
-            entity.setNombre("asd"+ i);
-            entity.setCosto((double)i);
-            entity.setEstampas(new ArrayList());
+            CarritoDTO dtoo = new CarritoDTO();        
+            CarritoDTO resultC = carritoPersistence.crearCarrito(dtoo);
+            
+            CompradorDTO dto = new CompradorDTO();
+            dto.setIdCarrito(resultC.getIdCarrito());
+            dto.setCedula(1);
+            dto.setClave("asd" + i);
+            dto.setCorreo("asd" );
+            dto.setDireccion("asd");
+            dto.setNombre("asd");
+            dto.setTelefono(1);
+            dto.setUsuario("asd");   
+            CompradorDTO result = compradorPersistence.createComprador(dto);
+            
+            FormaPagoEntity entity = new FormaPagoEntity();
+            entity.setCodigoSeguridad(i);
+            entity.setDireccionCorrespondencia("asd" +i);
+            entity.setNombre("asd" + i);
+            entity.setTipo("asd"+i);
+            entity.setNumeroTarjeta(i);
+            entity.setFechaVencimiento(new Date());
+            entity.setComprador(CompradorConverter.persistenceDTO2Entity(result));
             em.persist(entity);
             data.add(entity);
         }
@@ -174,63 +195,78 @@ public class CamisetaPersistenceTest {
     
     
     @Test
-    public void createCamisetaTest() {
+    public void createFormaPagoTest() {
         // se instancia el generador de datos Podam
-        CamisetaDTO dto = new CamisetaDTO();
-        dto.setId(12345);
-        dto.setTalla("123" );
-        dto.setColor("sad");
-        dto.setEstilo("12");
-        dto.setNombre("asd");
-        dto.setCosto(1);
-        dto.setEstampas(null);
-        CamisetaDTO result = camisetaPersistence.crearCamiseta(dto);
-        Assert.assertNotNull(result);
-        CamisetaEntity entity = em.find(CamisetaEntity.class, result.getId());
- 
-        Assert.assertEquals(dto.getTalla(), entity.getTalla());
-        Assert.assertEquals(dto.getColor(), entity.getColor());
-        Assert.assertEquals(dto.getNombre(), entity.getNombre());
-        Assert.assertEquals(dto.getEstilo(), entity.getEstilo());
-        Assert.assertEquals(dto.getCosto(), entity.getCosto());
+            CarritoDTO dtoo = new CarritoDTO();        
+            CarritoDTO resultC = carritoPersistence.crearCarrito(dtoo);
+            
+            CompradorDTO dtoC = new CompradorDTO();
+            dtoC.setIdCarrito(resultC.getIdCarrito());
+            dtoC.setCedula(1);
+            dtoC.setClave("asd" );
+            dtoC.setCorreo("asd" );
+            dtoC.setDireccion("asd");
+            dtoC.setNombre("asd");
+            dtoC.setTelefono(1);
+            dtoC.setUsuario("asd");   
+            CompradorDTO result = compradorPersistence.createComprador(dtoC);
+            
+            FormaPagoDTO dto = new FormaPagoDTO();
+            dto.setCodigoSeguridad(1);
+            dto.setDireccionCorrespondencia("asd" );
+            dto.setNombre("asd" );
+            dto.setTipo("asd");
+            dto.setNumeroTarjeta(1);
+            dto.setIdComprador(result.getId());
+            FormaPagoDTO dto2 = formaPagoPersistence.crearFormaPago(dto);
+            
+            FormaPagoEntity entity = em.find(FormaPagoEntity.class, dto2.getId());
+            Assert.assertEquals(dto2.getId(), entity.getId());
+            Assert.assertEquals(dto2.getNombre(), entity.getNombre());
+            Assert.assertEquals(dto2.getNumeroTarjeta(), entity.getNumeroTarjeta());          
     }
-        
-    
     
     @Test
-    public void getCamisetaTest(){
-        CamisetaEntity entity = data.get(0);
+    public void getFormaPagoCompradorTest(){
+
+        FormaPagoEntity entity = data.get(0);
         Assert.assertNotNull(entity);
         
-        CamisetaDTO dto = camisetaPersistence.darCamiseta(entity.getId());
-        Assert.assertEquals(dto.getTalla(), entity.getTalla());
-        Assert.assertEquals(dto.getColor(), entity.getColor());
-        Assert.assertEquals(dto.getNombre(), entity.getNombre());
-        Assert.assertEquals(dto.getEstilo(), entity.getEstilo());
-    }
-    
-    @Test
-    public void deleteCamisetaTest(){
-        CamisetaEntity result = data.get(0);
-        Assert.assertNotNull(result);
-        camisetaPersistence.eliminarCamiseta(result.getId());
-        
-        
-        CamisetaEntity entity = em.find(CamisetaEntity.class, result.getId());
-        Assert.assertNull(entity);
-        
-    }
-    
-    @Test
-    public void updateCamisetaTest(){
-        CamisetaDTO result = CamisetaConverter.entity2PersistenceDTO(data.get(1));
-        Assert.assertNotNull(result);
-        result.setTalla("123");
-        
-        
-        CamisetaDTO ress = camisetaPersistence.actualizarCamiseta(result);
-        CamisetaEntity entity = em.find(CamisetaEntity.class, result.getId());
+        List<FormaPagoDTO> result = formaPagoPersistence.darFormasPagoComprador(entity.getComprador().getId());
+        Assert.assertEquals(entity.getId(),result.get(0).getId() );
+        Assert.assertEquals(entity.getNombre(),result.get(0).getNombre() );
+        Assert.assertEquals(entity.getCodigoSeguridad(),result.get(0).getCodigoSeguridad() );
+        Assert.assertEquals(entity.getTipo(),result.get(0).getTipo() );
 
-        Assert.assertEquals(entity.getTalla(), ress.getTalla());
-    } 
+
+    }
+    
+    @Test
+    public void deleteFormaPagoTest(){
+        FormaPagoEntity entity = data.get(0);
+        Assert.assertNotNull(entity);
+        
+        formaPagoPersistence.eliminarFormaPago(entity.getId());
+        
+        
+        FormaPagoEntity result = em.find(FormaPagoEntity.class, entity.getId());
+        Assert.assertNull(result);
+        
+    }
+    
+    @Test
+    public void updateFormaPagoTest(){
+
+        FormaPagoEntity entity = data.get(1);
+        Assert.assertNotNull(entity);
+        entity.setCodigoSeguridad(12345);
+        
+        FormaPagoDTO result = formaPagoPersistence.actualizarFormaPago(FormaPagoConverter.convertirDeEntidadADTO(entity));
+        FormaPagoEntity result2 = em.find(FormaPagoEntity.class, entity.getId());
+        
+        Assert.assertEquals(entity.getCodigoSeguridad(), result.getCodigoSeguridad());
+
+        Assert.assertEquals(entity.getCodigoSeguridad(), result2.getCodigoSeguridad());
+    }
+    
 }

@@ -189,13 +189,11 @@ public class CompradorPersistenceTest {
     @Test
     public void createCompradorTest() {
         // se instancia el generador de datos Podam
-        CarritoDTO dtoo = new CarritoDTO();       
-        dtoo.setIdCarrito(2);
+        CarritoDTO dtoo = new CarritoDTO();        
         CarritoDTO resultC = carritoPersistence.crearCarrito(dtoo);
-        List<CarritoDTO> list = carritoPersistence.darCarritos();
             
         CompradorDTO dto = new CompradorDTO();
-        dto.setIdCarrito(2);
+        dto.setIdCarrito(resultC.getIdCarrito());
         dto.setCedula(1);
         dto.setClave("asd" );
         dto.setCorreo("asd" );
