@@ -1,22 +1,19 @@
 (function () {
-	var app = angular.module('footerModule');
+	angular.module('footerModule')
+	.controller('footerController', footerController);
 
-	app.controller('footerCtrl', ['$scope', '$window', function ($scope, $window) {
-		
+	function footerController($window) {
 		var w = angular.element($window);
-		w.bind('resize', function() {
-			alinearAltura();
-		})
+		w.bind('resize', resize);
 
-		alinearAltura();
-		function alinearAltura() {
+		resize();
+		function resize() {
 			var footer = angular.element('#footer');
-			var altura = footer.height();
+			var height = footer.height();
 
-			var contenedor = angular.element('#footer .container');
-			var padding = altura / 3;
-			contenedor.css('padding-top', padding);
+			var container = angular.element('#footer .container');
+			var padding = height / 3;
+			container.css('padding-top', padding);
 		}
-
-	}]);
+	}
 })();

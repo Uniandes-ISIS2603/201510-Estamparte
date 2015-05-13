@@ -2,17 +2,17 @@
 
 	<ul>
 
-		<li class="miestampa" ng-repeat="estampa in records">
+		<li class="miestampa" ng-repeat="estampa in misestampasCtrl.misEstampasRecords.basicRecords">
 
 			<img class="img-circle" ng-src="{{ estampa.imagenes[0] }}">
 
 			<p>{{ estampa.nombre }}</p>
 
-			<button class="btn btn-default quitar" ng-click="eliminar(estampa)">
+			<button id="botonEliminarEstampaMisEstampas" class="btn btn-default quitar" ng-click="misestampasCtrl.removeMisEstampas(estampa)">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
 
-			<button class="btn btn-default acamisa" ng-click="acamisa(estampa)">
+			<button id="botonEstapaMisEstampasACamisa" class="btn btn-default acamisa" ng-click="misestampasCtrl.addCamiseta(estampa)">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
 

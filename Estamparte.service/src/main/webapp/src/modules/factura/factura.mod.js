@@ -1,9 +1,15 @@
 (function () {
-	var app = angular.module('facturaModule', ['CrudModule', 'MockModule']);
+	angular.module('facturaModule', []);
+	.config(facturaConfig);
 
-	app.constant('factura.context', 'factura');
+	function facturaConfig(mockProvider) {
+		var basicReg = 'comprador';
+		mockProvider.addBasicReg(basicReg);
 
-	app.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-		urlsProvider.registerUrl(context);
+		var customReg = ['formaPago'];
+		angular.forEach(customReg, addCustomReg);
+		function addCustomReg(value, index) {
+			mockProvider.addCustomReg(basicReg, value);
+		}
 	}]);
 })();

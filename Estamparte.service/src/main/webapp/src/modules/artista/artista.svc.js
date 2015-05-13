@@ -1,8 +1,13 @@
 (function () {	
-	var app = angular.module('artistaModule');
+	angular.module('artistaModule')
+	.service('artistaService', artistaService);
 
-	app.service('servicioArtista', ['CRUDUtils', 'artista.context', function (CRUDUtils, context) {
-		this.url = context;
-		CRUDUtils.extendService(this);
-	}]);
+	function artistaService(crudService) {
+
+		var _this = this;
+
+		// Here we extend our service.
+		crudService.extendService(_this, 'artista', null);
+
+	}
 })();

@@ -1,9 +1,12 @@
 (function () {	
-	var app = angular.module('equipoModule');
+	angular.module('equipoModule')
+	.controller('equipoController', equipoController);
 
-	app.controller('equipoCtrl', ['$scope', function ($scope) {
+	function equipoController() {
 
-		$scope.miembros = [
+		var _this = this;
+
+		_this.members = [
 			{
 				nombre: 'Juan Camilo Bages',
 				rol: 'Lider de soporte',
@@ -31,19 +34,18 @@
 			}
 		];
 
-		$scope.darAnchoMiembro = function (index) {
-			var ans = '';
+		_this.getMemberWidth = getMemberWidth;
 
-			if ($scope.miembros.length - index >= 3) {
+		function getMemberWidth(index) {
+			var ans = '';
+			if (_this.members.length - index >= 3) {
 				ans = 'col-md-4';
-			} else if ($scope.miembros.length - index == 2) {
+			} else if (_this.members.length - index == 2) {
 				ans = 'col-md-6';
 			} else {
 				ans = 'col-md-12';
 			}
-
 			return ans;
-		};
-
-	}]);
+		}
+	}
 })();

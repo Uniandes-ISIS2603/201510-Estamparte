@@ -1,11 +1,14 @@
 (function () {	
-	var app = angular.module('footerModule');
+	angular.module('footerModule')
+	.directive('footerDirective', footerDirective);
 
-	app.directive('footerDir', function () {
+	function footerDirective() {
 		return {
-			controller: "footerCtrl",
+			controller: 'footerController',
+			controllerAs: 'footerCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/footer/footer.tpl.html'
 		};
-	});
+	}
 })();

@@ -1,9 +1,9 @@
 (function () {	
-	var app = angular.module('camisetaModule', ['CrudModule', 'MockModule']);
+	angular.module('camisetaModule', [])
+	.config(camisetaConfig);
 
-	app.constant('camiseta.context', 'camisetas');
-	
-	app.config(['camiseta.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-		urlsProvider.registerUrl(context);
-	}]);
+	function camisetaConfig(mockProvider) {
+		var basicReg = 'comprador', customReg = 'camiseta';
+		mockProvider.addCustomReg(basicReg, customReg);
+	}
 })();

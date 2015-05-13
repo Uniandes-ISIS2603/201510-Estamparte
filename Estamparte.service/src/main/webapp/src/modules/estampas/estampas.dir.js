@@ -1,12 +1,14 @@
 (function () {
-	var app = angular.module('estampasModule');
+	angular.module('estampasModule')
+	.directive('estampasDirective', estampasDirective);
 
-	app.directive('estampasDir', function() {
+	function estampasDirective() {
 		return {
-			controller: 'estampasCtrl',
+			controller: 'estampasController',
+			controllerAs: 'estampasCtrl',
 			replace: true,
 			scope: {},
 			templateUrl: 'src/modules/estampas/estampas.tpl.html'
 		};
-	});
+	}
 })();

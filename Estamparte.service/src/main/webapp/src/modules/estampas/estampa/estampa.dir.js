@@ -1,16 +1,16 @@
 (function () {
-	var app = angular.module('estampaModule');
+	angular.module('estampaModule')
+	.directive('estampaDirective', estampaDirective);
 
-	app.directive('estampaDir', function () {
+	function estampaDirective() {
 		return {
-			controller: 'estampaCtrl',
+			controller: 'estampaController',
+			controllerAs: 'estampaCtrl',
 			replace: true,
 			scope: {
-				agregar: '=',
-				gusta: '=',
-				estampa: '=estampaDir'
+				target: '=target'
 			},
 			templateUrl: 'src/modules/estampas/estampa/estampa.tpl.html'
 		};
-	});
+	}
 })();

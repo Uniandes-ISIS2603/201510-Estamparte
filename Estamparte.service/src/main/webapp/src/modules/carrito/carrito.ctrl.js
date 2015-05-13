@@ -1,9 +1,18 @@
 (function () {	
 	var app = angular.module('carritoModule');
 
-	app.controller('carritoCtrl', ['$scope', 'servicioCarrito', 'servicioFormaPago', 'servicioCamiseta', 'servicioFactura', function ($scope, servicioCarrito, servicioFormaPago, servicioCamiseta, servicioFactura) {
+	app.controller('carritoCtrl', ['$rootScope', '$scope', 'servicioCarrito', 'servicioFormaPago', 'servicioCamiseta', 'servicioFactura', function ($rootScope, $scope, servicioCarrito, servicioFormaPago, servicioCamiseta, servicioFactura) {
 		
 		var _this = this;
+
+		// Verificacion de usuario.
+
+		$scope.tipoUsuario = function () {
+			var respuesta = null;
+			if ($rootScope.usuario)
+				respuesta = $rootScope.usuario.tipo;
+			return respuesta;
+		}
 
 		// Extension de los servicion del CRUD.
 
@@ -53,7 +62,7 @@
 		// Verifica la validez de la compra.
 
 		$scope.compraInvalida = function () {
-			return $scope.pago === '' || $scope.records.length === 0 ||_this.hayNegativa();
+			return $scope.pago === '' || $scope.records.length === 0 || _this.hayNegativa() || tipoUsuario() === null;
 		}
 
 		// Verifica la cantidad positiva de camisas.

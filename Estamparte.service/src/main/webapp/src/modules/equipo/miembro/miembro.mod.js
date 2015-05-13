@@ -1,3 +1,3 @@
 (function () {	
-	var app = angular.module('miembroModule', []);
+	angular.module('miembroModule', []);
 })();

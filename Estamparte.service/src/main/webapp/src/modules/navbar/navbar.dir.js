@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('navbarModule');
+	angular.module('navbarModule')
+	.directive('navbarDirective', navbarDirective);
 
-	app.directive('navbarDir', function () {
+	function navbarDirective() {
 		return {
-			controller: 'navbarCtrl',
+			controller: 'navbarController',
+			controllerAs: 'navbarCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/navbar/navbar.tpl.html'
 		};
-	});
+	}
 })();
