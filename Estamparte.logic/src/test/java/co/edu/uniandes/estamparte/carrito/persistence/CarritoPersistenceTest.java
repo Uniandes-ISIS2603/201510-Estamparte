@@ -191,7 +191,7 @@ public class CarritoPersistenceTest {
         
     }
     
-    @Test
+   /** @Test
     public void deleteCarritoTest(){
         CarritoDTO dtoo = new CarritoDTO();        
         CarritoDTO result = carritoPersistence.crearCarrito(dtoo);
@@ -209,5 +209,5 @@ public class CarritoPersistenceTest {
     @Test
     public void updateCamisetaCarritoTest(){
         
-    } 
+    }*/ 
 }
