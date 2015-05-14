@@ -3,7 +3,7 @@
 	.config(artistaConfig);
 
 	function artistaConfig(mockProvider) {
-		var basicReg = 'artista';
+		var basicReg = 'artistas';
 		mockProvider.addBasicReg(basicReg);
 	}
 })();
