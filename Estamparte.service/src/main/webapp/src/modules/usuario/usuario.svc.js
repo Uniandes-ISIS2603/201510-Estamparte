@@ -3,7 +3,7 @@
 	.service('usuarioService', usuarioService);
 
 	function usuarioService($rootScope, compradorService, artistaService) {
-
+                    
 		var _this = this;
 
 		_this.user = null;
