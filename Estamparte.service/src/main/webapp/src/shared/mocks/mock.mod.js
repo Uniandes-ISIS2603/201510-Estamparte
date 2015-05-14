@@ -8,7 +8,7 @@
 
 		// This variable helps as a button for enabling
 		// or not the mock in a fast way.
-		var skip = false;
+		var skip = true;
 
 		// ================================================================================
 		// THIS IS THE TEMPLATE HANDLER

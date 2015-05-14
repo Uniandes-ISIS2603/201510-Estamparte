@@ -7,7 +7,7 @@
 		var _this = this;
 
 		// Here we extend our service.
-		crudService.extendService(_this, 'artista', null);
+		crudService.extendService(_this, 'artistas', null);
 
 	}
 })();
