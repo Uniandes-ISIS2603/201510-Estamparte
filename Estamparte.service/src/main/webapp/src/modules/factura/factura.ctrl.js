@@ -1,9 +1,11 @@
 (function () {
 	angular.module('facturaModule')
-	.controller('facturaCtrl', facturaCtrl);
+	.controller('facturaController', facturaController);
 
-	function facturaCtrl($scope, servicioFactura) {
+	function facturaController(facturaService) {
 
 		var _this = this;
+
+		_this.facturaRecords = facturaService.records;
 	}
 })();

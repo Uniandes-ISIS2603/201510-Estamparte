@@ -19,7 +19,7 @@ angular.module('mainApp', [
     'estampasModule',
     'misestampasModule',
     'camisetaModule',
+    'carritoModule',
+    'facturaModule',
     // 'nuevaModule',
-    // 'carritoModule',
-    // 'facturaModule',
 ]);

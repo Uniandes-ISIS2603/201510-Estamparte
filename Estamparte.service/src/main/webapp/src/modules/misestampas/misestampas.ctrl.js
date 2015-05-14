@@ -2,7 +2,7 @@
 	angular.module('misestampasModule')
 	.controller('misestampasController', misestampasController);
 
-	function misestampasController(misestampasService) {
+	function misestampasController(misestampasService, usuarioService, camisetaService) {
 
 		var _this = this;
 		
@@ -10,14 +10,14 @@
 		_this.misEstampasRecords = misestampasService.records;
 
 		_this.removeMisEstampas = removeMisEstampas;
-		_this.addCamiseta = addCamiseta;
+		_this.addEstampaCamiseta = addEstampaCamiseta;
 
 		function removeMisEstampas(target) {
 			misestampasService.removeMisEstampas(target);
 		}
 
-		function addCamiseta(target) {
-			alert("Espera un poquito... un poquito mas (8)");
+		function addEstampaCamiseta(target) {
+			camisetaService.addEstampaCamiseta(target);
 		}
 	}
 })();

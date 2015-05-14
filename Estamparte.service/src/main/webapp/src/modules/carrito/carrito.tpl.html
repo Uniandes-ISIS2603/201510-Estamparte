@@ -4,17 +4,17 @@
 
 		<form id="formFormapagoCarrito" name="formularioComprar">
 
-			<button id="botonComprar" class="btn btn-default col-md-4 formacomprar" ng-click="comprar()" ng-disabled="compraInvalida()">Comprar</button>
+			<button id="botonComprar" class="btn btn-default col-md-4 formacomprar" ng-click="carritoCtrl.buy()" ng-disabled="carritoCtrl.invalidOrder()">Comprar</button>
 
-			<div ng-show="tipoUsuario() === 'comprador'" class="form-group col-md-8">
+			<div ng-show="carritoCtrl.getUserType() === 'comprador'" class="form-group col-md-8">
 
-				<select id="formapagoCarrito" class="form-control" ng-options="(f.tipo + ' - ' + f.numeroTarjeta) for f in formas" ng-model="pago">
+				<select id="formapagoCarrito" class="form-control" ng-options="(f.tipo + ' - ' + f.numeroTarjeta) for f in carritoCtrl.formaPagoRecords.customRecords" ng-model="carritoCtrl.payment">
 					<option value="" disabled selected>Forma de pago</option>
 				</select>
 
 			</div>
 
-			<div ng-show="tipoUsuario() === null" class="form-group col-md-8">
+			<div ng-show="carritoCtrl.getUserType() === null" class="form-group col-md-8">
 
 				<p style="text-align: center">Para comprar debes estar registrado</p>
 
@@ -26,25 +26,25 @@
 
 	<ul>
 
-		<li class="miestampa" ng-repeat="camisa in records">
+		<li class="miestampa" ng-repeat="tshirt in carritoCtrl.carritoRecords.customRecords">
 
 			<!-- <img class="img-circle" ng-src="{{ estampa.imagenes[0] }}"> -->
 
 			<p>
-				{{ camisa.nombre }}
+				{{ tshirt.nombre }}
 				<br>
-				Precio: {{ camisa.precio | currency }}
+				Precio: {{ tshirt.precio | currency }}
 				<br>
 				Cantidad: 
 			</p>
 
-			<input id="cantidadcamisa" class="cantidadcamisa" type="number" ng-model="camisa.cantidad" ng-change="cambiarCantidad(camisa)">
+			<input id="cantidadcamisa" class="cantidadcamisa" type="number" ng-model="tshirt.cantidad" ng-change="carritoCtrl.changeAmount(tshirt)">
 
-			<button id="botonQuitarCamisa" class="btn btn-default acamisa" ng-click="quitar(camisa)">
+			<button id="botonQuitarCamisa" class="btn btn-default acamisa" ng-click="carritoCtrl.removeTshirt(tshirt)">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
 
-			<button id="botonCamisaACamisa" class="btn btn-default acamisa" ng-click="acamisa(camisa)">
+			<button id="botonCamisaACamisa" class="btn btn-default acamisa" ng-click="carritoCtrl.editTshirt(tshirt)">
 				<span class="glyphicon glyphicon-pencil"></span>
 			</button>
 

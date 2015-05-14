@@ -1,28 +1,12 @@
 (function () {	
-	var app = angular.module('carritoModule');
+	angular.module('carritoModule')
+	.service('carritoService', carritoService);
 
-	app.service('servicioCarrito', ['CRUDUtils', 'carrito.context', function (CRUDUtils, context) {
-
-		// Variable que apunta a this.
+	function carritoService(crudService) {
 
 		var _this = this;
 
-		// Extension de los servicion del CRUD.
-
-		_this.url = context;
-
-		CRUDUtils.extendService(_this);
-
-		// _this.darCarritoActual = function () {
-		// 	var respuesta = '';
-
-		// 	var data = $scope.datos;
-		// 	for (var i = 0; i < data.length; i++) {
-		// 		respuesta = respuesta +  'Camiseta ' + i+1 + data[i].nombre + '\n ';
-		// 	}
-
-		// 	return respuesta;
-		// }
-
-	}]);
+		// Here we extend our service.
+		crudService.extendService(_this, 'comprador', 'carrito');
+	}
 })();
