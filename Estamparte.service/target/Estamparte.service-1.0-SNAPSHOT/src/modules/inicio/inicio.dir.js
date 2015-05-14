@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('inicioModule');
-
-	app.directive('inicioDir', function () {
+	angular.module('inicioModule')
+	.directive('inicioDirective', inicioDirective);
+	
+	function inicioDirective() {
 		return {
-			controller: 'inicioCtrl',
+			controller: 'inicioController',
+			controllerAs: 'inicioCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/inicio/inicio.tpl.html'
 		};
-	});
+	}
 })();

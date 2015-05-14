@@ -10,14 +10,14 @@
 
 		<div class="navbar-header">
 
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+			<button id="botonNavbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
 
-			<a class="navbar-brand" href="javascript: void(0)">
+			<a id="botonHome" class="navbar-brand" href="javascript: void(0)">
 				<span class="glyphicon glyphicon-leaf"></span>
 				Estamparte
 			</a>
@@ -44,20 +44,28 @@
 
 			<ul id="navegacion" class="nav navbar-nav">
 
-				<li ng-class="(darSelActual() === 'inicio') ? 'active' : ''">
-					<a href="javascript: void(0)" ng-click="cambiarSelActual('inicio')">Inicio</a>
+				<li ng-class="navbarCtrl.getActualStatus('inicio')">
+					<a id="botonNavbarAInicio" href="javascript: void(0)" ng-click="navbarCtrl.setActualDiv('inicio')">
+						Inicio
+					</a>
 				</li>
 
-				<li ng-class="(darSelActual() === 'estampas') ? 'active' : ''">
-					<a href="javascript: void(0)" ng-click="cambiarSelActual('estampas')">Estampas</a>
+				<li ng-class="navbarCtrl.getActualStatus('estampas')">
+					<a id="botonNavbarAEstampas" href="javascript: void(0)" ng-click="navbarCtrl.setActualDiv('estampas')">
+						Estampas
+					</a>
 				</li>
 
-				<li ng-class="(darSelActual() === 'camiseta') ? 'active' : ''">
-					<a href="javascript: void(0)" ng-click="cambiarSelActual('camiseta')">Camiseta</a>
+				<li ng-class="navbarCtrl.getActualStatus('camiseta')" ng-hide="navbarCtrl.isType('artista')">
+					<a id="botonNavbarACamiseta" href="javascript: void(0)" ng-click="navbarCtrl.setActualDiv('camiseta')">
+						Camiseta
+					</a>
 				</li>
 
-				<li ng-class="(darSelActual() === 'equipo') ? 'active' : ''">
-					<a href="javascript: void(0)" ng-click="cambiarSelActual('equipo')">Equipo</a>
+				<li ng-class="navbarCtrl.getActualStatus('equipo')">
+					<a id="botonNavbarAEquipo" href="javascript: void(0)" ng-click="navbarCtrl.setActualDiv('equipo')">
+						Equipo
+					</a>
 				</li>
 
 			</ul>
@@ -75,75 +83,84 @@
 
 				<!-- Opciones para el artista -->
 
-				<li ng-show="usuario.tipo === 'artista'">
-					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa" ng-click="verNuevaEstampa()">
+				<li ng-show="navbarCtrl.isType('artista')">
+					<a id="botonCrearEstampa" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Agregar estampa" ng-click="navbarCtrl.slidePanel('nueva')">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
 				</li>
 
 				<!-- Opciones para el comprador -->
 
-				<li ng-show="usuario.tipo === 'comprador'">
-					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Facturas" ng-click="verFacturas()">
+				<li ng-show="navbarCtrl.isType('comprador')">
+					<a id="botonVerFacturas" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Facturas" ng-click="navbarCtrl.slidePanel('factura')">
 						<span class="glyphicon glyphicon-envelope"></span>
 					</a>
 				</li>
 
-				<li ng-show="usuario.tipo === 'comprador'">
-					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Mis estampas" ng-click="verMisEstampas()">
+				<li ng-hide="navbarCtrl.isType('artista')">
+					<a id="botonVerMisEstampas" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Mis estampas" ng-click="navbarCtrl.slidePanel('misestampas')">
 						<span class="glyphicon glyphicon-th-list"></span>
 					</a>
 				</li>
 
-				<li ng-show="usuario.tipo === 'comprador'">
-					<a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Carrito de compras" ng-click="verCarrito()">
+				<li ng-hide="navbarCtrl.isType('artista')">
+					<a id="botonVerCarrito" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Carrito de compras" ng-click="navbarCtrl.slidePanel('carrito')">
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 					</a>
 				</li>
 
-				<!--
-				Manejo de la cuenta actual.
-				Temporalmente cambio entre tipos de usuario.
-				-->
+				<!-- Manejo de la cuenta actual de usuario logueado. -->
 				
-				<li class="dropdown usuario">
+				<li ng-hide="navbarCtrl.isType(null)" class="dropdown usuario">
 
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<a id="botonDropDownUsuario" href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						<span class="glyphicon glyphicon-user"></span>
-						{{ usuario.nombre }}
+						{{ navbarCtrl.getUserName() }}
 						<span class="caret"></span>
 					</a>
 
 					<ul class="dropdown-menu menu-usuario">
 
-						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('artista')">
-							Cambiar a artista
-							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'artista'"></span>
-						</a></li>
-
-						<li><a href="javascript: void(0)" ng-click="cambiarUsuario('comprador')">
-							Cambiar a comprador
-							<span class="ok glyphicon glyphicon-ok-circle" ng-show="usuario.tipo === 'comprador'"></span>
-						</a></li>
-
-						<li class="divider"></li>
-
 						<!-- Opctiones para el comprador -->
-						<li ng-show="usuario.tipo === 'comprador'"><a href="javascript: void(0)" ng-click="verFormaPago()">
-							Administrar pagos
-						</a></li>
+
+						<li ng-show="navbarCtrl.isType('comprador')">
+							<a id="botonAdministrarPago" href="javascript: void(0)" ng-click="navbarCtrl.slidePanel('formapago')">
+								Administrar pagos
+							</a>
+						</li>
 
 						<!-- Opciones para el artista -->
-						<li ng-show="usuario.tipo === 'artista'"><a href="javascript: void(0)">
-							Administrar estampas
-						</a></li>
+
+						<li ng-show="navbarCtrl.isType('artista')">
+							<a id="botonAdministrarEstampas" href="javascript: void(0)" ng-click="navbarCtrl.slidePanel('adminestampas')">
+								Administrar estampas
+							</a>
+						</li>
 
 						<li class="divider"></li>
 
-						<li><a href="javascript: void(0)" ng-click="cerrarSesion()">Cerrar sesion</a></li>
+						<li>
+							<a id="botonCerrarSesion" href="javascript: void(0)" ng-click="navbarCtrl.logout()">
+								Cerrar sesion
+							</a>
+						</li>
 
 					</ul>
 
+				</li>
+
+				<!-- Opciones para usuario no logueado -->
+
+				<li ng-show="navbarCtrl.isType(null)">
+					<a id="botonIniciarSesion" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Me parece haberte visto antes" ng-click="navbarCtrl.slidePanel('iniciarsesion')">
+						Inicia sesion
+					</a>
+				</li>
+
+				<li ng-show="navbarCtrl.isType(null)">
+					<a id="botonRegistrarse" href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="Eres nuevo por aqui?" ng-click="navbarCtrl.slidePanel('registrarse')">
+						Registrate
+					</a>
 				</li>
 
 			</ul>

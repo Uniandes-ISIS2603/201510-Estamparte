@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class FacturaPageDTO {
     private Long totalRecords;
 
-    private ArrayList<FacturaDTO> records;
+    private List<FacturaDTO> records;
 
     public Long getTotalRecords() {
         return totalRecords;
@@ -22,11 +22,11 @@ public class FacturaPageDTO {
         totalRecords = pTotalRecords;
     }
 
-    public ArrayList<FacturaDTO> getRecords() {
+    public List<FacturaDTO> getRecords() {
         return records;
     }
 
-    public void setRecords(ArrayList<FacturaDTO> pRecords) {
+    public void setRecords(List<FacturaDTO> pRecords) {
         records = pRecords;
     }
     

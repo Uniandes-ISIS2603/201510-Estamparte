@@ -3,27 +3,22 @@
 
 	<head>
 
-		<!-- Titulo de la pagina -->
-
+		<!-- Page title -->
 		<title>Estamparte</title>
 
-		<!-- Definicion de meta tags -->
-
+		<!-- Meta tags -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-		<!-- Importa los archivos de CSS -->
-
+		<!-- CSS imports -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="src/assets/css/index.css">
 
-		<!-- Importa fonts desde internet -->
+		<!-- Font imports -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:100,300">
 
-		<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato:100,300'>
-
-		<!-- Importa los archivos de JS -->
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+		<!-- JS imports -->
+		<script src="src/assets/libs/jquery.min.js"></script>
+		<script src="src/assets/libs/jquery-ui.min.js"></script>
 		<script src="src/assets/libs/underscore-min.js"></script>
 		<script src="src/assets/libs/angular.min.js"></script>
 		<script src="src/assets/libs/angular-mocks.js"></script>
@@ -31,146 +26,145 @@
 		<script src="src/assets/libs/restangular.min.js"></script>
 		<script src="src/assets/libs/ui-bootstrap-tpls-0.12.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-		<!--Importa los archivos para subir imagenes a la pagina-->
-
 		<script src="src/assets/libs/angular-file-upload.min.js"></script>
 				
-		<!-- Importa los archivos escritos sobre AngularJS -->
-
+		<!-- AngularJS imports -->
 		<script src="src/app.js"></script>
 
-		<!-- Importa los archivos de CRUD -->
+		<!-- ######################################################## -->
+		<!-- ################ Shared related modules ################ -->
+		<!-- ######################################################## -->
 
+		<!-- Crud module imports -->
 		<script src="src/shared/crud/crud.mod.js"></script>
 		<script src="src/shared/crud/crud.svc.js"></script>
 
-		<!-- Importa los archivos de Mock -->
-
+		<!-- Mock module imports -->
 		<script src="src/shared/mocks/mock.mod.js"></script>
 		<script src="src/shared/mocks/mock.svc.js"></script>
-			   
-		<!-- Importa los archivos del modulo factura -->
-		<script src="src/modules/factura/factura.mod.js"></script>
-		<script src="src/modules/factura/factura.svc.js"></script>
-		<script src="src/modules/factura/factura.ctrl.js"></script>
-		<script src="src/modules/factura/factura.dir.js"></script>
-		
-		<!-- Importa los archivos del modulo comprador -->
-		<!--
+
+		<!-- ######################################################## -->
+		<!-- ################# User related modules ################# -->
+		<!-- ######################################################## -->
+
+		<!-- Usuario module imports -->
+		<script src="src/modules/usuario/usuario.mod.js"></script>
+		<script src="src/modules/usuario/usuario.svc.js"></script>
+
+		<!-- Comprador module imports -->
 		<script src="src/modules/comprador/comprador.mod.js"></script>
 		<script src="src/modules/comprador/comprador.svc.js"></script>
-		<script src="src/modules/comprador/comprador.ctrl.js"></script>
-		<script src="src/modules/comprador/comprador.dir.js"></script>
-		-->
 
-		<!-- Importa los archivos del modulo de artista -->
-		<!--
+		<!-- Artista module imports -->
 		<script src="src/modules/artista/artista.mod.js"></script>
 		<script src="src/modules/artista/artista.svc.js"></script>
-		<script src="src/modules/artista/artista.ctrl.js"></script>
-		<script src="src/modules/artista/artista.dir.js"></script>
-		-->
 
-		<!-- Importa los archivos del modulo carrito -->
-		<script src="src/modules/carrito/carrito.mod.js"></script>
-		<script src="src/modules/carrito/carrito.svc.js"></script>
-		<script src="src/modules/carrito/carrito.ctrl.js"></script>
-		<script src="src/modules/carrito/carrito.dir.js"></script>
+		<!-- ######################################################## -->
+		<!-- ############## Mostly UI related modules ############### -->
+		<!-- ######################################################## -->
 
-		<!-- Importa los archivos del modulo forma pago -->
+		<!-- Navbar module imports -->
+		<script src="src/modules/navbar/navbar.mod.js"></script>
+		<script src="src/modules/navbar/navbar.ctrl.js"></script>
+		<script src="src/modules/navbar/navbar.dir.js"></script>
+
+		<!-- Inicio module imports -->
+		<script src="src/modules/inicio/inicio.mod.js"></script>
+		<script src="src/modules/inicio/inicio.ctrl.js"></script>
+		<script src="src/modules/inicio/inicio.dir.js"></script>
+
+		<!-- Equipo module imports -->
+		<script src="src/modules/equipo/equipo.mod.js"></script>
+		<script src="src/modules/equipo/equipo.ctrl.js"></script>
+		<script src="src/modules/equipo/equipo.dir.js"></script>
+
+		<!-- Miembro module imports -->
+		<script src="src/modules/equipo/miembro/miembro.mod.js"></script>
+		<script src="src/modules/equipo/miembro/miembro.ctrl.js"></script>
+		<script src="src/modules/equipo/miembro/miembro.dir.js"></script>
+
+		<!-- Footer module imports -->
+		<script src="src/modules/footer/footer.mod.js"></script>
+		<script src="src/modules/footer/footer.ctrl.js"></script>
+		<script src="src/modules/footer/footer.dir.js"></script>
+
+		<!-- ######################################################## -->
+		<!-- ########## Mostly functional related modules ########### -->
+		<!-- ######################################################## -->
+
+		<!-- FormaPago module imports  -->
 		<script src="src/modules/formaPago/formaPago.mod.js"></script>
 		<script src="src/modules/formaPago/formaPago.svc.js"></script>
 		<script src="src/modules/formaPago/formaPago.ctrl.js"></script>
 		<script src="src/modules/formaPago/formaPago.dir.js"></script>
 
-		<!-- Importa los archivos del modulo camiseta -->
-		<script src="src/modules/camiseta/camiseta.mod.js"></script>
-		<script src="src/modules/camiseta/camiseta.svc.js"></script>
-		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
-		<script src="src/modules/camiseta/camiseta.dir.js"></script>
-
-		<!-- Importa los archivos del modulo estampa -->
-		
-		<script src="src/modules/estampas/estampa/estampa.mod.js"></script>
-		<script src="src/modules/estampas/estampa/estampa.ctrl.js"></script>
-		<script src="src/modules/estampas/estampa/estampa.dir.js"></script>
-
-		<!-- Importa los archivos del modulo nueva -->
-		
-		<script src="src/modules/estampas/nueva/nueva.mod.js"></script>
-		<script src="src/modules/estampas/nueva/nueva.ctrl.js"></script>
-		<script src="src/modules/estampas/nueva/nueva.dir.js"></script>
-
-		<!-- Importa los archivos del modulo estampas -->
-		
+		<!-- Estampas module imports -->
 		<script src="src/modules/estampas/estampas.mod.js"></script>
 		<script src="src/modules/estampas/estampas.svc.js"></script>
 		<script src="src/modules/estampas/estampas.ctrl.js"></script>
 		<script src="src/modules/estampas/estampas.dir.js"></script>
 
-		<!-- Importa los archivos del module misestampas -->
+		<!-- Estampa module imports -->
+		<script src="src/modules/estampas/estampa/estampa.mod.js"></script>
+		<script src="src/modules/estampas/estampa/estampa.ctrl.js"></script>
+		<script src="src/modules/estampas/estampa/estampa.dir.js"></script>
 
+		<!-- Misestampas module imports -->
 		<script src="src/modules/misestampas/misestampas.mod.js"></script>
 		<script src="src/modules/misestampas/misestampas.svc.js"></script>
 		<script src="src/modules/misestampas/misestampas.ctrl.js"></script>
 		<script src="src/modules/misestampas/misestampas.dir.js"></script>
 
-		<!-- Importa los archivos del modulo barra -->
-		
-		<script src="src/modules/navbar/navbar.mod.js"></script>
-		<script src="src/modules/navbar/navbar.ctrl.js"></script>
-		<script src="src/modules/navbar/navbar.dir.js"></script>
+		<!-- Camiseta module imports -->
+		<script src="src/modules/camiseta/camiseta.mod.js"></script>
+		<script src="src/modules/camiseta/camiseta.svc.js"></script>
+		<script src="src/modules/camiseta/camiseta.ctrl.js"></script>
+		<script src="src/modules/camiseta/camiseta.dir.js"></script>
 
-		<!-- Importa los archivos del modulo inicio -->
-		
-		<script src="src/modules/inicio/inicio.mod.js"></script>
-		<script src="src/modules/inicio/inicio.ctrl.js"></script>
-		<script src="src/modules/inicio/inicio.dir.js"></script>
+		<!-- Carrito module imports -->
+		<script src="src/modules/carrito/carrito.mod.js"></script>
+		<script src="src/modules/carrito/carrito.svc.js"></script>
+		<script src="src/modules/carrito/carrito.ctrl.js"></script>
+		<script src="src/modules/carrito/carrito.dir.js"></script>
 
-		<!-- Importa los archivos del modulo footer -->
+		<!-- Factura module imports -->
+		<script src="src/modules/factura/factura.mod.js"></script>
+		<script src="src/modules/factura/factura.svc.js"></script>
+		<script src="src/modules/factura/factura.ctrl.js"></script>
+		<script src="src/modules/factura/factura.dir.js"></script>
 
-		<script src="src/modules/footer/footer.mod.js"></script>
-		<script src="src/modules/footer/footer.ctrl.js"></script>
-		<script src="src/modules/footer/footer.dir.js"></script>
-
-		<!-- Imports los archivos del modulo miembro -->
-
-		<script src="src/modules/equipo/miembro/miembro.mod.js"></script>
-		<script src="src/modules/equipo/miembro/miembro.ctrl.js"></script>
-		<script src="src/modules/equipo/miembro/miembro.dir.js"></script>
-
-		<!-- Importa los archivos del modulo equipo -->
-
-		<script src="src/modules/equipo/equipo.mod.js"></script>
-		<script src="src/modules/equipo/equipo.ctrl.js"></script>
-		<script src="src/modules/equipo/equipo.dir.js"></script>
+		<!-- Importa los archivos del modulo nueva -->
+		<!--
+		<script src="src/modules/estampas/nueva/nueva.mod.js"></script>
+		<script src="src/modules/estampas/nueva/nueva.ctrl.js"></script>
+		<script src="src/modules/estampas/nueva/nueva.dir.js"></script>
+		-->
 
 	</head>
 
 	<body>
 
-		<div navbar-dir></div>
+		<div navbar-directive></div>
 
-		<div forma-pago-dir></div>
+		<div forma-pago-directive></div>
 
-		<div nueva-dir></div>
+		<!-- <div nueva-dir></div> -->
 
-		<div factura-dir></div>
+		<div factura-directive></div>
 
-		<div misestampas-dir></div>
+		<div misestampas-directive></div>
 
-		<div carrito-dir></div>
+		<div carrito-directive></div>
 
-		<div inicio-dir></div>
+		<div inicio-directive></div>
 
-		<div estampas-dir></div>
+		<div estampas-directive></div>
 
-		<div camiseta-dir></div>
+		<div camiseta-directive></div>
 
-		<div equipo-dir></div>
+		<div equipo-directive></div>
 
-		<div footer-dir></div>
+		<div footer-directive></div>
 
 	</body>
 

@@ -1,12 +1,14 @@
 (function () {
-	var app = angular.module('misestampasModule');
+	angular.module('misestampasModule')
+	.directive('misestampasDirective', misestampasDirective);
 
-	app.directive('misestampasDir', function () {
+	function misestampasDirective() {
 		return {
-			controller: 'misestampasCtrl',
+			controller: 'misestampasController',
+			controllerAs: 'misestampasCtrl',
 			replace: true,
 			scope: {},
 			templateUrl: 'src/modules/misestampas/misestampas.tpl.html'
 		}
-	});
+	}
 })();

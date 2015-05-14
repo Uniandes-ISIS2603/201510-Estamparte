@@ -64,7 +64,10 @@ public class CompradorLogic implements ICompradorLogic{
     public CompradorDTO deleteComprador(long id) {
         CompradorEntity entity = entityManager.find(CompradorEntity.class, id);
         if(entity!=null){
+        
+        formaPagoLogic.eliminarFormasPagoComprado(id);
         carritoLogic.eliminarCarrito(entity.getCarrito().getIdCarrito());
+        
         entityManager.remove(entity);    
         return CompradorConverter.entity2PersistenceDTO(entity);
         }
@@ -87,11 +90,7 @@ public class CompradorLogic implements ICompradorLogic{
         CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
         FormaPagoDTO respuesta = null;
         if(comprador!=null){
-           //respuesta = formaPagoLogic.crearFormaPago(formaPago);
-           FormaPagoEntity nuevaForma = FormaPagoConverter.convertirDeDTOAEntidad(formaPago);
-           comprador.agregarFormaPago(nuevaForma);
-           entityManager.merge(comprador);
-           respuesta = FormaPagoConverter.convertirDeEntidadADTO(nuevaForma);
+           respuesta = formaPagoLogic.crearFormaPago(formaPago);
         }
         return respuesta;
     }
@@ -99,15 +98,13 @@ public class CompradorLogic implements ICompradorLogic{
     public List<FormaPagoDTO> darFormasPagoComprador(long idComprador) {
         return formaPagoLogic.darFormasPagoComprador(idComprador);
     }
-
+    
+    @Override
     public FormaPagoDTO actualizarFormaPagoComprador(long idComprador, FormaPagoDTO formaPago) {
         CompradorEntity comprador = entityManager.find(CompradorEntity.class, idComprador);
         FormaPagoDTO respuesta = null;
         if(comprador!=null){
-            FormaPagoEntity forma = FormaPagoConverter.convertirDeDTOAEntidad(formaPago);
-            comprador.actualizarFormaPago(forma);
-            entityManager.merge(comprador);
-            respuesta = FormaPagoConverter.convertirDeEntidadADTO(forma);
+            respuesta = formaPagoLogic.actualizarFormaPago(formaPago);
         }
         return respuesta;
     }

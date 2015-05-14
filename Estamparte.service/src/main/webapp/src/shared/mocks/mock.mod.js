@@ -1,79 +1,174 @@
-(function (angular) {
-    var mocksModule = angular.module('MockModule', ['ngMockE2E']);
+(function () {
+	angular.module('mockModule', ['ngMockE2E'])
+	.run(runMocks);
 
-    mocksModule.constant('MockModule.baseUrl', 'webresources');
+	function runMocks($httpBackend, mock) {
 
-    mocksModule.run(['$httpBackend', 'MockModule.urls', 'MockModule.mockRecords', 'MockModule.baseUrl', function ($httpBackend, urls, mockRecords, baseUrl) {
-            function mockUrls(entity_url) {
-                mockRecords[entity_url] = [];
-                var fullUrl = baseUrl + '/' + entity_url;
-                var url_regexp = new RegExp(fullUrl + '/([0-9]+)');
-                $httpBackend.whenGET(fullUrl).respond(function (method, url, data, params) {
-                    var responseObj = {totalRecords: mockRecords[entity_url].length};
-                    if (params && params.page && params.maxRecords) {
-                        var start_index = (params.page - 1) * params.maxRecords;
-                        var end_index = start_index + params.maxRecords;
-                        responseObj.records = mockRecords[entity_url].slice(start_index, end_index);
-                    } else {
-                        responseObj.records = mockRecords[entity_url];
-                    }
-                    return [200, responseObj, {}];
-                });
-                $httpBackend.whenGET(url_regexp).respond(function (method, url) {
-                    var id = parseInt(url.split('/').pop());
-                    var record;
-                    angular.forEach(mockRecords[entity_url], function (value) {
-                        if (value.id === id) {
-                            record = angular.copy(value);
-                        }
-                    });
-                    return [200, record, {}];
-                });
-                $httpBackend.whenPOST(fullUrl).respond(function (method, url, data) {
-                    var record = angular.fromJson(data);
-                    record.id = Math.floor(Math.random() * 10000);
-                    mockRecords[entity_url].push(record);
-                    return [200, record, {}];
-                });
-                $httpBackend.whenPUT(url_regexp).respond(function (method, url, data) {
-                    var record = angular.fromJson(data);
-                    angular.forEach(mockRecords[entity_url], function (value, key) {
-                        if (value.id === record.id) {
-                            mockRecords[entity_url].splice(key, 1, record);
-                        }
-                    });
-                    return [200, null, {}];
-                });
-                $httpBackend.whenDELETE(url_regexp).respond(function (method, url) {
-                    var id = parseInt(url.split('/').pop());
-                    angular.forEach(mockRecords[entity_url], function (value, key) {
-                        if (value.id === id) {
-                            mockRecords[entity_url].splice(key, 1);
-                        }
-                    });
-                    return [200, null, {}];
-                });
-            }
+		var mocks = {};
 
-            function skipUrl(entity_url) {
-                var fullUrl = baseUrl + '/' + entity_url;
-                var url_regexp = new RegExp(fullUrl + '/([0-9]+)');
-                $httpBackend.whenGET(fullUrl).passThrough();
-                $httpBackend.whenGET(url_regexp).passThrough();
-                $httpBackend.whenPOST(fullUrl).passThrough();
-                $httpBackend.whenPUT(url_regexp).passThrough();
-                $httpBackend.whenDELETE(url_regexp).passThrough();
-            }
-            var ignore_regexp = new RegExp('^((?!' + baseUrl + ').)*$');
-            $httpBackend.whenGET(ignore_regexp).passThrough();
-            for (var i in urls) {
-                if (urls.hasOwnProperty(i)) {
-                    if (urls[i].skip) {
-                        skipUrl(urls[i].url);
-                    } else {
-                        mockUrls(urls[i].url);
-                    }
-                }
-            }
-        }]);
-})(window.angular);
+		// This variable helps as a button for enabling
+		// or not the mock in a fast way.
+		var skip = true;
+
+		// ================================================================================
+		// THIS IS THE TEMPLATE HANDLER
+		// ================================================================================
+
+		var url = new RegExp('([^]+).html$');
+		$httpBackend.whenGET(url).passThrough();
+
+		// ================================================================================
+		// THIS IS THE BASIC MOCK CREATOR
+		// ================================================================================
+
+		function addBasicMock(basic, skip) {
+			if (!mocks.hasOwnProperty(basic)) mocks[basic] = {};
+
+			var base = '/' + basic;
+			var url    = new RegExp(base + '$');
+			var regUrl = new RegExp(base + '/([0-9]+)$');
+
+			if (!skip) {
+				$httpBackend.whenGET(url).respond(doGET);
+				$httpBackend.whenGET(regUrl).respond(doGETID);
+				$httpBackend.whenPOST(url).respond(doPOST);
+				$httpBackend.whenPUT(regUrl).respond(doPUT);
+				$httpBackend.whenDELETE(regUrl).respond(doDELETE);
+			} else {
+				$httpBackend.whenGET(url).passThrough();
+				$httpBackend.whenGET(regUrl).passThrough();
+				$httpBackend.whenPOST(url).passThrough();
+				$httpBackend.whenPUT(regUrl).passThrough();
+				$httpBackend.whenDELETE(regUrl).passThrough();
+			}
+
+			// /:basic
+			function doGET(method, url, data) {
+				var ans = []
+				angular.forEach(mocks[basic], forEach);
+				function forEach(value, index) {
+					ans.push(value);
+				}
+				return [200, ans, {}];
+			}
+
+			// /:basic/:id
+			function doGETID(method, url, data) {
+				var id = url.split('/').pop();
+					item = mocks[basic][id];
+				return [200, item, {}];
+			}
+
+			// /:basic
+			function doPOST(method, url, data) {
+				var item = angular.fromJson(data),
+					id = Math.floor(Math.random() * 10000);
+				item['id'] = id;
+				mocks[basic][id] = item;
+				return [200, item, {}];
+			}
+
+			// /:basic/:id
+			function doPUT(method, url, data) {
+				var item = angular.fromJson(data),
+					id = url.split('/').pop();
+				mocks[basic][id] = item;
+				return [200, item, {}];
+			}
+
+			// /:basic/:id
+			function doDELETE(method, url, data) {
+				var item = null, id = url.split('/').pop();
+				delete mocks[basic].id;
+				return [200, item, {}];
+			}
+		}
+
+		// ================================================================================
+		// THIS IS THE CUSTOM MOCK CREATOR
+		// ================================================================================
+
+		function addCustomMock(basic, custom, skip) {
+
+			if (!mocks.hasOwnProperty(custom)) addBasicMock(custom);
+
+			var base = new RegExp('/' + basic + '/([0-9]+)/' + custom);
+			var url = new RegExp(base);
+			var regUrl = new RegExp(base + '/([0-9]+)');
+
+			if (!skip) {
+				$httpBackend.whenGET(url).respond(doGET);
+				$httpBackend.whenGET(regUrl).respond(doGETID);
+				$httpBackend.whenPOST(url).respond(doPOST);
+				$httpBackend.whenPUT(regUrl).respond(doPUT);
+				$httpBackend.whenDELETE(regUrl).respond(doDELETE);
+			} else {
+				$httpBackend.whenGET(url).passThrough();
+				$httpBackend.whenGET(regUrl).passThrough();
+				$httpBackend.whenPOST(url).passThrough();
+				$httpBackend.whenPUT(regUrl).passThrough();
+				$httpBackend.whenDELETE(regUrl).passThrough();
+			}
+
+			// /:basic/:id/:custom
+			function doGET(method, url, data) {
+				var spl = url.split('/'); spl.pop();
+				var ans = [], basicID = spl.pop();
+				angular.forEach(mocks[custom], forEach);
+				function forEach(value, index) {
+					if (value[basic] === basicID) ans.push(value);
+				}
+				return [200, ans, {}];
+			}
+
+			// /:basic/:id/:custom/:id
+			function doGETID(method, url, data) {
+				var spl = url.split('/'), customID = spl.pop(); spl.pop(); 
+				var basicID = spl.pop(), item = mocks[custom][customID];
+				if (item[basic] !== basicID) item = null;
+				return [200, item, {}];
+			}
+
+			// /:basic/:id/:custom
+			function doPOST(method, url, data) {
+				var spl = url.split('/'); spl.pop();
+				var basicID = spl.pop(),
+					customID = Math.floor(Math.random() * 10000);
+					item = angular.fromJson(data),
+				item['id'] = customID;
+				item[basic] = basicID;
+				mocks[custom][customID] = item;
+				return [200, item, {}];
+			}
+
+			// /:basic/:id/:custom/:id
+			function doPUT(method, url, data) {
+				var spl = url.split('/'), customID = spl.pop(); spl.pop();
+				var basicID = spl.pop(), item = angular.fromJson(data),
+					oldItem = mocks[custom][customID];
+				if (oldItem[basic] === basicID) mocks[custom][customID] = item;
+				return [200, item, {}];
+			}
+
+			// /:basic/:id/:custom/:id
+			function doDELETE(method, url, data) {
+				var spl = url.split('/'), customID = spl.pop(); spl.pop(); 
+				var basicID = spl.pop(), item = mocks[custom][customID];
+				if (item[basic] === basicID) delete mocks[custom].customID;
+				return [200, item, {}];
+			}
+		}
+
+		var basicRegs = mock.getBasicRegs();
+		angular.forEach(basicRegs, addBasic);
+		function addBasic(value, index) {
+			addBasicMock(value, skip);
+		};
+
+		var customRegs = mock.getCustomRegs();
+		angular.forEach(customRegs, addCustom);
+		function addCustom(value, index) {
+			addCustomMock(value[0], value[1], skip);
+		};
+	}
+})();

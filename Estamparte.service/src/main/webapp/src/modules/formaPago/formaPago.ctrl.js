@@ -1,87 +1,60 @@
 (function () {
-	var app = angular.module('formaPagoModule');
+	angular.module('formaPagoModule')
+	.controller('formaPagoController', formaPagoController);
 
-	app.controller('formaPagoCtrl', ['$scope', 'servicioFormaPago', function ($scope, servicioFormaPago) {
-
-		// Variable que apunta a this.
+	function formaPagoController(formaPagoService, usuarioService) {
 
 		var _this = this;
-		
-		// Extension de servicios CRUD.
 
-		servicioFormaPago.extendCtrl(_this, $scope);    
+		// The object for creating new payments.
+		_this.payment = {};
 
-		// Datos para prueba.
-		
-		$scope.prueba = [
-			{  
-				tipo: 'Visa',
-				numeroTarjeta: '1897423681279',
-				fechaVencimiento: ('October 13, 2014 11:13:00')
-			},
-			{  
-				tipo: 'Master Card',
-				numeroTarjeta: '9123718272382',
-				fechaVencimiento: ('December 31, 2020 11:11:11')
-			}
-		];
+		// Check if we are adding a payment.
+		_this.adding = false;
 
-		// Revisa objeto vacio.
+		// Hold records from formaPago.
+		_this.formaPagoRecords = formaPagoService.records;
 
-		$scope.estaCreando = false;
+		_this.removePayment = removePayment;
+		_this.closePanel = closePanel;
+		_this.closeAddPayment = closeAddPayment;
 
-		// Agrega los datos de prueba.
+		_this.preAddPayment = preAddPayment;
+		_this.addPayment = addPayment;
 
-		agregarPrueba();
-		function agregarPrueba() {
-			for (var i = 0; i < $scope.prueba.length; i++) {
-				var actual = $scope.prueba[i];
-				_this.editRecord(actual);
-				_this.saveRecord();
-			}
+		_this.cleanPayment = cleanPayment;
+
+
+		// Remove some payment form.
+		function removePayment(target) {
+			servicioFormaPago.deleteCustom(target);
 		}
 
-		// Evento para acutalizacion de datos.
-
-		_this.actualizarDatos = function () {
-			_this.fetchRecords();
-		}
-
-		// Registra el evento.
-
-		servicioFormaPago.registrarEvento(_this.actualizarDatos);
-
-		// Quita la forma de pago en prueba.
-
-		$scope.quitar = function (forma) {
-			_this.deleteRecord(forma);
-		}
-
-		// Cierra la pensana.
-
-		$scope.cerrar = function () {
+		// Close this panel.
+		function closePanel() {
 			angular.element('#formapago').animate({width: 'toggle'});
 		}
 
-		// Crea una nueva forma de pago.
-
-		$scope.crear = function () {
-			$scope.estaCreando = true;
-			_this.createRecord();
+		// Close the payment creation.
+		function closeAddPayment() {
+			cleanPayment();
 		}
 
-		// Cierra la creacion de forma de pago.
-
-		$scope.cerrarCrear = function () {
-			$scope.estaCreando = false;
+		// Open a new add payment form.
+		function preAddPayment() {
+			_this.adding = true;
 		}
 
-		// Agrega la forma creada.
-
-		$scope.agregar = function () {
-			_this.saveRecord();
-			$scope.estaCreando = false;
+		// Add the payment with the form data.
+		function addPayment() {
+			_this.payment.comprador = usuarioService.getUser().id;
+			formaPagoService.postCustom(_this.payment).then(cleanPayment);
 		}
-		
-	}]);
+
+		// Clean the payment creation.
+		function cleanPayment() {
+			_this.payment = {};
+			_this.adding = false;
+		}
+	}
 })();

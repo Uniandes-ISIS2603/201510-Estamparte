@@ -1,14 +1,16 @@
 (function () {
-	var app = angular.module('miembroModule');
+	angular.module('miembroModule')
+	.directive('miembroDirective', miembroDirective);
 
-	app.directive('miembroDir', function () {
+	function miembroDirective() {
 		return {
-			controller: 'miembroCtrl',
+			controller: 'miembroController',
+			controllerAs: 'miembroCtrl',
 			replace: true,
 			scope: {
-				miembro: '=miembroDir'
+				miembro: '=miembroDirective'
 			},
 			templateUrl: 'src/modules/equipo/miembro/miembro.tpl.html'
 		};
-	});
+	}
 })();

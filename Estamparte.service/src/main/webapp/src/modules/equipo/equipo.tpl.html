@@ -12,7 +12,7 @@
 
 		</div>
 
-		<div ng-repeat="miembro in miembros" ng-switch="$index % 3">
+		<div ng-repeat="member in equipoCtrl.members" ng-switch="$index % 3">
 
 			<span ng-switch on="$index % 3">
 
@@ -20,11 +20,11 @@
 
 					<div class="fila-equipo row">
 
-						<div miembro-dir="miembros[$index+0]" ng-class="darAnchoMiembro($index)"></div>
+						<div miembro-directive="equipoCtrl.members[$index+0]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
 
-						<div miembro-dir="miembros[$index+1]" ng-class="darAnchoMiembro($index)"></div>
+						<div miembro-directive="equipoCtrl.members[$index+1]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
 
-						<div miembro-dir="miembros[$index+2]" ng-class="darAnchoMiembro($index)"></div>
+						<div miembro-directive="equipoCtrl.members[$index+2]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
 
 					</div>
 

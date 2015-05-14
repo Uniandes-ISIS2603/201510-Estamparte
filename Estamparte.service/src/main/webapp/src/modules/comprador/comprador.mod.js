@@ -1,9 +1,9 @@
 (function () {	
-	var app = angular.module('compradorModule', ['CrudModule', 'MockModule']);
+	angular.module('compradorModule', [])
+	.config(compradorConfig);
 
-	app.constant('comprador.context', 'comprador');
-
-	app.config(['comprador.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-		urlsProvider.registerUrl(context);
-	}]);
+	function compradorConfig(mockProvider) {
+		var basicReg = 'comprador';
+		mockProvider.addBasicReg(basicReg);
+	}
 })();

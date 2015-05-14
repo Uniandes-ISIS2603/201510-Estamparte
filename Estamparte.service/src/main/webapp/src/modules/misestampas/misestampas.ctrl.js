@@ -1,26 +1,23 @@
 (function () {
-	var app = angular.module('misestampasModule');
+	angular.module('misestampasModule')
+	.controller('misestampasController', misestampasController);
 
-	app.controller('misestampasCtrl', ['$scope', 'servicioMisestampas', 'servicioCamiseta', function ($scope, servicioMisestampas, servicioCamiseta) {
+	function misestampasController(misestampasService, usuarioService, camisetaService) {
 
 		var _this = this;
 		
-		$scope.records = servicioMisestampas.darMisestampas();
+		// Holds misestampasService records.
+		_this.misEstampasRecords = misestampasService.records;
 
-		$scope.eliminar = function (estampa) {
-			servicioMisestampas.eliminar(estampa);
+		_this.removeMisEstampas = removeMisEstampas;
+		_this.addEstampaCamiseta = addEstampaCamiseta;
+
+		function removeMisEstampas(target) {
+			misestampasService.removeMisEstampas(target);
 		}
 
-		$scope.acamisa = function (estampa) {
-			servicioCamiseta.agregar(estampa);
-			_this.ircamisa();
+		function addEstampaCamiseta(target) {
+			camisetaService.addEstampaCamiseta(target);
 		}
-
-		_this.ircamisa = function () {
-			angular.element('html, body').animate({
-				scrollTop: angular.element('#camiseta').offset().top
-			}, 700);
-		}
-
-	}]);
+	}
 })();

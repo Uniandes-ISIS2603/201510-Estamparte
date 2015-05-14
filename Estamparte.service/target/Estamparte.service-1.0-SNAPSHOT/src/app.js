@@ -1,17 +1,25 @@
 angular.module('mainApp', [
-    // 'ngRoute',
-    // 'compradorModule',
-    // 'artistaModule',
+    // Shared related modules...
+    'crudModule',
+    'mockModule',
+
+    // User related modules...
+    'usuarioModule',
+    'compradorModule',
+    'artistaModule',
+
+    // Mostly UI related modules...
     'navbarModule',
     'inicioModule',
     'equipoModule',
     'footerModule',
+
+    // Mostly functional related modules...
+    'formaPagoModule',
     'estampasModule',
-    'estampaModule',
-    'nuevaModule',
     'misestampasModule',
     'camisetaModule',
     'carritoModule',
-    'formaPagoModule',
-    'facturaModule'
+    'facturaModule',
+    // 'nuevaModule',
 ]);

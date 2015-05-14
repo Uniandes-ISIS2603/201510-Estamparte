@@ -1,105 +1,121 @@
 (function () {
-	var app = angular.module('navbarModule');
+	angular.module('navbarModule')
+	.controller('navbarController', navbarController);
+	
+	function navbarController(usuarioService) {
 
-	app.controller('navbarCtrl', ['$scope', function ($scope) {
+		var _this = this;
 
-		// Adicion de tooltip Bootstrap
-
+		// Bootstrap tooltip initialization.
 		angular.element('[data-toggle="tooltip"]').tooltip();
 
-		// Configuracion usada para el usuario actual.
+		// Here we save the current window position.
+		_this.actualDiv = 'inicio';
 
-		$scope.artista = {
-			nombre: 'Juan el artista',
-			tipo: 'artista'
+		// Here we save all the existing panels.
+		_this.panels = [
+			'carrito',
+			'misestampas',
+			'nueva',
+			'formapago',
+			'adminestampas',
+			'factura',
+			'iniciarsesion',
+			'registrarse'
+		];
+
+		_this.getActualStatus = getActualStatus;
+
+		_this.getActualDiv = getActualDiv;
+		_this.setActualDiv = setActualDiv;
+
+		_this.slidePanel = slidePanel;
+		_this.showPanel = showPanel;
+		_this.hidePanel = hidePanel;
+		_this.hideAllPanels = hideAllPanels;
+
+		_this.isType = isType;
+		_this.getUserName = getUserName;
+		_this.logout = logout;
+
+		// Returns active is the actualDiv is
+		// equals to the one given by arg,
+		// otherwise returns an empty string.
+		function getActualStatus(div) {
+			return (_this.actualDiv === div) ? 'active' : '';
 		}
 
-		$scope.comprador = {
-			nombre: 'Martin el comprador',
-			tipo: 'comprador'
+		// Returns the window current position.
+		function getActualDiv() {
+			return _this.actualDiv;
 		}
 
-		$scope.usuario = $scope.comprador;
+		// Change the window current position and
+		// the nav section that represents it.
+		function setActualDiv(actualDiv) {
+			_this.actualDiv = actualDiv;
 
-		$scope.cambiarUsuario = function (tipoUsuario) {
-			if (tipoUsuario === 'artista')
-				$scope.usuario = $scope.artista;
+			angular.element('html, body').animate({
+				scrollTop: angular.element('#' + actualDiv).offset().top
+			}, 700);
+
+			if (actualDiv === 'camiseta') {
+				showPanel('misestampas');
+			} else {
+				hidePanel('misestampas');
+			}
+		}
+
+		// Shows or hide a panel depending
+		// on it's visibility.
+		function slidePanel(panel) {
+			var div = angular.element('#'+panel);
+			if (div.css('display') === 'none')
+				showPanel(panel);
 			else
-				$scope.usuario = $scope.comprador;
+				hidePanel(panel);
 		}
 
-		$scope.cerrarSesion = function () {
-			alert('Hasta lueguito dijo panchito y se fue en su carrito');
+		// Show a right panel with an slide
+		// animation that makes it visible.
+		function showPanel(panel) {
+			hideAllPanels();
+			angular.element('#'+panel).animate({width: 'toggle'});
 		}
 
-		// Configuracion usada para el boton seleccionado actual.
-
-		$scope.selActual = 'inicio';
-
-		$scope.darSelActual = function () {
-			return $scope.selActual;
+		// Hide a right panel with an slide
+		// animation that makes it nonvisible.
+		function hidePanel(panel) {
+			var div = angular.element('#'+panel);
+			if (div.css('display') !== 'none')
+				div.animate({width: 'toggle'});
 		}
 
-		$scope.cambiarSelActual = function (actual) {
-			$scope.selActual = actual;
-
-			angular.element('html, body').animate({
-				scrollTop: angular.element('#' + actual).offset().top
-			}, 700);
-
-			var seOculta = angular.element('#misestampas').css('display') === 'none';
-			if (actual === 'camiseta' && seOculta)
-				$scope.verMisEstampas();
-			else if (actual !== 'camiseta' && !seOculta)
-				$scope.verMisEstampas();
+		// Iterate over all the existing panels
+		// calling the hidePanel function on each one.
+		function hideAllPanels() {
+			angular.forEach(_this.panels, hide);
+			function hide(value, index) {
+				hidePanel(value);
+			}
 		}
 
-		// Configuracion usada para el carrito.
-
-		$scope.verCarrito = function () {
-			var misestampas = angular.element('#misestampas');
-			if (misestampas.css('display') !== 'none')
-				$scope.verMisEstampas();
-
-			angular.element('#carrito').animate({width: 'toggle'});
+		// Returns either true or false depending
+		// on if the given type is equals to the logged
+		// user's type. If there is no user, returns false.
+		function isType(userType) {
+			return usuarioService.getType() === userType;
 		}
 
-		// Configuracion usada para mis estampas.
-
-		$scope.verMisEstampas = function () {
-			var carrito = angular.element('#carrito');
-			if (carrito.css('display') !== 'none')
-				$scope.verCarrito();
-			
-			angular.element('#misestampas').animate({width: 'toggle'});
+		// Returns the logged username, if there
+		// is no user, returns an empty string.
+		function getUserName() {
+			return usuarioService.getName();
 		}
 
-		// Configuracion usada para nueva estampa.
-
-		$scope.verNuevaEstampa = function () {
-			angular.element('#nueva').animate({width: 'toggle'});
+		// Make the logout procedure.
+		function logout() {
+			return usuarioService.logout();
 		}
-
-		// Configuracion usada para forma pago.
-
-		$scope.verFormaPago = function () {
-			angular.element('#formapago').animate({width: 'toggle'});
-		}
-
-		// Configuracion usada para facturas.
-
-		$scope.verFacturas = function () {
-			angular.element('#factura').animate({width: 'toggle'});
-		}
-
-		// Configutacion inicial.
-
-		$scope.irArriba = function () {
-			angular.element('html, body').animate({
-				scrollTop: 0
-			}, 700);
-		}
-		$scope.irArriba();
-
-	}]);
+	}
 })();

@@ -1,7 +1,6 @@
 (function () {
-	var app = angular.module('miembroModule');
+	angular.module('miembroModule')
+	.controller('miembroController', miembroController);
 
-	app.controller('miembroCtrl', ['$scope', function ($scope) {
-		// TODO
-	}]);
+	function miembroController() {}
 })();

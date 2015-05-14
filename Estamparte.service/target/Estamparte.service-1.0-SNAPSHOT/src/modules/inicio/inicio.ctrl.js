@@ -1,23 +1,20 @@
 (function () {
-	var app = angular.module('inicioModule');
-
-	app.controller('inicioCtrl', ['$scope', '$window', function ($scope, $window) {
-
+	angular.module('inicioModule')
+	.controller('inicioController', inicioController);
+	
+	function inicioController($window) {
 		var w = angular.element($window);
-		w.bind('resize', function() {
-			alinearAltura();
-		})
+		w.bind('resize', resize);
 
-		alinearAltura();
-		function alinearAltura() {
-			var inicio = angular.element('#inicio');
-			var altura = Math.max(w.height(), 480);
-			inicio.height(altura);
+		resize();
+		function resize() {
+			var div = angular.element('#inicio');
+			var height = Math.max(w.height(), 480);
+			div.height(height);
 
-			var contenedor = angular.element('#inicio .container');
-			var padding = altura / 3;
-			contenedor.css('padding-top', padding);
+			var container = angular.element('#inicio .container');
+			var padding = height / 3;
+			container.css('padding-top', padding);
 		}
-
-	}]);
+	}
 })();

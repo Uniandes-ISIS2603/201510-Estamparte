@@ -1,15 +1,42 @@
 (function () {
-    var mock = angular.module('MockModule');
+    angular.module('mockModule')
+    .provider('mock', mockProvider);
 
-    mock.value('MockModule.mockRecords', {});
+    function mockProvider() {
 
-    mock.provider('MockModule.urls', function () {
-        var context = [];
-        this.registerUrl = function (value, skip) {
-            context.push({url: value, skip: !!skip});
-        };
-        this.$get = function () {
-            return context;
-        };
-    });
+        var _this = this;
+
+        _this.basicRegs = [];
+        _this.customRegs = [];
+
+        _this.getBasicRegs = getBasicRegs;
+        _this.getCustomRegs = getCustomRegs;
+        _this.addBasicReg = addBasicReg;
+        _this.addCustomReg = addCustomReg;
+        
+        _this.$get = $get;
+
+        function getBasicRegs() {
+            return _this.basicRegs;
+        }
+
+        function getCustomRegs() {
+            return _this.customRegs;
+        }
+
+        function addBasicReg(basic) {
+            _this.basicRegs.push(basic);
+        }
+
+        function addCustomReg(basic, custom) {
+            _this.customRegs.push([basic, custom]);
+        }
+
+        function $get() {
+            return {
+                getBasicRegs: getBasicRegs,
+                getCustomRegs: getCustomRegs
+            };
+        }
+    }
 })();

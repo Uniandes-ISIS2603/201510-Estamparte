@@ -153,7 +153,7 @@ public class FacturaPersistenceTest {
         // se instancia el generador de datos 
         FacturaDTO dto = new FacturaDTO();
         
-        facturaPersistence.createFactura(dto);
+        facturaPersistence.createFacturaComprador(null, null);
         //System.out.println(resp.getIdFactura());
         
     }

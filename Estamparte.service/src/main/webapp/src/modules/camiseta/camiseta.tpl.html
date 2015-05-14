@@ -16,47 +16,49 @@
 
             	<div id="propiedades" class="col-md-3">
 
-            		<form name="camisaForm" novalidate>
+            		<form name="camisetaForm" novalidate>
 
                         <div class="form-group">
                             <label for="estilo">Nombre</label>
-                            <input class="form-control" id ="nombre" ng-model="nombre" required>
+                            <input class="form-control" id ="nombre" ng-model="camisetaCtrl.tshirt.nombre" required>
                         </div>
 
             			<div class="form-group">
             				<label for="estilo">Estilo</label>
-            				<select class="form-control" id ="estilo" ng-model="estilo" ng-change="darEstilo()" ng-options="i.id as i.nombre for i in estilos" required></select>
+            				<select class="form-control" id ="estilo" ng-model="camisetaCtrl.tshirt.estilo" ng-change="camisetaCtrl.setCSS()" ng-options="i.id as i.nombre for i in camisetaCtrl.styles" required></select>
             			</div>
 
             			<div class="form-group">
             				<label for="talla">Talla</label>
-            				<select class="form-control" id ="talla" ng-model="talla" ng-change="darEstilo()" ng-options="i.id as i.nombre for i in tallas" required></select>
+            				<select class="form-control" id ="talla" ng-model="camisetaCtrl.tshirt.talla" ng-change="camisetaCtrl.setCSS()" ng-options="i.id as i.nombre for i in camisetaCtrl.sizes" required></select>
             			</div>
 
             			<div class="form-group">
             				<label for="color">Color</label>
-            				<select class="form-control" id ="color" ng-model="color" ng-change="darEstilo()" ng-options="i.id as i.nombre for i in colores" required></select>
+            				<select class="form-control" id ="color" ng-model="camisetaCtrl.tshirt.color" ng-change="camisetaCtrl.setCSS()" ng-options="i.id as i.nombre for i in camisetaCtrl.colors" required></select>
             			</div>
 
                         <div class="form-group">
-                            <label>Precio: {{ darPrecio() | currency }}</label>
+                            <label>Precio: {{ camisetaCtrl.tshirt.precio | currency }}</label>
                         </div>
 
                         <br>
 
-                        <button id="acarrito" class="btn btn-default btn-lg" type="button" ng-click="acarrito()" ng-disabled="!camisaForm.$valid || darPrecio() == 0">Agregar a mi carrito</button>
+                        <button id="botonCamisaACarrito" class="btn btn-default btn-lg" type="button" ng-click="camisetaCtrl.addCamisetaCarrito()" ng-disabled="!camisetaForm.$valid || camisetaCtrl.tshirt.precio === 0">
+                            Agregar a mi carrito
+                        </button>
 
             		</form>
 
             	</div>
 
-            	<div id="vistaprevia" ng-style="estilocamiseta" ng-init="darEstilo()" class="col-md-7">
+            	<div id="vistaprevia" ng-style="camisetaCtrl.CSS" class="col-md-7">
 
                     <ul>
 
-                        <li ng-attr-id="{{ 'estampa' + estampa.id }}" class="estampacamisa" ng-repeat="estampa in estampas" ng-style="estiloEstampa(estampa)">
+                        <li ng-attr-id="{{ 'estampa' + estampa.id }}" class="estampacamisa" ng-repeat="estampa in camisetaCtrl.tshirt.estampas" ng-style="camisetaCtrl.estampaCSS(estampa)">
 
-                            <img ng-init="configurarBoton(estampa)" ng-attr-id="{{ 'estampaimg' + estampa.id }}" ng-style="estiloImagen(estampa)" ng-attr-src="{{ estampa.estampa.imagenes[0] }}">
+                            <img ng-attr-id="{{ 'estampaimg' + estampa.id }}" ng-attr-src="{{ estampa.imagenes[0] }}">
 
                         </li>
 

@@ -1,7 +1,7 @@
 (function () {
 	var app = angular.module('nuevaModule');
 
-	app.controller('nuevaCtrl', ['$scope', 'FileUploader', 'servicioEstampa', function ($scope, FileUploader, servicioEstampa) {
+	app.controller('nuevaCtrl', ['$scope', 'FileUploader', 'estampasService', function ($scope, FileUploader, servicioEstampa) {
 
 		// Mantiene la estampa a crear.
 

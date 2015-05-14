@@ -1,12 +1,14 @@
 (function () {
-	var app = angular.module('formaPagoModule');
+	angular.module('formaPagoModule')
+	.directive('formaPagoDirective', formaPagoDirective);
 
-	app.directive('formaPagoDir', function () {
+	function formaPagoDirective() {
 		return {
-			controller: 'formaPagoCtrl',
-			scope: {},
+			controller: 'formaPagoController',
+			controllerAs: 'formaPagoCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/formaPago/formaPago.tpl.html'
 		}
-	});
+	}
 })();

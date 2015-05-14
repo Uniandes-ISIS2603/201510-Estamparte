@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('facturaModule');
+	angular.module('facturaModule')
+	.directive('facturaDirective', facturaDirective);
 
-	app.directive('facturaDir', function () {
+	function facturaDirective() {
 		return {
-			controller: 'facturaCtrl',
+			controller: 'facturaController',
+			controllerAs: 'facturaCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/factura/factura.tpl.html'
 		}
-	});
+	}
 })();

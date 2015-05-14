@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('camisetaModule');
+	angular.module('camisetaModule')
+	.directive('camisetaDirective', camisetaDirective);
 
-	app.directive('camisetaDir', function () {
+	function camisetaDirective() {
 		return {
-			controller: 'camisetaCtrl',
+			controller: 'camisetaController',
+			controllerAs: 'camisetaCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/camiseta/camiseta.tpl.html'
-		}
-	});
+		};
+	}
 })();

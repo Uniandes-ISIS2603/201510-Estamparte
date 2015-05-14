@@ -1,50 +1,43 @@
 (function () {
-	var app = angular.module('misestampasModule');
+	angular.module('misestampasModule')
+	.service('misestampasService', misestampasService);
 
-	app.service('servicioMisestampas', function () {
+	function misestampasService() {
 
 		var _this = this;
 
-		_this.misestampas = [];
+		// Hold the records.
+		_this.records = {
+			basicRecords: []
+		};
 
-		_this.darMisestampas = function () {
-			return _this.misestampas;
-		}
+		_this.existMisEstampas = existMisEstampas;
+		_this.addMisEstampas = addMisEstampas;
+		_this.removeMisEstampas = removeMisEstampas;
 
-		_this.posicion = function (estampa) {
-			var respuesta = -1;
-			var encontrado = false;
-
-			for (var i = 0; i < _this.misestampas.length && !encontrado; i++) {
-				var actual = _this.misestampas[i];
-				if (actual === estampa) {
-					respuesta = i;
-					encontrado = true;
-				}
+		function indexMisEstampas(target) {
+			var ans = -1;
+			angular.forEach(_this.records.basicRecords, find);
+			function find(value, index) {
+				if (value === target)
+					ans = index;
 			}
-
-			return respuesta;
+			return ans;
 		}
 
-		_this.existe = function (estampa) {
-			return _this.posicion(estampa) !== -1;
+		function existMisEstampas(target) {
+			return indexMisEstampas(target) !== -1;
 		}
 
-		_this.agregar = function (estampa) {
-			var existe = _this.existe(estampa);
-
-			if (!existe) {
-				_this.misestampas.push(estampa);
-			}
+		function addMisEstampas(target) {
+			if (!existMisEstampas(target))
+				_this.records.basicRecords.push(target);
 		}
 
-		_this.eliminar = function (estampa) {
-			var posicion = _this.posicion(estampa);
-
-			if (posicion !== -1) {
-				_this.misestampas.splice(posicion, 1);
-			}
+		function removeMisEstampas(target) {
+			var index = indexMisEstampas(target);
+			if (index !== -1)
+				_this.records.basicRecords.splice(index, 1);
 		}
-
-	});
+	}
 })();	

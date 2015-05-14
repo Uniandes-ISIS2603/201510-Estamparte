@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('equipoModule');
+	angular.module('equipoModule')
+	.directive('equipoDirective', equipoDirective);
 
-	app.directive('equipoDir', function () {
+	function equipoDirective() {
 		return {
-			controller: 'equipoCtrl',
+			controller: 'equipoController',
+			controllerAs: 'equipoCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/equipo/equipo.tpl.html'
 		}
-	});
+	}
 })();

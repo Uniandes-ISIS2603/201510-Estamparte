@@ -1,9 +1,9 @@
 (function () {
-	var app = angular.module('facturaModule', ['CrudModule', 'MockModule']);
+	angular.module('facturaModule', [])
+	.config(facturaConfig);
 
-	app.constant('factura.context', 'factura');
-
-	app.config(['factura.context', 'MockModule.urlsProvider', function (context, urlsProvider) {
-		urlsProvider.registerUrl(context);
-	}]);
+	function facturaConfig(mockProvider) {
+		var basicReg = 'comprador', customReg = 'factura';
+		mockProvider.addCustomReg(basicReg, customReg);
+	}
 })();

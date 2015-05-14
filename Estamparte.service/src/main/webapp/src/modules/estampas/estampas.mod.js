@@ -1,10 +1,9 @@
 (function () {	
-	var app = angular.module('estampasModule', ['CrudModule', 'MockModule']);
+	angular.module('estampasModule', ['estampaModule'])
+	.config(estampasConfig);
 
-	app.constant('estampas.context', 'estampas');
-        app.constant('estampas.skipMock', true);
-
-	app.config(['estampas.context', 'MockModule.urlsProvider','estampas.skipMock', function (context, urlsProvider,skipMock) {
-		urlsProvider.registerUrl(context,skipMock);
-	}]);
+	function estampasConfig(mockProvider) {
+		var basicReg = 'estampas';
+		mockProvider.addBasicReg(basicReg);
+	}
 })();

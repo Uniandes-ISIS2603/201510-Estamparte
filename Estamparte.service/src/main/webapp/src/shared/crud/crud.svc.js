@@ -1,147 +1,148 @@
 (function () {
-	var app = angular.module('CrudModule');
+	angular.module('crudModule')
+	.service('crudService', crudService);
 
-	app.factory('CRUDUtils', ['Restangular', function (RestAngular) {
+	function crudService(Restangular) {
 
-		function crudConstructor() {
+		var _this = this;
 
-			// Variable que apunta a _this.
+		_this.extendService = extendService;
 
-			var _this = this;
+		function extendService(_this, basic, custom) {
 
-			// Asignacion de URLs.
-
-			_this.api = RestAngular.all(_this.url);
-
-			// ############################################################################
-			// ############################## Seccion CRUD ################################
-			// ############################################################################
-
-			// Trae todos los elementos con GET, letra R en CRUD (Read).
-
-			_this.fetchRecords = function (currentPage, itemsPerPage) {
-				return _this.api.getList(null, {page: currentPage, maxRecords: itemsPerPage});
+			// A container for both basic and custom records.
+			_this.records = {
+				basicRecords: [],
+				customRecords: []
 			}
 
-			// Guarda el elemento con POST, creandolo o actualizandolo.
-			// Letras C y U en CRUD (Create y Update).
+			// An auxiliary function used to return the
+			// retrieved data from the requests.
+			function returnRecords(data) {
+				return data;
+			}
 
-			_this.saveRecord = function (currentRecord) {
-				if (currentRecord.id) {
-					return currentRecord.put().then(function (data) {
-						_this.llamarEventos();
-						return data;
-					});
-				} else {
-					return _this.api.post(currentRecord).then(function (data) {
-						_this.llamarEventos();
-						return data;
-					});
+			// ######################################################
+			// ################### GET Section ######################
+			// ######################################################
+
+			_this.getBasic = getBasic;
+			_this.getBasicID = getBasicID;
+			_this.getCustom = getCustom;
+			_this.getCustomID = getCustomID;
+
+			// GET all basic items as a list.
+			function getBasic() {
+				return Restangular.all(basic).getList().then(getResolveBasic);
+			}
+
+			// GET one basic item using it's ID.
+			function getBasicID(basicID) {
+				return Restangular.one(basic, basicID).get();
+			}
+			
+			// GET all custom items as a list.
+			function getCustom(basicID) {
+				return Restangular.one(basic, basicID).getList(custom).then(getResolveCustom);
+			}
+
+			// GET one custom item using it's ID.
+			function getCustomID(basicID, customID) {
+				return Restangular.one(basic, basicID).one(custom, customID).get();
+			}
+
+			// ######################################################
+			// ################### POST Section #####################
+			// ######################################################
+
+			_this.postBasic = postBasic;
+			_this.postCustom = postCustom;
+
+			// POST a basic item.
+			function postBasic(data) {
+				return Restangular.all(basic).post(data).then(reloadResolveBasic);
+			}
+
+			// POST a custom item.
+			function postCustom(data) {
+				var basicID = data[basic];
+				return Restangular.one(basic, basicID).post(custom, data).then(reloadResolveCustom);
+			}
+
+			// ######################################################
+			// ################### PUT Section ######################
+			// ######################################################
+
+			_this.putBasic = putBasic;
+			_this.putCustom = putCustom;
+
+			// PUT a basic item.
+			function putBasic(data) {
+				return data.put().then(reloadResolveBasic);
+			}
+
+			// PUT a custom item.
+			function putCustom(data) {
+				return data.put().then(reloadResolveCustom);
+			}
+
+			// ######################################################
+			// ################# DELETE Section #####################
+			// ######################################################
+
+			_this.deleteBasic = deleteBasic;
+			_this.deleteCustom = deleteCustom;
+
+			// DELETE a basic item.
+			function deleteBasic(data) {
+				return data.remove().then(reloadResolveBasic);
+			}
+
+			// DETE a custom item.
+			function deleteCustom(data) {
+				var old = JSON.parse(JSON.stringify(data));
+				return data.remove().then(resolve);
+				function resolve() {
+					reloadResolveCustom(old);
 				}
 			}
 
-			// Elimina el elemento con DELETE, letra en CRUD (Delete).
+			// ######################################################
+			// ################### AUX Section ######################
+			// ######################################################
 
-			_this.deleteRecord = function (record) {
-				return record.remove().then(function () {
-					_this.llamarEventos();
-				});
+			// Resolve the GET method assigning the data to an array.
+			// This is only for basic list GET.
+			function getResolveBasic(data) {
+				_this.records.basicRecords = data;
+				return _this.basicRecords;
 			}
 
-			// ############################################################################
-			// ############################# Seccion Eventos ##############################
-			// ############################################################################
-
-			// Mantiene los eventos registrados.
-
-			_this.eventos = [];
-
-			// Registra un nuevo evento.
-
-			_this.registrarEvento = function (evento) {
-				_this.eventos.push(evento);
+			// Resolve the GET method assigning the data to an array.
+			// This is only for custom list GET.
+			function getResolveCustom(data) {
+				_this.records.customRecords = data;
+				return _this.customRecords;
 			}
 
-			// Llama los eventos registrados.
-
-			_this.llamarEventos = function () {
-				angular.forEach(_this.eventos, function (evento) {
-					evento();
-				})
+			// Resolve POST, PUT, or DELETE methods making a GET to
+			// reload the data. This is only for basic methods.
+			function reloadResolveBasic(entry) {
+				return getBasic().then(returnEntry);
+				function returnEntry() {
+					return entry;
+				}
 			}
 
-			// ############################################################################
-			// ############################## Seccion CTRL ################################
-			// ############################################################################
-
-			// Extiende el controlador del modulo con funciones para
-			// llamar al servicio y mantener los datos en variables
-			// del scope validas dentro del controlador.
-
-			_this.extendCtrl = function (ctrl, scope) {
-
-				// Variables para el scope.
-
-				scope.currentRecord = {};
-				scope.records = [];
-
-				// Variables de paginacion.
-
-				// scope.maxSize = 5;
-				// scope.itemsPerPage = 5;
-				// scope.totalItems = 0;
-				// scope.currentPage = 2;
-
-				// Variables para el controlador.
-
-				ctrl.editMode = false;
-
-				// Funciones que no requieren del servicio.
-
-				ctrl.createRecord = function () {
-					_this.editMode = true;
-					scope.currentRecord = {};
-				}
-
-				ctrl.editRecord = function (record) {
-					scope.currentRecord = RestAngular.copy(record);
-					_this.editMode = true;
-				}
-
-				// Funciones que usan el servicio CRUD.
-
-				ctrl.pageChanged = function () {
-					_this.fetchRecords();
-				}
-
-				ctrl.fetchRecords = function () {
-					return _this.fetchRecords().then(function (data) {
-						scope.records = data;
-						scope.totalItems = data.totalRecords;
-						scope.currentRecord = {};
-						ctrl.editMode = false;
-						return data;
-					});
-				}
-
-				ctrl.saveRecord = function () {
-					return _this.saveRecord(scope.currentRecord).then(function () {
-						ctrl.fetchRecords();
-					});
-				}
-
-				ctrl.deleteRecord = function (record) {
-					return _this.deleteRecord(record).then(function () {
-						ctrl.fetchRecords();
-					});
+			// Resolve POST, PUT, or DELETE methods making a GET to
+			// reload the data. This is only for custom methods.
+			function reloadResolveCustom(entry) {
+				var basicID = entry[basic];
+				return getCustom(basicID).then(returnEntry);
+				function returnEntry() {
+					return entry;
 				}
 			}
 		}
-
-		return {
-			extendService: function (svc) {
-				crudConstructor.call(svc);
-			}
-		};
-	}]);
+	}
 })();

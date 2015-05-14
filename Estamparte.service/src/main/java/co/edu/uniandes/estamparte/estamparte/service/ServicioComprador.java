@@ -9,6 +9,9 @@ import co.edu.uniandes.estamparte.carrito.logic.api.ICarritoLogic;
 import co.edu.uniandes.estamparte.comprador.logic.api.ICompradorLogic;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
+import co.edu.uniandes.estamparte.factura.logic.api.IFacturaLogic;
+import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
+import co.edu.uniandes.estamparte.factura.logic.dto.FacturaPageDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,8 +39,8 @@ public class ServicioComprador {
     @Inject
     protected ICompradorLogic compradorlogic;
     
-    @Inject 
-    protected ICarritoLogic carritoLogic;
+    @Inject
+    protected IFacturaLogic facturaLogic;
     
     @POST
     public CompradorDTO createComprador(CompradorDTO detalles)
@@ -91,6 +94,32 @@ public class ServicioComprador {
     @Path("{id}/formaPago/{id2}")
     public void eliminarFormaPagoComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFormaPago){
         compradorlogic.eliminarFormaPagoComprador(idComprador, idFormaPago);
+    }
+    
+    //Servicios de manejo de facturas
+    
+    @POST
+    @Path("{id}/factura")
+    public FacturaDTO crearFacturaComprador(@PathParam("id")long idComprador, FacturaDTO factura){
+        return facturaLogic.createFacturaComprador(idComprador, factura);
+    }
+    
+    @DELETE
+    @Path("{id}/factura/{id2}")
+    public FacturaDTO deleteFacturaComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFactura){
+        return facturaLogic.deleteFacturaComprador(idComprador, idFactura);
+    }
+    
+    @GET
+    @Path("{id}/factura")
+    public FacturaPageDTO getFacturasComprador(@PathParam("id")long idComprador, @QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return facturaLogic.getFacturasComprador(idComprador, pagina, datosMaximos);
+    }
+    
+    @PUT
+    @Path("{id}/factura/{id2}")
+    public FacturaDTO updateFacturaComprador(@PathParam("id")long idComprador, @PathParam("id2")long idFactura, FacturaDTO factura){
+        return facturaLogic.updateFacturaComprador(idComprador, factura);
     }
     
 }

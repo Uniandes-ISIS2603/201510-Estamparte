@@ -1,15 +1,12 @@
 (function () {
-	var app = angular.module('facturaModule');
+	angular.module('facturaModule')
+	.service('facturaService', facturaService);
 
-	app.service('servicioFactura', ['CRUDUtils', 'factura.context', function (CRUDUtils, context) {
+	function facturaService(crudService) {
 
-		// Configuracion de la URL.
+		var _this = this;
 
-		this.url = context;
-
-		// Extension de los servicios del CRUD.
-
-		CRUDUtils.extendService(this);
-
-	}]);
+		// Here we extend our service.
+		crudService.extendService(_this, 'comprador', 'factura');
+	}
 })();

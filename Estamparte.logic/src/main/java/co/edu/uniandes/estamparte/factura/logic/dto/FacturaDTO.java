@@ -3,15 +3,7 @@
  */
 package co.edu.uniandes.estamparte.factura.logic.dto;
 
-import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
-import co.edu.uniandes.estamparte.carrito.logic.dto.CarritoDTO;
-import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
-import co.edu.uniandes.estamparte.estampa.logic.dto.*;
-import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.*;
-import java.util.Date;
-import java.util.List;
 
 @XmlRootElement
 public class FacturaDTO {
@@ -21,56 +13,56 @@ public class FacturaDTO {
     private String fechaCompra;
     private long id;
     private long idCarrito;
+    private double monto;
     
-    public long getIdCarrito(){
-        return idCarrito;
-    }
-       
-    public void setIdCarrito(long pId)
-    {
-        idCarrito = pId;
+    public double getMonto(){
+        return monto;
     }
     
-    
-    public void setIdComprador(long pId)
-    {
-        idComprador = pId;
+    public void setMonto(double monto){
+        this.monto  = monto;
     }
-    
-    public long getIdComprador()
-    {
+
+    public long getIdComprador() {
         return idComprador;
     }
-    
-    public void setIdFormaPago(long pFormaPago)
-    {
-        idFormaPago = pFormaPago;
+
+    public void setIdComprador(long idComprador) {
+        this.idComprador = idComprador;
     }
-    
-    public long getIdFormaPago()
-    {
+
+    public long getIdFormaPago() {
         return idFormaPago;
     }
-    
-    
-    public void setFechaCompra(String pFecha)
-    {
-        fechaCompra = pFecha;
+
+    public void setIdFormaPago(long idFormaPago) {
+        this.idFormaPago = idFormaPago;
     }
-    
-    public String getFechaCompra()
-    {
+
+    public String getFechaCompra() {
         return fechaCompra;
     }
-    
-    public void setIdFactura(long pId)
-    {
-        id = pId;
+
+    public void setFechaCompra(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
-    
-    public long getIdFactura()
-    {
+
+    public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getIdCarrito() {
+        return idCarrito;
+    }
+
+    public void setIdCarrito(long idCarrito) {
+        this.idCarrito = idCarrito;
+    }
+    
+
 }
                                      

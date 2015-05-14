@@ -1,23 +1,33 @@
 (function () {
-    var crud = angular.module('CrudModule', ['restangular', 'ui.bootstrap']);
+	angular.module('crudModule', ['restangular'])
+        .config(crudConfig);
+        
+        function crudConfig(RestangularProvider) {
+            RestangularProvider.setBaseUrl('webresources');
 
-    crud.config(['RestangularProvider', function (rp) {
-            rp.setBaseUrl('webresources');
-            rp.addRequestInterceptor(function (data, operation) {
-                if (operation === "remove") {
-                    return null;
-                }
-                return data;
-            });
-            rp.addResponseInterceptor(function (data, operation) {
-                var extractedData;
+            RestangularProvider.addRequestInterceptor(req);
+            RestangularProvider.addResponseInterceptor(res);
+            
+            function req(data, operation) {
+                var ans = data;
+                if (operation === "remove")
+                    ans = null;
+                return ans;
+            }
+            
+            function res(data, operation) {
+                var ans = null;
                 if (operation === "getList") {
-                    extractedData = data.records;
-                    extractedData.totalRecords = data.totalRecords;
+                    angular.forEach(data, check);
+                    function check(value, index) {
+                        if (value.constructor === Array)
+                            ans = value;
+                    }
                 } else {
-                    extractedData = data;
+                    ans = data;
                 }
-                return extractedData;
-            });
-        }]);
+                console.log(ans);
+                return ans;
+            }
+        }
 })();

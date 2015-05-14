@@ -1,11 +1,14 @@
 (function () {
-	var app = angular.module('carritoModule');
+	angular.module('carritoModule')
+	.directive('carritoDirective', carritoDirective);
 
-	app.directive('carritoDir', function () {
+	function carritoDirective() {
 		return {
-			controller: 'carritoCtrl',
+			controller: 'carritoController',
+			controllerAs: 'carritoCtrl',
 			replace: true,
+			scope: {},
 			templateUrl: 'src/modules/carrito/carrito.tpl.html'
 		}
-	});
+	}
 })();

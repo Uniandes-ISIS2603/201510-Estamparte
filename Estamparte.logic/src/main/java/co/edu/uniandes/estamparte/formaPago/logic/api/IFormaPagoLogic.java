@@ -21,4 +21,6 @@ public interface IFormaPagoLogic {
     
     public void eliminarFormasPago();
     
+    public void eliminarFormasPagoComprado(long idComprador);
+    
 }

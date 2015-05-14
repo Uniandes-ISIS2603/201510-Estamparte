@@ -2,11 +2,11 @@
 
 	<div class="botones">
 
-		<button type="button" ng-click="cerrar()" class="btn btn-defaut">
+		<button id="botonCerrarFormaPago" type="button" ng-click="formaPagoCtrl.closePanel()" class="btn btn-defaut">
 			<span class="glyphicon glyphicon-remove"></span>
 		</button>
 
-		<button type="button" ng-click="crear()" class="btn btn-defaut">
+		<button id="botonCrearFormaPago" type="button" ng-click="formaPagoCtrl.preAddPayment()" class="btn btn-defaut">
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 
@@ -14,11 +14,11 @@
 
 	<ul>
 
-		<li class="miestampa" ng-show="estaCreando">
+		<li class="miestampa" ng-show="formaPagoCtrl.adding">
 
 			<div id="nuevaformaboton">
 
-				<button type="button" ng-click="cerrarCrear()" class="btn btn-defaut formaform">
+				<button id="botonCerrarCrearFormaPago" type="button" ng-click="formaPagoCtrl.closeAddPayment()" class="btn btn-defaut formaform">
 					<span class="glyphicon glyphicon-remove"></span>
 				</button>
 
@@ -29,18 +29,18 @@
 			<form name="formaForm" novalidate>
 
 				<div class="form-group">
-					<input id="tipoForma" type="text" class="form-control" placeholder="Tipo de tarjeta" ng-model="currentRecord.tipo" required>
+					<input id="tipotarjeta" type="text" class="form-control" placeholder="Tipo de tarjeta" ng-model="formaPagoCtrl.payment.tipo" required>
 				</div>
 
 				<div class="form-group">
-					<input id="tipoForma" type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="currentRecord.numeroTarjeta" required>
+					<input id="numerotarjeta" type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="formaPagoCtrl.payment.numeroTarjeta" required>
 				</div>
 
 				<div class="form-group">
-					<input id="tipoForma" type="text" class="form-control" placeholder="Fecha de vencimiento" ng-model="currentRecord.fechaVencimiento" required>
+					<input id="vencimientotarjeta" type="text" class="form-control" placeholder="Fecha de vencimiento" ng-model="formaPagoCtrl.payment.fechaVencimiento" required>
 				</div>
 
-				<button type="button" ng-click="agregar()" ng-disabled="!formaForm.$valid" class="btn btn-defaut formaform">
+				<button id="botonAgregarFormaPago" type="button" ng-click="formaPagoCtrl.addPayment()" ng-disabled="!formaForm.$valid" class="btn btn-defaut formaform">
 					Agregar forma
 				</button>
 
@@ -50,7 +50,7 @@
 
 		</li>
 
-		<li class="miestampa" ng-repeat="forma in records">
+		<li class="miestampa" ng-repeat="forma in formaPagoCtrl.formaPagoRecords.customRecords">
 
 			<p>
 				{{ forma.tipo }}
@@ -60,7 +60,7 @@
 				{{ forma.fechaVencimiento }}
 			</p>
 
-			<button type="button" ng-click="quitar(forma)" class="btn btn-defaut">
+			<button id="" type="button" ng-click="formaPagoCtrl.removePayment(forma)" class="btn btn-defaut">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
 

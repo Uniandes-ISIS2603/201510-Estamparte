@@ -12,11 +12,13 @@
 
 				<div class="input-group" id="busqueda">
 
-					<input type="text" class="form-control" placeholder="Ingresa que quieres buscar...">
+					<input id="ingresobusqueda" type="text" class="form-control" placeholder="Ingresa que quieres buscar...">
 
 					<div class="input-group-btn">
 
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-click="busquedaAvanzada()">Busqueda avanzada</button>
+						<button id="botonBusquedaAvanzada" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-click="estampasCtrl.advancedSearch()">
+							Busqueda avanzada
+						</button>
 
 						<!-- <ul class="dropdown-menu" id="busqueda-avanzada"> -->
 							<!-- TODO -->
@@ -32,7 +34,7 @@
 		        
 		<div>
 
-			<div ng-repeat="estampa in records" ng-switch="$index % 3">
+			<div ng-repeat="estampa in estampasCtrl.estampasRecords.basicRecords" ng-switch="$index % 3">
 
 				<span ng-switch on="$index % 3">
 
@@ -40,11 +42,11 @@
 
 						<div class="filaEstampas row">
 
-							<div estampa-dir="records[$index+0]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
+							<div estampa-directive target="estampasCtrl.estampasRecords.basicRecords[$index+0]" ng-class="estampasCtrl.getItemWidth($index)"></div>
 
-							<div estampa-dir="records[$index+1]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
+							<div estampa-directive target="estampasCtrl.estampasRecords.basicRecords[$index+1]" ng-class="estampasCtrl.getItemWidth($index)"></div>
 
-							<div estampa-dir="records[$index+2]" agregar="agregar" gusta="gusta" ng-class="darAnchoEstampa($index)"></div>
+							<div estampa-directive target="estampasCtrl.estampasRecords.basicRecords[$index+2]" ng-class="estampasCtrl.getItemWidth($index)"></div>
 
 						</div>
 
