@@ -63,4 +63,9 @@ public class FormaPagoLogic implements IFormaPagoLogic{
         Query consulta = em.createQuery("select u from FormaPagoEntity u where u.comprador.id = '"+idComprador+"'");
         return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
     }
+    
+    @Override
+    public void eliminarFormasPagoComprado(long idComprador){
+        em.createQuery("DELETE FROM FormaPagoEntity u WHERE u.comprador.id = '"+idComprador+"'").executeUpdate();
+    }
 }

@@ -64,7 +64,10 @@ public class CompradorLogic implements ICompradorLogic{
     public CompradorDTO deleteComprador(long id) {
         CompradorEntity entity = entityManager.find(CompradorEntity.class, id);
         if(entity!=null){
+        
+        formaPagoLogic.eliminarFormasPagoComprado(id);
         carritoLogic.eliminarCarrito(entity.getCarrito().getIdCarrito());
+        
         entityManager.remove(entity);    
         return CompradorConverter.entity2PersistenceDTO(entity);
         }
