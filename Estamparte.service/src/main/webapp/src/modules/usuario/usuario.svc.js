@@ -2,7 +2,7 @@
 	angular.module('usuarioModule')
 	.service('usuarioService', usuarioService);
 
-	function usuarioService(carritoService, compradorService, artistaService, formaPagoService) {
+	function usuarioService(carritoService, compradorService, artistaService, formaPagoService, carritoService) {
 		var _this = this;
 
 		_this.user = {};
@@ -13,11 +13,19 @@
 		_this.getUser = getUser;
 		_this.getName = getName;
 		_this.getType = getType;
+		_this.getCarrito = getCarrito;
+
+		// Get the user carrito or null if there is no user.
+		function getCarrito() {
+			var ans = null;
+			if (_this.user.id)
+				ans = _this.user.idCarrito;
+			return ans;
+		}
 
 		// Signup a new user, adding it to the DB. If the user
 		// is of type 'comprador', it adds algo a new cart.
 		function signup(user, type, callback) {
-			console.log(user); console.log(type);
 			if (type === 'artista')
 				artistaService.postBasic(user).then(preSetOnline);
 			else if (type === 'comprador')
@@ -39,7 +47,10 @@
 			function set(value, key) {
 				_this.user[key] = value;
 			}
-			if (type === 'comprador') formaPagoService.getCustom(_this.user.id);
+			if (type === 'comprador') {
+				formaPagoService.getCustom(_this.user.id);
+				carritoService.getCustom(_this.user.idCarrito);
+			}
 			if (callback) callback();
 		}
 

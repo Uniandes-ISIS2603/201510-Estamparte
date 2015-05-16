@@ -44,7 +44,7 @@
 
                         <br>
 
-                        <button id="botonCamisaACarrito" class="btn btn-default btn-lg" type="button" ng-click="camisetaCtrl.addCamisetaCarrito()" ng-disabled="!camisetaForm.$valid || camisetaCtrl.tshirt.precio === 0">
+                        <button id="botonCamisaACarrito" class="btn btn-default btn-lg" type="button" ng-click="camisetaCtrl.addCamisetaCarrito()" ng-disabled="!camisetaForm.$valid || camisetaCtrl.tshirt.precio === 0 || !camisetaCtrl.isType('comprador')">
                             Agregar a mi carrito
                         </button>
 

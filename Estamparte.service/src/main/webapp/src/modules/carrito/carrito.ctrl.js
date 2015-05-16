@@ -59,7 +59,7 @@
 
 		// Remove the tshirt from the cart.
 		function removeTshirt(target) {
-			_this.deleteCustom(target);
+			carritoService.deleteCustom(target, usuarioService.getCarrito());
 		}
 
 		// Clean the cart.
@@ -72,7 +72,7 @@
 
 		// Updates tshirt's amount.
 		function changeAmount(target) {
-			carritoService.putCustom(target);
+			carritoService.putCustom(target, usuarioService.getCarrito());
 		}
 
 		// Realiza la compra.

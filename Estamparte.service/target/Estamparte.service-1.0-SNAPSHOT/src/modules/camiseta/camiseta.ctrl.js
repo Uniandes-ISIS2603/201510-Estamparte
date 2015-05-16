@@ -2,7 +2,7 @@
 	angular.module('camisetaModule')
 	.controller('camisetaController', camisetaController);
 
-	function camisetaController($window, camisetaService, carritoService) {
+	function camisetaController($window, camisetaService, carritoService, usuarioService) {
 
 		var _this = this;
 
@@ -24,15 +24,34 @@
 		_this.addCamisetaCarrito = addCamisetaCarrito;
 		_this.setCSS = setCSS;
 		_this.estampaCSS = estampaCSS;
+		_this.isType = isType;
+
+		// Get the user type
+		function isType(target) {
+			return usuarioService.getType() === target;
+		}
 
 		// Adds the current tshirt to carrito.
 		function addCamisetaCarrito() {
+			var id = usuarioService.getCarrito();
+			var clone = setupClone();
+			console.log(clone);
 			if (_this.tshirt.id) {
-				carritoService.putCustom(_this.tshirt).then(camisetaService.setTshirtDefaults);
+				carritoService.putCustom(clone, id).then(camisetaService.setTshirtDefaults);
 			} else {
 				_this.tshirt.cantidad = 1;
-				carritoService.postCustom(_this.tshirt).then(camisetaService.setTshirtDefaults);
+				carritoService.postCustom(clone, id).then(camisetaService.setTshirtDefaults);
 			}
+		}
+
+		// Makes a clone and fix estampas array.
+		function setupClone() {
+			var estampas = []
+			var clone = JSON.parse(JSON.stringify(_this.tshirt));
+			angular.forEach(clone.estampas, set);
+			function set(value, index) { estampas.push(value.id); }
+			clone.estampas = estampas;
+			return clone;
 		}
 
 		// Set the CSS Attribute depending on
