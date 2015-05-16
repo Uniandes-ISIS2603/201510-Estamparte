@@ -12,6 +12,7 @@ import co.edu.uniandes.estamparte.comprador.logic.entity.CompradorEntity;
 import co.edu.uniandes.estamparte.formaPago.logic.api.IFormaPagoLogic;
 import co.edu.uniandes.estamparte.formaPago.logic.converter.FormaPagoConverter;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoPageDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.entity.FormaPagoEntity;
 import java.util.*;
 import javax.inject.Inject;
@@ -95,8 +96,8 @@ public class CompradorLogic implements ICompradorLogic{
         return respuesta;
     }
 
-    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador) {
-        return formaPagoLogic.darFormasPagoComprador(idComprador);
+    public FormaPagoPageDTO darFormasPagoComprador(long idComprador, Integer pagina, Integer datosMaximos) {
+        return formaPagoLogic.darFormasPagoComprador(idComprador, pagina, datosMaximos);
     }
     
     @Override

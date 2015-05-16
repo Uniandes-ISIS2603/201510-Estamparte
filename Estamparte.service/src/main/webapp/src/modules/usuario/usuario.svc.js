@@ -2,8 +2,13 @@
 	angular.module('usuarioModule')
 	.service('usuarioService', usuarioService);
 
+<<<<<<< HEAD
 	function usuarioService($rootScope, carritoService, compradorService, artistaService, formaPagoService) {
 
+=======
+	function usuarioService($rootScope, compradorService, artistaService) {
+                    
+>>>>>>> 30033c04cea827165aba1c39140175169fcdb5ff
 		var _this = this;
 
 		_this.user = {};

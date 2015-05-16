@@ -15,7 +15,7 @@ public interface IFormaPagoLogic {
     
     public FormaPagoDTO actualizarFormaPago(FormaPagoDTO formaPago);
     
-    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador);
+    public FormaPagoPageDTO darFormasPagoComprador(long idComprador, Integer pagina, Integer datosMaximos);
     
     public void eliminarFormaPago(Long numeroTarjeta);
     

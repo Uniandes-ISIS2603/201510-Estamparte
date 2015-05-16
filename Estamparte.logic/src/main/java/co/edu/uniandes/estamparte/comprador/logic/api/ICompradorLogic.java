@@ -10,6 +10,7 @@ import co.edu.uniandes.estamparte.estampa.logic.api.*;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorDTO;
 import co.edu.uniandes.estamparte.comprador.logic.dto.CompradorPageDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoPageDTO;
 
 
 import java.util.*;
@@ -30,7 +31,7 @@ public interface ICompradorLogic {
     
     public FormaPagoDTO crearFormaPagoComprador(long idComprador, FormaPagoDTO formaPago);
     
-    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador);
+    public FormaPagoPageDTO darFormasPagoComprador(long idComprador, Integer pagina, Integer datosMaximos);
     
     public FormaPagoDTO actualizarFormaPagoComprador(long idComprador, FormaPagoDTO formaPago);
     

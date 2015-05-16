@@ -13,6 +13,7 @@ import co.edu.uniandes.estamparte.factura.logic.api.IFacturaLogic;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaDTO;
 import co.edu.uniandes.estamparte.factura.logic.dto.FacturaPageDTO;
 import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoDTO;
+import co.edu.uniandes.estamparte.formaPago.logic.dto.FormaPagoPageDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -80,8 +81,8 @@ public class ServicioComprador {
     
     @GET
     @Path("{id}/formaPago")
-    public List<FormaPagoDTO> darFormasPagoComprador(@PathParam("id")long idComprador) {
-        return compradorlogic.darFormasPagoComprador(idComprador);
+    public FormaPagoPageDTO darFormasPagoComprador(@PathParam("id")long idComprador,@QueryParam("pagina")Integer pagina, @QueryParam("datosMaximos")Integer datosMaximos){
+        return compradorlogic.darFormasPagoComprador(idComprador, pagina, datosMaximos);
     }
     
     @PUT

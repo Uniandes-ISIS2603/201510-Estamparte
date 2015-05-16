@@ -226,6 +226,7 @@ public class FormaPagoPersistenceTest {
             Assert.assertEquals(dto2.getNumeroTarjeta(), entity.getNumeroTarjeta());          
     }
     
+    /*
     @Test
     public void getFormaPagoCompradorTest(){
 
@@ -240,6 +241,7 @@ public class FormaPagoPersistenceTest {
 
 
     }
+    */
     
     @Test
     public void deleteFormaPagoTest(){
