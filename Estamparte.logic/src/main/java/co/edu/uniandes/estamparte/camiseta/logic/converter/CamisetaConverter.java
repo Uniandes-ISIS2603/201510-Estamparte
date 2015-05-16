@@ -33,6 +33,7 @@ public class CamisetaConverter{
             dto.setEstampas(arrEst);
             dto.setEstilo(entity.getEstilo());
             dto.setTalla(entity.getTalla());
+            dto.setCantidad(entity.getCantidad());
 
             return dto;
         } else {
@@ -61,6 +62,7 @@ public class CamisetaConverter{
             entity.setEstampas(EstampaConverter.convertirDeListaDTOAListaEntidades(estampas));
             entity.setEstilo(dto.getEstilo());
             entity.setTalla(dto.getTalla());
+            entity.setCantidad(dto.getCantidad());
 
 
 

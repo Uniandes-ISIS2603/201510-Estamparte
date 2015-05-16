@@ -36,6 +36,8 @@ public class CamisetaEntity {
     
     private double costo;
     
+    private int cantidad;
+    
 
     
     public long getId() {
@@ -92,6 +94,14 @@ public class CamisetaEntity {
 
     public void setCosto(double costo) {
         this.costo = costo;
+    }
+    
+    public int getCantidad(){
+        return cantidad;
+    }
+    
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
     }
     
 

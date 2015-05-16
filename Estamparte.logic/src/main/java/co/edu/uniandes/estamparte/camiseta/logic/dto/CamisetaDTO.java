@@ -22,6 +22,8 @@ public class CamisetaDTO {
     
     private double costo;
     
+    private int cantidad;
+    
     
     public long getId() {
         return id;
@@ -79,6 +81,13 @@ public class CamisetaDTO {
         this.costo = costo;
     }
 
+    public int getCantidad(){
+       return cantidad;
+    }
+    
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
+    }
     
     
 }
