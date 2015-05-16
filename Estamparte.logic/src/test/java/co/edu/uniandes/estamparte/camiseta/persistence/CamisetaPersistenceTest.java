@@ -127,6 +127,10 @@ public class CamisetaPersistenceTest {
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
     
+     @Inject
+     private IArtistaLogic artistaPersistence;
+    @Inject
+     private IEstampaLogic estampaPersistence;
     @Inject
      private ICamisetaLogic camisetaPersistence;
      @PersistenceContext
@@ -176,23 +180,46 @@ public class CamisetaPersistenceTest {
     @Test
     public void createCamisetaTest() {
         // se instancia el generador de datos Podam
-        CamisetaDTO dto = new CamisetaDTO();
-        dto.setId(12345);
-        dto.setTalla("123" );
-        dto.setColor("sad");
-        dto.setEstilo("12");
+        ArtistaDTO entity = new ArtistaDTO();
+            entity.setCedula("123" );
+            entity.setUsuario("sad");
+            entity.setContrasenha("12");
+            entity.setNombre("asd");
+            entity.setCorreo("asd");
+            entity.setDescripcion("sds");
+            entity.setImagenPerfil("sd");
+            ArtistaDTO res = artistaPersistence.crearArtista(entity);
+        
+        EstampaDTO dto = new EstampaDTO();
+        dto.setIdArtista(res.getId());
+        dto.setAltura(1.00);
+        dto.setAncho(1.00);
+        dto.setDescripcion("asd");
+        dto.setSiGusta(1);
+        dto.setNoGusta(2);
         dto.setNombre("asd");
-        dto.setCosto(1);
-        dto.setEstampas(null);
-        CamisetaDTO result = camisetaPersistence.crearCamiseta(dto);
+       EstampaDTO respp = estampaPersistence.crearEstampa(dto);
+        EstampaDTO resp = estampaPersistence.darEstampa(respp.getId());
+        CamisetaDTO dtoo = new CamisetaDTO();
+       
+        dtoo.setTalla("123" );
+        dtoo.setColor("sad");
+        dtoo.setEstilo("12");
+        dtoo.setNombre("asd");
+        dtoo.setCosto(1);
+        long[] estampas = new long[1];
+        estampas[0] = resp.getId();
+        dtoo.setEstampas(estampas);
+        CamisetaDTO result = camisetaPersistence.crearCamiseta(dtoo);
         Assert.assertNotNull(result);
-        CamisetaEntity entity = em.find(CamisetaEntity.class, result.getId());
+        
+        CamisetaEntity entityy = em.find(CamisetaEntity.class, result.getId());
  
-        Assert.assertEquals(dto.getTalla(), entity.getTalla());
-        Assert.assertEquals(dto.getColor(), entity.getColor());
-        Assert.assertEquals(dto.getNombre(), entity.getNombre());
-        Assert.assertEquals(dto.getEstilo(), entity.getEstilo());
-        Assert.assertEquals(dto.getCosto(), entity.getCosto());
+        Assert.assertEquals(dtoo.getTalla(), entityy.getTalla());
+        Assert.assertEquals(dtoo.getColor(), entityy.getColor());
+        Assert.assertEquals(dtoo.getNombre(), entityy.getNombre());
+        Assert.assertEquals(dtoo.getEstilo(), entityy.getEstilo());
+        Assert.assertEquals(dtoo.getCosto(), entityy.getCosto());
     }
         
     

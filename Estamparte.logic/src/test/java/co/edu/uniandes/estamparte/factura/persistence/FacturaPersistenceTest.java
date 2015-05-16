@@ -6,6 +6,12 @@ import co.edu.uniandes.estamparte.administrador.logic.dto.AdministradorDTO;
 import co.edu.uniandes.estamparte.administrador.logic.ejb.AdministradorLogic;
 import co.edu.uniandes.estamparte.administrador.logic.entity.AdministradorEntity;
 import co.edu.uniandes.estamparte.administrador.persistence.*;
+import co.edu.uniandes.estamparte.artista.logic.api.IArtistaLogic;
+import co.edu.uniandes.estamparte.artista.logic.converter.ArtistaConverter;
+import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaDTO;
+import co.edu.uniandes.estamparte.artista.logic.dto.ArtistaPageDTO;
+import co.edu.uniandes.estamparte.artista.logic.ejb.ArtistaLogic;
+import co.edu.uniandes.estamparte.artista.logic.entity.ArtistaEntity;
 import co.edu.uniandes.estamparte.camiseta.logic.api.ICamisetaLogic;
 import co.edu.uniandes.estamparte.camiseta.logic.converter.CamisetaConverter;
 import co.edu.uniandes.estamparte.camiseta.logic.dto.CamisetaDTO;
@@ -45,6 +51,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -62,12 +69,18 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class FacturaPersistenceTest {
-   /** 
+    
      public static final String DEPLOY = "Prueba";
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
                 //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                .addPackage(ICompradorLogic.class.getPackage())
+                .addPackage(CompradorLogic.class.getPackage())
+                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(CompradorEntity.class.getPackage())
+                .addPackage(CompradorDTO.class.getPackage())
+                .addPackage(CompradorConverter.class.getPackage())
                 .addPackage(IFacturaLogic.class.getPackage())
                 .addPackage(FacturaLogic.class.getPackage())
                 //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
@@ -98,31 +111,50 @@ public class FacturaPersistenceTest {
                 .addPackage(CamisetaEntity.class.getPackage())
                 .addPackage(CamisetaDTO.class.getPackage())
                 .addPackage(CamisetaConverter.class.getPackage())
-                
-                .addPackage(ICompradorLogic.class.getPackage())
-                .addPackage(CompradorLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
-                .addPackage(CompradorEntity.class.getPackage())
-                .addPackage(CompradorDTO.class.getPackage())
-                .addPackage(CompradorConverter.class.getPackage())
+                .addPackage(IArtistaLogic.class.getPackage())
+                .addPackage(ArtistaLogic.class.getPackage())
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
+                .addPackage(ArtistaEntity.class.getPackage())
+                .addPackage(ArtistaDTO.class.getPackage())
+                                .addPackage(ArtistaPageDTO.class.getPackage())
+
+                .addPackage(ArtistaConverter.class.getPackage())
                 //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
     
     @Inject
-     private IFacturaLogic adminPersistence;
+     private IFacturaLogic facturaPersistence;
      @PersistenceContext
      private EntityManager em;
      @Inject
      UserTransaction utx;
-    
+     @Before
+    public void configTest() {
+        System.out.println("em: " + em);
+        try {
+            utx.begin();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
     
     
     
     @Test
     public void createFacturaTest() {
-        // se instancia el generador de datos Podam
+        // se instancia el generador de datos 
+        FacturaDTO dto = new FacturaDTO();
+        
+        facturaPersistence.createFacturaComprador(null, null);
+        //System.out.println(resp.getIdFactura());
         
     }
     
@@ -139,5 +171,5 @@ public class FacturaPersistenceTest {
     @Test
     public void updateFacturaTest(){
         
-    }*/
+    }
 }

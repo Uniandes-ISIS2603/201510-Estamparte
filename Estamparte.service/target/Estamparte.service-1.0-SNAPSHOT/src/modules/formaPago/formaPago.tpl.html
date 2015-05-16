@@ -1,0 +1,73 @@
+<div id="formapago">
+
+	<div class="botones">
+
+		<button id="botonCerrarFormaPago" type="button" ng-click="formaPagoCtrl.closePanel()" class="btn btn-defaut">
+			<span class="glyphicon glyphicon-remove"></span>
+		</button>
+
+		<button id="botonCrearFormaPago" type="button" ng-click="formaPagoCtrl.preAddPayment()" class="btn btn-defaut">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+
+	</div>
+
+	<ul>
+
+		<li class="miestampa" ng-show="formaPagoCtrl.adding">
+
+			<div id="nuevaformaboton">
+
+				<button id="botonCerrarCrearFormaPago" type="button" ng-click="formaPagoCtrl.closeAddPayment()" class="btn btn-defaut formaform">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+
+				<h5>Ingresar nueva forma</h5>
+
+			</div>
+
+			<form name="formaForm" novalidate>
+
+				<div class="form-group">
+					<input id="tipotarjeta" type="text" class="form-control" placeholder="Tipo de tarjeta" ng-model="formaPagoCtrl.payment.tipo" required>
+				</div>
+
+				<div class="form-group">
+					<input id="numerotarjeta" type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="formaPagoCtrl.payment.numeroTarjeta" required>
+				</div>
+
+				<div class="form-group">
+					<input id="vencimientotarjeta" type="text" class="form-control" placeholder="Fecha de vencimiento" ng-model="formaPagoCtrl.payment.fechaVencimiento" required>
+				</div>
+
+				<button id="botonAgregarFormaPago" type="button" ng-click="formaPagoCtrl.addPayment()" ng-disabled="!formaForm.$valid" class="btn btn-defaut formaform">
+					Agregar forma
+				</button>
+
+			</form>
+
+			<hr>
+
+		</li>
+
+		<li class="miestampa" ng-repeat="forma in formaPagoCtrl.formaPagoRecords.customRecords">
+
+			<p>
+				{{ forma.tipo }}
+				<br>
+				{{ forma.numeroTarjeta }}
+				<br>
+				{{ forma.fechaVencimiento }}
+			</p>
+
+			<button id="" type="button" ng-click="formaPagoCtrl.removePayment(forma)" class="btn btn-defaut">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+
+			<hr>
+
+		</li>
+
+	</ul>
+
+</div>

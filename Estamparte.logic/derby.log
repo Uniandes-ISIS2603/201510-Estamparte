@@ -1,8 +1,15 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
+Thu May 14 10:52:29 COT 2015:
+ Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instancia a816c00e-014d-5320-8456-00000b8c9270 
+en el directorio de base de datos C:\Users\template\AppData\Local\Temp\gfembed1514728282947828836tmp\lib\databases\embedded_default  con el cargador de clases sun.misc.Launcher$AppClassLoader@456d3d51
+
+=======
 Thu May 14 00:39:05 COT 2015:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-014d-50ee-ee93-00000dea0660 
 on database directory /private/var/folders/lk/_5www41x68b7_fpth7ysg4fm0000gp/T/gfembed1104322721426165109tmp/lib/databases/embedded_default  with class loader sun.misc.Launcher$AppClassLoader@29453f44 
 Loaded from file:/Users/jcbages/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.0/glassfish-embedded-all-4.0.jar
+>>>>>>> origin/master
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_25-b17
 user.dir=/Users/jcbages/Documents/uniandes/desarrollosw/estamparte/Estamparte.logic

@@ -80,52 +80,52 @@ public class FormaPagoPersistenceTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
-                //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportPersistance.java'
                 .addPackage(ICompradorLogic.class.getPackage())
                 .addPackage(CompradorLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CompradorEntity.class.getPackage())
                 .addPackage(CompradorDTO.class.getPackage())
                 .addPackage(CompradorConverter.class.getPackage())
                 .addPackage(IFacturaLogic.class.getPackage())
                 .addPackage(FacturaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(FacturaEntity.class.getPackage())
                 .addPackage(FacturaDTO.class.getPackage())
                 .addPackage(FacturaConverter.class.getPackage())
                 .addPackage(IFormaPagoLogic.class.getPackage())
                 .addPackage(FormaPagoLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(FormaPagoEntity.class.getPackage())
                 .addPackage(FormaPagoDTO.class.getPackage())
                 .addPackage(FormaPagoConverter.class.getPackage())
                 .addPackage(IEstampaLogic.class.getPackage())
                 .addPackage(EstampaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(EstampaEntity.class.getPackage())
                 .addPackage(EstampaDTO.class.getPackage())
                 .addPackage(EstampaConverter.class.getPackage())
                 .addPackage(ICarritoLogic.class.getPackage())
                 .addPackage(CarritoLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CarritoEntity.class.getPackage())
                 .addPackage(CarritoDTO.class.getPackage())
                 .addPackage(CarritoConverter.class.getPackage())
                 .addPackage(ICamisetaLogic.class.getPackage())
                 .addPackage(CamisetaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CamisetaEntity.class.getPackage())
                 .addPackage(CamisetaDTO.class.getPackage())
                 .addPackage(CamisetaConverter.class.getPackage())
                 .addPackage(IArtistaLogic.class.getPackage())
                 .addPackage(ArtistaLogic.class.getPackage())
-                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //A?ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(ArtistaEntity.class.getPackage())
                 .addPackage(ArtistaDTO.class.getPackage())
                                 .addPackage(ArtistaPageDTO.class.getPackage())
 
                 .addPackage(ArtistaConverter.class.getPackage())
-                //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
+                //Finalmente se a?aden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete m?nimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
