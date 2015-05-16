@@ -2,50 +2,83 @@
 	angular.module('usuarioModule')
 	.service('usuarioService', usuarioService);
 
-	function usuarioService($rootScope, compradorService, artistaService) {
+	function usuarioService($rootScope, carritoService, compradorService, artistaService, formaPagoService) {
 
 		var _this = this;
 
-		_this.user = null;
+		_this.user = {};
 
+		_this.signup = signup;
 		_this.login = login;
 		_this.logout = logout;
 		_this.getUser = getUser;
 		_this.getName = getName;
 		_this.getType = getType;
 
+		// Signup a new user, adding it to the DB. If the user
+		// is of type 'comprador', it adds algo a new cart.
+		function signup(user, type, callback) {
+			console.log(user); console.log(type);
+			if (type === 'artista')
+				artistaService.postBasic(user).then(preSetOnline);
+			else if (type === 'comprador')
+				carritoService.postBasic({}).then(resolveSignup);
+			function resolveSignup(carrito) {
+				user.idCarrito = carrito.idCarrito;
+				compradorService.postBasic(user).then(preSetOnline);
+			}
+			function preSetOnline(target) {
+				setOnline(target, type, callback);
+			}
+		}
+
+		// Fill user object properties with the one of the
+		// given object by arg, making the user online.
+		function setOnline(target, type, callback) {
+			_this.user.tipo = type;
+			angular.forEach(target, set);
+			function set(value, key) {
+				_this.user[key] = value;
+			}
+			if (type === 'comprador') formaPagoService.getCustom(_this.user.id);
+			if (callback) callback();
+		}
+
 		// Verify the user credentials in all the user records
 		// available in the system, returns 1 for success or 0.
-		function login(usr, pwd) {
-			var ans = 0;
-			if (_this.user === null) {
-				compradorService.getBasic().then(tryFind);
-				function tryFind(records) {
-					var ans = checkUser(records);
-					if (ans === 0) {
-						return artistaService.getBasic.then(checkUser)
-					} else {
-						return ans;
+		function login(target, callback) {
+			compradorService.getBasic().then(artistaService.getBasic().then(search));
+			function search() {
+				var ans = null, type = '';
+				angular.forEach(compradorService.records.basicRecords, findComprador);
+				angular.forEach(artistaService.records.basicRecords, findArtista);
+				function findArtista(value, key) {
+					if (target.usr === value.usuario && target.pwd === value.contrasenha) {
+						ans = value;
+						type = 'artista';
 					}
 				}
-				function checkUser(records) {
-					angular.forEach(records, search);
-					function search(value, index) {
-						if (usr === value.usuario && pwd === value.pwd) {
-							_this.user = value;
-							ans = 1;
-						}
+				function findComprador(value, key) {
+					if (target.usr === value.usuario && target.pwd === value.clave) {
+						ans = value;
+						type = 'comprador';
 					}
 				}
-			} else {
-				ans = 1;
+				return resolveLogin(ans, type);
 			}
-			return ans;
+			function resolveLogin(ans, type) {
+				if (ans !== null) setOnline(ans, type);
+				if (callback) return callback(ans);
+				else return ans;
+			}
 		}
 
 		// Logout the current user making it null.
 		function logout() {
-			_this.user = null;
+			angular.forEach(_this.user, rem);
+			function rem(value, key) {
+				delete _this.user[key];
+			}
 		}
 
 		// Returns the current logged user (can be null).
@@ -57,14 +90,14 @@
 		// If there is no user, returns an empty string.
 		function getName() {
 			var ans = '';
-			if (_this.user !== null) {
+			if (_this.user.id) {
 				ans = _this.user.nombre;
 				if (_this.user.tipo === 'artista') {
 					ans += ' el artista';
 				} else if (_this.user.tipo === 'comprador') {
 					ans += ' el comprador';
 				} else {
-					_this.user = null;
+					logout();
 					ans = '';
 				}
 			}
@@ -75,47 +108,10 @@
 		// returns null.
 		function getType() {
 			var ans = null;
-			if (_this.user !== null) {
+			if (_this.user.id) {
 				ans = _this.user.tipo;
 			}
 			return ans;
-		}
-
-		// TEST TEST TEST !!!!!!!!!!!
-		// Here we add a user for test purposes.
-		testComprador();
-		function testComprador() {
-			var testUser = {
-				tipo: 'comprador',
-				usuario: 'jcbages',
-				constrasenha: '123456',
-				nombre: 'Juan Camilo',
-				cedula: '1020808646',
-				correo: 'jcbages@outlook.com',
-				imagenPerfil: '',
-				descripcion: 'Un gran hombre, con un gran sueño.'   
-			};
-			compradorService.postBasic(testUser).then(log);
-			function log(entry) {
-				_this.user = entry;
-			}
-		}
-
-		// TEST TEST TEST !!!!!!!!!!!
-		// Here we add a user for test purposes.
-		testArtista();
-		function testArtista() {
-			var testUser = {
-				tipo: 'artista',
-				usuario: 'acfandino',
-				constrasenha: '123456',
-				nombre: 'Ana Camila',
-				cedula: '1012512929',
-				correo: 'camifandu@hotmail.com',
-				imagenPerfil: '',
-				descripcion: 'Una gran mujer, con un gran sueño.'   
-			};
-			artistaService.postBasic(testUser);
 		}
 	}
 })();

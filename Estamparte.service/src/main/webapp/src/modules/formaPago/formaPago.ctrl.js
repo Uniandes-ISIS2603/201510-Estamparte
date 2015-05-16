@@ -27,7 +27,8 @@
 
 		// Remove some payment form.
 		function removePayment(target) {
-			servicioFormaPago.deleteCustom(target);
+			var id = usuarioService.getUser().id;
+			formaPagoService.deleteCustom(target, id);
 		}
 
 		// Close this panel.
@@ -47,8 +48,9 @@
 
 		// Add the payment with the form data.
 		function addPayment() {
-			_this.payment.comprador = usuarioService.getUser().id;
-			formaPagoService.postCustom(_this.payment).then(cleanPayment);
+			var id = usuarioService.getUser().id;
+			_this.payment.idComprador = id;
+			formaPagoService.postCustom(_this.payment, id).then(cleanPayment);
 		}
 
 		// Clean the payment creation.

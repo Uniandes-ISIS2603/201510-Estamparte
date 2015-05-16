@@ -3,10 +3,6 @@ body {
 	font-weight: 100;
 }
 
-#factura {
-	display: none;
-}
-
 #comprarcarrito {
 	background-color: #F7F7F7;
 	padding: 20px 0 50px 0;
@@ -90,7 +86,7 @@ button, a {
 	text-align: center;
 }
 
-#carrito, #misestampas, #nueva, #formapago, #factura {
+#carrito, #misestampas, #nueva, #formapago, #factura, #registrarse, #iniciarsesion {
 	overflow: scroll;
 	display: none;
 	position: fixed;
