@@ -10,7 +10,7 @@
         crudService.extendService(_this, 'estampas', null);
 
         // Some test data.
-		testEstampas();
+		// testEstampas();
 		function testEstampas() {
 			var testEstampas = [
 				{  

@@ -2,7 +2,8 @@
 	angular.module('navbarModule')
 	.controller('navbarController', navbarController);
 	
-	function navbarController(usuarioService) {
+	function navbarController(usuarioService,$rootScope) {
+            $rootScope.usuario = { nombre: "Samuel", tipo: "artista" }
 
 		var _this = this;
 

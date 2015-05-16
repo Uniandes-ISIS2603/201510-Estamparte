@@ -1,0 +1,102 @@
+<div id="registrarse">
+
+	<div class="col-md-12">
+
+		<form name="registrarseForm">
+
+			<div class="form-group">
+				<label for="registrarseTipo">Soy un...</label>
+				<select id="registrarseTipo" ng-options="opt for opt in registrarseCtrl.options" ng-model="registrarseCtrl.option"></select>
+			</div>
+
+			<!-- Form for artista -->
+
+			<div ng-show="registrarseCtrl.option === 'artista'">
+
+				<div class="form-group">
+					<label for="registrarseUsuario">Usuario</label>
+					<input id="registrarseUsuario" class="form-control" type="text" ng-model="registrarseCtrl.signupArtista.usuario" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseClave">Clave</label>
+					<input id="registrarseClave" class="form-control" type="password" ng-model="registrarseCtrl.signupArtista.contrasenha" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseNombre">Nombre</label>
+					<input id="registrarseNombre" class="form-control" type="text" ng-model="registrarseCtrl.signupArtista.nombre" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseCedula">Cedula</label>
+					<input id="registrarseCedula" class="form-control" type="number" ng-model="registrarseCtrl.signupArtista.cedula" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseCorreo">Correo</label>
+					<input id="registrarseCorreo" class="form-control" type="email" ng-model="registrarseCtrl.signupArtista.correo" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseFoto">Foto de perfil</label>
+					<input id="registrarseFoto" type="file">
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseDescripcion">Descripcion</label>
+					<textarea id="registrarseDescripcion" class="form-control" ng-model="registrarseCtrl.signupArtista.descripcion" required></textarea>
+				</div>
+
+			</div>
+
+			<!-- Form for comprador -->
+
+			<div ng-show="registrarseCtrl.option === 'comprador'">
+
+				<div class="form-group">
+					<label for="registrarseUsuario">Usuario</label>
+					<input id="registrarseUsuario" class="form-control" type="text" ng-model="registrarseCtrl.signupComprador.usuario" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseClave">Clave</label>
+					<input id="registrarseClave" class="form-control" type="password" ng-model="registrarseCtrl.signupComprador.clave" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseNombre">Nombre</label>
+					<input id="registrarseNombre" class="form-control" type="text" ng-model="registrarseCtrl.signupComprador.nombre" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseCedula">Cedula</label>
+					<input id="registrarseCedula" class="form-control" type="number" ng-model="registrarseCtrl.signupComprador.cedula" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseCorreo">Correo</label>
+					<input id="registrarseCorreo" class="form-control" type="email" ng-model="registrarseCtrl.signupComprador.correo" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseDireccion">Direccion</label>
+					<input id="registrarseDireccion" class="form-control" type="text" ng-model="registrarseCtrl.signupComprador.direccion" required>
+				</div>
+
+				<div class="form-group">
+					<label for="registrarseTelefono">Telefono</label>
+					<input id="registrarseTelefono" class="form-control" type="number" ng-model="registrarseCtrl.signupComprador.telefono" required>
+				</div>
+
+			</div>
+
+			<!-- Register button is valid for both -->
+
+			<button class="btn btn-default" ng-click="registrarseCtrl.signup()">Registrarse!</button>
+
+		</form>
+
+	</div>
+
+</div>

@@ -64,9 +64,11 @@
 			}
 
 			// POST a custom item.
-			function postCustom(data) {
-				var basicID = data[basic];
-				return Restangular.one(basic, basicID).post(custom, data).then(reloadResolveCustom);
+			function postCustom(data, basicID) {
+				return Restangular.one(basic, basicID).post(custom, data).then(resolve);
+				function resolve(entry) {
+					reloadResolveCustom(entry, basicID);
+				}
 			}
 
 			// ######################################################
@@ -82,8 +84,11 @@
 			}
 
 			// PUT a custom item.
-			function putCustom(data) {
-				return data.put().then(reloadResolveCustom);
+			function putCustom(data, basicID) {
+				return data.put().then(resolve);
+				function resolve(entry) {
+					reloadResolveCustom(entry, basicID);
+				}
 			}
 
 			// ######################################################
@@ -99,11 +104,11 @@
 			}
 
 			// DETE a custom item.
-			function deleteCustom(data) {
-				var old = JSON.parse(JSON.stringify(data));
+			function deleteCustom(data, basicID) {
+				var entry = JSON.parse(JSON.stringify(data));
 				return data.remove().then(resolve);
 				function resolve() {
-					reloadResolveCustom(old);
+					reloadResolveCustom(entry, basicID);
 				}
 			}
 
@@ -136,8 +141,7 @@
 
 			// Resolve POST, PUT, or DELETE methods making a GET to
 			// reload the data. This is only for custom methods.
-			function reloadResolveCustom(entry) {
-				var basicID = entry[basic];
+			function reloadResolveCustom(entry, basicID) {
 				return getCustom(basicID).then(returnEntry);
 				function returnEntry() {
 					return entry;

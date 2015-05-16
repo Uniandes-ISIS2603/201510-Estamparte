@@ -3,7 +3,7 @@
 	.config(carritoConfig);
 
 	function carritoConfig(mockProvider) {
-		var basicReg = 'comprador', customReg = 'carrito';
-		mockProvider.addCustomReg(basicReg, customReg);
+		var basicReg = 'carrito';
+		mockProvider.addBasicReg(basicReg);
 	}
 })();

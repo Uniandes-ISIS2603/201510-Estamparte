@@ -29,15 +29,27 @@
 			<form name="formaForm" novalidate>
 
 				<div class="form-group">
+					<input id="nombretarjeta" type="text" class="form-control" placeholder="Nombre" ng-model="formaPagoCtrl.payment.nombre" required>
+				</div>
+
+				<div class="form-group">
 					<input id="tipotarjeta" type="text" class="form-control" placeholder="Tipo de tarjeta" ng-model="formaPagoCtrl.payment.tipo" required>
 				</div>
 
 				<div class="form-group">
-					<input id="numerotarjeta" type="text" class="form-control" placeholder="Numero de tarjeta" ng-model="formaPagoCtrl.payment.numeroTarjeta" required>
+					<input id="numerotarjeta" type="number" class="form-control" placeholder="Numero de tarjeta" ng-model="formaPagoCtrl.payment.numeroTarjeta" required>
 				</div>
 
 				<div class="form-group">
 					<input id="vencimientotarjeta" type="text" class="form-control" placeholder="Fecha de vencimiento" ng-model="formaPagoCtrl.payment.fechaVencimiento" required>
+				</div>
+
+				<div class="form-group">
+					<input id="seguridadtarjeta" type="number" class="form-control" placeholder="Codigo de seguridad" ng-model="formaPagoCtrl.payment.codigoSeguridad" required>
+				</div>
+
+				<div class="form-group">
+					<input id="direcciontarjeta" type="text" class="form-control" placeholder="Direccion correspondencia" ng-model="formaPagoCtrl.payment.direccionCorrespondencia" required>
 				</div>
 
 				<button id="botonAgregarFormaPago" type="button" ng-click="formaPagoCtrl.addPayment()" ng-disabled="!formaForm.$valid" class="btn btn-defaut formaform">
@@ -53,6 +65,8 @@
 		<li class="miestampa" ng-repeat="forma in formaPagoCtrl.formaPagoRecords.customRecords">
 
 			<p>
+				{{ forma.nombre }}
+				<br>
 				{{ forma.tipo }}
 				<br>
 				{{ forma.numeroTarjeta }}

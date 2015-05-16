@@ -35,11 +35,13 @@
 				$httpBackend.whenPUT(regUrl).respond(doPUT);
 				$httpBackend.whenDELETE(regUrl).respond(doDELETE);
 			} else {
-				$httpBackend.whenGET(url).passThrough();
-				$httpBackend.whenGET(regUrl).passThrough();
-				$httpBackend.whenPOST(url).passThrough();
-				$httpBackend.whenPUT(regUrl).passThrough();
-				$httpBackend.whenDELETE(regUrl).passThrough();
+				var skipUrl = new RegExp('([^]+)');
+
+				$httpBackend.whenGET(skipUrl).passThrough();
+				$httpBackend.whenGET(skipUrl).passThrough();
+				$httpBackend.whenPOST(skipUrl).passThrough();
+				$httpBackend.whenPUT(skipUrl).passThrough();
+				$httpBackend.whenDELETE(skipUrl).passThrough();
 			}
 
 			// /:basic
@@ -103,11 +105,13 @@
 				$httpBackend.whenPUT(regUrl).respond(doPUT);
 				$httpBackend.whenDELETE(regUrl).respond(doDELETE);
 			} else {
-				$httpBackend.whenGET(url).passThrough();
-				$httpBackend.whenGET(regUrl).passThrough();
-				$httpBackend.whenPOST(url).passThrough();
-				$httpBackend.whenPUT(regUrl).passThrough();
-				$httpBackend.whenDELETE(regUrl).passThrough();
+				var skipUrl = new RegExp('([^]+)');
+
+				$httpBackend.whenGET(skipUrl).passThrough();
+				$httpBackend.whenGET(skipUrl).passThrough();
+				$httpBackend.whenPOST(skipUrl).passThrough();
+				$httpBackend.whenPUT(skipUrl).passThrough();
+				$httpBackend.whenDELETE(skipUrl).passThrough();
 			}
 
 			// /:basic/:id/:custom

@@ -13,6 +13,8 @@ angular.module('mainApp', [
     'inicioModule',
     'equipoModule',
     'footerModule',
+    'registrarseModule',
+    'loginModule',
 
     // Mostly functional related modules...
     'formaPagoModule',
