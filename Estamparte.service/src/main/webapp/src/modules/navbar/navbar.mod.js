@@ -1,3 +1,3 @@
 (function () {
-	angular.module('navbarModule', ['$rootScope']);
+	angular.module('navbarModule', []);
 })();
