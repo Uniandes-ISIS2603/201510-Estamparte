@@ -8,7 +8,10 @@
 		var _this = this;
 
 		// Hold records from estampas.
-		_this.estampasRecords = estampasService.records;
+		estampasService.getBasic().then(set);
+		function set() {
+			_this.estampasRecords = estampasService.records;
+		}
 
 		_this.getItemWidth = getItemWidth;
 		_this.advancedSearch = advancedSearch;

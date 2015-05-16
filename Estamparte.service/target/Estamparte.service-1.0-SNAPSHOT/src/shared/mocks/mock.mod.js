@@ -167,7 +167,6 @@
 		angular.forEach(basicRegs, addBasic);
 		function addBasic(value, index) {
 			addBasicMock(value, skip);
-			console.log('Agregado para ' + value);
 		};
 
 		var customRegs = mock.getCustomRegs();
