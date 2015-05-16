@@ -8,6 +8,10 @@
 			<span class="glyphicon glyphicon-plus"></span>
 		</a>
 
+		<a id="botonQuitarEstampaAMisEstampas" class="btn btn-default" ng-click="estampaCtrl.removeEstampa(target)" ng-show="estampaCtrl.isOwner(target)">
+			<span class="glyphicon glyphicon-remove"></span>
+		</a>
+
 	</div>
 
 	<div class="contenido" ng-style="{ background: 'url({{ target.imagenes[0] }})' }" ng-click="estampaCtrl.showEstampa(target)"></div>

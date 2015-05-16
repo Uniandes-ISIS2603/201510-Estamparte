@@ -1,12 +1,14 @@
 (function () {
-	var app = angular.module('nuevaModule');
+	angular.module('nuevaModule')
+	.directive('nuevaDirective', nuevaDirective);
 
-	app.directive('nuevaDir', function () {
+	function nuevaDirective() {
 		return {
-			controller: 'nuevaCtrl',
+			controller: 'nuevaController',
+			controllerAs: 'nuevaCtrl',
 			replace: true,
 			scope: {},
 			templateUrl: 'src/modules/estampas/nueva/nueva.tpl.html'
 		};
-	});
+	}
 })();

@@ -23,5 +23,5 @@ angular.module('mainApp', [
     'camisetaModule',
     'carritoModule',
     'facturaModule',
-    // 'nuevaModule',
+    'nuevaModule'
 ]);

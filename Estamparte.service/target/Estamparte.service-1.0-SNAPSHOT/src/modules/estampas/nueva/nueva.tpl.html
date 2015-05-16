@@ -10,20 +10,30 @@
 
 			<div class="form-group">
 				<label for="nombre">Nombre</label>
-				<input id="nombrenueva" type="text" ng-model="currentRecord.nombre" class="form-control" required>
+				<input id="nombrenueva" type="text" ng-model="nuevaCtrl.nueva.nombre" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Descripcion</label>
+				<textarea id="descripcionnueva" ng-model="nuevaCtrl.nueva.descripcion" class="form-control" required></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Tema</label>
+				<input id="temanueva" type="text" ng-model="nuevaCtrl.nueva.tema" class="form-control" required>
 			</div>
 
 			<div class="form-group">
 				<label for="nombre">Precio</label>
-				<input id="precionueva" type="number" ng-model="currentRecord.precio" class="form-control" required>
+				<input id="precionueva" type="number" ng-model="nuevaCtrl.nueva.precio" class="form-control" required>
 			</div>
 
 			<div class="form-group">
 				<label for="nombre">Cargar imagen</label>
-				<input id="imagennueva" type="file" nv-file-select uploader="uploader">
+				<input id="imagennueva" type="file">
 			</div>
 
-			<button id="botonCrearEstampa" class="btn btn-default" ng-disabled="!nuevaForm.$valid || noImagen" ng-click="crearEstampa()">Crear estampa</button>
+			<button id="botonCrearEstampa" class="btn btn-default" ng-disabled="!nuevaForm.$valid" ng-click="nuevaCtrl.addNueva()">Crear estampa</button>
 
 		</form>
 

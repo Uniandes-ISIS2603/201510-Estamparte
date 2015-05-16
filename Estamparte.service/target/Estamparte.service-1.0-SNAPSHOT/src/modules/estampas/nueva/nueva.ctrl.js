@@ -1,72 +1,38 @@
 (function () {
-	var app = angular.module('nuevaModule');
+	angular.module('nuevaModule')
+	.controller('nuevaController', nuevaController)
 
-	app.controller('nuevaCtrl', ['$scope', 'FileUploader', 'estampasService', function ($scope, FileUploader, servicioEstampa) {
+	function nuevaController(nuevaService, usuarioService, estampasService) {
 
-		// Mantiene la estampa a crear.
+		var _this = this;
 
-		$scope.currentRecord = {};
+		// Holds the new object.
+		_this.nueva = {};
 
-		// Cola de imagenes a cargar.
+		_this.addNueva = addNueva;
+		_this.clean = clean;
 
-		$scope.uploader = new FileUploader();
+		// Adds the object
+		function addNueva() {
 
-		// Permite solo un elemento en la cola.
+			var id = usuarioService.getUser().id;
 
-		$scope.uploader.onAfterAddingFile = function (item) {
-			if ($scope.uploader.queue.length > 1) {
-				$scope.uploader.removeFromQueue(0);
-			}
-			$scope.noImagen = false;
+			// Adds some extra data.
+			_this.nueva.idArtista = id;
+			_this.nueva.usuarioArtista = usuarioService.getName();
+			_this.nueva.siGusta = 0;
+			_this.nueva.noGusta = 0;
+			_this.nueva.altura = 1;
+			_this.nueva.ancho = 1;
+
+			// Save it!.
+			nuevaService.postCustom(_this.nueva, id).then(clean);
 		}
 
-		// Muestra la imagen de la nueva estampa.
-
-		$scope.darImagen = function () {
-			if ($scope.currentRecord.imagenes)
-				return $scope.currentRecord.imagenes[0];
-			else
-				return '';
+		function clean() {
+			_this.nueva = {};
+			angular.element('#nueva').animate({width: 'toggle'});
+			estampasService.getBasic();
 		}
-
-		// Comprueba que haya alguna imagen seleccionada.
-
-		$scope.noImagen = true;
-
-		// Crea la estampa
-
-		$scope.crearEstampa = function () {
-
-			// Agrega los datos extra a la estampa.
-
-			$scope.currentRecord.idAutor = 4;
-			$scope.currentRecord.autor = 'elma lote';
-			$scope.currentRecord.siGusta = 0;
-			$scope.currentRecord.noGusta = 0;
-			$scope.currentRecord.imagenes = [
-				'src/assets/img/estampa.jpg'
-			];
-
-			// Guarda la estampa.
-
-			servicioEstampa.saveRecord($scope.currentRecord).then( function () {
-
-				// Limpia el Queue (mas adelante subira imagen).
-
-				$scope.uploader.clearQueue();
-
-				// Limpia los datos de formulario para el dato actual.
-
-				$scope.currentRecord.nombre = "";
-				$scope.currentRecord.precio = "";
-				$scope.currentRecord = {};
-
-				// Oculta el panel para crear estampa.
-
-				angular.element('#nueva').animate({width: 'toggle'});
-
-			});
-		}
-
-	}]);
+	}
 })();
