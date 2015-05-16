@@ -59,9 +59,19 @@ public class FormaPagoLogic implements IFormaPagoLogic{
     }
     
     @Override
-    public List<FormaPagoDTO> darFormasPagoComprador(long idComprador) {
-        Query consulta = em.createQuery("select u from FormaPagoEntity u where u.comprador.id = '"+idComprador+"'");
-        return FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList());
+    public FormaPagoPageDTO darFormasPagoComprador(long idComprador, Integer pagina, Integer datosMaximos) {
+        Query cantidad = em.createQuery("select count(formaPago) from FormaPagoEntity formaPago where formaPago.comprador.id = '"+idComprador+"'");
+        Long cuentaReg = Long.parseLong(cantidad.getSingleResult().toString());
+        Query consulta = em.createQuery("select formaPago from FormaPagoEntity formaPago where formaPago.comprador.id = '"+idComprador+"'");
+        if(pagina !=null && datosMaximos!=null){
+            consulta.setFirstResult((pagina-1)*datosMaximos);
+            consulta.setMaxResults(datosMaximos);
+        }
+        FormaPagoPageDTO respuesta = new FormaPagoPageDTO();
+        respuesta.setCantidad(cuentaReg);
+        respuesta.setFormasPago(FormaPagoConverter.convertirDeListaEntidadesAListaDTO(consulta.getResultList()));
+        return respuesta;
+
     }
     
     @Override
