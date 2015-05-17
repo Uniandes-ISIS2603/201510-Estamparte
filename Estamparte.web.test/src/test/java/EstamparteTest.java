@@ -38,7 +38,7 @@ public class EstamparteTest {
         private static StringBuffer verificationErrors = new StringBuffer();
         
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
          driver = new FirefoxDriver();
         // se define el url base del proyecto web
             baseUrl = "http://localhost:8080";
@@ -47,7 +47,7 @@ public class EstamparteTest {
     }
     
     @AfterClass
-    public void tearDown() {
+    public static void tearDown() {
                     // Se cierra el navegador.
             driver.quit();
            // Se verifica que se haya cerrado efectivamente el navegador.
@@ -100,6 +100,55 @@ public class EstamparteTest {
         
         assertTrue(success);
         Thread.sleep(2000);
+    }
+    
+    @Test
+    public void testRegistrarArtista() throws Exception
+    {
+        boolean success = false;
+        driver.findElement(By.id("botonRegistrarse")).click();
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseUsuario")).clear();
+        driver.findElement(By.id("registrarseUsuario")).sendKeys("Meili");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseClave")).clear();
+        driver.findElement(By.id("registrarseClave")).sendKeys("Meili");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseNombre")).clear();
+        driver.findElement(By.id("registrarseNombre")).sendKeys("Meili");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseCedula")).clear();
+        driver.findElement(By.id("registrarseCedula")).sendKeys("1020793576");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseCorreo")).clear();
+        driver.findElement(By.id("registrarseCorreo")).sendKeys("m.vanegas10@uniandes.edu.co");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseDireccion")).clear();
+        driver.findElement(By.id("registrarseDireccion")).sendKeys("Calle 1");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseTelefono")).clear();
+        driver.findElement(By.id("registrarseTelefono")).sendKeys("3191919");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseFoto")).clear();
+        driver.findElement(By.id("registrarseFoto")).sendKeys("C:\\Users\\Public\\Pictures\\Sample Pictures\\Faro.jpg");
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("registrarseDescripcion")).clear();
+        driver.findElement(By.id("registrarseDescripcion")).sendKeys("Artista");
+        Thread.sleep(1000);
+        
+        success = true;
+        
+        assertTrue(success);
+
     }
     
     
