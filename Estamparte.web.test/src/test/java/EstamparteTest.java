@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  *
@@ -151,5 +152,70 @@ public class EstamparteTest {
 
     }
     
+    @Test
+    public void testDisenarCamiseta() throws Exception
+    {
+         driver.findElement(By.id("botonAgregarEstampaAMisEstampas")).click();
+         Thread.sleep(1000);
+         
+         driver.findElement(By.id("nombre")).clear();
+         
+         driver.findElement(By.id("nombre")).sendKeys("Mi Camiseta");
+         
+         Thread.sleep(1000);
+         
+         new Select(driver.findElement(By.id("estilo"))).selectByIndex(1);
+         
+         Thread.sleep(3000);
+         
+         new Select(driver.findElement(By.id("talla"))).selectByIndex(2);
+         
+         Thread.sleep(2000);
+         
+         new Select(driver.findElement(By.id("color"))).selectByIndex(4);
+         
+         Thread.sleep(2000);
+         
+         driver.findElement(By.id("botonEstapaMisEstampasACamisa")).click();
+         Thread.sleep(1000);
+         
+         driver.findElement(By.id("botonCamisaACarrito")).click();
+         Thread.sleep(5000);
+         boolean success = false;
+    }
+    
+    @Test
+    public void testAgregarEstampa() throws Exception
+    {
+         driver.findElement(By.id("botonCrearEstampa")).click();
+         Thread.sleep(1000);
+         
+         driver.findElement(By.id("nombrenueva")).clear();
+         driver.findElement(By.id("nombrenueva")).sendKeys("Mi Estampa");
+         Thread.sleep(1000);
+         
+         driver.findElement(By.id("precionueva")).clear();
+         driver.findElement(By.id("precionueva")).sendKeys("10");
+         Thread.sleep(1000);
+         
+         driver.findElement(By.id("imagennueva")).sendKeys("C:\\Users\\template\\Pictures\\1.jpg");
+         Thread.sleep(10000);
+         
+         driver.findElement(By.id("botonCrearEstampa")).click();
+         Thread.sleep(1000);
+         
+          
+        boolean success = false;
+        List <WebElement> rows = driver.findElements(By.id("unaestampa"));
+        for (WebElement webElement : rows) 
+        {
+            List<WebElement> elems = webElement.findElements(By.tagName("h4"));
+            String text = elems.get(0).getText();
+            System.out.println(text);
+            if(text.contains("Mi Estampa"))
+                success = true;
+        }
+       assertTrue(success);
+    }
     
 }
