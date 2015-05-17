@@ -6,12 +6,13 @@
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import org.junit.After;
+import org.jboss.arquillian.junit.Arquillian;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  *
  * @author SamuelSalazar
  */
+@RunWith(Arquillian.class)
 public class EstamparteTest {
     
     public EstamparteTest() {
@@ -99,4 +101,6 @@ public class EstamparteTest {
         assertTrue(success);
         Thread.sleep(2000);
     }
+    
+    
 }
