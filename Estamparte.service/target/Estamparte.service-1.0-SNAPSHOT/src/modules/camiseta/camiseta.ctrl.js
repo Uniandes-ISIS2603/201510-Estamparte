@@ -51,6 +51,7 @@
 			angular.forEach(clone.estampas, set);
 			function set(value, index) { estampas.push(value.id); }
 			clone.estampas = estampas;
+			clone.cantidad = 0;
 			return clone;
 		}
 
