@@ -18,7 +18,7 @@
             function res(data, operation) {
                 var ans = null;
                 if (operation === 'getList') {
-                    if (data.constructor === Array) {
+                    if (data.constructor === Array){
                         ans = data;
                     } else {
                         angular.forEach(data, check);

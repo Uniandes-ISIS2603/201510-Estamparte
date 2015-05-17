@@ -34,7 +34,6 @@ public class CamisetaConverter{
             dto.setEstilo(entity.getEstilo());
             dto.setTalla(entity.getTalla());
             dto.setCantidad(entity.getCantidad());
-
             return dto;
         } else {
             return null;
@@ -63,8 +62,7 @@ public class CamisetaConverter{
             entity.setEstilo(dto.getEstilo());
             entity.setTalla(dto.getTalla());
             entity.setCantidad(dto.getCantidad());
-
-
+ 
 
             return entity;
         } else {
