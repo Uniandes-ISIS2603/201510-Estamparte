@@ -34,10 +34,11 @@
 		}
 
 		function isOwner(target) {
-			var user = usuarioService.getUser(), ans = false;
-			if (user && target && user.id === target.idArtista)
-				ans = true;
-			return ans;
+			var user = usuarioService.getUser();
+			return user &&
+				target &&
+				user.tipo === 'artista' &&
+				user.id === target.idArtista;
 		}
 
 		function voteEstampa(target, val) {
