@@ -35,11 +35,9 @@
 		function addCamisetaCarrito() {
 			var id = usuarioService.getCarrito();
 			var clone = setupClone();
-			console.log(clone);
-			if (_this.tshirt.id) {
+			if (clone.id) {
 				carritoService.putCustom(clone, id).then(camisetaService.setTshirtDefaults);
 			} else {
-				_this.tshirt.cantidad = 1;
 				carritoService.postCustom(clone, id).then(camisetaService.setTshirtDefaults);
 			}
 		}
@@ -51,7 +49,7 @@
 			angular.forEach(clone.estampas, set);
 			function set(value, index) { estampas.push(value.id); }
 			clone.estampas = estampas;
-			clone.cantidad = 0;
+			clone.cantidad = 1;
 			return clone;
 		}
 

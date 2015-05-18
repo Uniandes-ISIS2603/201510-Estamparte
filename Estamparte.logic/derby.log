@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Sat May 16 22:06:18 COT 2015:
- Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instancia a816c00e-014d-5fd6-20d9-00000bfc2470 
-en el directorio de base de datos C:\Users\template\AppData\Local\Temp\gfembed3310486709882769414tmp\lib\databases\embedded_default  con el cargador de clases sun.misc.Launcher$AppClassLoader@456d3d51
-
+Sat May 16 23:24:40 COT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-014d-601d-e1ba-00000c91b5d8 
+on database directory /private/var/folders/lk/_5www41x68b7_fpth7ysg4fm0000gp/T/gfembed6178141164958925351tmp/lib/databases/embedded_default  with class loader sun.misc.Launcher$AppClassLoader@29453f44 
+Loaded from file:/Users/jcbages/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.0/glassfish-embedded-all-4.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_71-b14
-user.dir=C:\Users\template\Documents\GitHub\201510-Estamparte\201510-Estamparte\Estamparte.logic
+java.runtime.version=1.8.0_25-b17
+user.dir=/Users/jcbages/Documents/uniandes/desarrollosw/estamparte/Estamparte.logic
 derby.system.home=null
-Cargador de clases de base de datos iniciado - derby.database.classpath=''
+Database Class Loader started - derby.database.classpath=''

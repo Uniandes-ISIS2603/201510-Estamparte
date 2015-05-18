@@ -22,7 +22,9 @@
 		_this.removeTshirt = removeTshirt;
 		_this.cleanCart = cleanCart;
 		_this.changeAmount = changeAmount;
+		_this.getPrice = getPrice
 		_this.buy = buy;
+		_this.getTodayDate = getTodayDate;
 
 		// Edit the selected tshirt.
 		function editTshirt(target) {
@@ -59,14 +61,15 @@
 
 		// Remove the tshirt from the cart.
 		function removeTshirt(target) {
-			carritoService.deleteCustom(target, usuarioService.getCarrito());
+			carritoService.deleteCustom(target, usuarioService.getCarrito()).then(camisetaService.setTshirtDefaults);
 		}
 
 		// Clean the cart.
 		function cleanCart() {
 			if (_this.carritoRecords.customRecords.length > 0) {
-				var current = _this.carritoRecords.customRecords[0];
-				carritoService.deleteCustom(current).then(cleanCart);
+				var id = usuarioService.getUser().id,
+					current = _this.carritoRecords.customRecords[0];
+				carritoService.deleteCustom(current, id).then(cleanCart);
 			}
 		}
 
@@ -75,14 +78,34 @@
 			carritoService.putCustom(target, usuarioService.getCarrito());
 		}
 
-		// Realiza la compra.
+		// Returns the total tshirt price.
+		function getPrice() {
+			var ans = 0;
+			angular.forEach(_this.carritoRecords.customRecords, add);
+			function add(value, key) {
+				ans += value.costo * value.cantidad;
+			}
+			return ans;
+		}
+
+		// Makes the transaction.
 		function buy() {
+			var id = usuarioService.getUser().id;
 			camisetaService.setTshirtDefaults();
 			var result = {
-				pago: _this.payment,
-				camisetas: _this.carritoRecords.customRecords
+				idComprador: id,
+				idFormaPago: _this.payment.id,
+				fechaCompra: getTodayDate(),
+				idCarrito: usuarioService.getCarrito(),
+				monto: getPrice()
 			};
-			facturaService.postCustom(result).then(cleanCart);
+			facturaService.postCustom(result, id).then(cleanCart);
+		}
+
+		// Returns a valid string of today date.
+		function getTodayDate() {
+			var d = new Date();
+			return d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
 		}
 	}
 })();

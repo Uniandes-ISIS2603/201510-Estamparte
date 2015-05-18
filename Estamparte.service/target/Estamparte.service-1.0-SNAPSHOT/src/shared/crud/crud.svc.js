@@ -85,6 +85,8 @@
 
 			// PUT a custom item.
 			function putCustom(data, basicID) {
+				console.log(data);
+				console.log(basicID);
 				return data.put().then(resolve);
 				function resolve(entry) {
 					reloadResolveCustom(entry, basicID);

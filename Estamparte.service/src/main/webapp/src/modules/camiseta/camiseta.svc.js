@@ -35,7 +35,7 @@
 		_this.tshirt = {
 			nombre: '',
 			estampas: [],
-			precio: 0,
+			costo: 0,
 			color: _this.colors[0].id,
 			talla: _this.sizes[0].id,
 			estilo: _this.styles[0].id
@@ -59,7 +59,7 @@
 			var index = _this.tshirt.estampas.indexOf(target);
 			if (index === -1) {
 				_this.tshirt.estampas.push(target);
-				_this.tshirt.precio += target.precio;
+				_this.tshirt.costo += target.precio;
 			}
 		}
 
@@ -108,7 +108,7 @@
 			deleteTshirtProperties();
 			_this.tshirt.nombre = '';
 			_this.tshirt.estampas = [];
-			_this.tshirt.precio = 0;
+			_this.tshirt.costo = 0;
 			_this.tshirt.color = _this.colors[0].id;
 			_this.tshirt.talla = _this.sizes[0].id;
 			_this.tshirt.estilo = _this.styles[0].id;

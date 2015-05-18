@@ -12,6 +12,8 @@
 					<option value="" disabled selected>Forma de pago</option>
 				</select>
 
+				<p>Costo total: {{ carritoCtrl.getPrice() }}</p>
+
 			</div>
 
 			<div ng-show="carritoCtrl.getUserType() === null" class="form-group col-md-8">
@@ -33,7 +35,7 @@
 			<p>
 				{{ tshirt.nombre }}
 				<br>
-				Precio: {{ tshirt.precio | currency }}
+				Precio: {{ tshirt.costo | currency }}
 				<br>
 				Cantidad: 
 			</p>

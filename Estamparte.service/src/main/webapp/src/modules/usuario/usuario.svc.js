@@ -2,7 +2,7 @@
 	angular.module('usuarioModule')
 	.service('usuarioService', usuarioService);
 
-	function usuarioService(carritoService, compradorService, artistaService, formaPagoService, carritoService) {
+	function usuarioService(carritoService, compradorService, artistaService, formaPagoService, carritoService, facturaService) {
 		var _this = this;
 
 		_this.user = {};
@@ -50,6 +50,7 @@
 			if (type === 'comprador') {
 				formaPagoService.getCustom(_this.user.id);
 				carritoService.getCustom(_this.user.idCarrito);
+				facturaService.getCustom(_this.user.id);
 			}
 			if (callback) callback();
 		}
