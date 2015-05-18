@@ -15,7 +15,6 @@
 		// Hold the payment.
 		_this.payment = null;
 
-		_this.editTshirt = editTshirt;
 		_this.getUserType = getUserType;
 		_this.invalidOrder = invalidOrder;
 		_this.isNegative = isNegative;
@@ -25,16 +24,6 @@
 		_this.getPrice = getPrice
 		_this.buy = buy;
 		_this.getTodayDate = getTodayDate;
-
-		// Edit the selected tshirt.
-		function editTshirt(target) {
-			camisetaService.setTshirtDefaults();
-			angular.forEach(target, copy);
-			function copy(value, key) {
-				camisetaService.tshirt[key] = value;
-			}
-			camisetaService.setCSS();
-		}
 
 		// Returns the user type
 		function getUserType() {
