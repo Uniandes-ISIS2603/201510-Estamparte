@@ -1,0 +1,21 @@
+<div id="factura">
+
+	<ul>
+
+		<li class="miestampa" ng-repeat="f in facturaCtrl.facturaRecords.customRecords">
+
+			<p>
+				Factura ID #{{ f.id }}
+				<br>
+				Fecha de compra: {{ f.fechaCompra }}
+				<br>
+				Monto total: {{ f.monto }}
+			</p>
+
+			<hr>
+
+		</li>
+
+	</ul>
+
+</div>

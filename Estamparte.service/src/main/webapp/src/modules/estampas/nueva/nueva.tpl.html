@@ -1,0 +1,42 @@
+<div id="nueva">
+
+	<div class="container">
+
+		<form name="nuevaForm" class="col-md-6" novalidate>
+
+			<h2>Agregar estampa</h2>
+
+			<br>
+
+			<div class="form-group">
+				<label for="nombre">Nombre</label>
+				<input id="nombrenueva" type="text" ng-model="nuevaCtrl.nueva.nombre" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Descripcion</label>
+				<textarea id="descripcionnueva" ng-model="nuevaCtrl.nueva.descripcion" class="form-control" required></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Tema</label>
+				<input id="temanueva" type="text" ng-model="nuevaCtrl.nueva.tema" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Precio</label>
+				<input id="precionueva" type="number" ng-model="nuevaCtrl.nueva.precio" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Cargar imagen</label>
+				<input id="imagennueva" type="file">
+			</div>
+
+			<button id="botonCrearEstampa" class="btn btn-default" ng-disabled="!nuevaForm.$valid" ng-click="nuevaCtrl.addNueva()">Crear estampa</button>
+
+		</form>
+
+	</div>
+
+</div>

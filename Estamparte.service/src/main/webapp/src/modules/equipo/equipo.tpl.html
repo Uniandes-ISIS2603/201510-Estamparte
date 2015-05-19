@@ -1,0 +1,39 @@
+<div id="equipo">
+
+	<div class="container">
+
+		<div id="tituloEquipo" class="row">
+
+			<div class="col-md-12">
+
+				<h2>Equipo</h2>
+
+			</div>
+
+		</div>
+
+		<div ng-repeat="member in equipoCtrl.members" ng-switch="$index % 3">
+
+			<span ng-switch on="$index % 3">
+
+				<span ng-switch-when="0">
+
+					<div class="fila-equipo row">
+
+						<div miembro-directive="equipoCtrl.members[$index+0]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
+
+						<div miembro-directive="equipoCtrl.members[$index+1]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
+
+						<div miembro-directive="equipoCtrl.members[$index+2]" ng-class="equipoCtrl.getMemberWidth($index)"></div>
+
+					</div>
+
+				</span>
+
+			</span>
+
+		</div>
+
+	</div>
+
+</div>

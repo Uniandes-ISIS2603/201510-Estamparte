@@ -1,0 +1,37 @@
+<div class="estampa" ng-show="target">
+
+	<div class="nombre">
+
+		<h4>{{ target.nombre }}</h4>
+
+		<a id="botonAgregarEstampaAMisEstampas" class="btn btn-default" ng-click="estampaCtrl.addMisEstampas(target)" ng-hide="estampaCtrl.isType('artista')">
+			<span class="glyphicon glyphicon-plus"></span>
+		</a>
+
+		<a id="botonQuitarEstampaAMisEstampas" class="btn btn-default" ng-click="estampaCtrl.removeEstampa(target)" ng-show="estampaCtrl.isOwner(target)">
+			<span class="glyphicon glyphicon-remove"></span>
+		</a>
+
+	</div>
+
+	<div class="contenido" ng-style="{ background: 'url({{ target.imagenes[0] }})' }" ng-click="estampaCtrl.showEstampa(target)"></div>
+
+	<div class="calificacion">
+
+		<div id="siGusta" class="gusta">
+			<button id="botonSiGusta" class="btn btn-default" ng-click="estampaCtrl.voteEstampa(target, 'like')" ng-disabled="estampaCtrl.isType(null)">
+				<span class="glyphicon glyphicon-thumbs-down"></span>
+			</button>
+			<p>{{ target.siGusta }}</p>
+		</div>
+
+		<div id="noGusta" class="gusta">
+			<p>{{ target.noGusta }}</p>
+			<button id="botonNoGusta" class="btn btn-default" ng-click="estampaCtrl.voteEstampa(target, 'dislike')" ng-disabled="estampaCtrl.isType(null)">
+				<span class="glyphicon glyphicon-thumbs-up"></span>      
+			</button>
+		</div>
+
+	</div>
+
+</div>
