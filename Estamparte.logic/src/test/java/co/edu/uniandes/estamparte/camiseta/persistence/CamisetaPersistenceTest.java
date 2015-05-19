@@ -48,6 +48,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -77,40 +78,40 @@ public class CamisetaPersistenceTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, DEPLOY + ".war")
-                //Añade el paquete en el que se encuentra la clase 'SportPersistance.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportPersistance.java'
                 .addPackage(ICompradorLogic.class.getPackage())
                 .addPackage(CompradorLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CompradorEntity.class.getPackage())
                 .addPackage(CompradorDTO.class.getPackage())
                 .addPackage(CompradorConverter.class.getPackage())
                 .addPackage(IFacturaLogic.class.getPackage())
                 .addPackage(FacturaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(FacturaEntity.class.getPackage())
                 .addPackage(FacturaDTO.class.getPackage())
                 .addPackage(FacturaConverter.class.getPackage())
                 .addPackage(IFormaPagoLogic.class.getPackage())
                 .addPackage(FormaPagoLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(FormaPagoEntity.class.getPackage())
                 .addPackage(FormaPagoDTO.class.getPackage())
                 .addPackage(FormaPagoConverter.class.getPackage())
                 .addPackage(IEstampaLogic.class.getPackage())
                 .addPackage(EstampaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(EstampaEntity.class.getPackage())
                 .addPackage(EstampaDTO.class.getPackage())
                 .addPackage(EstampaConverter.class.getPackage())
                 .addPackage(ICarritoLogic.class.getPackage())
                 .addPackage(CarritoLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CarritoEntity.class.getPackage())
                 .addPackage(CarritoDTO.class.getPackage())
                 .addPackage(CarritoConverter.class.getPackage())
                 .addPackage(ICamisetaLogic.class.getPackage())
                 .addPackage(CamisetaLogic.class.getPackage())
-                //Añade el paquete en el que se encuentra la clase 'SportEntity.java'
+                //Aï¿½ade el paquete en el que se encuentra la clase 'SportEntity.java'
                 .addPackage(CamisetaEntity.class.getPackage())
                 .addPackage(CamisetaDTO.class.getPackage())
                 .addPackage(CamisetaConverter.class.getPackage())
@@ -122,7 +123,7 @@ public class CamisetaPersistenceTest {
                                 .addPackage(ArtistaPageDTO.class.getPackage())
 
                 .addPackage(ArtistaConverter.class.getPackage())
-                //Finalmente se añaden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mínimo
+                //Finalmente se aï¿½aden los archivos persistance.xml y beans.xml para la Unidad de peristencia y CDI del paquete mï¿½nimo
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File ("src/main/resources/META-INF/beans.xml"));
     }
@@ -138,7 +139,7 @@ public class CamisetaPersistenceTest {
      @Inject
      UserTransaction utx;
     
-       @Before
+    @Before
     public void configTest() {
         System.out.println("em: " + em);
         try {
@@ -178,6 +179,7 @@ public class CamisetaPersistenceTest {
     
     
     @Test
+    @Transactional
     public void createCamisetaTest() {
         // se instancia el generador de datos Podam
         ArtistaDTO entity = new ArtistaDTO();
@@ -237,6 +239,7 @@ public class CamisetaPersistenceTest {
     }
     
     @Test
+    @Transactional
     public void deleteCamisetaTest(){
         CamisetaEntity result = data.get(0);
         Assert.assertNotNull(result);

@@ -24,6 +24,7 @@
 			_this.nueva.noGusta = 0;
 			_this.nueva.altura = 1;
 			_this.nueva.ancho = 1;
+			_this.nueva.imagen = "src/assets/img/estampa.jpg";
 
 			// Save it!.
 			nuevaService.postCustom(_this.nueva, id).then(clean);
